@@ -16,7 +16,7 @@
 
     <style>
         /* =========================================
-           ESTILOS GENERALES & ANIMACIONES
+           ESTILOS GENERALES
            ========================================= */
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         
@@ -167,72 +167,77 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (ORIGINAL - IMAGEN COMPLETA)
+           HERO SECTION (FOTO COMPLETA + TEXTO ENCIMA)
            ========================================= */
         .hero-section {
             width: 100%;
-            height: 50vh; /* Altura más imponente */
-            min-height: 400px;
             position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: black;
+            line-height: 0; /* Elimina espacios extra bajo la imagen */
+        }
+
+        /* La imagen se comportará como en el código inicial: ancho 100%, altura auto */
+        .hero-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            filter: brightness(0.6); /* Oscurece la imagen para que el texto resalte */
+        }
+
+        /* Contenedor del texto posicionado absolutamente sobre la imagen */
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            padding: 20px;
             text-align: center;
             color: white;
-            background: black;
-        }
-
-        /* Imagen de fondo con overlay oscuro */
-        .hero-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://github.com/Clata1014/chorichava5/blob/main/Fondoparrilla.webp?raw=true');
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.5); /* Oscurece la foto para que el texto resalte */
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
             z-index: 2;
-            padding: 20px;
-            max-width: 700px;
-            animation: fadeUp 1s ease-out;
+            line-height: 1.4; /* Restaura el interlineado normal para el texto */
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 2.5rem; /* Ajustable según necesidad */
             margin-bottom: 10px;
-            line-height: 1.1;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
+        
         .hero-title span { color: var(--brand-gold); font-style: italic; }
 
         .hero-subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            font-weight: 300;
-            opacity: 0.9;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
         }
 
         .hero-cta {
             background: var(--brand-gold);
             color: var(--brand-red);
-            padding: 14px 35px;
+            padding: 10px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
             transition: transform 0.3s;
             display: inline-block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         .hero-cta:hover { transform: scale(1.05); }
+
+        /* Media Query para ajustar texto en pantallas muy pequeñas si la imagen es muy corta */
+        @media (max-width: 480px) {
+            .hero-title { font-size: 1.8rem; }
+            .hero-subtitle { font-size: 0.9rem; margin-bottom: 15px; }
+            .hero-cta { padding: 8px 20px; font-size: 0.75rem; }
+        }
+
 
         /* Badges */
         .trust-badges {
@@ -242,8 +247,6 @@
             gap: 10px;
             background: white;
             margin-top: -5px; 
-            position: relative;
-            z-index: 5;
         }
 
         .badge {
@@ -692,23 +695,11 @@
             background: var(--brand-dark);
             color: #888;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 0.75rem;
+            padding: 40px 20px;
+            font-size: 0.8rem;
         }
 
         footer img { width: 120px; margin-bottom: 10px; opacity: 0.8; }
-
-        /* Media Queries para Hero en Móvil */
-        @media (max-width: 768px) {
-            .hero-section {
-                height: auto;
-                min-height: 250px;
-                padding: 40px 0;
-            }
-            .hero-title {
-                font-size: 2.2rem;
-            }
-        }
 
     </style>
 </head>
@@ -741,9 +732,9 @@
             <a href="#contacto" onclick="toggleMenu()">Contacto</a>
         </div>
 
-        <!-- HERO MEJORADO ("EL ARTE DEL BUEN CHORIZO") -->
+        <!-- HERO ORIGINAL (FOTO COMPLETA + TEXTO SUPERPUESTO) -->
         <header class="hero-section">
-            <div class="hero-bg"></div>
+            <img src="https://github.com/Clata1014/chorichava5/blob/main/Fondoparrilla.webp?raw=true" alt="Chorizos" class="hero-img">
             <div class="hero-content">
                 <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 <p class="hero-subtitle">Tradición artesanal en cada bocado.</p>
@@ -787,7 +778,7 @@
                                 <h3 class="card-title">Ahumado</h3>
                                 <p class="card-desc">Sabor intenso y tradicional.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Ahumado', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Ahumado', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -800,7 +791,7 @@
                                 <h3 class="card-title">Antioqueño</h3>
                                 <p class="card-desc">El sabor de nuestra tierra.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Antioqueño', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Antioqueño', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -813,7 +804,7 @@
                                 <h3 class="card-title">Argentino</h3>
                                 <p class="card-desc">Ideal para choripán.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Argentino', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Argentino', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -826,7 +817,7 @@
                                 <h3 class="card-title">Español</h3>
                                 <p class="card-desc">Con pimentón de la vera.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -839,7 +830,7 @@
                                 <h3 class="card-title">Marinero</h3>
                                 <p class="card-desc">Mezcla única de mariscos.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -852,7 +843,7 @@
                                 <h3 class="card-title">Santarrosano</h3>
                                 <p class="card-desc">El clásico de Santa Rosa.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -865,7 +856,7 @@
                                 <h3 class="card-title">Llanero</h3>
                                 <p class="card-desc">Condimentado al estilo de la llanura.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -878,7 +869,7 @@
                                 <h3 class="card-title">Jalapeño</h3>
                                 <p class="card-desc">Picor balanceado con sabor ahumado.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Jalapeño', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Jalapeño', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -891,7 +882,7 @@
                                 <h3 class="card-title">Mediterráneo</h3>
                                 <p class="card-desc">Con pimentón de la vera.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -904,7 +895,7 @@
                                 <h3 class="card-title">Costero</h3>
                                 <p class="card-desc">Mezcla única de mariscos.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -933,7 +924,7 @@
                                 <h3 class="card-title">Montañés</h3>
                                 <p class="card-desc">El clásico de Santa Rosa.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -946,7 +937,7 @@
                                 <h3 class="card-title">Vaquero</h3>
                                 <p class="card-desc">Condimentado al estilo de la llanura.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -959,7 +950,7 @@
                                 <h3 class="card-title">Casero</h3>
                                 <p class="card-desc">Receta familiar hecha con cariño.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -972,7 +963,7 @@
                                 <h3 class="card-title">Caballo</h3>
                                 <p class="card-desc">Potente mezcla para los amantes de la parrilla.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -985,7 +976,7 @@
                                 <h3 class="card-title">Campesino</h3>
                                 <p class="card-desc">Sazonado con hierbas frescas de la finca.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -998,7 +989,7 @@
                                 <h3 class="card-title">Clásico</h3>
                                 <p class="card-desc">El preferido de siempre, con un giro italiano.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1011,7 +1002,7 @@
                                 <h3 class="card-title">Butifarra</h3>
                                 <p class="card-desc">Auténtico sabor costeño.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1024,7 +1015,7 @@
                                 <h3 class="card-title">Morcilla</h3>
                                 <p class="card-desc">Rellena de arroz y especias.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1037,7 +1028,7 @@
                                 <h3 class="card-title">Chicharrón</h3>
                                 <p class="card-desc">Crocante y carnudo.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
                         
@@ -1050,7 +1041,7 @@
                                 <h3 class="card-title">Costilla</h3>
                                 <p class="card-desc">Ahumada y lista para asar.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1079,7 +1070,7 @@
                                 <h3 class="card-title">Arepas</h3>
                                 <p class="card-desc">El acompañante ideal.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Arepas', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Arepas', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1092,7 +1083,7 @@
                                 <h3 class="card-title">Empanadas</h3>
                                 <p class="card-desc">Rellenas de nuestro chorizo.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Empanadas', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Empanadas', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1105,7 +1096,7 @@
                                 <h3 class="card-title">Hamburguesa</h3>
                                 <p class="card-desc">Carne de chorizo artesanal.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Hamburguesa de Chorizo', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Hamburguesa de Chorizo', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1118,7 +1109,7 @@
                                 <h3 class="card-title">Salchichón</h3>
                                 <p class="card-desc">Tradicional cervecero.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Salchichón', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Salchichón', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1131,7 +1122,7 @@
                                 <h3 class="card-title">Queso de Cerdo</h3>
                                 <p class="card-desc">Fiambre artesanal.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Queso de Cerdo', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Queso de Cerdo', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1144,7 +1135,7 @@
                                 <h3 class="card-title">Génova</h3>
                                 <p class="card-desc">Estilo italiano curado.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Génova', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Génova', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1157,7 +1148,7 @@
                                 <h3 class="card-title">Cabanossi</h3>
                                 <p class="card-desc">Ideal para picadas.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Cabanossi', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Cabanossi', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1170,7 +1161,7 @@
                                 <h3 class="card-title">Longaniza Picante</h3>
                                 <p class="card-desc">Sabor intenso y picante.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Longaniza Picante', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Longaniza Picante', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1183,7 +1174,7 @@
                                 <h3 class="card-title">Salchicha Ranchera</h3>
                                 <p class="card-desc">Para desayunos y asados.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Salchicha Ranchera', 20000)">Agregar 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Salchicha Ranchera', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
