@@ -167,11 +167,11 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (DISEÑO MEJORADO)
+           HERO SECTION (DISEÑO MEJORADO + RESPONSIVE)
            ========================================= */
         .hero-section {
             width: 100%;
-            height: 45vh; /* Altura atractiva */
+            height: 45vh; /* Altura atractiva en escritorio */
             min-height: 350px;
             background: black;
             position: relative;
@@ -292,6 +292,7 @@
             border-top: none;
         }
 
+        /* Títulos (Sin línea decorativa) */
         .section-title {
             text-align: center;
             font-family: 'Playfair Display', serif;
@@ -374,11 +375,11 @@
         .nav-arrow.prev { left: 5px; }
         .nav-arrow.next { right: 5px; }
 
-        /* Tarjeta de Producto (Diseño Premium) */
+        /* Tarjeta de Producto */
         .product-card {
-            width: 270px; /* Un poquito más ancha para elegancia */
+            width: 260px;
             background: white; 
-            border-radius: 20px; /* Bordes más redondeados */
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--card-shadow);
             scroll-snap-align: center;
@@ -391,7 +392,7 @@
             box-shadow: var(--card-hover-shadow);
         }
 
-        /* CONTENEDOR DE IMAGEN */
+        /* CONTENEDOR DE IMAGEN (TU FONDO) */
         .card-image-box {
             height: 200px;
             width: 100%;
@@ -434,7 +435,7 @@
         }
 
         .card-details {
-            padding: 20px 15px;
+            padding: 15px;
             text-align: center;
             background: white;
             display: flex;
@@ -443,15 +444,15 @@
         }
 
         .card-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 800;
             color: var(--brand-dark);
-            margin-bottom: 2px;
+            margin-bottom: 3px;
             text-transform: uppercase;
         }
 
         .card-desc {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #666;
             margin-bottom: 10px;
             height: 35px;
@@ -459,7 +460,7 @@
             line-height: 1.3;
         }
 
-        /* PRECIO */
+        /* NUEVO: ESTILO PARA EL PRECIO */
         .card-price {
             font-size: 1.1rem;
             font-weight: 800;
@@ -467,7 +468,7 @@
             margin-bottom: 10px;
         }
 
-        /* Botón Mejorado */
+        /* Botón AGREGAR AL CARRITO */
         .buy-btn {
             display: flex;
             align-items: center;
@@ -478,7 +479,7 @@
             background: linear-gradient(45deg, var(--brand-red), #a00000);
             color: white;
             border: none;
-            border-radius: 50px; /* Botones redondos más modernos */
+            border-radius: 8px;
             font-weight: 700;
             font-size: 0.9rem;
             cursor: pointer;
@@ -491,12 +492,11 @@
         .buy-btn:hover {
             filter: brightness(1.15); 
             box-shadow: 0 6px 14px rgba(139, 0, 0, 0.3);
-            transform: translateY(-2px);
         }
 
         .buy-btn:active { transform: scale(0.95); }
 
-        /* WHATSAPP FLOTANTE */
+        /* ESTILOS WHATSAPP FLOTANTE */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -695,6 +695,23 @@
 
         footer img { width: 120px; margin-bottom: 10px; opacity: 0.8; }
 
+        /* =========================================
+           MEDIA QUERIES (AJUSTES PARA MÓVIL)
+           ========================================= */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: auto; /* Dejar que el contenido defina la altura */
+                min-height: 250px; /* Reducir altura mínima para que no recorte tanto la imagen */
+                padding: 40px 0;
+            }
+            .hero-bg {
+                background-position: center; /* Asegurar centrado */
+            }
+            .hero-title {
+                font-size: 2rem; /* Texto un poco más pequeño */
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -725,7 +742,7 @@
             <a href="https://wa.me/573001234567" target="_blank">Contacto</a>
         </div>
 
-        <!-- HERO MEJORADO -->
+        <!-- HERO MEJORADO + RESPONSIVE -->
         <header class="hero-section">
             <div class="hero-bg"></div>
             <div class="hero-content">
