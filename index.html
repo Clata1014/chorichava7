@@ -168,7 +168,7 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (FOTO ACTUALIZADA)
+           HERO SECTION (FOTO ACTUALIZADA + BOTÓN MOVIDO)
            ========================================= */
         .hero-section {
             width: 100%;
@@ -220,22 +220,28 @@
             letter-spacing: 0.5px;
         }
 
-        /* Botón Blanco Perla */
+        /* Botón Blanco Perla - MODIFICADO: MÁS GRUESO Y CENTRADO */
         .hero-cta {
+            /* Se eliminó position: absolute para que fluya en el centro */
             background: #FFFFFF;
             color: var(--brand-red);
-            padding: 12px 30px;
+            padding: 16px 45px; /* Más padding para engrosarlo */
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 800;
+            font-weight: 900; /* Letra más gruesa */
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-            transition: transform 0.3s;
+            letter-spacing: 1.5px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5); /* Sombra más pronunciada */
+            transition: all 0.3s ease;
             display: inline-block;
-            font-size: 0.9rem;
+            font-size: 1.1rem; /* Texto más grande */
+            margin-top: 15px;
+            border: 2px solid white; /* Borde sutil para darle cuerpo */
         }
-        .hero-cta:hover { transform: scale(1.05); }
+        .hero-cta:hover { 
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+        }
 
         /* Badges */
         .trust-badges {
@@ -718,8 +724,8 @@
                 margin-bottom: 15px; /* Menos espacio abajo */
             }
             .hero-cta {
-                padding: 10px 25px; /* Botón un poco más compacto */
-                font-size: 0.8rem;
+                padding: 12px 30px; /* Un poco menos en móvil para que no sea gigante */
+                font-size: 0.9rem;
             }
             .hero-content {
                 padding: 10px; /* Menos padding lateral */
@@ -757,14 +763,14 @@
             <a href="#contacto" onclick="toggleMenu()">Contacto</a>
         </div>
 
-        <!-- HERO MEJORADO (IMAGEN ACTUALIZADA) -->
+        <!-- HERO MEJORADO (BOTÓN CENTRADO Y MÁS GRUESO) -->
         <header class="hero-section">
-            <!-- Imagen cambiada por Fonditobonito.png -->
             <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditobonito.png?raw=true" alt="Chorizos" class="hero-img">
             
             <div class="hero-content">
                 <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 <p class="hero-subtitle">Tradición artesanal en cada bocado.</p>
+                <!-- Botón de vuelta aquí abajo para que no tape nada -->
                 <a href="#gourmet" class="hero-cta">Ver Menú 👇</a>
             </div>
         </header>
@@ -1307,63 +1313,4 @@
             updateCartUI();
         }
 
-        function updateCartUI() {
-            const cartItemsContainer = document.getElementById('cartItems');
-            const cartCounter = document.getElementById('cartCounter');
-            const totalPriceEl = document.getElementById('totalPrice');
-
-            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
-            cartCounter.innerText = totalQty;
-
-            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-            totalPriceEl.innerText = `$${total.toLocaleString('es-CO')}`;
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p style="text-align:center; padding-top:40px; color:#999; font-size:1.1rem;">Tu carrito está vacío 🥺</p>';
-                return;
-            }
-
-            let html = '';
-            cart.forEach(item => {
-                html += `
-                <div class="cart-item">
-                    <div class="cart-item-info">
-                        <span class="cart-item-name">${item.name}</span>
-                        <span class="cart-item-price">$${item.price.toLocaleString('es-CO')} x ${item.qty}</span>
-                    </div>
-                    <div>
-                        <span style="font-weight:bold; margin-right:10px;">$${(item.price * item.qty).toLocaleString('es-CO')}</span>
-                        <span class="remove-item" onclick="removeFromCart('${item.name}')">🗑️</span>
-                    </div>
-                </div>`;
-            });
-            cartItemsContainer.innerHTML = html;
-        }
-
-        function toggleCart() {
-            document.getElementById('cartModal').classList.toggle('open');
-            document.getElementById('overlay').classList.toggle('active');
-        }
-
-        function checkout() {
-            if (cart.length === 0) {
-                alert("Agrega productos primero 😉");
-                return;
-            }
-            const phone = "573001234567"; 
-            let message = "Hola ChoriChava! 👋 Quiero hacer este pedido:\n\n";
-            let total = 0;
-            cart.forEach(item => {
-                const subtotal = item.price * item.qty;
-                total += subtotal;
-                message += `▪️ ${item.qty}x ${item.name} - $${subtotal.toLocaleString('es-CO')}\n`;
-            });
-            message += `\n*TOTAL A PAGAR: $${total.toLocaleString('es-CO')}*`;
-            message += "\n\n¿Quedo atento a la confirmación!";
-            
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-    </script>
-</body>
-</html>
+        function updateCart
