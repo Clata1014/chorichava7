@@ -189,13 +189,13 @@
         /* CONTENEDOR PRINCIPAL: Centrado por defecto para el texto */
         .hero-content {
             position: absolute;
-            top: 50%;
+            top: 48%;
             width: 100%;
             transform: translateY(-50%);
             padding: 20px;
             color: white;
             z-index: 2;
-            line-height: 1.4; 
+            line-height: 1.4;
             text-align: center; /* Centramos todo el texto por defecto */
         }
 
@@ -240,7 +240,7 @@
             right: 10px; /* CASI PEGADO AL BORDE */
 
             /* Posicionamiento vertical: AÚN MÁS ABAJO */
-            top: 90%; /* Antes 75%, ahora más abajo */
+            top: 120%; /* 30% más abajo que la posición anterior */
             transform: translateY(-50%);
         }
         .hero-cta:hover { transform: scale(1.05) translateY(-50%); }
@@ -1096,6 +1096,151 @@
             </div>
         </section>
 
+        <!-- SECCIÓN OTRAS DELICIAS (RÉPLICA DE TRADICIONAL) -->
+        <section class="products-section" id="otros">
+            <h2 class="section-title">Otras <span>Delicias</span></h2>
+
+            <div class="carousel-wrapper">
+                <button class="nav-arrow prev" onclick="scrollCarousel('track-otros', -1)">‹</button>
+                <button class="nav-arrow next" onclick="scrollCarousel('track-otros', 1)">›</button>
+
+                <div class="carousel-container" id="track-otros">
+                    <div class="carousel-track">
+
+                        <!-- Montañés -->
+                        <div class="product-card">
+                            <div class="card-image-box">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Montañés</h3>
+                                <p class="card-desc">El clásico de Santa Rosa.</p>
+                                <p class="card-price">$20.000</p>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar al Carrito 🛒</button>
+                            </div>
+                        </div>
+
+                        <!-- Vaquero -->
+                        <div class="product-card">
+                            <div class="card-image-box">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Vaquero</h3>
+                                <p class="card-desc">Condimentado al estilo de la llanura.</p>
+                                <p class="card-price">$20.000</p>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar al Carrito 🛒</button>
+                            </div>
+                        </div>
+
+                        <!-- Casero -->
+                        <div class="product-card">
+                            <div class="card-image-box">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Casero</h3>
+                                <p class="card-desc">Receta familiar hecha con cariño.</p>
+                                <p class="card-price">$20.000</p>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000)">Agregar al Carrito 🛒</button>
+                            </div>
+                        </div>
+
+                        <!-- Caballo -->
+                        <div class="product-card">
+                            <div class="card-image-box">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Caballo</h3>
+                                <p class="card-desc">Potente mezcla para los amantes de la parrilla.</p>
+                                <p class="card-price">$20.000</p>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000)">Agregar al Carrito 🛒</button>
+                            </div>
+                        </div>
+
+                        <!-- Campesino -->
+                        <div class="product-card">
+                            <div class="card-image-box">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Campesino</h3>
+                                <p class="card-desc">Sazonado con hierbas frescas de la finca.</p>
+                                <p class="card-price">$20.000</p>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000)">Agregar al Carrito 🛒</button>
+                            </div>
+                        </div>
+
+                        <!-- Clásico -->
+                        <div class="product-card">
+                            <div class="card-image-box">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Clásico</h3>
+                                <p class="card-desc">El preferido de siempre, con un giro italiano.</p>
+                                <p class="card-price">$20.000</p>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000)">Agregar al Carrito 🛒</button>
+                            </div>
+                        </div>
+
+                        <!-- Butifarra -->
+                        <div class="product-card">
+                            <div class="card-image-box">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Butifarra</h3>
+                                <p class="card-desc">Auténtico sabor costeño.</p>
+                                <p class="card-price">$20.000</p>
+                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000)">Agregar al Carrito 🛒</button>
+                            </div>
+                        </div>
+
+                        <!-- Morcilla -->
+                        <div class="product-card">
+                            <div class="card-image-box">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Morcilla</h3>
+                                <p class="card-desc">Rellena de arroz y especias.</p>
+                                <p class="card-price">$20.000</p>
+                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000)">Agregar al Carrito 🛒</button>
+                            </div>
+                        </div>
+
+                        <!-- Chicharrón -->
+                        <div class="product-card">
+                            <div class="card-image-box">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Chicharrón</h3>
+                                <p class="card-desc">Crocante y carnudo.</p>
+                                <p class="card-price">$20.000</p>
+                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000)">Agregar al Carrito 🛒</button>
+                            </div>
+                        </div>
+
+                        <!-- Costilla -->
+                        <div class="product-card">
+                            <div class="card-image-box">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                            </div>
+                            <div class="card-details">
+                                <h3 class="card-title">Costilla</h3>
+                                <p class="card-desc">Ahumada y lista para asar.</p>
+                                <p class="card-price">$20.000</p>
+                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000)">Agregar al Carrito 🛒</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- SECCIÓN DE CONTACTO -->
         <section class="contact-section" id="contacto">
