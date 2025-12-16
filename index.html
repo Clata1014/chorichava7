@@ -168,7 +168,7 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (FOTO COMPLETA NUEVA)
+           HERO SECTION (AJUSTADO: TEXTO CENTRADO ARRIBA, BOTÓN ABAJO DERECHA)
            ========================================= */
         .hero-section {
             width: 100%;
@@ -178,18 +178,21 @@
             display: block;
         }
 
-        /* La imagen se adapta al ancho y su altura es automática (no se recorta) */
         .hero-img {
             width: 100%;
             height: auto;
             display: block;
             object-fit: contain; 
-            filter: brightness(0.6); /* Oscurece un poco para el texto */
+            filter: brightness(0.6); 
+            /* Asegura que en móviles la imagen tenga altura suficiente */
+            min-height: 350px; 
+            object-position: center bottom; /* Prioriza mostrar la parte de abajo (parrilla) si se recorta */
         }
 
         .hero-content {
             position: absolute;
-            top: 50%;
+            /* Subimos el texto al 40% para dejar libre la parte baja de la parrilla */
+            top: 40%; 
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
@@ -200,7 +203,6 @@
             line-height: 1.4; 
         }
 
-        /* Texto adaptable y elegante */
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 3rem; 
@@ -214,17 +216,20 @@
 
         .hero-subtitle {
             font-size: 1.1rem;
-            margin-bottom: 25px;
+            margin-bottom: 0; /* Quitamos margen inferior porque el botón ya no está aquí */
             font-weight: 300;
             text-shadow: 0 2px 5px rgba(0,0,0,0.8);
             letter-spacing: 0.5px;
         }
 
-        /* Botón Blanco Perla */
+        /* Botón Blanco Perla - Posicionado Abajo a la Derecha */
         .hero-cta {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
             background: #FFFFFF;
             color: var(--brand-red);
-            padding: 12px 30px;
+            padding: 10px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 800;
@@ -232,8 +237,11 @@
             letter-spacing: 1px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.4);
             transition: transform 0.3s;
-            display: inline-block;
-            font-size: 0.9rem;
+            z-index: 3;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         .hero-cta:hover { transform: scale(1.05); }
 
@@ -318,7 +326,7 @@
         .carousel-container {
             width: 100%;
             overflow-x: auto;
-            padding-bottom: 30px; /* Más espacio para la sombra flotante */
+            padding-bottom: 30px; 
             -webkit-overflow-scrolling: touch; 
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth; 
@@ -342,7 +350,7 @@
 
         .carousel-track {
             display: flex;
-            gap: 20px; /* Más separación entre tarjetas */
+            gap: 20px; 
             padding: 0 20px; 
             width: max-content;
         }
@@ -379,11 +387,11 @@
         .nav-arrow.prev { left: 5px; }
         .nav-arrow.next { right: 5px; }
 
-        /* Tarjeta de Producto (DISEÑO MEJORADO/PREMIUM) */
+        /* Tarjeta de Producto */
         .product-card {
             width: 270px;
             background: white; 
-            border-radius: 20px; /* Bordes más curvos */
+            border-radius: 20px; 
             overflow: hidden;
             box-shadow: var(--card-shadow);
             scroll-snap-align: center;
@@ -398,7 +406,7 @@
 
         /* CONTENEDOR DE IMAGEN (TU FONDO) */
         .card-image-box {
-            height: 210px; /* Un poco más alto para mejor visualización */
+            height: 210px; 
             width: 100%;
             background-image: url('https://github.com/Clata1014/Chorichava6/blob/main/fondochoriamor.png?raw=true');
             background-size: cover; 
@@ -417,12 +425,12 @@
             height: 100%;
             object-fit: contain;
             transform: scale(1.28);
-            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.15)); /* Sombra más realista */
+            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.15));
             transition: transform 0.3s ease;
         }
         
         .product-card:hover .product-photo {
-            transform: scale(1.35); /* Zoom sutil al pasar mouse */
+            transform: scale(1.35); 
         }
 
         .ahumado-photo {
@@ -483,7 +491,7 @@
             background: linear-gradient(45deg, var(--brand-red), #a00000);
             color: white;
             border: none;
-            border-radius: 50px; /* Botones redondos modernos */
+            border-radius: 50px; 
             font-weight: 700;
             font-size: 0.9rem;
             cursor: pointer;
@@ -617,7 +625,7 @@
 
         /* Contacto */
         .contact-section {
-            padding: 40px 20px; /* Más padding para que se vea bien */
+            padding: 40px 20px; 
             text-align: center;
             background: white;
             border-top: none; 
@@ -702,28 +710,38 @@
         footer img { width: 120px; margin-bottom: 10px; opacity: 0.8; }
 
         /* =========================================
-           OPTIMIZACIÓN TEXTO MÓVIL (SOLUCIÓN APEÑUZCADO)
+           OPTIMIZACIÓN TEXTO MÓVIL
            ========================================= */
         @media (max-width: 768px) {
             .hero-section {
                 height: auto; 
                 min-height: auto; 
             }
+            .hero-img {
+                /* Forzamos que se muestre una altura mínima para dar espacio al texto */
+                min-height: 400px;
+                object-fit: cover; /* Si es necesario, cubre para llenar el alto */
+                object-position: bottom; /* Asegura que se vea la parrilla si se recorta un poco arriba */
+            }
+            .hero-content {
+                top: 40%; /* Posición ideal para no tapar parrilla */
+                padding: 10px; 
+            }
             .hero-title {
-                font-size: 1.7rem; /* Reduje el tamaño considerablemente */
-                line-height: 1.1; /* Espacio justo entre líneas */
+                font-size: 1.7rem; 
+                line-height: 1.1; 
                 margin-bottom: 8px;
             }
             .hero-subtitle {
-                font-size: 0.9rem; /* Subtítulo más pequeño */
-                margin-bottom: 15px; /* Menos espacio abajo */
+                font-size: 0.9rem; 
+                margin-bottom: 0; /* Sin margen porque el botón está fuera */
             }
+            /* Ajuste del botón flotante en móvil */
             .hero-cta {
-                padding: 10px 25px; /* Botón un poco más compacto */
-                font-size: 0.8rem;
-            }
-            .hero-content {
-                padding: 10px; /* Menos padding lateral */
+                bottom: 15px;
+                right: 15px;
+                padding: 8px 20px;
+                font-size: 0.75rem;
             }
         }
 
@@ -758,14 +776,15 @@
             <a href="#contacto" onclick="toggleMenu()">Contacto</a>
         </div>
 
-        <!-- HERO MEJORADO (FOTO NUEVA CUADRADA) -->
+        <!-- HERO ORIGINAL (IMAGEN FONDO PARRILLA) -->
         <header class="hero-section">
-            <img src="https://github.com/Clata1014/chorichava7/blob/main/Chorizocuadro.png?raw=true" alt="Chorizos" class="hero-img">
+            <img src="https://github.com/Clata1014/chorichava7/blob/main/Fondoparrilla.webp?raw=true" alt="Chorizos" class="hero-img">
             <div class="hero-content">
                 <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 <p class="hero-subtitle">Tradición artesanal en cada bocado.</p>
-                <a href="#gourmet" class="hero-cta">Ver Menú 👇</a>
             </div>
+            <!-- BOTÓN FUERA DEL CONTENIDO CENTRAL, UBICADO ABAJO A LA DERECHA -->
+            <a href="#gourmet" class="hero-cta">Ver Menú 👇</a>
         </header>
 
         <!-- BADGES -->
