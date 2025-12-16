@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="ChoriChava: Los mejores chorizos artesanales de Colombia. Línea gourmet, tradicional y más. Domicilios en Medellín y envíos nacionales.">
-    <title>ChoriChava | Chorizos Artesanales</title>
+    <title>+ChoriChava | Chorizos Artesanales</title>
 
     <!-- Favicon -->
     <link rel="icon" href="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" type="image/png">
@@ -168,7 +168,7 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (AJUSTE POSICIÓN Y BOTÓN)
+           HERO SECTION (TÍTULO Y SUBTÍTULO CENTRO / BOTÓN DERECHA)
            ========================================= */
         .hero-section {
             width: 100%;
@@ -178,36 +178,33 @@
             display: block;
         }
 
-        /* La imagen se adapta al ancho y su altura es automática (no se recorta) */
         .hero-img {
             width: 100%;
             height: auto;
             display: block;
             object-fit: contain; 
-            filter: brightness(0.6); /* Oscurece un poco para el texto */
+            filter: brightness(0.6); 
         }
 
-        /* MODIFICACIÓN DE POSICIÓN:
-           - top: 50% + transform: translateY(-50%) mantiene el centro vertical.
-           - right: 0 + text-align: right empuja todo a la derecha.
-           - padding-right: 8% da un margen para que no pegue con el borde.
+        /* ESTRATEGIA MIXTA:
+           - El contenedor principal se alinea a la derecha (para el botón).
+           - El título y subtítulo se fuerzan al centro.
         */
         .hero-content {
             position: absolute;
             top: 50%;
-            right: 0; /* Pegado a la derecha */
-            left: auto; /* Liberamos la izquierda */
-            transform: translateY(-50%); /* Solo centrado vertical */
             width: 100%;
+            transform: translateY(-50%);
             padding: 20px;
-            padding-right: 8%; /* Espacio desde la derecha */
-            text-align: right; /* Alineamos texto y botón a la derecha */
             color: white;
             z-index: 2;
             line-height: 1.4; 
+            /* Alineación base a la derecha para el botón */
+            text-align: right; 
+            padding-right: 8%; /* Espacio a la derecha */
         }
 
-        /* Texto adaptable y elegante */
+        /* TÍTULO: Forzado al CENTRO */
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 3rem; 
@@ -215,19 +212,33 @@
             line-height: 1.1;
             text-shadow: 0 4px 10px rgba(0,0,0,0.8);
             color: #FFFFFF;
+            
+            /* Override para centrar */
+            text-align: center;
+            width: 100%;
+            /* Compensamos el padding-right del padre para que sea un centro real */
+            margin-right: -8%; 
+            display: block;
         }
 
         .hero-title span { color: var(--brand-champagne); font-style: italic; }
 
+        /* SUBTÍTULO: Forzado al CENTRO también */
         .hero-subtitle {
             font-size: 1.1rem;
             margin-bottom: 25px;
             font-weight: 300;
             text-shadow: 0 2px 5px rgba(0,0,0,0.8);
             letter-spacing: 0.5px;
+            
+            /* Override para centrar */
+            text-align: center;
+            width: 100%;
+            margin-right: -8%; /* Compensación del padding del padre */
+            display: block;
         }
 
-        /* Botón Blanco Perla - RESTAURADO A SU LUGAR Y TAMAÑO ORIGINAL */
+        /* BOTÓN: Se queda a la DERECHA */
         .hero-cta {
             background: #FFFFFF;
             color: var(--brand-red);
@@ -241,7 +252,7 @@
             transition: transform 0.3s;
             display: inline-block;
             font-size: 0.9rem;
-            /* Ya no es position absolute, fluye con el texto */
+            /* Fluye naturalmente a la derecha por el text-align: right del padre */
         }
         .hero-cta:hover { transform: scale(1.05); }
 
@@ -709,7 +720,7 @@
         footer img { width: 120px; margin-bottom: 10px; opacity: 0.8; }
 
         /* =========================================
-           OPTIMIZACIÓN TEXTO MÓVIL (SOLUCIÓN APEÑUZCADO)
+           OPTIMIZACIÓN TEXTO MÓVIL Y RESPONSIVIDAD
            ========================================= */
         @media (max-width: 768px) {
             .hero-section {
@@ -717,22 +728,29 @@
                 min-height: auto; 
             }
             .hero-title {
-                font-size: 1.7rem; /* Reduje el tamaño considerablemente */
-                line-height: 1.1; /* Espacio justo entre líneas */
+                font-size: 1.7rem; 
+                line-height: 1.1; 
                 margin-bottom: 8px;
+                text-align: center; /* Aseguramos centro en móvil */
+                margin-right: 0; /* Reset margen compensatorio */
             }
             .hero-subtitle {
-                font-size: 0.9rem; /* Subtítulo más pequeño */
-                margin-bottom: 15px; /* Menos espacio abajo */
-            }
-            .hero-cta {
-                padding: 10px 25px; /* Botón un poco más compacto */
-                font-size: 0.8rem;
+                font-size: 0.9rem; 
+                margin-bottom: 15px; 
+                text-align: center; /* Aseguramos centro en móvil */
+                padding-right: 0;
+                margin-right: 0; /* Reset margen compensatorio */
             }
             .hero-content {
-                padding: 10px; /* Menos padding lateral */
-                /* En móvil también respetamos la alineación a la derecha */
-                padding-right: 20px; 
+                padding: 10px; 
+                padding-right: 10px;
+                text-align: center;
+            }
+            
+            .hero-cta {
+                padding: 10px 25px;
+                font-size: 0.8rem;
+                display: inline-block;
             }
         }
     </style>
@@ -767,14 +785,14 @@
             <a href="#contacto" onclick="toggleMenu()">Contacto</a>
         </div>
 
-        <!-- HERO MEJORADO (CONTENIDO A LA DERECHA) -->
+        <!-- HERO MEJORADO (TÍTULO Y SUBTÍTULO CENTRO - BOTÓN DERECHA) -->
         <header class="hero-section">
             <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditobonito.png?raw=true" alt="Chorizos" class="hero-img">
             
             <div class="hero-content">
                 <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 <p class="hero-subtitle">Tradición artesanal en cada bocado.</p>
-                <!-- Botón de vuelta aquí adentro para que se mueva junto con el texto -->
+                <!-- Botón fluye naturalmente a la derecha -->
                 <a href="#gourmet" class="hero-cta">Ver Menú 👇</a>
             </div>
         </header>
