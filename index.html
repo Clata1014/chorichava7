@@ -12,7 +12,7 @@
     <!-- Fuentes Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
         /* =========================================
@@ -32,10 +32,11 @@
 
         :root {
             --brand-red: #4A0E0E;
-            --brand-gold: #FFD700;
+            --brand-gold: #FFD700; /* Se mantiene para detalles pequeños */
+            --brand-champagne: #F3E5AB; /* Nuevo color elegante para el Hero */
             --brand-dark: #1A1A1A;
-            --card-shadow: 0 10px 25px rgba(0,0,0,0.08); /* Sombra más premium */
-            --card-hover-shadow: 0 20px 40px rgba(0,0,0,0.15); /* Sombra al flotar */
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.08); 
+            --card-hover-shadow: 0 20px 40px rgba(0,0,0,0.15); 
         }
 
         /* Animación de entrada suave */
@@ -82,14 +83,12 @@
         
         .nav-logo:hover { transform: scale(1.02); }
 
-        /* Contenedor de acciones en el Navbar (Carrito + Menú) */
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
-        /* Carrito en el Navbar */
         .nav-cart-btn {
             position: relative;
             font-size: 1.6rem;
@@ -167,7 +166,7 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (IMAGEN COMPLETA)
+           HERO SECTION (ELEGANCIA CORREGIDA)
            ========================================= */
         .hero-section {
             width: 100%;
@@ -177,14 +176,13 @@
             display: block;
         }
 
-        /* La imagen se adapta al ancho y su altura es automática (no se recorta) */
         .hero-img {
             width: 100%;
             height: auto; 
             display: block;
             object-fit: contain; 
-            filter: brightness(0.55); /* Un poco oscuro para que el texto resalte */
-            min-height: 280px; /* Altura mínima para asegurar espacio en móviles muy anchos */
+            filter: brightness(0.5); /* Un poco más oscuro para mejor contraste */
+            min-height: 280px; 
         }
 
         .hero-content {
@@ -192,7 +190,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 95%; /* Ocupa casi todo el ancho para evitar quiebres de línea */
+            width: 95%; 
             padding: 10px;
             text-align: center;
             color: white;
@@ -200,39 +198,55 @@
             line-height: 1.4; 
         }
 
-        /* Texto adaptable */
+        /* TIPOGRAFÍA HERO MEJORADA */
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem; 
+            font-size: 3.2rem; 
             margin-bottom: 10px;
             line-height: 1.1;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            /* Sombra suave y elegante en lugar de negra dura */
+            text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+            font-weight: 700;
+            color: #FFFFFF; /* Blanco puro base */
         }
         
-        .hero-title span { color: var(--brand-gold); font-style: italic; }
+        /* COLOR ELEGANTE (CREMA/CHAMPAÑA) */
+        .hero-title span { 
+            color: var(--brand-champagne); 
+            font-style: italic; 
+            font-weight: 400; /* Un poco más fino para elegancia */
+        }
 
         .hero-subtitle {
             font-size: 1.1rem;
             margin-bottom: 25px;
-            font-weight: 400;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+            font-weight: 300; /* Letra más fina y moderna */
+            letter-spacing: 0.5px;
+            opacity: 0.95;
         }
 
+        /* BOTÓN BLANCO ELEGANTE */
         .hero-cta {
-            background: var(--brand-gold);
-            color: var(--brand-red);
-            padding: 12px 30px;
+            background: #FFFFFF; /* Fondo blanco */
+            color: var(--brand-red); /* Letra roja marca */
+            padding: 12px 35px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 800;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
             display: inline-block;
             font-size: 0.9rem;
+            border: 2px solid transparent;
         }
-        .hero-cta:hover { transform: scale(1.05); }
+        .hero-cta:hover { 
+            transform: translateY(-3px);
+            background: var(--brand-champagne); /* Cambio sutil al pasar mouse */
+            color: var(--brand-red);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
 
 
         /* Badges */
@@ -315,13 +329,12 @@
         .carousel-container {
             width: 100%;
             overflow-x: auto;
-            padding-bottom: 30px; /* Más espacio para la sombra flotante */
+            padding-bottom: 30px; 
             -webkit-overflow-scrolling: touch; 
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth; 
         }
 
-        /* Barra de desplazamiento elegante (Webkit) */
         .carousel-container::-webkit-scrollbar { 
             height: 6px;
         }
@@ -339,7 +352,7 @@
 
         .carousel-track {
             display: flex;
-            gap: 20px; /* Más separación entre tarjetas */
+            gap: 20px; 
             padding: 0 20px; 
             width: max-content;
         }
@@ -376,11 +389,11 @@
         .nav-arrow.prev { left: 5px; }
         .nav-arrow.next { right: 5px; }
 
-        /* Tarjeta de Producto (DISEÑO MEJORADO/PREMIUM) */
+        /* Tarjeta de Producto */
         .product-card {
             width: 270px;
             background: white; 
-            border-radius: 20px; /* Bordes más curvos */
+            border-radius: 20px; 
             overflow: hidden;
             box-shadow: var(--card-shadow);
             scroll-snap-align: center;
@@ -395,7 +408,7 @@
 
         /* CONTENEDOR DE IMAGEN (TU FONDO) */
         .card-image-box {
-            height: 210px; /* Un poco más alto para mejor visualización */
+            height: 210px; 
             width: 100%;
             background-image: url('https://github.com/Clata1014/Chorichava6/blob/main/fondochoriamor.png?raw=true');
             background-size: cover; 
@@ -414,12 +427,12 @@
             height: 100%;
             object-fit: contain;
             transform: scale(1.28);
-            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.15)); /* Sombra más realista */
+            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.15));
             transition: transform 0.3s ease;
         }
         
         .product-card:hover .product-photo {
-            transform: scale(1.35); /* Zoom sutil al pasar mouse */
+            transform: scale(1.35); 
         }
 
         .ahumado-photo {
@@ -480,7 +493,7 @@
             background: linear-gradient(45deg, var(--brand-red), #a00000);
             color: white;
             border: none;
-            border-radius: 50px; /* Botones redondos modernos */
+            border-radius: 50px; 
             font-weight: 700;
             font-size: 0.9rem;
             cursor: pointer;
@@ -614,7 +627,7 @@
 
         /* Contacto */
         .contact-section {
-            padding: 40px 20px; /* Más padding para que se vea bien */
+            padding: 40px 20px; 
             text-align: center;
             background: white;
             border-top: none; 
@@ -653,7 +666,7 @@
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
             margin-bottom: 40px;
             transition: transform 0.2s, box-shadow 0.2s;
-            display: inline-flex; /* Para centrar correctamente */
+            display: inline-flex;
         }
         
         .whatsapp-main-btn:hover {
@@ -702,21 +715,25 @@
            OPTIMIZACIÓN TEXTO MÓVIL (SOLUCIÓN APEÑUZCADO)
            ========================================= */
         @media (max-width: 768px) {
+            .hero-section {
+                height: auto; 
+                min-height: auto; 
+            }
             .hero-title {
-                font-size: 1.7rem; /* Reduje el tamaño considerablemente */
-                line-height: 1.1; /* Espacio justo entre líneas */
+                font-size: 1.7rem; 
+                line-height: 1.1; 
                 margin-bottom: 8px;
             }
             .hero-subtitle {
-                font-size: 0.9rem; /* Subtítulo más pequeño */
-                margin-bottom: 15px; /* Menos espacio abajo */
+                font-size: 0.9rem; 
+                margin-bottom: 15px; 
             }
             .hero-cta {
-                padding: 10px 25px; /* Botón un poco más compacto */
+                padding: 10px 25px; 
                 font-size: 0.8rem;
             }
             .hero-content {
-                padding: 10px; /* Menos padding lateral */
+                padding: 10px; 
             }
         }
 
@@ -753,7 +770,7 @@
 
         <!-- HERO ORIGINAL (FOTO COMPLETA + TEXTO SUPERPUESTO OPTIMIZADO) -->
         <header class="hero-section">
-            <img src="https://github.com/Clata1014/chorichava7/blob/main/Chorizocuadro.png?raw=true" alt="Chorizos" class="hero-img">
+            <img src="https://github.com/Clata1014/chorichava5/blob/main/Fondoparrilla.webp?raw=true" alt="Chorizos" class="hero-img">
             <div class="hero-content">
                 <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 <p class="hero-subtitle">Tradición artesanal en cada bocado.</p>
