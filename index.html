@@ -220,30 +220,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* BOTÓN: Posicionado ABSOLUTAMENTE a la EXTREMA DERECHA Y MUCHO MÁS ABAJO */
-        .hero-cta {
-            background: #FFFFFF;
-            color: var(--brand-red);
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-            transition: transform 0.3s;
-            display: inline-block;
-            font-size: 0.9rem;
-            
-            /* Posicionamiento en el borde derecho EXTREMO */
-            position: absolute;
-            right: 50px; /* un poco más hacia la izquierda */
-
-            /* Posicionamiento vertical: subir 2px más el botón */
-            top: calc(110% - 2px); /* ajuste adicional hacia arriba en px */
-            transform: translateY(-50%);
-        }
-        .hero-cta:hover { transform: scale(1.05) translateY(-50%); }
 
         /* Badges */
         .trust-badges {
@@ -736,13 +712,6 @@
                 text-align: center;
             }
             
-            /* En móvil, le permitimos mantener el botón a la derecha, 
-               aunque con un tamaño de fuente menor ajustado arriba */
-            .hero-cta {
-                padding: 10px 25px;
-                font-size: 0.8rem;
-                /* Eliminamos los resets para que se quede a la derecha */
-            }
         }
     </style>
 </head>
@@ -776,15 +745,13 @@
             <a href="#contacto" onclick="toggleMenu()">Contacto</a>
         </div>
 
-        <!-- HERO MEJORADO (TÍTULO Y SUBTÍTULO CENTRO - BOTÓN EXTREMA DERECHA Y ABAJO) -->
+        <!-- HERO MEJORADO (TÍTULO Y SUBTÍTULO CENTRO) -->
         <header class="hero-section">
             <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditobonito.png?raw=true" alt="Chorizos" class="hero-img">
             
             <div class="hero-content">
                 <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 <p class="hero-subtitle">Tradición artesanal en cada bocado.</p>
-                <!-- Botón de vuelta aquí adentro y posicionado con absolute a la derecha extrema y abajo -->
-                <a href="#gourmet" class="hero-cta">Ver Menú 👇</a>
             </div>
         </header>
 
