@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Chor++iChava: Los mejores chorizos artesanales de Colombia. Línea gourmet, tradicional y más. Domicilios en Medellín y envíos nacionales.">
+    <meta name="description" content="Chorichava: Los mejores chorizos artesanales de Colombia. Línea gourmet, tradicional y más. Domicilios en Medellín y envíos nacionales.">
+    
+    <!-- MEJORA INVISIBLE: Pinta la barra del navegador del color de la marca (Sensación de App Nativa) -->
+    <meta name="theme-color" content="#4A0E0E">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <title>ChoriChava | Chorizos Artesanales</title>
 
-    <!-- Favicon -->
     <link rel="icon" href="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" type="image/png">
 
-    <!-- Fuentes Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
         /* =========================================
@@ -28,21 +31,38 @@
             color: #2d2d2d;
             line-height: 1.4;
             overflow-x: hidden;
+            /* MEJORA INVISIBLE: Texto más nítido y legible en todas las pantallas */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* MEJORA DE DISEÑO: Selección de texto con identidad de marca */
+        ::selection {
+            background: var(--brand-gold);
+            color: var(--brand-red);
         }
 
         :root {
             --brand-red: #4A0E0E;
             --brand-gold: #FFD700;
-            --brand-champagne: #F3E5AB; /* Color crema para el título Hero */
+            --brand-champagne: #F3E5AB;
             --brand-dark: #1A1A1A;
-            --card-shadow: 0 10px 25px rgba(0,0,0,0.08); 
-            --card-hover-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+            --card-shadow: 0 12px 30px -10px rgba(0,0,0,0.08); 
+            --card-hover-shadow: 0 20px 40px -10px rgba(0,0,0,0.12); 
         }
 
         /* Animación de entrada suave */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Animación Carrito */
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
         }
 
         .app-container {
@@ -51,16 +71,17 @@
             margin: 0 auto;
             background: white;
             min-height: 100vh;
-            box-shadow: 0 0 50px rgba(0,0,0,0.05);
+            box-shadow: 0 0 50px rgba(0,0,0,0.02);
             animation: fadeUp 0.8s ease-out;
             padding-bottom: 20px;
         }
 
         /* =========================================
-           NAVBAR (ORIGINAL - INTACTA)
+           NAVBAR
            ========================================= */
         .navbar {
-            background-color: var(--brand-red);
+            background-color: rgba(74, 14, 14, 0.95);
+            backdrop-filter: blur(8px); /* Blur un poco más fuerte para legibilidad */
             height: 60px;
             display: flex;
             justify-content: space-between;
@@ -69,7 +90,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         .nav-logo {
@@ -79,18 +100,18 @@
             margin-left: -68px;
             margin-top: -15px;
             transition: transform 0.3s ease;
+            /* Optimización para evitar repintados */
+            will-change: transform;
         }
 
         .nav-logo:hover { transform: scale(1.02); }
 
-        /* Contenedor de acciones en el Navbar (Carrito + Menú) */
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
-        /* Carrito en el Navbar */
         .nav-cart-btn {
             position: relative;
             font-size: 1.6rem;
@@ -99,6 +120,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.2s;
+        }
+        
+        .nav-cart-btn.pop-anim {
+            animation: pop 0.3s ease;
         }
 
         .nav-cart-count {
@@ -145,7 +171,7 @@
             height: calc(100vh - 60px);
             background: rgba(26, 26, 26, 0.98);
             backdrop-filter: blur(10px);
-            transition: 0.4s ease;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más "elástica" y natural */
             z-index: 999;
             display: flex;
             flex-direction: column;
@@ -168,7 +194,7 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (TÍTULO Y SUBTÍTULO CENTRO / BOTÓN DERECHA EXTREMA BAJO)
+           HERO SECTION
            ========================================= */
         .hero-section {
             width: 100%;
@@ -176,6 +202,7 @@
             background: black;
             line-height: 0; 
             display: block;
+            overflow: hidden; /* Evita desbordes */
         }
 
         .hero-img {
@@ -183,74 +210,57 @@
             height: auto;
             display: block;
             object-fit: contain; 
-            filter: brightness(0.6); 
+            /* Quitamos el filtro aquí y lo manejamos con el overlay para más control */
         }
 
-        /* CONTENEDOR PRINCIPAL: Centrado por defecto para el texto */
+        /* MEJORA INVISIBLE: Overlay gradiente para garantizar legibilidad del texto */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+            pointer-events: none;
+        }
+
         .hero-content {
             position: absolute;
-            top: 46%;
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 100%;
-            transform: translateY(-50%);
             padding: 20px;
             color: white;
             z-index: 2;
             line-height: 1.4;
-            text-align: center; /* Centramos todo el texto por defecto */
+            text-align: center;
         }
 
-        /* TÍTULO: Centrado */
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem; 
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
             line-height: 1.1;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
             color: #FFFFFF;
         }
 
         .hero-title span { color: var(--brand-champagne); font-style: italic; }
 
-        /* SUBTÍTULO: Centrado */
         .hero-subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
+            font-size: 1.2rem;
+            margin-bottom: 0; 
             font-weight: 300;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
-            letter-spacing: 0.5px;
-        }
-
-        /* BOTÓN: Posicionado ABSOLUTAMENTE a la EXTREMA DERECHA Y MUCHO MÁS ABAJO */
-        .hero-cta {
-            background: #FFFFFF;
-            color: var(--brand-red);
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 800;
-            text-transform: uppercase;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
             letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-            transition: transform 0.3s;
-            display: inline-block;
-            font-size: 0.9rem;
-            
-            /* Posicionamiento en el borde derecho EXTREMO */
-            position: absolute;
-            right: 50px; /* un poco más hacia la izquierda */
-
-            /* Posicionamiento vertical: subir 2px más el botón */
-            top: calc(110% - 2px); /* ajuste adicional hacia arriba en px */
-            transform: translateY(-50%);
+            opacity: 0.95;
         }
-        .hero-cta:hover { transform: scale(1.05) translateY(-50%); }
 
         /* Badges */
         .trust-badges {
-            padding: 20px 10px; 
+            padding: 25px 15px;
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+            gap: 15px;
             background: white;
             margin-top: -5px; 
             position: relative;
@@ -260,24 +270,24 @@
         .badge {
             flex: 1;
             background: white;
-            border-radius: 15px; 
+            border-radius: 16px; 
             padding: 15px 5px; 
             text-align: center;
             box-shadow: var(--card-shadow);
-            border: 1px solid #f0f0f0;
+            border: 1px solid rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100px;
+            min-height: 110px;
             transition: transform 0.3s ease;
         }
 
-        .badge:hover { transform: translateY(-5px); } 
+        .badge:hover { transform: translateY(-3px); } 
 
         .badge img, .badge span {
-            font-size: 2rem;
-            margin-bottom: 8px;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
             display: block;
         }
 
@@ -289,13 +299,14 @@
             color: var(--brand-red);
             text-transform: uppercase;
             line-height: 1.2;
+            letter-spacing: 0.5px;
         }
 
         /* Secciones de Productos */
         .products-section {
-            padding: 20px 0 20px 0; 
+            padding: 20px 0 30px 0; 
             background: #FAFAFA;
-            border-bottom: 1px solid #eee; 
+            border-bottom: 1px solid #f0f0f0; 
         }
 
         #gourmet, #tradicional, #otros {
@@ -308,15 +319,15 @@
             text-align: center;
             font-family: 'Playfair Display', serif;
             color: var(--brand-dark);
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
             font-weight: 800;
-            padding-top: 20px;
+            padding-top: 30px;
         }
 
         .section-title span { color: var(--brand-red); }
 
-        /* Carrusel y Scrollbar Personalizado */
+        /* Carrusel */
         .carousel-wrapper {
             position: relative;
             width: 100%;
@@ -325,87 +336,79 @@
         .carousel-container {
             width: 100%;
             overflow-x: auto;
-            padding-bottom: 30px; /* Más espacio para la sombra flotante */
+            padding-bottom: 35px;
             -webkit-overflow-scrolling: touch; 
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth; 
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
-        /* Barra de desplazamiento elegante (Webkit) */
-        .carousel-container::-webkit-scrollbar { 
-            height: 6px;
-        }
-        .carousel-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        .carousel-container::-webkit-scrollbar-thumb {
-            background: #d4d4d4; 
-            border-radius: 10px;
-        }
-        .carousel-container::-webkit-scrollbar-thumb:hover {
-            background: var(--brand-red); 
-        }
+        /* Scrollbar */
+        .carousel-container::-webkit-scrollbar { height: 4px; }
+        .carousel-container::-webkit-scrollbar-track { background: #f5f5f5; border-radius: 10px; }
+        .carousel-container::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 10px; }
+        .carousel-container::-webkit-scrollbar-thumb:hover { background: #ccc; }
 
         .carousel-track {
             display: flex;
-            gap: 20px; /* Más separación entre tarjetas */
-            padding: 0 20px; 
+            gap: 25px;
             width: max-content;
         }
 
         /* Flechas */
         .nav-arrow {
             position: absolute;
-            top: 30%; 
+            top: 40%; 
             transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.95);
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
             border-radius: 50%;
-            border: 1px solid #eee;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--brand-red);
             cursor: pointer;
             z-index: 10;
             transition: all 0.2s;
+            opacity: 0;
+            pointer-events: none;
         }
 
-        #gourmet .nav-arrow,
-        #tradicional .nav-arrow,
-        #otros .nav-arrow {
-            top: 22%;
-        }
+        .carousel-wrapper:hover .nav-arrow { opacity: 1; pointer-events: auto; }
+        @media (hover: none) { .nav-arrow { display: none; } }
 
-        .nav-arrow:hover { background: white; transform: translateY(-50%) scale(1.1); }
-        .nav-arrow:active { transform: translateY(-50%) scale(0.9); background: var(--brand-red); color: white; }
-        .nav-arrow.prev { left: 5px; }
-        .nav-arrow.next { right: 5px; }
+        .nav-arrow:hover { background: white; transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .nav-arrow.prev { left: 10px; }
+        .nav-arrow.next { right: 10px; }
 
-        /* Tarjeta de Producto (DISEÑO MEJORADO/PREMIUM) */
+        /* Tarjeta de Producto */
         .product-card {
             width: 270px;
             background: white; 
-            border-radius: 20px; /* Bordes más curvos */
+            border-radius: 24px;
             overflow: hidden;
             box-shadow: var(--card-shadow);
             scroll-snap-align: center;
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.04); 
+            /* MEJORA INVISIBLE: Optimiza renderizado en scroll rápido */
+            will-change: transform; 
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px);
             box-shadow: var(--card-hover-shadow);
         }
 
-        /* CONTENEDOR DE IMAGEN (TU FONDO) */
         .card-image-box {
-            height: 210px; /* Un poco más alto para mejor visualización */
+            height: 210px; 
             width: 100%;
             background-image: url('https://github.com/Clata1014/Chorichava6/blob/main/fondochoriamor.png?raw=true');
             background-size: cover; 
@@ -416,7 +419,6 @@
             justify-content: center;
             padding: 10px;
             position: relative;
-            border-bottom: none;
         }
 
         .product-photo {
@@ -424,12 +426,14 @@
             height: 100%;
             object-fit: contain;
             transform: scale(1.28);
-            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.15)); /* Sombra más realista */
-            transition: transform 0.3s ease;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.18));
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* MEJORA INVISIBLE: Renderizado de imagen optimizado */
+            image-rendering: -webkit-optimize-contrast;
         }
 
         .product-card:hover .product-photo {
-            transform: scale(1.35); /* Zoom sutil al pasar mouse */
+            transform: scale(1.35) translateY(-5px); 
         }
 
         .ahumado-photo {
@@ -442,77 +446,76 @@
         }
 
         .product-card:hover .ahumado-photo {
-            transform: scale(1.18);
+            transform: scale(1.18) translateY(-5px);
         }
 
         .card-details {
-            padding: 20px 15px;
+            padding: 22px 20px;
             text-align: center;
             background: white;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
         }
 
         .card-title {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--brand-dark);
             margin-bottom: 2px;
             text-transform: uppercase;
+            letter-spacing: -0.5px;
         }
 
         .card-desc {
             font-size: 0.85rem;
-            color: #666;
+            color: #666; /* Ajustado ligeramente para contraste */
             margin-bottom: 10px;
             height: 35px;
             overflow: hidden;
-            line-height: 1.3;
+            line-height: 1.35;
+            font-weight: 500;
         }
 
-        /* PRECIO */
         .card-price {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--brand-red);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
-        /* Botón AGREGAR AL CARRITO */
         .buy-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             width: 100%;
-            padding: 12px;
-            background: linear-gradient(45deg, var(--brand-red), #a00000);
+            padding: 14px;
+            background: linear-gradient(135deg, var(--brand-red), #800000);
             color: white;
             border: none;
-            border-radius: 50px; /* Botones redondos modernos */
+            border-radius: 50px; 
             font-weight: 700;
             font-size: 0.9rem;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(139, 0, 0, 0.2);
-            transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+            letter-spacing: 0.8px;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .buy-btn:hover {
-            filter: brightness(1.15); 
-            box-shadow: 0 8px 16px rgba(139, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(139, 0, 0, 0.35);
             transform: translateY(-2px);
         }
 
-        .buy-btn:active { transform: scale(0.95); }
+        .buy-btn:active { transform: scale(0.96); }
 
-        /* ESTILOS WHATSAPP FLOTANTE */
+        /* Whatsapp Flotante */
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             width: 60px;
             height: 60px;
             background: #25D366;
@@ -523,13 +526,13 @@
             font-size: 32px;
             color: white;
             text-decoration: none;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
             z-index: 2000;
-            transition: transform 0.3s;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 2px solid white;
         }
 
-        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
 
         /* MODAL DEL CARRITO */
         .cart-modal {
@@ -540,9 +543,9 @@
             max-width: 400px;
             height: 100vh;
             background: white;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.15);
             z-index: 2001;
-            transition: right 0.3s ease;
+            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
         }
@@ -550,46 +553,41 @@
         .cart-modal.open { right: 0; }
 
         .cart-header {
-            padding: 20px;
+            padding: 25px 20px;
             background: var(--brand-red);
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; }
+        .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0; }
 
-        .close-cart { background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
+        .close-cart { background: none; border: none; color: white; font-size: 2rem; cursor: pointer; transition: transform 0.2s; }
+        .close-cart:hover { transform: rotate(90deg); }
 
-        .cart-items {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
+        .cart-items { flex: 1; padding: 20px; overflow-y: auto; }
 
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            border-bottom: 1px solid #f5f5f5;
         }
 
-        .cart-item-info { display: flex; flex-direction: column; }
-        .cart-item-name { font-weight: 600; font-size: 0.95rem; }
-        .cart-item-price { font-size: 0.85rem; color: #666; }
-        .cart-item-qty { background: #f0f0f0; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; color: #555; }
-        .remove-item { color: #ff4444; cursor: pointer; font-size: 1.2rem; margin-left: 10px; }
+        .cart-item-info { display: flex; flex-direction: column; gap: 4px; }
+        .cart-item-name { font-weight: 700; font-size: 0.95rem; color: #333; }
+        .cart-item-price { font-size: 0.85rem; color: #888; }
+        .cart-item-qty { background: #f0f0f0; padding: 2px 8px; border-radius: 6px; font-size: 0.85rem; color: #555; }
+        .remove-item { color: #ff4444; cursor: pointer; font-size: 1.2rem; margin-left: 10px; transition: transform 0.2s; }
+        .remove-item:hover { transform: scale(1.2); }
 
-        .cart-footer {
-            padding: 20px;
-            border-top: 1px solid #eee;
-            background: #f9f9f9;
-        }
+        .cart-footer { padding: 25px; border-top: 1px solid #eee; background: #fcfcfc; }
 
         .total-price {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--brand-dark);
             text-align: right;
@@ -602,73 +600,79 @@
             background: #25D366;
             color: white;
             text-align: center;
-            padding: 15px;
+            padding: 16px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
             border: none;
             cursor: pointer;
+            transition: transform 0.2s;
         }
+        .checkout-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35); }
 
-        /* Overlay oscuro fondo */
         .overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(2px);
             z-index: 2000;
-            display: none;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
         }
-        .overlay.active { display: block; }
+        .overlay.active { opacity: 1; pointer-events: auto; }
 
         /* Contacto */
         .contact-section {
-            padding: 40px 20px; /* Más padding para que se vea bien */
+            padding: 50px 20px; 
             text-align: center;
             background: white;
             border-top: none; 
             margin-top: 20px; 
             margin-bottom: 20px;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.01);
         }
 
         .contact-title {
             color: var(--brand-red);
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
             margin-bottom: 15px; 
         }
 
         .contact-text {
             font-size: 1.1rem;
-            color: #444;
-            margin-bottom: 30px;
+            color: #555;
+            margin-bottom: 35px;
             line-height: 1.6; 
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .whatsapp-main-btn {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             background-color: #25D366;
             color: white;
-            padding: 15px 30px;
+            padding: 16px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-            margin-bottom: 40px;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            margin-bottom: 50px;
             transition: transform 0.2s, box-shadow 0.2s;
-            display: inline-flex;
         }
 
         .whatsapp-main-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
         }
 
         .whatsapp-main-btn:active { transform: scale(0.98); }
@@ -676,7 +680,7 @@
         .contact-details {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
             align-items: center;
         }
 
@@ -684,12 +688,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
 
         .contact-icon {
             font-size: 2.2rem;
             margin-bottom: 5px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
         .contact-label {
@@ -702,47 +707,32 @@
             background: var(--brand-dark);
             color: #888;
             text-align: center;
-            padding: 40px 20px;
-            font-size: 0.8rem;
+            padding: 50px 20px;
+            font-size: 0.85rem;
         }
 
-        footer img { width: 120px; margin-bottom: 10px; opacity: 0.8; }
+        footer img { width: 130px; margin-bottom: 15px; opacity: 0.9; }
 
-        /* =========================================
-           OPTIMIZACIÓN TEXTO MÓVIL Y RESPONSIVIDAD
-           ========================================= */
         @media (max-width: 768px) {
-            .hero-section {
-                height: auto; 
-                min-height: auto; 
-            }
             .hero-title {
-                font-size: 1.7rem; 
-                line-height: 1.1; 
-                margin-bottom: 8px;
-                text-align: center; /* Aseguramos centro en móvil */
-                margin-right: 0; 
+                font-size: 2.2rem; 
+                margin-bottom: 10px;
             }
             .hero-subtitle {
-                font-size: 0.9rem; 
-                margin-bottom: 15px; 
-                text-align: center; /* Aseguramos centro en móvil */
-                padding-right: 0;
-                margin-right: 0;
+                font-size: 1rem; 
             }
             .hero-content {
-                padding: 10px; 
-                padding-right: 10px;
-                text-align: center;
+                padding: 15px; 
             }
-            
-            /* En móvil, le permitimos mantener el botón a la derecha, 
-               aunque con un tamaño de fuente menor ajustado arriba */
-            .hero-cta {
-                padding: 10px 25px;
-                font-size: 0.8rem;
-                /* Eliminamos los resets para que se quede a la derecha */
+            .trust-badges {
+                padding: 20px 10px;
+                gap: 10px;
             }
+            .badge {
+                min-height: 100px;
+                padding: 10px 5px;
+            }
+            .badge img, .badge span { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -750,13 +740,11 @@
 
     <div class="app-container">
 
-        <!-- HEADER INTACTO -->
         <nav class="navbar">
             <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Logo ChoriChava" class="nav-logo">
 
             <div class="nav-actions">
-                <!-- CARRITO EN NAVBAR -->
-                <div class="nav-cart-btn" onclick="toggleCart()">
+                <div class="nav-cart-btn" id="cartBtnIcon" onclick="toggleCart()">
                     🛒
                     <span class="nav-cart-count" id="cartCounter">0</span>
                 </div>
@@ -767,7 +755,6 @@
             </div>
         </nav>
 
-        <!-- MENU MÓVIL -->
         <div class="mobile-menu" id="mobileMenu">
             <a href="#" onclick="toggleMenu()">Inicio</a>
             <a href="#gourmet" onclick="toggleMenu()">Línea Gourmet</a>
@@ -776,19 +763,16 @@
             <a href="#contacto" onclick="toggleMenu()">Contacto</a>
         </div>
 
-        <!-- HERO MEJORADO (TÍTULO Y SUBTÍTULO CENTRO - BOTÓN EXTREMA DERECHA Y ABAJO) -->
         <header class="hero-section">
             <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditobonito.png?raw=true" alt="Chorizos" class="hero-img">
             
             <div class="hero-content">
                 <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 <p class="hero-subtitle">Tradición artesanal en cada bocado.</p>
-                <!-- Botón de vuelta aquí adentro y posicionado con absolute a la derecha extrema y abajo -->
-                <a href="#gourmet" class="hero-cta">Ver Menú 👇</a>
+                <!-- BOTÓN ELIMINADO -->
             </div>
         </header>
 
-        <!-- BADGES -->
         <section class="trust-badges">
             <div class="badge">
                 <span>🇨🇴</span>
@@ -804,7 +788,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN GOURMET -->
         <section class="products-section" id="gourmet">
             <h2 class="section-title">Línea <span>Gourmet</span></h2>
 
@@ -815,133 +798,123 @@
                 <div class="carousel-container" id="track-gourmet">
                     <div class="carousel-track">
 
-                        <!-- Ahumado -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Ahumado</h3>
                                 <p class="card-desc">Sabor intenso y tradicional.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Ahumado', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Ahumado', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Antioqueño -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Antioqueño</h3>
                                 <p class="card-desc">El sabor de nuestra tierra.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Antioqueño', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Antioqueño', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Argentino -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Argentino</h3>
                                 <p class="card-desc">Ideal para choripán.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Argentino', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Argentino', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Español -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Español</h3>
                                 <p class="card-desc">Con pimentón de la vera.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Marinero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Marinero</h3>
                                 <p class="card-desc">Mezcla única de mariscos.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Santarrosano -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Santarrosano</h3>
                                 <p class="card-desc">El clásico de Santa Rosa.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Llanero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Llanero</h3>
                                 <p class="card-desc">Condimentado al estilo de la llanura.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Jalapeño -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Jalapeño</h3>
                                 <p class="card-desc">Picor balanceado con sabor ahumado.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Jalapeño', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Jalapeño', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                         <!-- Mediterráneo -->
                          <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Mediterráneo</h3>
                                 <p class="card-desc">Con pimentón de la vera.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Costero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Costero</h3>
                                 <p class="card-desc">Mezcla única de mariscos.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000)">Agregar +</button>
                             </div>
                         </div>
 
@@ -950,7 +923,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN TRADICIONAL -->
         <section class="products-section" id="tradicional">
             <h2 class="section-title">Línea <span>Tradicional</span></h2>
 
@@ -961,133 +933,123 @@
                 <div class="carousel-container" id="track-tradicional">
                     <div class="carousel-track">
 
-                        <!-- Montañés -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Montañés</h3>
                                 <p class="card-desc">El clásico de Santa Rosa.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Vaquero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Vaquero</h3>
                                 <p class="card-desc">Condimentado al estilo de la llanura.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Casero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Casero</h3>
                                 <p class="card-desc">Receta familiar hecha con cariño.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Caballo -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Caballo</h3>
-                                <p class="card-desc">Potente mezcla para los amantes de la parrilla.</p>
+                                <p class="card-desc">Potente mezcla para la parrilla.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Campesino -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Campesino</h3>
-                                <p class="card-desc">Sazonado con hierbas frescas de la finca.</p>
+                                <p class="card-desc">Sazonado con hierbas frescas.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Clásico -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Clásico</h3>
-                                <p class="card-desc">El preferido de siempre, con un giro italiano.</p>
+                                <p class="card-desc">El preferido, con giro italiano.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Butifarra -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Butifarra</h3>
                                 <p class="card-desc">Auténtico sabor costeño.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Morcilla -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Morcilla</h3>
                                 <p class="card-desc">Rellena de arroz y especias.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Chicharrón -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Chicharrón</h3>
                                 <p class="card-desc">Crocante y carnudo.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Costilla -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Costilla</h3>
                                 <p class="card-desc">Ahumada y lista para asar.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000)">Agregar +</button>
                             </div>
                         </div>
 
@@ -1096,7 +1058,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN OTRAS DELICIAS (RÉPLICA DE TRADICIONAL) -->
         <section class="products-section" id="otros">
             <h2 class="section-title">Otras <span>Delicias</span></h2>
 
@@ -1107,133 +1068,123 @@
                 <div class="carousel-container" id="track-otros">
                     <div class="carousel-track">
 
-                        <!-- Montañés -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Montañés</h3>
                                 <p class="card-desc">El clásico de Santa Rosa.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Vaquero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Vaquero</h3>
                                 <p class="card-desc">Condimentado al estilo de la llanura.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Casero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Casero</h3>
                                 <p class="card-desc">Receta familiar hecha con cariño.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Caballo -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Caballo</h3>
-                                <p class="card-desc">Potente mezcla para los amantes de la parrilla.</p>
+                                <p class="card-desc">Potente mezcla para la parrilla.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Campesino -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Campesino</h3>
-                                <p class="card-desc">Sazonado con hierbas frescas de la finca.</p>
+                                <p class="card-desc">Sazonado con hierbas frescas.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Clásico -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Clásico</h3>
-                                <p class="card-desc">El preferido de siempre, con un giro italiano.</p>
+                                <p class="card-desc">El preferido, con giro italiano.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Butifarra -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Butifarra</h3>
                                 <p class="card-desc">Auténtico sabor costeño.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Morcilla -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Morcilla</h3>
                                 <p class="card-desc">Rellena de arroz y especias.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Chicharrón -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Chicharrón</h3>
                                 <p class="card-desc">Crocante y carnudo.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000)">Agregar +</button>
                             </div>
                         </div>
 
-                        <!-- Costilla -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Costilla</h3>
                                 <p class="card-desc">Ahumada y lista para asar.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000)">Agregar +</button>
                             </div>
                         </div>
 
@@ -1242,7 +1193,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN DE CONTACTO -->
         <section class="contact-section" id="contacto">
             <h2 class="contact-title">¿Antojado?</h2>
             <p class="contact-text">Haz tu pedido ahora por WhatsApp y recibe nuestros chorizos gourmet frescos en cualquier ciudad de Colombia.</p>
@@ -1267,22 +1217,18 @@
             </div>
         </section>
 
-        <!-- FOOTER -->
         <footer>
             <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Chorichava">
             <p>&copy; 2024 ChoriChava - Medellín, Colombia</p>
             <p style="margin-top:10px; font-size: 0.7rem;">Amor por la tradición artesanal</p>
         </footer>
 
-        <!-- BOTÓN WHATSAPP FLOTANTE -->
         <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank" title="Chatea con nosotros">
             💬
         </a>
 
-        <!-- OVERLAY DEL CARRITO -->
         <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
-        <!-- MODAL DEL CARRITO -->
         <div class="cart-modal" id="cartModal">
             <div class="cart-header">
                 <h3>Tu Canasta 🛒</h3>
@@ -1303,7 +1249,6 @@
     </div>
 
     <script>
-        // --- LOGICA DEL CARRITO (Igual que antes) ---
         let cart = [];
 
         function toggleMenu() {
@@ -1313,7 +1258,7 @@
         function scrollCarousel(trackId, direction) {
             const track = document.getElementById(trackId);
             if (track) {
-                track.scrollBy({ left: direction * 280, behavior: 'smooth' });
+                track.scrollBy({ left: direction * 290, behavior: 'smooth' }); 
             }
         }
 
@@ -1326,10 +1271,9 @@
             }
             updateCartUI();
 
-            // Animación del contador
-            const counter = document.getElementById('cartCounter');
-            counter.style.transform = 'scale(1.3)';
-            setTimeout(() => counter.style.transform = 'scale(1)', 200);
+            const btn = document.getElementById('cartBtnIcon');
+            btn.classList.add('pop-anim');
+            setTimeout(() => btn.classList.remove('pop-anim'), 300);
         }
 
         function removeFromCart(productName) {
