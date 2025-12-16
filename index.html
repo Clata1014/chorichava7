@@ -167,50 +167,52 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (FOTO COMPLETA + TEXTO ENCIMA)
+           HERO SECTION (AJUSTADO PARA MÓVIL)
            ========================================= */
         .hero-section {
             width: 100%;
+            /* Altura adaptable para asegurar que la imagen se vea lo mejor posible */
             position: relative;
             background: black;
-            line-height: 0; /* Elimina espacios extra bajo la imagen */
+            overflow: hidden; /* Evita desbordes */
+            display: flex; /* Centrado perfecto del contenido */
+            align-items: center;
+            justify-content: center;
         }
 
-        /* La imagen se comportará como en el código inicial: ancho 100%, altura auto */
         .hero-img {
             width: 100%;
             height: auto;
             display: block;
-            object-fit: contain;
-            filter: brightness(0.6); /* Oscurece la imagen para que el texto resalte */
+            object-fit: cover; /* Cubre el área sin deformarse */
+            filter: brightness(0.6); 
+            min-height: 300px; /* Altura mínima para que no desaparezca en móvil */
         }
 
-        /* Contenedor del texto posicionado absolutamente sobre la imagen */
         .hero-content {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%;
-            padding: 20px;
+            width: 90%; /* Un poco de margen a los lados */
             text-align: center;
             color: white;
             z-index: 2;
-            line-height: 1.4; /* Restaura el interlineado normal para el texto */
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem; /* Ajustable según necesidad */
+            font-size: 3rem; /* Tamaño PC */
             margin-bottom: 10px;
+            line-height: 1.2;
             text-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
         
         .hero-title span { color: var(--brand-gold); font-style: italic; }
 
         .hero-subtitle {
-            font-size: 1rem;
-            margin-bottom: 20px;
+            font-size: 1.2rem; /* Tamaño PC */
+            margin-bottom: 25px;
             font-weight: 400;
             text-shadow: 0 2px 5px rgba(0,0,0,0.8);
         }
@@ -218,7 +220,7 @@
         .hero-cta {
             background: var(--brand-gold);
             color: var(--brand-red);
-            padding: 10px 25px;
+            padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 800;
@@ -227,17 +229,9 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.5);
             transition: transform 0.3s;
             display: inline-block;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
         .hero-cta:hover { transform: scale(1.05); }
-
-        /* Media Query para ajustar texto en pantallas muy pequeñas si la imagen es muy corta */
-        @media (max-width: 480px) {
-            .hero-title { font-size: 1.8rem; }
-            .hero-subtitle { font-size: 0.9rem; margin-bottom: 15px; }
-            .hero-cta { padding: 8px 20px; font-size: 0.75rem; }
-        }
-
 
         /* Badges */
         .trust-badges {
@@ -247,12 +241,14 @@
             gap: 10px;
             background: white;
             margin-top: -5px; 
+            position: relative;
+            z-index: 5;
         }
 
         .badge {
             flex: 1;
             background: white;
-            border-radius: 15px; /* Bordes más suaves */
+            border-radius: 15px; 
             padding: 15px 5px; 
             text-align: center;
             box-shadow: var(--card-shadow);
@@ -265,7 +261,7 @@
             transition: transform 0.3s ease;
         }
         
-        .badge:hover { transform: translateY(-5px); } /* Animación al pasar mouse */
+        .badge:hover { transform: translateY(-5px); } 
 
         .badge img, .badge span {
             font-size: 2rem;
@@ -695,11 +691,31 @@
             background: var(--brand-dark);
             color: #888;
             text-align: center;
-            padding: 40px 20px;
-            font-size: 0.8rem;
+            padding: 30px 20px;
+            font-size: 0.75rem;
         }
 
         footer img { width: 120px; margin-bottom: 10px; opacity: 0.8; }
+
+        /* Media Queries para Hero en Móvil (AJUSTADO PARA QUE NO SE VEA APEÑUZCADO) */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh; /* Altura más cómoda para móvil */
+                min-height: 250px;
+            }
+            .hero-title {
+                font-size: 2rem; /* Texto más pequeño y cómodo de leer */
+                line-height: 1.1; /* Espacio entre líneas */
+            }
+            .hero-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+            .hero-cta {
+                padding: 10px 25px;
+                font-size: 0.85rem;
+            }
+        }
 
     </style>
 </head>
