@@ -33,7 +33,7 @@
         :root {
             --brand-red: #4A0E0E;
             --brand-gold: #FFD700;
-            --brand-champagne: #F3E5AB; 
+            --brand-champagne: #F3E5AB; /* Color crema para el título Hero */
             --brand-dark: #1A1A1A;
             --card-shadow: 0 10px 25px rgba(0,0,0,0.08); 
             --card-hover-shadow: 0 20px 40px rgba(0,0,0,0.15); 
@@ -57,7 +57,7 @@
         }
 
         /* =========================================
-           NAVBAR (ORIGINAL)
+           NAVBAR (ORIGINAL - INTACTA)
            ========================================= */
         .navbar {
             background-color: var(--brand-red);
@@ -83,12 +83,14 @@
         
         .nav-logo:hover { transform: scale(1.02); }
 
+        /* Contenedor de acciones en el Navbar (Carrito + Menú) */
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
+        /* Carrito en el Navbar */
         .nav-cart-btn {
             position: relative;
             font-size: 1.6rem;
@@ -166,7 +168,7 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (AJUSTADO PARA NO TAPAR PARRILLA)
+           HERO SECTION (FOTO COMPLETA NUEVA)
            ========================================= */
         .hero-section {
             width: 100%;
@@ -176,18 +178,18 @@
             display: block;
         }
 
+        /* La imagen se adapta al ancho y su altura es automática (no se recorta) */
         .hero-img {
             width: 100%;
             height: auto;
             display: block;
             object-fit: contain; 
-            filter: brightness(0.6); 
+            filter: brightness(0.6); /* Oscurece un poco para el texto */
         }
 
         .hero-content {
             position: absolute;
-            /* CAMBIO CLAVE: Subimos el texto al 30% en vez del 50% */
-            top: 30%; 
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
@@ -198,6 +200,7 @@
             line-height: 1.4; 
         }
 
+        /* Texto adaptable y elegante */
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 3rem; 
@@ -217,6 +220,7 @@
             letter-spacing: 0.5px;
         }
 
+        /* Botón Blanco Perla */
         .hero-cta {
             background: #FFFFFF;
             color: var(--brand-red);
@@ -314,7 +318,7 @@
         .carousel-container {
             width: 100%;
             overflow-x: auto;
-            padding-bottom: 30px; 
+            padding-bottom: 30px; /* Más espacio para la sombra flotante */
             -webkit-overflow-scrolling: touch; 
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth; 
@@ -338,7 +342,7 @@
 
         .carousel-track {
             display: flex;
-            gap: 20px; 
+            gap: 20px; /* Más separación entre tarjetas */
             padding: 0 20px; 
             width: max-content;
         }
@@ -375,11 +379,11 @@
         .nav-arrow.prev { left: 5px; }
         .nav-arrow.next { right: 5px; }
 
-        /* Tarjeta de Producto */
+        /* Tarjeta de Producto (DISEÑO MEJORADO/PREMIUM) */
         .product-card {
             width: 270px;
             background: white; 
-            border-radius: 20px; 
+            border-radius: 20px; /* Bordes más curvos */
             overflow: hidden;
             box-shadow: var(--card-shadow);
             scroll-snap-align: center;
@@ -394,7 +398,7 @@
 
         /* CONTENEDOR DE IMAGEN (TU FONDO) */
         .card-image-box {
-            height: 210px; 
+            height: 210px; /* Un poco más alto para mejor visualización */
             width: 100%;
             background-image: url('https://github.com/Clata1014/Chorichava6/blob/main/fondochoriamor.png?raw=true');
             background-size: cover; 
@@ -413,12 +417,12 @@
             height: 100%;
             object-fit: contain;
             transform: scale(1.28);
-            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.15)); /* Sombra más realista */
             transition: transform 0.3s ease;
         }
         
         .product-card:hover .product-photo {
-            transform: scale(1.35); 
+            transform: scale(1.35); /* Zoom sutil al pasar mouse */
         }
 
         .ahumado-photo {
@@ -479,7 +483,7 @@
             background: linear-gradient(45deg, var(--brand-red), #a00000);
             color: white;
             border: none;
-            border-radius: 50px; 
+            border-radius: 50px; /* Botones redondos modernos */
             font-weight: 700;
             font-size: 0.9rem;
             cursor: pointer;
@@ -613,7 +617,7 @@
 
         /* Contacto */
         .contact-section {
-            padding: 40px 20px; 
+            padding: 40px 20px; /* Más padding para que se vea bien */
             text-align: center;
             background: white;
             border-top: none; 
@@ -697,28 +701,29 @@
 
         footer img { width: 120px; margin-bottom: 10px; opacity: 0.8; }
 
-        /* Media Queries para Hero en Móvil (AJUSTADO PARA QUE EL TEXTO SUBA) */
+        /* =========================================
+           OPTIMIZACIÓN TEXTO MÓVIL (SOLUCIÓN APEÑUZCADO)
+           ========================================= */
         @media (max-width: 768px) {
             .hero-section {
                 height: auto; 
                 min-height: auto; 
             }
-            .hero-content {
-                top: 30%; /* Sube el texto para destapar la parrilla */
-                padding: 10px; 
-            }
             .hero-title {
-                font-size: 1.7rem; 
-                line-height: 1.1; 
+                font-size: 1.7rem; /* Reduje el tamaño considerablemente */
+                line-height: 1.1; /* Espacio justo entre líneas */
                 margin-bottom: 8px;
             }
             .hero-subtitle {
-                font-size: 0.9rem; 
-                margin-bottom: 15px; 
+                font-size: 0.9rem; /* Subtítulo más pequeño */
+                margin-bottom: 15px; /* Menos espacio abajo */
             }
             .hero-cta {
-                padding: 10px 25px; 
+                padding: 10px 25px; /* Botón un poco más compacto */
                 font-size: 0.8rem;
+            }
+            .hero-content {
+                padding: 10px; /* Menos padding lateral */
             }
         }
 
@@ -753,9 +758,9 @@
             <a href="#contacto" onclick="toggleMenu()">Contacto</a>
         </div>
 
-        <!-- HERO ORIGINAL (FOTO COMPLETA + TEXTO SUPERPUESTO OPTIMIZADO) -->
+        <!-- HERO MEJORADO (FOTO NUEVA CUADRADA) -->
         <header class="hero-section">
-            <img src="https://github.com/Clata1014/chorichava5/blob/main/Fondoparrilla.webp?raw=true" alt="Chorizos" class="hero-img">
+            <img src="https://github.com/Clata1014/chorichava7/blob/main/Chorizocuadro.png?raw=true" alt="Chorizos" class="hero-img">
             <div class="hero-content">
                 <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 <p class="hero-subtitle">Tradición artesanal en cada bocado.</p>
