@@ -167,26 +167,24 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (AJUSTADO PARA MÓVIL)
+           HERO SECTION (IMAGEN COMPLETA)
            ========================================= */
         .hero-section {
             width: 100%;
-            /* Altura adaptable para asegurar que la imagen se vea lo mejor posible */
             position: relative;
             background: black;
-            overflow: hidden; /* Evita desbordes */
-            display: flex; /* Centrado perfecto del contenido */
-            align-items: center;
-            justify-content: center;
+            line-height: 0; 
+            display: block;
         }
 
+        /* La imagen se adapta al ancho y su altura es automática (no se recorta) */
         .hero-img {
             width: 100%;
-            height: auto;
+            height: auto; 
             display: block;
-            object-fit: cover; /* Cubre el área sin deformarse */
-            filter: brightness(0.6); 
-            min-height: 300px; /* Altura mínima para que no desaparezca en móvil */
+            object-fit: contain; 
+            filter: brightness(0.55); /* Un poco oscuro para que el texto resalte */
+            min-height: 280px; /* Altura mínima para asegurar espacio en móviles muy anchos */
         }
 
         .hero-content {
@@ -194,24 +192,27 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90%; /* Un poco de margen a los lados */
+            width: 95%; /* Ocupa casi todo el ancho para evitar quiebres de línea */
+            padding: 10px;
             text-align: center;
             color: white;
             z-index: 2;
+            line-height: 1.4; 
         }
 
+        /* Texto adaptable */
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem; /* Tamaño PC */
+            font-size: 3rem; 
             margin-bottom: 10px;
-            line-height: 1.2;
+            line-height: 1.1;
             text-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
         
         .hero-title span { color: var(--brand-gold); font-style: italic; }
 
         .hero-subtitle {
-            font-size: 1.2rem; /* Tamaño PC */
+            font-size: 1.1rem;
             margin-bottom: 25px;
             font-weight: 400;
             text-shadow: 0 2px 5px rgba(0,0,0,0.8);
@@ -232,6 +233,7 @@
             font-size: 0.9rem;
         }
         .hero-cta:hover { transform: scale(1.05); }
+
 
         /* Badges */
         .trust-badges {
@@ -383,10 +385,9 @@
             box-shadow: var(--card-shadow);
             scroll-snap-align: center;
             position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Efecto Hover: La tarjeta "flota" */
         .product-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--card-hover-shadow);
@@ -652,7 +653,7 @@
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
             margin-bottom: 40px;
             transition: transform 0.2s, box-shadow 0.2s;
-            display: inline-flex;
+            display: inline-flex; /* Para centrar correctamente */
         }
         
         .whatsapp-main-btn:hover {
@@ -691,29 +692,31 @@
             background: var(--brand-dark);
             color: #888;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 0.75rem;
+            padding: 40px 20px;
+            font-size: 0.8rem;
         }
 
         footer img { width: 120px; margin-bottom: 10px; opacity: 0.8; }
 
-        /* Media Queries para Hero en Móvil (AJUSTADO PARA QUE NO SE VEA APEÑUZCADO) */
+        /* =========================================
+           OPTIMIZACIÓN TEXTO MÓVIL (SOLUCIÓN APEÑUZCADO)
+           ========================================= */
         @media (max-width: 768px) {
-            .hero-section {
-                height: 50vh; /* Altura más cómoda para móvil */
-                min-height: 250px;
-            }
             .hero-title {
-                font-size: 2rem; /* Texto más pequeño y cómodo de leer */
-                line-height: 1.1; /* Espacio entre líneas */
+                font-size: 1.7rem; /* Reduje el tamaño considerablemente */
+                line-height: 1.1; /* Espacio justo entre líneas */
+                margin-bottom: 8px;
             }
             .hero-subtitle {
-                font-size: 0.9rem;
-                margin-bottom: 15px;
+                font-size: 0.9rem; /* Subtítulo más pequeño */
+                margin-bottom: 15px; /* Menos espacio abajo */
             }
             .hero-cta {
-                padding: 10px 25px;
-                font-size: 0.85rem;
+                padding: 10px 25px; /* Botón un poco más compacto */
+                font-size: 0.8rem;
+            }
+            .hero-content {
+                padding: 10px; /* Menos padding lateral */
             }
         }
 
@@ -748,9 +751,9 @@
             <a href="#contacto" onclick="toggleMenu()">Contacto</a>
         </div>
 
-        <!-- HERO ORIGINAL (FOTO COMPLETA + TEXTO SUPERPUESTO) -->
+        <!-- HERO ORIGINAL (FOTO COMPLETA + TEXTO SUPERPUESTO OPTIMIZADO) -->
         <header class="hero-section">
-            <img src="https://github.com/Clata1014/chorichava5/blob/main/Fondoparrilla.webp?raw=true" alt="Chorizos" class="hero-img">
+            <img src="https://github.com/Clata1014/chorichava7/blob/main/Chorizocuadro.png?raw=true" alt="Chorizos" class="hero-img">
             <div class="hero-content">
                 <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 <p class="hero-subtitle">Tradición artesanal en cada bocado.</p>
