@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Chor++iChava: Los mejores chorizos artesanales de Colombia. Línea gourmet, tradicional y más. Domicilios en Medellín y envíos nacionales.">
+    
+    <!-- SEO & Open Graph (Mejora para compartir en Redes Sociales) -->
+    <meta property="og:title" content="ChoriChava | Chorizos Artesanales">
+    <meta property="og:description" content="Tradición artesanal en cada bocado. Domicilios en Medellín.">
+    <meta property="og:image" content="https://github.com/Clata1014/chorichava7/blob/main/Fonditobonito.png?raw=true">
+    <meta property="og:type" content="website">
+
     <title>ChoriChava | Chorizos Artesanales</title>
 
     <!-- Favicon -->
@@ -99,6 +106,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            border: none;
+            background: none;
         }
 
         .nav-cart-count {
@@ -184,6 +193,7 @@
             display: block;
             object-fit: contain; 
             filter: brightness(0.6); 
+            /* Hero image debe cargar rápido (eager), no lazy */
         }
 
         /* CONTENEDOR PRINCIPAL: Centrado por defecto para el texto */
@@ -393,6 +403,8 @@
             padding: 10px;
             position: relative;
             border-bottom: none;
+            /* Layout Shift improvement */
+            aspect-ratio: 270/210;
         }
 
         .product-photo {
@@ -473,7 +485,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 10px rgba(139, 0, 0, 0.2);
-            transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, filter 0.2s, background-color 0.2s;
         }
 
         .buy-btn:hover {
@@ -483,6 +495,12 @@
         }
 
         .buy-btn:active { transform: scale(0.95); }
+        
+        /* Estado de "Agregado" */
+        .buy-btn.added {
+            background: #25D366;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+        }
 
         /* ESTILOS WHATSAPP FLOTANTE */
         .whatsapp-float {
@@ -597,6 +615,34 @@
             display: none;
         }
         .overlay.active { display: block; }
+
+        /* TOAST NOTIFICATION STYLES (MEJORA UX) */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(26, 26, 26, 0.95);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            z-index: 3000;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27), opacity 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .toast-container.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
 
         /* Contacto */
         .contact-section {
@@ -725,12 +771,14 @@
 
             <div class="nav-actions">
                 <!-- CARRITO EN NAVBAR -->
-                <div class="nav-cart-btn" onclick="toggleCart()">
+                <!-- Mejora A11y: aria-label -->
+                <button class="nav-cart-btn" onclick="toggleCart()" aria-label="Abrir carrito de compras">
                     🛒
                     <span class="nav-cart-count" id="cartCounter">0</span>
-                </div>
+                </button>
 
-                <button class="menu-btn" onclick="toggleMenu()">
+                <!-- Mejora A11y: aria-label -->
+                <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menú de navegación">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -766,7 +814,8 @@
                 <p>Mercados<br>Campesinos</p>
             </div>
             <div class="badge">
-                <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="Tulio">
+                <!-- Lazy Loading aplicado -->
+                <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="Tulio" loading="lazy">
                 <p>Tulio<br>Recomienda</p>
             </div>
         </section>
@@ -776,8 +825,8 @@
             <h2 class="section-title">Línea <span>Gourmet</span></h2>
 
             <div class="carousel-wrapper">
-                <button class="nav-arrow prev" onclick="scrollCarousel('track-gourmet', -1)">‹</button>
-                <button class="nav-arrow next" onclick="scrollCarousel('track-gourmet', 1)">›</button>
+                <button class="nav-arrow prev" onclick="scrollCarousel('track-gourmet', -1)" aria-label="Anterior">‹</button>
+                <button class="nav-arrow next" onclick="scrollCarousel('track-gourmet', 1)" aria-label="Siguiente">›</button>
 
                 <div class="carousel-container" id="track-gourmet">
                     <div class="carousel-track">
@@ -785,130 +834,130 @@
                         <!-- Ahumado -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Ahumado</h3>
                                 <p class="card-desc">Sabor intenso y tradicional.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Ahumado', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Ahumado', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Antioqueño -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Antioqueño</h3>
                                 <p class="card-desc">El sabor de nuestra tierra.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Antioqueño', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Antioqueño', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Argentino -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Argentino</h3>
                                 <p class="card-desc">Ideal para choripán.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Argentino', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Argentino', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Español -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Español</h3>
                                 <p class="card-desc">Con pimentón de la vera.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Marinero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Marinero</h3>
                                 <p class="card-desc">Mezcla única de mariscos.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Santarrosano -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Santarrosano</h3>
                                 <p class="card-desc">El clásico de Santa Rosa.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Llanero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Llanero</h3>
                                 <p class="card-desc">Condimentado al estilo de la llanura.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Jalapeño -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Jalapeño</h3>
                                 <p class="card-desc">Picor balanceado con sabor ahumado.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Jalapeño', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Jalapeño', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                          <!-- Mediterráneo -->
                          <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Mediterráneo</h3>
                                 <p class="card-desc">Con pimentón de la vera.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Español', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Costero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Costero</h3>
                                 <p class="card-desc">Mezcla única de mariscos.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Marinero', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -922,8 +971,8 @@
             <h2 class="section-title">Línea <span>Tradicional</span></h2>
 
             <div class="carousel-wrapper">
-                <button class="nav-arrow prev" onclick="scrollCarousel('track-tradicional', -1)">‹</button>
-                <button class="nav-arrow next" onclick="scrollCarousel('track-tradicional', 1)">›</button>
+                <button class="nav-arrow prev" onclick="scrollCarousel('track-tradicional', -1)" aria-label="Anterior">‹</button>
+                <button class="nav-arrow next" onclick="scrollCarousel('track-tradicional', 1)" aria-label="Siguiente">›</button>
 
                 <div class="carousel-container" id="track-tradicional">
                     <div class="carousel-track">
@@ -931,130 +980,130 @@
                         <!-- Montañés -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Montañés</h3>
                                 <p class="card-desc">El clásico de Santa Rosa.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Vaquero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Vaquero</h3>
                                 <p class="card-desc">Condimentado al estilo de la llanura.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Casero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Casero</h3>
                                 <p class="card-desc">Receta familiar hecha con cariño.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Caballo -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Caballo</h3>
                                 <p class="card-desc">Potente mezcla para los amantes de la parrilla.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Campesino -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Campesino</h3>
                                 <p class="card-desc">Sazonado con hierbas frescas de la finca.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Clásico -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Clásico</h3>
                                 <p class="card-desc">El preferido de siempre, con un giro italiano.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Butifarra -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Butifarra</h3>
                                 <p class="card-desc">Auténtico sabor costeño.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Morcilla -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Morcilla</h3>
                                 <p class="card-desc">Rellena de arroz y especias.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Chicharrón -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Chicharrón</h3>
                                 <p class="card-desc">Crocante y carnudo.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Costilla -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Costilla</h3>
                                 <p class="card-desc">Ahumada y lista para asar.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1068,8 +1117,8 @@
             <h2 class="section-title">Otras <span>Delicias</span></h2>
 
             <div class="carousel-wrapper">
-                <button class="nav-arrow prev" onclick="scrollCarousel('track-otros', -1)">‹</button>
-                <button class="nav-arrow next" onclick="scrollCarousel('track-otros', 1)">›</button>
+                <button class="nav-arrow prev" onclick="scrollCarousel('track-otros', -1)" aria-label="Anterior">‹</button>
+                <button class="nav-arrow next" onclick="scrollCarousel('track-otros', 1)" aria-label="Siguiente">›</button>
 
                 <div class="carousel-container" id="track-otros">
                     <div class="carousel-track">
@@ -1077,130 +1126,130 @@
                         <!-- Montañés -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Montañés</h3>
                                 <p class="card-desc">El clásico de Santa Rosa.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Vaquero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Vaquero</h3>
                                 <p class="card-desc">Condimentado al estilo de la llanura.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Casero -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Casero</h3>
                                 <p class="card-desc">Receta familiar hecha con cariño.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Casero', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Caballo -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Caballo</h3>
                                 <p class="card-desc">Potente mezcla para los amantes de la parrilla.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Caballo', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Campesino -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Campesino</h3>
                                 <p class="card-desc">Sazonado con hierbas frescas de la finca.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Campesino', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Clásico -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Clásico</h3>
                                 <p class="card-desc">El preferido de siempre, con un giro italiano.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chorizo Clásico', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Butifarra -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Butifarra</h3>
                                 <p class="card-desc">Auténtico sabor costeño.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Butifarra', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Morcilla -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Morcilla</h3>
                                 <p class="card-desc">Rellena de arroz y especias.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Morcilla', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Chicharrón -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Chicharrón</h3>
                                 <p class="card-desc">Crocante y carnudo.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Chicharrón', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
                         <!-- Costilla -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
+                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo" loading="lazy">
                             </div>
                             <div class="card-details">
                                 <h3 class="card-title">Costilla</h3>
                                 <p class="card-desc">Ahumada y lista para asar.</p>
                                 <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000)">Agregar al Carrito 🛒</button>
+                                <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000, this)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
@@ -1236,13 +1285,13 @@
 
         <!-- FOOTER -->
         <footer>
-            <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Chorichava">
+            <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Chorichava" loading="lazy">
             <p>&copy; 2024 ChoriChava - Medellín, Colombia</p>
             <p style="margin-top:10px; font-size: 0.7rem;">Amor por la tradición artesanal</p>
         </footer>
 
         <!-- BOTÓN WHATSAPP FLOTANTE -->
-        <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank" title="Chatea con nosotros">
+        <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank" title="Chatea con nosotros" aria-label="Chatear por WhatsApp">
             💬
         </a>
 
@@ -1253,7 +1302,7 @@
         <div class="cart-modal" id="cartModal">
             <div class="cart-header">
                 <h3>Tu Canasta 🛒</h3>
-                <button class="close-cart" onclick="toggleCart()">✕</button>
+                <button class="close-cart" onclick="toggleCart()" aria-label="Cerrar carrito">✕</button>
             </div>
             <div class="cart-items" id="cartItems">
                 <p style="text-align:center; padding-top:40px; color:#999; font-size:1.1rem;">Tu carrito está vacío 🥺</p>
@@ -1266,12 +1315,39 @@
                 <button class="checkout-btn" onclick="checkout()">Pedir por WhatsApp 🚀</button>
             </div>
         </div>
+        
+        <!-- TOAST NOTIFICATION CONTAINER -->
+        <div id="toast" class="toast-container">
+            <span>✔️</span> <span id="toastMessage">Producto agregado</span>
+        </div>
 
     </div>
 
     <script>
-        // --- LOGICA DEL CARRITO (Igual que antes) ---
+        // --- LOGICA DEL CARRITO PROFESIONAL (UX + LocalStorage) ---
         let cart = [];
+        
+        // Formateador de moneda profesional (COP)
+        const currencyFormatter = new Intl.NumberFormat('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+
+        // Cargar carrito desde LocalStorage al iniciar
+        window.onload = function() {
+            const savedCart = localStorage.getItem('chorichava_cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartUI();
+            }
+        }
+
+        // Función para guardar en LocalStorage
+        function saveCart() {
+            localStorage.setItem('chorichava_cart', JSON.stringify(cart));
+        }
 
         function toggleMenu() {
             document.getElementById('mobileMenu').classList.toggle('active');
@@ -1284,24 +1360,54 @@
             }
         }
 
-        function addToCart(productName, productPrice) {
+        // Función para mostrar notificación Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function addToCart(productName, productPrice, btnElement) {
             const existingItem = cart.find(item => item.name === productName);
             if (existingItem) {
                 existingItem.qty += 1;
             } else {
                 cart.push({ name: productName, price: productPrice, qty: 1 });
             }
+            
+            saveCart(); // Persistir datos
             updateCartUI();
+            showToast(`¡${productName} agregado!`);
 
             // Animación del contador
             const counter = document.getElementById('cartCounter');
             counter.style.transform = 'scale(1.3)';
             setTimeout(() => counter.style.transform = 'scale(1)', 200);
+
+            // Feedback Visual en el Botón
+            if (btnElement) {
+                const originalText = btnElement.innerText;
+                const originalBg = btnElement.style.background;
+                
+                btnElement.innerText = "¡Agregado! ✔️";
+                btnElement.classList.add('added');
+                
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.classList.remove('added');
+                }, 2000);
+            }
         }
 
         function removeFromCart(productName) {
             cart = cart.filter(item => item.name !== productName);
+            saveCart(); // Actualizar almacenamiento
             updateCartUI();
+            showToast("Producto eliminado 🗑️");
         }
 
         function updateCartUI() {
@@ -1313,7 +1419,7 @@
             cartCounter.innerText = totalQty;
 
             const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-            totalPriceEl.innerText = `$${total.toLocaleString('es-CO')}`;
+            totalPriceEl.innerText = currencyFormatter.format(total);
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p style="text-align:center; padding-top:40px; color:#999; font-size:1.1rem;">Tu carrito está vacío 🥺</p>';
@@ -1326,11 +1432,11 @@
                 <div class="cart-item">
                     <div class="cart-item-info">
                         <span class="cart-item-name">${item.name}</span>
-                        <span class="cart-item-price">$${item.price.toLocaleString('es-CO')} x ${item.qty}</span>
+                        <span class="cart-item-price">${currencyFormatter.format(item.price)} x ${item.qty}</span>
                     </div>
                     <div>
-                        <span style="font-weight:bold; margin-right:10px;">$${(item.price * item.qty).toLocaleString('es-CO')}</span>
-                        <span class="remove-item" onclick="removeFromCart('${item.name}')">🗑️</span>
+                        <span style="font-weight:bold; margin-right:10px;">${currencyFormatter.format(item.price * item.qty)}</span>
+                        <span class="remove-item" onclick="removeFromCart('${item.name}')" aria-label="Eliminar producto" role="button">🗑️</span>
                     </div>
                 </div>`;
             });
@@ -1344,7 +1450,7 @@
 
         function checkout() {
             if (cart.length === 0) {
-                alert("Agrega productos primero 😉");
+                showToast("Agrega productos primero 😉");
                 return;
             }
             const phone = "573001234567"; 
@@ -1353,9 +1459,9 @@
             cart.forEach(item => {
                 const subtotal = item.price * item.qty;
                 total += subtotal;
-                message += `▪️ ${item.qty}x ${item.name} - $${subtotal.toLocaleString('es-CO')}\n`;
+                message += `▪️ ${item.qty}x ${item.name} - ${currencyFormatter.format(subtotal)}\n`;
             });
-            message += `\n*TOTAL A PAGAR: $${total.toLocaleString('es-CO')}*`;
+            message += `\n*TOTAL A PAGAR: ${currencyFormatter.format(total)}*`;
             message += "\n\n¿Quedo atento a la confirmación!";
             
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
