@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="ChoriChava: Los mejores chorizos artesanales de Colombia. Línea gourmet, tradicional y más. Domicilios en Medellín y envíos nacionales.">
-    <title>+ChoriChava | Chorizos Artesanales</title>
+    <meta name="description" content="Chor++iChava: Los mejores chorizos artesanales de Colombia. Línea gourmet, tradicional y más. Domicilios en Medellín y envíos nacionales.">
+    <title>ChoriChava | Chorizos Artesanales</title>
 
     <!-- Favicon -->
     <link rel="icon" href="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" type="image/png">
@@ -168,7 +168,7 @@
         .mobile-menu a:hover { color: var(--brand-gold); }
 
         /* =========================================
-           HERO SECTION (TÍTULO Y SUBTÍTULO CENTRO / BOTÓN DERECHA)
+           HERO SECTION (TÍTULO Y SUBTÍTULO CENTRO / BOTÓN DERECHA EXTREMA BAJO)
            ========================================= */
         .hero-section {
             width: 100%;
@@ -186,10 +186,7 @@
             filter: brightness(0.6); 
         }
 
-        /* ESTRATEGIA MIXTA:
-           - El contenedor principal se alinea a la derecha (para el botón).
-           - El título y subtítulo se fuerzan al centro.
-        */
+        /* CONTENEDOR PRINCIPAL: Centrado por defecto para el texto */
         .hero-content {
             position: absolute;
             top: 50%;
@@ -199,12 +196,10 @@
             color: white;
             z-index: 2;
             line-height: 1.4; 
-            /* Alineación base a la derecha para el botón */
-            text-align: right; 
-            padding-right: 8%; /* Espacio a la derecha */
+            text-align: center; /* Centramos todo el texto por defecto */
         }
 
-        /* TÍTULO: Forzado al CENTRO */
+        /* TÍTULO: Centrado */
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 3rem; 
@@ -212,33 +207,20 @@
             line-height: 1.1;
             text-shadow: 0 4px 10px rgba(0,0,0,0.8);
             color: #FFFFFF;
-            
-            /* Override para centrar */
-            text-align: center;
-            width: 100%;
-            /* Compensamos el padding-right del padre para que sea un centro real */
-            margin-right: -8%; 
-            display: block;
         }
 
         .hero-title span { color: var(--brand-champagne); font-style: italic; }
 
-        /* SUBTÍTULO: Forzado al CENTRO también */
+        /* SUBTÍTULO: Centrado */
         .hero-subtitle {
             font-size: 1.1rem;
             margin-bottom: 25px;
             font-weight: 300;
             text-shadow: 0 2px 5px rgba(0,0,0,0.8);
             letter-spacing: 0.5px;
-            
-            /* Override para centrar */
-            text-align: center;
-            width: 100%;
-            margin-right: -8%; /* Compensación del padding del padre */
-            display: block;
         }
 
-        /* BOTÓN: Se queda a la DERECHA */
+        /* BOTÓN: Posicionado ABSOLUTAMENTE a la EXTREMA DERECHA Y MUCHO MÁS ABAJO */
         .hero-cta {
             background: #FFFFFF;
             color: var(--brand-red);
@@ -252,9 +234,16 @@
             transition: transform 0.3s;
             display: inline-block;
             font-size: 0.9rem;
-            /* Fluye naturalmente a la derecha por el text-align: right del padre */
+            
+            /* Posicionamiento en el borde derecho EXTREMO */
+            position: absolute;
+            right: 10px; /* CASI PEGADO AL BORDE */
+            
+            /* Posicionamiento vertical: AÚN MÁS ABAJO */
+            top: 85%; /* Antes 75%, ahora más abajo */
+            transform: translateY(-50%); 
         }
-        .hero-cta:hover { transform: scale(1.05); }
+        .hero-cta:hover { transform: scale(1.05) translateY(-50%); }
 
         /* Badges */
         .trust-badges {
@@ -732,14 +721,14 @@
                 line-height: 1.1; 
                 margin-bottom: 8px;
                 text-align: center; /* Aseguramos centro en móvil */
-                margin-right: 0; /* Reset margen compensatorio */
+                margin-right: 0; 
             }
             .hero-subtitle {
                 font-size: 0.9rem; 
                 margin-bottom: 15px; 
                 text-align: center; /* Aseguramos centro en móvil */
                 padding-right: 0;
-                margin-right: 0; /* Reset margen compensatorio */
+                margin-right: 0;
             }
             .hero-content {
                 padding: 10px; 
@@ -747,10 +736,12 @@
                 text-align: center;
             }
             
+            /* En móvil, le permitimos mantener el botón a la derecha, 
+               aunque con un tamaño de fuente menor ajustado arriba */
             .hero-cta {
                 padding: 10px 25px;
                 font-size: 0.8rem;
-                display: inline-block;
+                /* Eliminamos los resets para que se quede a la derecha */
             }
         }
     </style>
@@ -785,14 +776,14 @@
             <a href="#contacto" onclick="toggleMenu()">Contacto</a>
         </div>
 
-        <!-- HERO MEJORADO (TÍTULO Y SUBTÍTULO CENTRO - BOTÓN DERECHA) -->
+        <!-- HERO MEJORADO (TÍTULO Y SUBTÍTULO CENTRO - BOTÓN EXTREMA DERECHA Y ABAJO) -->
         <header class="hero-section">
             <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditobonito.png?raw=true" alt="Chorizos" class="hero-img">
             
             <div class="hero-content">
                 <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 <p class="hero-subtitle">Tradición artesanal en cada bocado.</p>
-                <!-- Botón fluye naturalmente a la derecha -->
+                <!-- Botón de vuelta aquí adentro y posicionado con absolute a la derecha extrema y abajo -->
                 <a href="#gourmet" class="hero-cta">Ver Menú 👇</a>
             </div>
         </header>
@@ -1097,140 +1088,6 @@
                                 <p class="card-desc">Ahumada y lista para asar.</p>
                                 <p class="card-price">$20.000</p>
                                 <button class="buy-btn" onclick="addToCart('Costilla Ahumada', 20000)">Agregar al Carrito 🛒</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- SECCIÓN OTROS (EDITADA: LISTA CORTA Y ORDENADA) -->
-        <section class="products-section" id="otros">
-            <h2 class="section-title">Otros <span>Deliciosos</span></h2>
-
-            <div class="carousel-wrapper">
-                <button class="nav-arrow prev" onclick="scrollCarousel('track-otros', -1)">‹</button>
-                <button class="nav-arrow next" onclick="scrollCarousel('track-otros', 1)">›</button>
-
-                <div class="carousel-container" id="track-otros">
-                    <div class="carousel-track">
-
-                        <!-- Arepas -->
-                        <div class="product-card">
-                            <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Arepas</h3>
-                                <p class="card-desc">El acompañante ideal.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Arepas', 20000)">Agregar al Carrito 🛒</button>
-                            </div>
-                        </div>
-
-                        <!-- Empanadas -->
-                        <div class="product-card">
-                            <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Empanadas</h3>
-                                <p class="card-desc">Rellenas de nuestro chorizo.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Empanadas', 20000)">Agregar al Carrito 🛒</button>
-                            </div>
-                        </div>
-
-                        <!-- Hamburguesa -->
-                        <div class="product-card">
-                            <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Hamburguesa</h3>
-                                <p class="card-desc">Carne de chorizo artesanal.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Hamburguesa de Chorizo', 20000)">Agregar al Carrito 🛒</button>
-                            </div>
-                        </div>
-
-                        <!-- Salchichón -->
-                        <div class="product-card">
-                            <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Salchichón</h3>
-                                <p class="card-desc">Tradicional cervecero.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Salchichón', 20000)">Agregar al Carrito 🛒</button>
-                            </div>
-                        </div>
-
-                        <!-- Queso de Cerdo -->
-                        <div class="product-card">
-                            <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Queso de Cerdo</h3>
-                                <p class="card-desc">Fiambre artesanal.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Queso de Cerdo', 20000)">Agregar al Carrito 🛒</button>
-                            </div>
-                        </div>
-
-                        <!-- Génova -->
-                        <div class="product-card">
-                            <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Génova</h3>
-                                <p class="card-desc">Estilo italiano curado.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Génova', 20000)">Agregar al Carrito 🛒</button>
-                            </div>
-                        </div>
-
-                        <!-- Cabanossi -->
-                        <div class="product-card">
-                            <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Cabanossi</h3>
-                                <p class="card-desc">Ideal para picadas.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Cabanossi', 20000)">Agregar al Carrito 🛒</button>
-                            </div>
-                        </div>
-
-                         <!-- Longaniza Picante -->
-                         <div class="product-card">
-                            <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Longaniza Picante</h3>
-                                <p class="card-desc">Sabor intenso y picante.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Longaniza Picante', 20000)">Agregar al Carrito 🛒</button>
-                            </div>
-                        </div>
-
-                        <!-- Salchicha Ranchera -->
-                        <div class="product-card">
-                            <div class="card-image-box">
-                                <img src="https://github.com/Clata1014/Chorichava6/blob/main/Choriamor.png?raw=true" class="product-photo ahumado-photo">
-                            </div>
-                            <div class="card-details">
-                                <h3 class="card-title">Salchicha Ranchera</h3>
-                                <p class="card-desc">Para desayunos y asados.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Salchicha Ranchera', 20000)">Agregar al Carrito 🛒</button>
                             </div>
                         </div>
 
