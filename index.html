@@ -219,6 +219,8 @@
             filter: brightness(0.85); 
         }
 
+        /* En celular la imagen se comporta normal (vertical) */
+
         .hero-content {
             position: absolute;
             top: 40%; 
@@ -893,6 +895,26 @@
         }
         .toast-container.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
+        /* =========================================
+           OPTIMIZACIÓN ESCRITORIO (SOLO PC/TABLET)
+           ========================================= */
+        @media (min-width: 769px) {
+            .hero-img {
+                /* Altura controlada en PC para que se vea el menú de abajo */
+                height: 65vh; 
+                width: 100%;
+                /* Ajuste perfecto de la imagen */
+                object-fit: cover; 
+                object-position: center;
+            }
+            
+            .hero-content {
+                width: 80%; 
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-title { font-size: 1.7rem; }
             .hero-subtitle { font-size: 0.9rem; }
@@ -956,9 +978,16 @@
         <!-- VISTA HOME (Principal) -->
         <div id="home-view" class="view-section active">
 
-            <!-- HERO -->
+            <!-- HERO (CONFIGURADO PARA 2 FOTOS) -->
             <header class="hero-section">
-                <img src="https://clata1014.github.io/chorichava7/Fondito.png" alt="Chorizos" class="hero-img">
+                <picture>
+                    <!-- FOTO ESCRITORIO (Horizontal): Se muestra en pantallas grandes -->
+                    <source media="(min-width: 769px)" srcset="https://github.com/Clata1014/chorichava7/blob/main/banerhorizontal.webp?raw=true">
+                    
+                    <!-- FOTO CELULAR (Vertical): Se muestra en móviles -->
+                    <img src="https://clata1014.github.io/chorichava7/Fondito.png" alt="Chorizos Artesanales ChoriChava" class="hero-img">
+                </picture>
+
                 <div class="hero-content">
                     <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
                 </div>
