@@ -961,21 +961,26 @@
                 right: 50%;
                 margin-left: -50vw;
                 margin-right: -50vw;
-                padding-left: 0; /* Eliminamos el padding lateral para que llegue al borde */
+                padding-left: 0; 
                 padding-right: 0;
             }
             
             /* AJUSTE: Reducir espacio superior del título para subir los productos */
             .section-title {
                 max-width: 1200px;
-                margin: 0 auto 20px; /* Reducido de 30px */
-                padding-top: 20px; /* Reducido drásticamente de 40px para ganar espacio */
+                margin: 0 auto 20px; 
+                padding-top: 20px; 
             }
 
             /* Ajuste específico para que el carrusel aproveche el ancho pero se vea ordenado */
             .carousel-container {
                 width: 100%;
-                padding: 0 40px 40px; /* Un poco de espacio para las flechas */
+                padding: 0 40px 40px; 
+            }
+            
+            /* NUEVO: Aumentar el espacio entre tarjetas en PC para que "respiren" */
+            .carousel-track {
+                gap: 40px; /* Antes 20px, ahora más separado */
             }
             
             /* Flechas pegadas a los bordes de la pantalla */
@@ -984,21 +989,21 @@
 
             /* AJUSTE BADGES EN ESCRITORIO (MÁS GRANDES Y CON BANDERA) */
             .trust-badges .badge {
-                padding: 15px; /* Reducido el padding vertical para ahorrar espacio */
-                min-height: 140px; /* Más altos */
-                justify-content: center; /* Asegurar centrado */
+                padding: 15px; 
+                min-height: 140px; 
+                justify-content: center; 
             }
             
             .trust-badges .badge span, 
             .trust-badges .badge img {
-                font-size: 3.5rem; /* Íconos y emojis mucho más grandes (antes 2rem) */
-                width: 70px; /* Imagen de Tulio más grande */
+                font-size: 3.5rem; 
+                width: 70px; 
                 height: 70px;
-                margin-bottom: 10px; /* Reducido el margen inferior */
+                margin-bottom: 10px; 
             }
             
             .trust-badges .badge p {
-                font-size: 0.9rem; /* Texto más grande y legible */
+                font-size: 0.9rem; 
                 letter-spacing: 0.5px;
             }
 
@@ -1014,7 +1019,7 @@
                 padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px));
             }
 
-            /* AJUSTE TARJETAS EN ESCRITORIO */
+            /* AJUSTE TARJETAS EN ESCRITORIO CON "BORDE BLANCO" */
             .product-card {
                 width: 270px !important;
                 min-width: 270px !important;
@@ -1024,7 +1029,12 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover !important; 
-                transform: scale(1.1) !important; 
+                /* CAMBIO: Quitamos el zoom (scale) y agregamos el borde blanco */
+                transform: none !important; 
+                border: 8px solid white; /* El borde blanco para que respire */
+                box-sizing: border-box; /* Para que el borde no agrande la imagen */
+                border-radius: 15px; /* Un poco redondeado para suavidad */
+                box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Sutil sombra interna */
             }
 
             /* Quitar sombra del contenedor principal en PC para que no se vea cortado */
