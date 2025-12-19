@@ -935,14 +935,21 @@
                 transform: translate(-50%, -50%);
             }
 
-            /* Ajuste para que los badges no toquen la foto en PC */
+            /* FIX: Badges (Producto Colombiano) a Pantalla Completa en PC */
             .trust-badges {
-                margin-top: 0; /* Al usar height auto, la imagen empuja el contenido naturalmente */
-                width: 100%;
-                max-width: 1200px;
-                margin-left: auto;
-                margin-right: auto;
+                margin-top: 0; 
+                width: 100vw; /* Ancho total de la ventana */
                 position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw; /* Centrado negativo para expandirse */
+                margin-right: -50vw;
+                
+                /* Truco matemático para mantener los íconos centrados en 1200px aunque la franja sea infinita */
+                padding-left: max(10px, calc((100vw - 1200px) / 2 + 10px));
+                padding-right: max(10px, calc((100vw - 1200px) / 2 + 10px));
+                
+                border-bottom: 1px solid #eee; /* Línea sutil para separar */
                 z-index: 5;
             }
         }
