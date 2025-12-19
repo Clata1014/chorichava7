@@ -923,6 +923,18 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
+
+            /* NUEVO: Fix para que la barra roja TAMBIÉN ocupe todo el ancho en PC */
+            .navbar {
+                width: 100vw;
+                position: sticky;
+                left: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
+                /* Esto mantiene el logo y el carrito alineados con el contenido (max 1200px) */
+                padding-left: max(15px, calc((100vw - 1200px) / 2 + 15px));
+                padding-right: max(15px, calc((100vw - 1200px) / 2 + 15px));
+            }
         }
 
         @media (max-width: 768px) {
