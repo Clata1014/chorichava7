@@ -946,26 +946,7 @@
                 z-index: 5;
             }
 
-            /* FIX DEFINITIVO: Carruseles de Borde a Borde en PC (Sin espacios blancos laterales) */
-            .products-section, .reviews-section {
-                width: 100vw;
-                position: relative;
-                left: 50%;
-                right: 50%;
-                margin-left: -50vw;
-                margin-right: -50vw;
-                padding-left: 0; /* Eliminamos el padding lateral para que llegue al borde */
-                padding-right: 0;
-            }
-            
-            /* Pero mantenemos el título centrado y bonito */
-            .section-title {
-                max-width: 1200px;
-                margin: 0 auto 30px;
-                padding-top: 40px;
-            }
-
-            /* Ajuste del carrusel para que fluya libremente */
+            /* Ajuste específico para que el carrusel aproveche el ancho pero se vea ordenado */
             .carousel-container {
                 width: 100%;
                 padding: 0 40px 40px; /* Un poco de espacio para las flechas */
@@ -974,6 +955,25 @@
             /* Flechas pegadas a los bordes de la pantalla */
             .nav-arrow.prev { left: 20px; }
             .nav-arrow.next { right: 20px; }
+
+            /* AJUSTE BADGES EN ESCRITORIO (MÁS GRANDES Y CON BANDERA) */
+            .trust-badges .badge {
+                padding: 25px 15px; /* Más espacio interno */
+                min-height: 140px; /* Más altos */
+            }
+            
+            .trust-badges .badge span, 
+            .trust-badges .badge img {
+                font-size: 3.5rem; /* Íconos y emojis mucho más grandes (antes 2rem) */
+                width: 70px; /* Imagen de Tulio más grande */
+                height: 70px;
+                margin-bottom: 15px;
+            }
+            
+            .trust-badges .badge p {
+                font-size: 0.9rem; /* Texto más grande y legible */
+                letter-spacing: 0.5px;
+            }
 
             /* Contacto y Footer sí los dejamos centrados/limitados para que no se vean raros tan anchos */
             .contact-section, footer {
@@ -1091,7 +1091,8 @@
             <!-- BADGES -->
             <section class="trust-badges">
                 <div class="badge">
-                    <span>🇨🇴</span>
+                    <!-- CAMBIO: Reemplacé el emoji (que se ve como CO en Windows) por una IMAGEN real de la bandera -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Bandera de Colombia" style="object-fit: cover; border-radius: 5px; border: 1px solid #eee;">
                     <p>Producto<br>Colombiano</p>
                 </div>
                 <div class="badge">
