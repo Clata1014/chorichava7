@@ -524,7 +524,7 @@
 
         .history-container {
             max-width: 850px; 
-            margin: -38px auto 40px; /* AJUSTE FINAL: De -35px a -38px. Un "pelito" más arriba. */
+            margin: -38px auto 40px; /* AJUSTE FINAL */
             padding: 40px 30px 30px; 
             text-align: center;
             background: #ffffff;
@@ -605,14 +605,60 @@
             margin-bottom: 12px; 
         }
         
-        /* Línea decorativa final */
+        /* --- NUEVOS ELEMENTOS DECORATIVOS --- */
+        
+        /* Pie de foto elegante */
+        .img-caption {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: -10px; 
+            margin-bottom: 20px;
+            font-style: italic;
+            text-align: center;
+            display: block;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Cita destacada */
+        .history-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--brand-red);
+            text-align: center;
+            margin: 30px 0;
+            padding: 0 10px;
+            line-height: 1.4;
+        }
+        .history-quote::before, .history-quote::after {
+            content: "—";
+            color: var(--brand-gold);
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        
+        /* Línea decorativa final con Icono */
         .history-decoration-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            margin: 30px auto 20px;
+            opacity: 1;
+            background: none;
+            height: auto;
+        }
+        .history-decoration-line::before, .history-decoration-line::after {
+            content: "";
+            height: 1px;
             width: 60px;
-            height: 2px;
-            background: var(--brand-gold);
-            margin: 20px auto 15px; 
-            border-radius: 2px;
-            opacity: 0.7;
+            background-color: var(--brand-gold);
+            opacity: 0.6;
+        }
+        .history-icon {
+            color: var(--brand-red);
+            font-size: 1.2rem;
         }
         
         /* Botón inferior clásico RESTAURADO */
@@ -873,6 +919,9 @@
             .contact-section {
                 padding: 30px 15px 50px;
             }
+            
+            /* Ajuste cita en móvil */
+            .history-quote { font-size: 1.2rem; margin: 20px 0; }
         }
     </style>
 </head>
@@ -1379,15 +1428,20 @@
                 <div class="history-photo-frame">
                     <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" alt="Carlos Chavarriaga Fundador ChoriChava" class="history-photo">
                 </div>
+                <span class="img-caption">Fundador y Visionario</span>
 
                 <div class="history-text">
                     <p>Detrás de cada gran sabor, hay una historia de dedicación. Todo comenzó hace más de 13 años, cuando <strong>Carlos Chavarriaga</strong> decidió transformar su pasión por la buena mesa en una marca que hoy es orgullo paisa: <span class="history-highlight">ChoriChava</span>.</p>
+                    
+                    <div class="history-quote">"No vendemos chorizos, vendemos momentos en familia."</div>
+
                     <p>Lo que inició como un sueño emprendedor, tomó fuerza y estructura gracias al reconocimiento del programa <strong>Capital Semilla</strong> de la Alcaldía de Medellín. Este impulso permitió a la empresa crecer y perfeccionar sus procesos, logrando lo que pocos alcanzan: mantener la esencia 100% artesanal cumpliendo con los más altos estándares de calidad y seguridad, respaldados por su <strong>registro INVIMA</strong>.</p>
                     
                     <!-- FOTO DE MUESTRA (Horizontal - Integrada estilo editorial) -->
                     <div class="history-photo-frame landscape">
                         <img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" alt="Muestra de Chorizos Artesanales ChoriChava" class="history-photo">
                     </div>
+                    <span class="img-caption">Calidad Artesanal en cada bocado</span>
 
                     <p>Esta constancia ha dado frutos deliciosos. La marca ha sido destacada por referentes gastronómicos como <span class="history-highlight">Tulio Recomienda</span>, confirmando que cuando las cosas se hacen con amor y disciplina, se nota en el sabor. Hoy, más que un producto, ChoriChava lleva una experiencia completa a <strong>eventos y celebraciones</strong>, encargándose de brindar el auténtico sabor de la parrilla sin preocupaciones.</p>
                     
@@ -1395,13 +1449,16 @@
                     <div class="history-photo-frame landscape">
                         <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" alt="Reconocimiento Tulio Recomienda a ChoriChava" class="history-photo">
                     </div>
+                    <span class="img-caption">Reconocimiento de Tulio Recomienda</span>
 
                     <p style="text-align: center; font-weight: 600; font-size: 1.2rem; margin-top: 30px;">
                         ChoriChava es tradición, es calidad y, sobre todo, es una familia trabajando para llevar lo mejor a la mesa de cada cliente.
                     </p>
                     
                     <!-- Decoración final -->
-                    <div class="history-decoration-line"></div>
+                    <div class="history-decoration-line">
+                        <span class="history-icon">🔥</span>
+                    </div>
                 </div>
 
                 <!-- Botón inferior clásico RESTAURADO -->
