@@ -410,7 +410,7 @@
             font-size: 0.85rem;
             color: #666;
             margin-bottom: 10px;
-            height: 72px; /* ESTANDARIZADO: Altura fija para alinear precios */
+            height: 72px; /* ESTANDARIZADO */
             overflow: hidden;
             line-height: 1.3;
             display: -webkit-box;
@@ -452,6 +452,21 @@
         }
         .buy-btn:active { transform: scale(0.95); }
         .buy-btn.added { background: #25D366; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
+
+        /* Botón estilo WhatsApp para cotizar (AJUSTADO: TAMAÑO NORMAL) */
+        .whatsapp-quote-btn {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            padding: 12px !important; /* Regresamos al tamaño estándar */
+            font-size: 0.9rem !important; /* Tamaño de letra normal */
+            font-weight: 700 !important;
+            letter-spacing: 0.5px;
+        }
+        .whatsapp-quote-btn:hover {
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+        }
 
         /* Contacto */
         .contact-section {
@@ -647,6 +662,7 @@
             <a href="#" onclick="toggleMenu()">Inicio</a>
             <a href="#gourmet" onclick="toggleMenu()">Línea Gourmet</a>
             <a href="#tradicional" onclick="toggleMenu()">Tradicional</a>
+            <a href="#otros" onclick="toggleMenu()">Otras Delicias</a>
             <a href="#contacto" onclick="toggleMenu()">Contacto</a>
         </div>
 
@@ -683,7 +699,7 @@
 
                 <div class="carousel-container" id="track-gourmet">
                     <div class="carousel-track">
-                        <!-- Argentino (ACTUALIZADO GOURMET - SIN 16CM) -->
+                        <!-- Argentino -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Argentinogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Argentino">
@@ -696,7 +712,7 @@
                             </div>
                         </div>
 
-                        <!-- Ahumado (ACTUALIZADO GOURMET) -->
+                        <!-- Ahumado -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Ahumadogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Ahumado">
@@ -709,7 +725,7 @@
                             </div>
                         </div>
 
-                        <!-- Antioqueño (ACTUALIZADO GOURMET) -->
+                        <!-- Antioqueño -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Antioqueñogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Antioqueño">
@@ -722,7 +738,7 @@
                             </div>
                         </div>
 
-                        <!-- Español (ACTUALIZADO GOURMET) -->
+                        <!-- Español -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Españolgourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Español">
@@ -735,7 +751,7 @@
                             </div>
                         </div>
 
-                        <!-- Marinero (ACTUALIZADO GOURMET) -->
+                        <!-- Marinero -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Marinerogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Marinero">
@@ -748,7 +764,7 @@
                             </div>
                         </div>
 
-                        <!-- Santarrosano (ACTUALIZADO GOURMET) -->
+                        <!-- Santarrosano -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Santarrosanogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Santarrosano">
@@ -761,7 +777,7 @@
                             </div>
                         </div>
 
-                        <!-- Llanero (ACTUALIZADO GOURMET) -->
+                        <!-- Llanero -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Llanerogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Llanero">
@@ -774,7 +790,7 @@
                             </div>
                         </div>
 
-                        <!-- Jalapeño (ACTUALIZADO GOURMET) -->
+                        <!-- Jalapeño -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Jalapeñogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Jalapeño">
@@ -787,7 +803,7 @@
                             </div>
                         </div>
 
-                        <!-- Alemán (ACTUALIZADO GOURMET) -->
+                        <!-- Alemán -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/alemangourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Alemán">
@@ -804,7 +820,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN TRADICIONAL (ORDEN INTACTO - DATOS CORREGIDOS) -->
+        <!-- SECCIÓN TRADICIONAL -->
         <section class="products-section" id="tradicional">
             <h2 class="section-title">Línea <span>Tradicional</span></h2>
             <div class="carousel-wrapper">
@@ -814,7 +830,7 @@
                 <div class="carousel-container" id="track-tradicional">
                     <div class="carousel-track">
                         
-                        <!-- 1. Chicharrón (Imagen ChicharronTradicional) -->
+                        <!-- 1. Chicharrón -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Chicharrontradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chicharrón">
@@ -827,7 +843,7 @@
                             </div>
                         </div>
 
-                        <!-- 2. Español (Imagen EspañolTradicional) -->
+                        <!-- 2. Español -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Españoltradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Español">
@@ -840,7 +856,7 @@
                             </div>
                         </div>
 
-                        <!-- 3. Jalapeño (Imagen JalapeñoTradicional) -->
+                        <!-- 3. Jalapeño -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Jalapeñotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Jalapeño">
@@ -853,7 +869,7 @@
                             </div>
                         </div>
 
-                        <!-- 4. Llanero (CORREGIDO: Descripción auténtica) -->
+                        <!-- 4. Llanero -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Llanerotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Llanero">
@@ -866,7 +882,7 @@
                             </div>
                         </div>
 
-                        <!-- 5. Ahumado (Imagen AhumadoTradicional) -->
+                        <!-- 5. Ahumado -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Ahumadotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Ahumado">
@@ -879,7 +895,7 @@
                             </div>
                         </div>
 
-                        <!-- 6. Antioqueño (Imagen AntioqueñoTradicional) -->
+                        <!-- 6. Antioqueño -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Antioqueñotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Antioqueño">
@@ -892,7 +908,7 @@
                             </div>
                         </div>
 
-                        <!-- 7. Argentino (Imagen ArgentinoTradicional) -->
+                        <!-- 7. Argentino -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Argentinotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Argentino">
@@ -905,7 +921,7 @@
                             </div>
                         </div>
 
-                        <!-- 8. Calabrese (Imagen CalabraseTradicional) -->
+                        <!-- 8. Calabrese -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Calabrasetradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Calabrese">
@@ -918,7 +934,7 @@
                             </div>
                         </div>
 
-                        <!-- 9. Italiano (ACTUALIZADO: Confirmado) -->
+                        <!-- 9. Italiano -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Italianotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Italiano">
@@ -931,7 +947,7 @@
                             </div>
                         </div>
 
-                        <!-- 10. Santarrosano (Imagen SantarrosanoTradicional) -->
+                        <!-- 10. Santarrosano -->
                         <div class="product-card">
                             <div class="card-image-box">
                                 <img src="https://clata1014.github.io/chorichava7/Santarrosanotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Santarrosano">
@@ -949,7 +965,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN OTRAS DELICIAS (RESTAURADA) -->
+        <!-- SECCIÓN OTRAS DELICIAS (ACTUALIZADA) -->
         <section class="products-section" id="otros">
             <h2 class="section-title">Otras <span>Delicias</span></h2>
 
@@ -960,81 +976,81 @@
                 <div class="carousel-container" id="track-otros">
                     <div class="carousel-track">
 
-                        <!-- Montaña -->
+                        <!-- 1. Bondiola -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="Bandiola.webp" class="product-photo ahumado-photo" loading="lazy" alt="Montaña">
+                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Bandiola.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Bondiola Ahumada">
                             </div>
                             <div class="card-details">
-                                <h3 class="card-title">Montaña</h3>
-                                <p class="card-desc">El clásico de Santa Rosa.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Montaña', 20000, this)">Agregar al Carrito 🛒</button>
+                                <h3 class="card-title" style="font-size: 1rem;">Bondiola de Cerdo Ahumada</h3>
+                                <p class="card-desc">Corte de aguja de cerdo, marinado y madurado artesanalmente. Ahumado lento para una textura tierna y un marmoleo exquisito.</p>
+                                <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
+                                <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Bondiola de Cerdo Ahumada')">Cotizar por WhatsApp 💬</button>
                             </div>
                         </div>
 
-                        <!-- Llanero Especial -->
+                        <!-- 2. Cañón -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="Cañon.webp" class="product-photo ahumado-photo" loading="lazy" alt="Llanero Especial">
+                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Ca%C3%B1on.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Cañón Ahumado">
                             </div>
                             <div class="card-details">
-                                <h3 class="card-title">Llanero Especial</h3>
-                                <p class="card-desc">Condimentado al estilo de la llanura.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Llanero Especial', 20000, this)">Agregar al Carrito 🛒</button>
+                                <h3 class="card-title">Cañón Ahumado</h3>
+                                <p class="card-desc">Lomo de cerdo seleccionado, bajo en grasa, curado en salmuera de especias y ahumado con maderas nativas. Sabor suave y delicado.</p>
+                                <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
+                                <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Cañón Ahumado')">Cotizar por WhatsApp 💬</button>
                             </div>
                         </div>
 
-                        <!-- Hogareño -->
+                        <!-- 3. Papada -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="Panceta.webp" class="product-photo ahumado-photo" loading="lazy" alt="Hogareño">
+                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Papada.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Papada Ahumada">
                             </div>
                             <div class="card-details">
-                                <h3 class="card-title">Hogareño</h3>
-                                <p class="card-desc">Receta familiar hecha con cariño.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Hogareño', 20000, this)">Agregar al Carrito 🛒</button>
+                                <h3 class="card-title">Papada Ahumada</h3>
+                                <p class="card-desc">Papada de cerdo curada y ahumada. Textura untuosa y sabor intenso, ideal para aportar profundidad a guisos o disfrutar en finas lonjas.</p>
+                                <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
+                                <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Papada Ahumada')">Cotizar por WhatsApp 💬</button>
                             </div>
                         </div>
 
-                        <!-- Corcel -->
+                        <!-- 4. Panceta -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="Papada.webp" class="product-photo ahumado-photo" loading="lazy" alt="Corcel">
+                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Panceta.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Panceta Ahumada">
                             </div>
                             <div class="card-details">
-                                <h3 class="card-title">Corcel</h3>
-                                <p class="card-desc">Potente mezcla para los amantes de la parrilla.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Corcel', 20000, this)">Agregar al Carrito 🛒</button>
+                                <h3 class="card-title">Panceta Ahumada</h3>
+                                <p class="card-desc">Tocino carnudo sometido a un proceso de ahumado natural. Equilibrio perfecto entre carne y grasa, con un dorado irresistible.</p>
+                                <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
+                                <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Panceta Ahumada')">Cotizar por WhatsApp 💬</button>
                             </div>
                         </div>
 
-                        <!-- Granjero -->
+                        <!-- 5. Pernil -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="Pernil.webp" class="product-photo ahumado-photo" loading="lazy" alt="Granjero">
+                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Pernil.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Pernil Ahumado">
                             </div>
                             <div class="card-details">
-                                <h3 class="card-title">Granjero</h3>
-                                <p class="card-desc">Sazonado con hierbas frescas de la finca.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Granjero', 20000, this)">Agregar al Carrito 🛒</button>
+                                <h3 class="card-title">Pernil Ahumado</h3>
+                                <p class="card-desc">Pierna de cerdo ahumada, jugosa y tierna. Proceso de cocción lenta que resalta sus notas dulces y saladas. Lista para servir.</p>
+                                <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
+                                <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Pernil Ahumado')">Cotizar por WhatsApp 💬</button>
                             </div>
                         </div>
 
-                        <!-- Tradición -->
+                        <!-- 6. Chistorra -->
                         <div class="product-card">
                             <div class="card-image-box">
-                                <img src="Chistorra.webp" class="product-photo ahumado-photo" loading="lazy" alt="Tradición">
+                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Chistorra.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Chistorra Española">
                             </div>
                             <div class="card-details">
-                                <h3 class="card-title">Tradición</h3>
-                                <p class="card-desc">El preferido de siempre, con un giro italiano.</p>
-                                <p class="card-price">$20.000</p>
-                                <button class="buy-btn" onclick="addToCart('Chorizo Tradición', 20000, this)">Agregar al Carrito 🛒</button>
+                                <h3 class="card-title">Chistorra Española</h3>
+                                <p class="card-desc">Embutido de origen navarro, delgado y de curación corta. Condimentado con pimentón y ajo. Intenso, ideal para tapear o asar.</p>
+                                <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
+                                <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Chistorra Española')">Cotizar por WhatsApp 💬</button>
                             </div>
                         </div>
 
@@ -1229,6 +1245,14 @@
                     toggleCart(); 
                 }
             });
+        }
+
+        // --- FUNCIONALIDAD COTIZACIÓN POR PESO (WHATSAPP) ---
+        function consultarPeso(nombreProducto) {
+            const telefono = "573001234567"; // Tu número de WhatsApp
+            const mensaje = `Hola ChoriChava 👋, estoy interesado en comprar *${nombreProducto}*. ¿Me podrían indicar el precio por peso y disponibilidad?`;
+            const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
         }
     </script>
 </body>
