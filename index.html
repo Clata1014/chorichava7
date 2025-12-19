@@ -919,12 +919,13 @@
             }
 
             .hero-img {
-                /* Altura controlada en PC para que se vea el menú de abajo sin scroll */
-                height: 65vh; 
+                /* CAMBIO: Altura automática para respetar el formato de la foto y que se vea completa */
+                height: auto; 
                 width: 100%;
-                /* Ajuste perfecto de la imagen sin deformar */
-                object-fit: cover; 
-                object-position: top center; /* AJUSTE: Enfoca la parte superior para mostrar el tenedor */
+                /* CAMBIO: contain asegura que se muestre TODO el contenido de la imagen */
+                object-fit: contain; 
+                object-position: center;
+                display: block; /* Elimina espacios fantasma debajo de la imagen */
             }
             
             /* Título original centrado en escritorio */
@@ -934,16 +935,15 @@
                 transform: translate(-50%, -50%);
             }
 
-            /* FIX BARRA DE NAVEGACIÓN INFINITA EN ESCRITORIO */
-            /* Esto se elimina para usar el wrapper global que funciona mejor */
-            
             /* Ajuste para que los badges no toquen la foto en PC */
             .trust-badges {
-                margin-top: 20px; /* AJUSTE: Separación de 20px en escritorio */
+                margin-top: 0; /* Al usar height auto, la imagen empuja el contenido naturalmente */
                 width: 100%;
                 max-width: 1200px;
                 margin-left: auto;
                 margin-right: auto;
+                position: relative;
+                z-index: 5;
             }
         }
 
