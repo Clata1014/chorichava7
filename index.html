@@ -916,7 +916,7 @@
 
             /* AJUSTE EXCLUSIVO ESCRITORIO: Logo pegado a la izquierda */
             .nav-logo {
-                margin-left: -40px; /* Ajustado: Menos pegado al borde (-80px a -40px) */
+                margin-left: -100px; /* AJUSTE FINAL: Empujado mucho más a la izquierda (-100px) */
             }
 
             /* AJUSTE EXCLUSIVO ESCRITORIO: Botones pegados a la derecha */
@@ -1036,24 +1036,12 @@
                 padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px));
             }
 
-            /* AJUSTE TARJETAS EN ESCRITORIO (RESTAURADO: SIN BORDE BLANCO) */
+            /* AJUSTE TARJETAS EN ESCRITORIO (ORIGINALES) */
             .product-card {
                 width: 270px !important;
                 min-width: 270px !important;
             }
-            
-            .card-image-box .product-photo {
-                width: 100%;
-                height: 100%;
-                object-fit: cover !important; 
-                /* Se mantiene el scale original o se ajusta para que llene bien */
-                transform: scale(1.28) !important; 
-                border: none !important; /* Eliminado el borde blanco */
-                border-radius: 0;
-                box-shadow: none;
-            }
-            /* Restaurar el hover */
-            .product-card:hover .product-photo { transform: scale(1.35) !important; }
+            /* Eliminé las reglas que ponían borde blanco o cambiaban el tamaño */
 
             /* Quitar sombra del contenedor principal en PC para que no se vea cortado */
             .app-container {
