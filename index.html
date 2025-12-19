@@ -90,16 +90,11 @@
         }
 
         .navbar {
-            /* background-color: var(--brand-red); YA NO ES NECESARIO AQUÍ */
             height: 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 15px;
-            /* position: sticky; YA NO ES NECESARIO AQUÍ */
-            /* top: 0; */
-            /* z-index: 1000; */
-            /* box-shadow: ... YA ESTÁ EN EL WRAPPER */
             max-width: 1200px; /* Se mantiene centrado */
             margin: 0 auto; /* Se mantiene centrado */
             width: 100%;
@@ -116,43 +111,6 @@
             position: relative; /* Para que quede encima */
             z-index: 1001;
         }
-
-        /* Ocultar vistas para SPA */
-        .view-section {
-            display: none;
-            animation: fadeUp 0.5s ease-out;
-        }
-        .view-section.active {
-            display: block;
-        }
-
-        /* =========================================
-           NAVBAR
-           ========================================= */
-        .navbar {
-            background-color: var(--brand-red);
-            height: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 15px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .nav-logo {
-            height: 173px;
-            width: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-            margin-left: -68px;
-            margin-top: -15px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-logo:hover { transform: scale(1.02); }
 
         .nav-actions {
             display: flex;
@@ -961,28 +919,32 @@
             }
 
             .hero-img {
+                /* Altura controlada en PC para que se vea el menú de abajo sin scroll */
                 height: 65vh; 
                 width: 100%;
+                /* Ajuste perfecto de la imagen sin deformar */
                 object-fit: cover; 
-                object-position: center;
+                object-position: top center; /* AJUSTE: Enfoca la parte superior para mostrar el tenedor */
             }
             
-            /* Título más sutil en escritorio para no tapar la foto */
+            /* Título original centrado en escritorio */
             .hero-content {
-                width: 100%; 
-                max-width: 1200px; /* Limitado al ancho del contenido */
+                width: 80%; 
                 left: 50%;
                 transform: translate(-50%, -50%);
-                text-align: left; /* Alineado a la izquierda para dejar ver la foto */
-                padding-left: 50px; /* Un poco de margen */
-                text-shadow: 2px 2px 10px rgba(0,0,0,0.9); /* Sombra fuerte para leer sobre cualquier foto */
-            }
-            
-            .hero-title {
-                font-size: 4rem; /* Título más grande e impactante */
             }
 
-            /* La barra roja ya es infinita por defecto con el .navbar-wrapper */
+            /* FIX BARRA DE NAVEGACIÓN INFINITA EN ESCRITORIO */
+            /* Esto se elimina para usar el wrapper global que funciona mejor */
+            
+            /* Ajuste para que los badges no toquen la foto en PC */
+            .trust-badges {
+                margin-top: 20px; /* AJUSTE: Separación de 20px en escritorio */
+                width: 100%;
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
 
         @media (max-width: 768px) {
