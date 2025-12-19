@@ -519,13 +519,13 @@
         .review-author { font-weight: 800; color: var(--brand-red); font-size: 0.9rem; margin-top: auto; }
 
         /* =========================================
-           PÁGINA HISTORIA (DISEÑO EDITORIAL PREMIUM)
+           PÁGINA HISTORIA (DISEÑO EDITORIAL COMPACTO)
            ========================================= */
 
         .history-container {
             max-width: 850px; 
             margin: -40px auto 40px; /* MANTENIDO: Margen negativo para subirlo al máximo */
-            padding: 40px;
+            padding: 25px 30px 30px; /* REDUCIDO: Menos relleno interno */
             text-align: center;
             background: #ffffff;
             border-radius: 24px;
@@ -540,7 +540,7 @@
             width: 100%;
             max-width: 380px; 
             height: auto;
-            margin: 0 auto 35px;
+            margin: 0 auto 15px; /* REDUCIDO: De 20px a 15px */
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 12px 24px rgba(0,0,0,0.12);
@@ -551,9 +551,9 @@
         /* Marco de fotos horizontales (Integradas) */
         .history-photo-frame.landscape {
             max-width: 100%;
-            margin: 40px 0;
+            margin: 15px 0; /* REDUCIDO: De 20px a 15px para pegarlas al texto */
             border-radius: 16px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             border: none;
             outline: none;
             overflow: hidden;
@@ -576,11 +576,11 @@
         }
         
         .history-text {
-            font-size: 1.15rem;
-            line-height: 1.7; 
+            font-size: 1.1rem; /* Ajuste leve de tamaño */
+            line-height: 1.6; /* REDUCIDO: Líneas más juntas */
             color: #4a4a4a; 
             text-align: left; 
-            padding: 0 10px;
+            padding: 0 5px; /* REDUCIDO: Menos padding lateral */
         }
         
         /* Resaltado de frases clave */
@@ -592,17 +592,17 @@
         /* Letra Capital (Drop Cap) */
         .history-text p:first-of-type::first-letter {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
+            font-size: 4rem; /* Un poco más pequeña para encajar mejor */
             color: var(--brand-red);
             float: left;
             line-height: 0.8;
-            margin-right: 15px;
-            margin-top: 8px;
+            margin-right: 12px;
+            margin-top: 6px;
             font-weight: 700;
         }
 
         .history-text p {
-            margin-bottom: 25px; 
+            margin-bottom: 12px; /* REDUCIDO: De 20px a 12px. Párrafos más pegados. */
         }
         
         /* Línea decorativa final */
@@ -610,7 +610,7 @@
             width: 60px;
             height: 2px;
             background: var(--brand-gold);
-            margin: 40px auto 20px;
+            margin: 20px auto 15px; /* REDUCIDO */
             border-radius: 2px;
             opacity: 0.7;
         }
@@ -618,7 +618,7 @@
         /* Botón inferior clásico RESTAURADO */
         .back-btn {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 15px; /* REDUCIDO */
             padding: 12px 30px;
             background: var(--brand-dark);
             color: white;
@@ -851,6 +851,28 @@
             .hero-title { font-size: 1.7rem; }
             .hero-subtitle { font-size: 0.9rem; }
             .hero-content { padding: 10px; }
+            
+            /* --- OPTIMIZACIÓN MÓVIL PARA HISTORIA --- */
+            .history-container {
+                padding: 25px 20px 30px; /* Menos espacio a los lados en celular */
+                margin-top: -20px; /* Ajuste para que no se pegue tanto arriba en móvil */
+                border-radius: 20px;
+            }
+            .history-text {
+                font-size: 1.05rem; /* Tamaño de lectura ideal para móvil */
+                padding: 0; /* Aprovechar todo el ancho */
+            }
+            .history-text p:first-of-type::first-letter {
+                font-size: 3.5rem; /* Letra capital ajustada */
+                margin-right: 10px;
+                margin-top: 4px;
+            }
+            .history-photo-frame {
+                margin-bottom: 20px; /* Un poco más de aire entre foto y texto en móvil */
+            }
+            .contact-section {
+                padding: 30px 15px 50px;
+            }
         }
     </style>
 </head>
