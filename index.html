@@ -916,7 +916,7 @@
 
             /* AJUSTE EXCLUSIVO ESCRITORIO: Logo pegado a la izquierda */
             .nav-logo {
-                margin-left: -100px; /* AJUSTE FINAL: Empujado mucho más a la izquierda (-100px) */
+                margin-left: -40px; /* AJUSTADO: Un poco menos de margen (-40px) para que no se pegue tanto */
             }
 
             /* AJUSTE EXCLUSIVO ESCRITORIO: Botones pegados a la derecha */
@@ -977,7 +977,8 @@
                 right: 50%;
                 margin-left: -50vw;
                 margin-right: -50vw;
-                padding-left: 0; /* Eliminamos el padding lateral para que llegue al borde */
+                /* REVERTIDO: Vuelven a tener padding para que las tarjetas no toquen los bordes */
+                padding-left: 0; 
                 padding-right: 0;
             }
             
@@ -991,14 +992,11 @@
             /* Ajuste específico para que el carrusel aproveche el ancho pero se vea ordenado */
             .carousel-container {
                 width: 100%;
-                /* CAMBIO: Padding lateral de 50px para crear el "borde blanco" de respiro a los lados */
+                /* REVERTIDO: Padding original, sin espacios extraños */
                 padding: 0 40px 40px; 
             }
             
-            /* CAMBIO: Aumentar el espacio entre tarjetas en PC para que "respiren" y no se vean pegadas */
-            .carousel-track {
-                gap: 40px; 
-            }
+            /* REVERTIDO: El espacio entre tarjetas vuelve a ser el estándar (definido por .carousel-track arriba) */
             
             /* Flechas pegadas a los bordes de la pantalla */
             .nav-arrow.prev { left: 20px; }
@@ -1036,12 +1034,8 @@
                 padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px));
             }
 
-            /* AJUSTE TARJETAS EN ESCRITORIO (ORIGINALES) */
-            .product-card {
-                width: 270px !important;
-                min-width: 270px !important;
-            }
-            /* Eliminé las reglas que ponían borde blanco o cambiaban el tamaño */
+            /* REVERTIDO: Eliminadas las reglas que forzaban tamaños y bordes blancos en las tarjetas de escritorio.
+               Ahora usan las clases generales y se verán igual que en el celular (grandes y sin marco). */
 
             /* Quitar sombra del contenedor principal en PC para que no se vea cortado */
             .app-container {
