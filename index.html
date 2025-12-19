@@ -964,12 +964,7 @@
                 /* Truco matemático para mantener los íconos centrados en 1200px aunque la franja sea infinita */
                 padding-left: max(10px, calc((100vw - 1200px) / 2 + 10px));
                 padding-right: max(10px, calc((100vw - 1200px) / 2 + 10px));
-                
-                border-bottom: 1px solid #eee; /* Línea sutil para separar */
-                z-index: 5;
-            }
-
-            /* FIX DEFINITIVO: Carruseles de Borde a Borde en PC (Sin espacios blancos laterales) */
+            /* FIX DEFINITIVO: Carruseles de Borde a Borde en PC con RESPIRO */
             .products-section, .reviews-section {
                 width: 100vw;
                 position: relative;
@@ -977,7 +972,6 @@
                 right: 50%;
                 margin-left: -50vw;
                 margin-right: -50vw;
-                /* REVERTIDO: Vuelven a tener padding para que las tarjetas no toquen los bordes */
                 padding-left: 0; 
                 padding-right: 0;
             }
@@ -985,18 +979,24 @@
             /* AJUSTE: Reducir espacio superior del título para subir los productos */
             .section-title {
                 max-width: 1200px;
-                margin: 0 auto 20px; /* Reducido de 30px */
-                padding-top: 20px; /* Reducido drásticamente de 40px para ganar espacio */
+                margin: 0 auto 20px; 
+                padding-top: 20px; 
             }
 
-            /* Ajuste específico para que el carrusel aproveche el ancho pero se vea ordenado */
+            /* Ajuste específico para que el carrusel aproveche el ancho pero con MARGEN VISIBLE */
             .carousel-container {
                 width: 100%;
-                /* REVERTIDO: Padding original, sin espacios extraños */
-                padding: 0 40px 40px; 
+                /* CAMBIO CLAVE: Padding derecho extra grande (100px o 10%) para que siempre quede hueco */
+                padding: 0 40px 40px 40px; 
+                /* Opcional: Centrar el contenido si son pocos productos */
+                /* display: flex; justify-content: center; */ 
             }
             
-            /* REVERTIDO: El espacio entre tarjetas vuelve a ser el estándar (definido por .carousel-track arriba) */
+            /* Asegurar que el track tenga espacio entre elementos */
+            .carousel-track {
+                gap: 30px; /* Espacio consistente entre chorizos */
+                padding-right: 100px; /* Margen derecho interno extra para el scroll final */
+            }
             
             /* Flechas pegadas a los bordes de la pantalla */
             .nav-arrow.prev { left: 20px; }
