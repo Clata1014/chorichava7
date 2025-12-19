@@ -159,9 +159,9 @@
         /* Menú Móvil */
         .mobile-menu {
             position: fixed;
-            top: 0; /* Cubre toda la pantalla ahora */
+            top: 0;
             right: -100%;
-            width: 100%; /* Pantalla completa para mejor UX */
+            width: 100%;
             height: 100vh;
             background: rgba(26, 26, 26, 0.98);
             backdrop-filter: blur(10px);
@@ -187,7 +187,6 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón cerrar menú (X) */
         .close-menu-btn {
             position: absolute;
             top: 25px;
@@ -477,7 +476,7 @@
         .buy-btn:active { transform: scale(0.95); }
         .buy-btn.added { background: #25D366; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
 
-        /* Botón estilo WhatsApp para cotizar (AJUSTADO) */
+        /* Botón estilo WhatsApp para cotizar */
         .whatsapp-quote-btn {
             background: linear-gradient(45deg, #25D366, #128C7E);
             box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
@@ -492,20 +491,19 @@
             filter: brightness(1.05);
         }
         
-        /* SECCIÓN RESEÑAS (CARRUSEL FIJO - VOLVIMOS A LO CLÁSICO) */
+        /* SECCIÓN RESEÑAS (CARRUSEL FIJO) */
         .reviews-section {
-            padding: 0 0 40px 0; /* QUITAMOS EL PADDING SUPERIOR (Estaba en 40px) */
+            padding: 0 0 40px 0;
             background: #fff;
-            margin-top: -10px; /* SUBIMOS LA SECCIÓN UN POQUITO MÁS */
+            margin-top: -10px;
         }
         
-        /* Tarjeta de reseña ajustada al mismo tamaño que productos (270px) para que no se vea "estirada" */
         .review-card {
             background: #f9f9f9;
             padding: 20px;
-            border-radius: 20px; /* Igual que products */
-            width: 270px; /* Ancho FIJO, igual que productos */
-            min-width: 270px; /* Para que no se encoja */
+            border-radius: 20px; 
+            width: 270px; 
+            min-width: 270px; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: center;
             border: 1px solid #eee;
@@ -513,61 +511,87 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 250px; /* Altura fija para uniformidad */
+            height: 250px; 
         }
         
         .review-stars { color: var(--brand-gold); font-size: 1.2rem; margin-bottom: 10px; }
         .review-text { font-style: italic; color: #555; font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5; }
         .review-author { font-weight: 800; color: var(--brand-red); font-size: 0.9rem; margin-top: auto; }
 
-        /* PÁGINA HISTORIA (DISEÑO MEJORADO Y DECORADO) */
+        /* =========================================
+           PÁGINA HISTORIA (DISEÑO EDITORIAL PREMIUM)
+           ========================================= */
+        
+        /* Nuevo botón superior de regreso */
+        .back-to-home-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: #f8f8f8;
+            color: var(--brand-dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .back-to-home-top:hover {
+            background-color: var(--brand-red);
+            color: white;
+            border-color: var(--brand-red);
+            transform: translateX(-3px);
+            box-shadow: 0 5px 15px rgba(74, 14, 14, 0.2);
+        }
+
         .history-container {
-            max-width: 900px;
-            margin: 10px auto 40px; 
-            padding: 30px 40px; /* Reduje el padding superior (antes 50px) */
+            max-width: 850px; 
+            margin: 0 auto 40px; /* MARGEN SUPERIOR ELIMINADO (0) para subirlo al máximo */
+            padding: 20px 40px 40px; /* Padding superior reducido a 20px */
             text-align: center;
             background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08); 
-            border: 1px solid #f0f0f0;
+            border-radius: 0 0 24px 24px; /* Bordes superiores rectos para pegar al navbar si se desea, o redondeados si flota */
+            /* Si prefieres que flote un poco separado pero muy arriba, usamos border-radius completo */
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.06); 
+            border: 1px solid rgba(0,0,0,0.04);
             position: relative;
+            overflow: hidden; 
         }
         
-        /* Se eliminaron las comillas decorativas de fondo */
-
+        /* Marco de foto vertical (Fundador) */
         .history-photo-frame {
             width: 100%;
-            max-width: 400px; 
+            max-width: 380px; 
             height: auto;
-            margin: 0 auto 20px; /* Reduje el margen inferior (antes 40px) para subir el texto */
-            border-radius: 15px;
+            margin: 0 auto 35px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(74, 14, 14, 0.15);
-            border: 8px solid white; 
-            outline: 1px solid #e5e5e5; 
-            position: relative;
-            z-index: 1;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            border: 4px solid white; 
+            outline: 1px solid #f0f0f0; 
         }
         
-        /* Estilo especial para fotos horizontales (tipo Polaroid en mesa) */
+        /* Marco de fotos horizontales (Integradas) */
         .history-photo-frame.landscape {
-            max-width: 650px; 
-            margin: 25px auto; /* Reduje significativamente el espacio (antes 50px) */
-            transform: rotate(-1deg); 
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27);
-        }
-        .history-photo-frame.landscape:hover {
-            transform: rotate(0deg) scale(1.02);
-            box-shadow: 0 20px 40px rgba(74, 14, 14, 0.2);
-            z-index: 2;
+            max-width: 100%;
+            margin: 40px 0;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border: none;
+            outline: none;
+            overflow: hidden;
         }
         
-        /* La última foto (Tulio) con rotación opuesta */
-        .history-photo-frame.landscape:last-of-type {
-            transform: rotate(1deg);
-        }
-        .history-photo-frame.landscape:last-of-type:hover {
-            transform: rotate(0deg) scale(1.02);
+        /* Para asegurar que la imagen llene el contenedor */
+        .history-photo-frame.landscape img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
         }
 
         .history-photo {
@@ -581,74 +605,53 @@
         
         .history-text {
             font-size: 1.15rem;
-            line-height: 1.6; /* Líneas un poco más juntas */
-            color: #555;
-            text-align: justify;
-            position: relative;
-            z-index: 1;
+            line-height: 1.7; /* Interlineado cómodo */
+            color: #4a4a4a; 
+            text-align: left; /* Alineación izquierda para mejor lectura */
             padding: 0 10px;
         }
         
-        /* Letra Capital (Drop Cap) elegante */
+        /* Resaltado de frases clave */
+        .history-highlight {
+            color: var(--brand-red);
+            font-weight: 700;
+        }
+        
+        /* Letra Capital (Drop Cap) */
         .history-text p:first-of-type::first-letter {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: 4.5rem;
             color: var(--brand-red);
             float: left;
             line-height: 0.8;
-            margin-right: 12px;
-            margin-top: 5px;
+            margin-right: 15px;
+            margin-top: 8px;
             font-weight: 700;
         }
 
         .history-text p {
-            margin-bottom: 15px; /* Reduje el espacio entre párrafos (antes 25px) */
+            margin-bottom: 25px; 
         }
         
-        /* Línea dorada decorativa final */
+        /* Línea decorativa final */
         .history-decoration-line {
-            width: 80px;
-            height: 3px;
+            width: 60px;
+            height: 2px;
             background: var(--brand-gold);
-            margin: 30px auto; /* Reducido */
+            margin: 40px auto 20px;
             border-radius: 2px;
+            opacity: 0.7;
         }
+        
+        .back-btn-bottom { display: none; } /* Ocultamos el botón de abajo viejo */
 
-        .back-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 25px;
-            background: var(--brand-dark);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .back-btn:hover { background: #333; }
-        .form-btn:hover { background: #601212; }
-
-        .contact-details {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .contact-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-        .contact-icon { font-size: 2.2rem; margin-bottom: 5px; }
-        .contact-label { font-weight: 600; color: var(--brand-dark); font-size: 1rem; }
-
-        /* Contacto y Formulario (RESTAURADO) */
+        /* Contacto y Formulario */
         .contact-section {
-            padding: 30px 20px 60px; /* Reduje el espacio superior a la mitad (antes 60px) */
+            padding: 30px 20px 60px;
             text-align: center;
             background: #FAFAFA;
             border-top: 1px solid #eee;
-            margin-top: -20px; /* Margen negativo para subir toda la sección */
+            margin-top: -20px;
         }
 
         .contact-title {
@@ -670,7 +673,7 @@
             background: white;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08); /* Sombra más suave y difusa */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
             max-width: 500px;
             margin: 0 auto 50px;
             text-align: left;
@@ -717,6 +720,18 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(74, 14, 14, 0.4);
         }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .contact-icon { font-size: 2.2rem; margin-bottom: 5px; }
+        .contact-label { font-weight: 600; color: var(--brand-dark); font-size: 1rem; }
 
         footer {
             background: var(--brand-dark);
@@ -1346,14 +1361,15 @@
         <!-- VISTA HISTORIA (NUEVA PAGINA OCULTA) -->
         <div id="history-view" class="view-section">
             <div class="history-container">
-                <!-- Botón Volver al Inicio (Arriba) -->
-                <div style="text-align: left; margin-bottom: 10px;">
-                    <a onclick="switchView('home')" style="cursor: pointer; color: var(--brand-red); font-weight: 700; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
+                
+                <!-- NUEVO BOTÓN SUPERIOR "VOLVER" MEJORADO -->
+                <div style="text-align: left;">
+                    <a onclick="switchView('home')" class="back-to-home-top" role="button">
                         ← Volver al Inicio
                     </a>
                 </div>
 
-                <h2 class="section-title">Nuestra <span>Historia</span></h2>
+                <h2 class="section-title" style="margin-top: 10px;">Nuestra <span>Historia</span></h2>
                 
                 <!-- FOTO DEL FUNDADOR (Vertical) -->
                 <div class="history-photo-frame">
@@ -1361,28 +1377,31 @@
                 </div>
 
                 <div class="history-text">
-                    <p>Detrás de cada gran sabor, hay una historia de dedicación. Todo comenzó hace más de 13 años, cuando <strong>Carlos Chavarriaga</strong> decidió transformar su pasión por la buena mesa en una marca que hoy es orgullo paisa: <strong>ChoriChava</strong>.</p>
+                    <p>Detrás de cada gran sabor, hay una historia de dedicación. Todo comenzó hace más de 13 años, cuando <strong>Carlos Chavarriaga</strong> decidió transformar su pasión por la buena mesa en una marca que hoy es orgullo paisa: <span class="history-highlight">ChoriChava</span>.</p>
                     <p>Lo que inició como un sueño emprendedor, tomó fuerza y estructura gracias al reconocimiento del programa <strong>Capital Semilla</strong> de la Alcaldía de Medellín. Este impulso permitió a la empresa crecer y perfeccionar sus procesos, logrando lo que pocos alcanzan: mantener la esencia 100% artesanal cumpliendo con los más altos estándares de calidad y seguridad, respaldados por su <strong>registro INVIMA</strong>.</p>
                     
-                    <!-- FOTO DE MUESTRA (Horizontal - Entre el texto) -->
+                    <!-- FOTO DE MUESTRA (Horizontal - Integrada estilo editorial) -->
                     <div class="history-photo-frame landscape">
-                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" alt="Muestra de Chorizos ChoriChava" class="history-photo">
+                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" alt="Muestra de Chorizos Artesanales ChoriChava" class="history-photo">
                     </div>
 
-                    <p>Esta constancia ha dado frutos deliciosos. La marca ha sido destacada por referentes gastronómicos como <strong>Tulio Recomienda</strong>, confirmando que cuando las cosas se hacen con amor y disciplina, se nota en el sabor. Hoy, más que un producto, ChoriChava lleva una experiencia completa a <strong>eventos y celebraciones</strong>, encargándose de brindar el auténtico sabor de la parrilla sin preocupaciones.</p>
+                    <p>Esta constancia ha dado frutos deliciosos. La marca ha sido destacada por referentes gastronómicos como <span class="history-highlight">Tulio Recomienda</span>, confirmando que cuando las cosas se hacen con amor y disciplina, se nota en el sabor. Hoy, más que un producto, ChoriChava lleva una experiencia completa a <strong>eventos y celebraciones</strong>, encargándose de brindar el auténtico sabor de la parrilla sin preocupaciones.</p>
                     
-                    <!-- FOTO TULIO RECOMIENDA -->
+                    <!-- FOTO TULIO RECOMIENDA (Horizontal - Integrada estilo editorial) -->
                     <div class="history-photo-frame landscape">
                         <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" alt="Reconocimiento Tulio Recomienda a ChoriChava" class="history-photo">
                     </div>
 
-                    <p>ChoriChava es tradición, es calidad y, sobre todo, es una familia trabajando para llevar lo mejor a la mesa de cada cliente.</p>
+                    <p style="text-align: center; font-weight: 600; font-size: 1.2rem; margin-top: 30px;">
+                        ChoriChava es tradición, es calidad y, sobre todo, es una familia trabajando para llevar lo mejor a la mesa de cada cliente.
+                    </p>
                     
                     <!-- Decoración final -->
                     <div class="history-decoration-line"></div>
                 </div>
 
-                <a onclick="switchView('home')" class="back-btn">← Volver al Inicio</a>
+                <!-- Botón inferior oculto por CSS (.back-btn-bottom { display: none; }) para usar solo el superior -->
+                <a onclick="switchView('home')" class="back-btn back-btn-bottom">← Volver al Inicio</a>
             </div>
         </div>
 
@@ -1464,7 +1483,14 @@
         function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
         function scrollCarousel(trackId, direction) {
             const track = document.getElementById(trackId);
-            if (track) track.scrollBy({ left: direction * 280, behavior: 'smooth' });
+            if (track) {
+                // Cálculo dinámico del ancho de tarjeta para scroll exacto
+                // Busca la primera tarjeta, ya sea de producto o de reseña
+                const firstCard = track.querySelector('.product-card') || track.querySelector('.review-card');
+                const scrollAmount = firstCard ? firstCard.offsetWidth + 20 : 280; // +20 por el gap
+                
+                track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+            }
         }
         function showToast(message) {
             const toast = document.getElementById('toast');
