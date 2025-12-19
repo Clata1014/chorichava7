@@ -899,11 +899,21 @@
            OPTIMIZACIÓN ESCRITORIO (SOLO PC/TABLET)
            ========================================= */
         @media (min-width: 769px) {
+            /* Truco para que el banner rompa la caja y ocupe TODO el ancho de la pantalla */
+            .hero-section {
+                width: 100vw; /* Ancho de la ventana completa */
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw; /* Centrado negativo para expandirse */
+                margin-right: -50vw;
+            }
+
             .hero-img {
-                /* Altura controlada en PC para que se vea el menú de abajo */
+                /* Altura controlada en PC para que se vea el menú de abajo sin scroll */
                 height: 65vh; 
                 width: 100%;
-                /* Ajuste perfecto de la imagen */
+                /* Ajuste perfecto de la imagen sin deformar */
                 object-fit: cover; 
                 object-position: center;
             }
