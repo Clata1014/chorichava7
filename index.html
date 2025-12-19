@@ -522,40 +522,14 @@
            PÁGINA HISTORIA (DISEÑO EDITORIAL PREMIUM)
            ========================================= */
         
-        /* Nuevo botón superior de regreso */
-        .back-to-home-top {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background-color: #f8f8f8;
-            color: var(--brand-dark);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border: 1px solid #e0e0e0;
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .back-to-home-top:hover {
-            background-color: var(--brand-red);
-            color: white;
-            border-color: var(--brand-red);
-            transform: translateX(-3px);
-            box-shadow: 0 5px 15px rgba(74, 14, 14, 0.2);
-        }
+        /* Se eliminó el estilo del botón superior nuevo (.back-to-home-top) */
 
         .history-container {
             max-width: 850px; 
-            margin: 0 auto 40px; /* MARGEN SUPERIOR ELIMINADO (0) para subirlo al máximo */
-            padding: 20px 40px 40px; /* Padding superior reducido a 20px */
+            margin: -40px auto 40px; /* MANTENIDO: Margen negativo para subirlo al máximo */
+            padding: 40px;
             text-align: center;
             background: #ffffff;
-            border-radius: 0 0 24px 24px; /* Bordes superiores rectos para pegar al navbar si se desea, o redondeados si flota */
-            /* Si prefieres que flote un poco separado pero muy arriba, usamos border-radius completo */
             border-radius: 24px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.06); 
             border: 1px solid rgba(0,0,0,0.04);
@@ -605,9 +579,9 @@
         
         .history-text {
             font-size: 1.15rem;
-            line-height: 1.7; /* Interlineado cómodo */
+            line-height: 1.7; 
             color: #4a4a4a; 
-            text-align: left; /* Alineación izquierda para mejor lectura */
+            text-align: left; 
             padding: 0 10px;
         }
         
@@ -643,7 +617,50 @@
             opacity: 0.7;
         }
         
-        .back-btn-bottom { display: none; } /* Ocultamos el botón de abajo viejo */
+        /* Botón inferior clásico RESTAURADO */
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--brand-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .back-btn:hover { 
+            background: #333; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+        
+        /* NUEVA FLECHA DE REGRESO SUPERIOR (Ajustada: Más abajo y con texto) */
+        .back-arrow-top {
+            position: absolute;
+            top: 50px; /* Bajado (antes 25px) para que no quede muy arriba */
+            left: 30px;
+            background: none;
+            border: none;
+            font-size: 1rem; /* Tamaño pequeño y discreto */
+            font-weight: 700;
+            color: var(--brand-dark); /* Color oscuro elegante */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px; /* Espacio entre flecha y texto */
+            font-family: 'Montserrat', sans-serif;
+        }
+        .back-arrow-top:hover {
+            color: var(--brand-red);
+            transform: translateX(-5px); /* Animación suave hacia atrás */
+        }
 
         /* Contacto y Formulario */
         .contact-section {
@@ -1362,12 +1379,8 @@
         <div id="history-view" class="view-section">
             <div class="history-container">
                 
-                <!-- NUEVO BOTÓN SUPERIOR "VOLVER" MEJORADO -->
-                <div style="text-align: left;">
-                    <a onclick="switchView('home')" class="back-to-home-top" role="button">
-                        ← Volver al Inicio
-                    </a>
-                </div>
+                <!-- NUEVA FLECHA DE REGRESO SUPERIOR (Con texto "Volver") -->
+                <button onclick="switchView('home')" class="back-arrow-top" aria-label="Volver al inicio">← Volver</button>
 
                 <h2 class="section-title" style="margin-top: 10px;">Nuestra <span>Historia</span></h2>
                 
@@ -1400,8 +1413,8 @@
                     <div class="history-decoration-line"></div>
                 </div>
 
-                <!-- Botón inferior oculto por CSS (.back-btn-bottom { display: none; }) para usar solo el superior -->
-                <a onclick="switchView('home')" class="back-btn back-btn-bottom">← Volver al Inicio</a>
+                <!-- Botón inferior clásico RESTAURADO -->
+                <a onclick="switchView('home')" class="back-btn">← Volver al Inicio</a>
             </div>
         </div>
 
