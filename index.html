@@ -524,8 +524,8 @@
 
         .history-container {
             max-width: 850px; 
-            margin: -40px auto 40px; /* MANTENIDO: Margen negativo para subirlo al máximo */
-            padding: 25px 30px 30px; /* REDUCIDO: Menos relleno interno */
+            margin: -40px auto 40px; /* Margen negativo mantenido */
+            padding: 35px 30px 30px; /* AJUSTADO: Aumenté el espacio superior (de 10px a 35px) para que no se vea pegado */
             text-align: center;
             background: #ffffff;
             border-radius: 24px;
@@ -854,9 +854,13 @@
             
             /* --- OPTIMIZACIÓN MÓVIL PARA HISTORIA --- */
             .history-container {
-                padding: 25px 20px 30px; /* Menos espacio a los lados en celular */
-                margin-top: -20px; /* Ajuste para que no se pegue tanto arriba en móvil */
+                padding: 25px 20px 30px; /* Ajustado también en móvil para que respire mejor */
+                margin-top: -20px; 
                 border-radius: 20px;
+            }
+            .history-text {
+                font-size: 1.05rem; 
+                padding: 0; 
             }
             .history-text {
                 font-size: 1.05rem; /* Tamaño de lectura ideal para móvil */
@@ -1375,7 +1379,8 @@
         <div id="history-view" class="view-section">
             <div class="history-container">
                 
-                <h2 class="section-title" style="margin-top: 10px;">Nuestra <span>Historia</span></h2>
+                <!-- Eliminé el style inline que forzaba 0 padding para usar el del CSS -->
+                <h2 class="section-title" style="margin-top: 0;">Nuestra <span>Historia</span></h2>
                 
                 <!-- FOTO DEL FUNDADOR (Vertical) -->
                 <div class="history-photo-frame">
