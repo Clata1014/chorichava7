@@ -919,31 +919,57 @@
             }
 
             .hero-img {
+                /* CAMBIO: Altura automática para respetar el formato de la foto y que se vea completa */
                 height: auto; 
                 width: 100%;
+                /* CAMBIO: contain asegura que se muestre TODO el contenido de la imagen */
                 object-fit: contain; 
                 object-position: center;
-                display: block; 
+                display: block; /* Elimina espacios fantasma debajo de la imagen */
             }
             
+            /* Título original centrado en escritorio */
             .hero-content {
                 width: 80%; 
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
 
+            /* FIX: Badges (Producto Colombiano) a Pantalla Completa en PC */
             .trust-badges {
                 margin-top: 0; 
-                width: 100vw; 
+                width: 100vw; /* Ancho total de la ventana */
                 position: relative;
                 left: 50%;
                 right: 50%;
-                margin-left: -50vw; 
+                margin-left: -50vw; /* Centrado negativo para expandirse */
                 margin-right: -50vw;
+                
+                /* Truco matemático para mantener los íconos centrados en 1200px aunque la franja sea infinita */
                 padding-left: max(10px, calc((100vw - 1200px) / 2 + 10px));
                 padding-right: max(10px, calc((100vw - 1200px) / 2 + 10px));
-                border-bottom: 1px solid #eee; 
+                
+                border-bottom: 1px solid #eee; /* Línea sutil para separar */
                 z-index: 5;
+            }
+
+            /* FIX DEFINITIVO: Carruseles de Borde a Borde en PC (Sin espacios blancos laterales) */
+            .products-section, .reviews-section {
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
+                padding-left: 0; /* Eliminamos el padding lateral para que llegue al borde */
+                padding-right: 0;
+            }
+            
+            /* AJUSTE: Reducir espacio superior del título para subir los productos */
+            .section-title {
+                max-width: 1200px;
+                margin: 0 auto 20px; /* Reducido de 30px */
+                padding-top: 20px; /* Reducido drásticamente de 40px para ganar espacio */
             }
 
             /* Ajuste específico para que el carrusel aproveche el ancho pero se vea ordenado */
@@ -958,8 +984,9 @@
 
             /* AJUSTE BADGES EN ESCRITORIO (MÁS GRANDES Y CON BANDERA) */
             .trust-badges .badge {
-                padding: 25px 15px; /* Más espacio interno */
+                padding: 15px; /* Reducido el padding vertical para ahorrar espacio */
                 min-height: 140px; /* Más altos */
+                justify-content: center; /* Asegurar centrado */
             }
             
             .trust-badges .badge span, 
@@ -967,7 +994,7 @@
                 font-size: 3.5rem; /* Íconos y emojis mucho más grandes (antes 2rem) */
                 width: 70px; /* Imagen de Tulio más grande */
                 height: 70px;
-                margin-bottom: 15px;
+                margin-bottom: 10px; /* Reducido el margen inferior */
             }
             
             .trust-badges .badge p {
@@ -1000,9 +1027,10 @@
                 transform: scale(1.1) !important; 
             }
 
+            /* Quitar sombra del contenedor principal en PC para que no se vea cortado */
             .app-container {
                 box-shadow: none;
-                background: transparent; 
+                background: transparent; /* Permitir que los fondos de secciones fluyan */
             }
         }
 
