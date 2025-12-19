@@ -854,13 +854,13 @@
             
             /* --- OPTIMIZACIÓN MÓVIL PARA HISTORIA --- */
             .history-container {
-                padding: 15px 20px 30px; /* Menos espacio a los lados en celular */
-                margin-top: -20px; /* Ajuste para que no se pegue tanto arriba en móvil */
+                padding: 50px 20px 30px; /* AUMENTADO: Mucho más espacio arriba para que la foto baje */
+                margin-top: 0; /* CAMBIADO: Quité el margen negativo para que el bloque baje completo */
                 border-radius: 20px;
             }
             .history-text {
-                font-size: 1.05rem; /* Tamaño de lectura ideal para móvil */
-                padding: 0; /* Aprovechar todo el ancho */
+                font-size: 1.05rem; 
+                padding: 0; 
             }
             .history-text p:first-of-type::first-letter {
                 font-size: 3.5rem; /* Letra capital ajustada */
