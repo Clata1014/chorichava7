@@ -952,6 +952,32 @@
                 border-bottom: 1px solid #eee; /* Línea sutil para separar */
                 z-index: 5;
             }
+
+            /* FIX: Secciones de contenido a Pantalla Completa en PC */
+            .products-section, .reviews-section, .contact-section, footer {
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
+                
+                /* Mantener contenido centrado visualmente en 1200px */
+                padding-left: max(20px, calc((100vw - 1200px) / 2 + 20px));
+                padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px));
+            }
+            
+            /* Ajuste específico para que el carrusel aproveche el ancho pero se vea ordenado */
+            .carousel-container {
+                padding-left: 0; /* Ya tiene padding el padre */
+                padding-right: 0;
+            }
+
+            /* Quitar sombra del contenedor principal en PC para que no se vea cortado */
+            .app-container {
+                box-shadow: none;
+                background: transparent; /* Permitir que los fondos de secciones fluyan */
+            }
         }
 
         @media (max-width: 768px) {
