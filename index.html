@@ -901,19 +901,17 @@
         @media (min-width: 769px) {
             /* Truco para que el banner rompa la caja y ocupe TODO el ancho de la pantalla */
             .hero-section {
-                width: 100vw; /* Ancho de la ventana completa */
+                width: 100vw;
                 position: relative;
                 left: 50%;
                 right: 50%;
-                margin-left: -50vw; /* Centrado negativo para expandirse */
+                margin-left: -50vw;
                 margin-right: -50vw;
             }
 
             .hero-img {
-                /* Altura controlada en PC para que se vea el menú de abajo sin scroll */
                 height: 65vh; 
                 width: 100%;
-                /* Ajuste perfecto de la imagen sin deformar */
                 object-fit: cover; 
                 object-position: center;
             }
@@ -924,16 +922,28 @@
                 transform: translate(-50%, -50%);
             }
 
-            /* NUEVO: Fix para que la barra roja TAMBIÉN ocupe todo el ancho en PC */
+            /* FIX BARRA DE NAVEGACIÓN INFINITA EN ESCRITORIO */
             .navbar {
-                width: 100vw;
-                position: sticky;
-                left: 50%;
-                margin-left: -50vw;
-                margin-right: -50vw;
-                /* Esto mantiene el logo y el carrito alineados con el contenido (max 1200px) */
-                padding-left: max(15px, calc((100vw - 1200px) / 2 + 15px));
-                padding-right: max(15px, calc((100vw - 1200px) / 2 + 15px));
+                /* Quitamos la sombra del contenedor limitado para que no se vea cortada */
+                box-shadow: none; 
+                overflow: visible; /* Permitir que el fondo se salga */
+                /* Aseguramos que el contenido siga centrado y limitado a 1200px */
+                max-width: 1200px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            /* Creamos un "telón" rojo gigante detrás de la barra que ocupe toda la pantalla */
+            .navbar::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -5000px; /* Se extiende muchísimo a la izquierda */
+                right: -5000px; /* Se extiende muchísimo a la derecha */
+                height: 100%;
+                background-color: var(--brand-red);
+                z-index: -1; /* Se pone detrás del logo y botones */
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* La sombra ahora va en el fondo infinito */
             }
         }
 
