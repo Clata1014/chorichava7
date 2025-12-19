@@ -521,8 +521,6 @@
         /* =========================================
            PÁGINA HISTORIA (DISEÑO EDITORIAL PREMIUM)
            ========================================= */
-        
-        /* Se eliminó el estilo del botón superior nuevo (.back-to-home-top) */
 
         .history-container {
             max-width: 850px; 
@@ -636,30 +634,6 @@
             background: #333; 
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-        }
-        
-        /* NUEVA FLECHA DE REGRESO SUPERIOR (Ajustada: Más abajo y con texto) */
-        .back-arrow-top {
-            position: absolute;
-            top: 50px; /* Bajado (antes 25px) para que no quede muy arriba */
-            left: 30px;
-            background: none;
-            border: none;
-            font-size: 1rem; /* Tamaño pequeño y discreto */
-            font-weight: 700;
-            color: var(--brand-dark); /* Color oscuro elegante */
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 100;
-            padding: 5px;
-            display: flex;
-            align-items: center;
-            gap: 6px; /* Espacio entre flecha y texto */
-            font-family: 'Montserrat', sans-serif;
-        }
-        .back-arrow-top:hover {
-            color: var(--brand-red);
-            transform: translateX(-5px); /* Animación suave hacia atrás */
         }
 
         /* Contacto y Formulario */
@@ -1379,9 +1353,6 @@
         <div id="history-view" class="view-section">
             <div class="history-container">
                 
-                <!-- NUEVA FLECHA DE REGRESO SUPERIOR (Con texto "Volver") -->
-                <button onclick="switchView('home')" class="back-arrow-top" aria-label="Volver al inicio">← Volver</button>
-
                 <h2 class="section-title" style="margin-top: 10px;">Nuestra <span>Historia</span></h2>
                 
                 <!-- FOTO DEL FUNDADOR (Vertical) -->
