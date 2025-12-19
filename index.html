@@ -919,79 +919,90 @@
             }
 
             .hero-img {
-                /* CAMBIO: Altura automática para respetar el formato de la foto y que se vea completa */
                 height: auto; 
                 width: 100%;
-                /* CAMBIO: contain asegura que se muestre TODO el contenido de la imagen */
                 object-fit: contain; 
                 object-position: center;
-                display: block; /* Elimina espacios fantasma debajo de la imagen */
+                display: block; 
             }
             
-            /* Título original centrado en escritorio */
             .hero-content {
                 width: 80%; 
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
 
-            /* FIX: Badges (Producto Colombiano) a Pantalla Completa en PC */
             .trust-badges {
                 margin-top: 0; 
-                width: 100vw; /* Ancho total de la ventana */
+                width: 100vw; 
                 position: relative;
                 left: 50%;
                 right: 50%;
-                margin-left: -50vw; /* Centrado negativo para expandirse */
+                margin-left: -50vw; 
                 margin-right: -50vw;
-                
-                /* Truco matemático para mantener los íconos centrados en 1200px aunque la franja sea infinita */
                 padding-left: max(10px, calc((100vw - 1200px) / 2 + 10px));
                 padding-right: max(10px, calc((100vw - 1200px) / 2 + 10px));
-                
-                border-bottom: 1px solid #eee; /* Línea sutil para separar */
+                border-bottom: 1px solid #eee; 
                 z-index: 5;
             }
 
-            /* FIX: Secciones de contenido a Pantalla Completa en PC */
-            .products-section, .reviews-section, .contact-section, footer {
+            /* FIX DEFINITIVO: Carruseles de Borde a Borde en PC (Sin espacios blancos laterales) */
+            .products-section, .reviews-section {
                 width: 100vw;
                 position: relative;
                 left: 50%;
                 right: 50%;
                 margin-left: -50vw;
                 margin-right: -50vw;
-                
-                /* Mantener contenido centrado visualmente en 1200px */
+                padding-left: 0; /* Eliminamos el padding lateral para que llegue al borde */
+                padding-right: 0;
+            }
+            
+            /* Pero mantenemos el título centrado y bonito */
+            .section-title {
+                max-width: 1200px;
+                margin: 0 auto 30px;
+                padding-top: 40px;
+            }
+
+            /* Ajuste del carrusel para que fluya libremente */
+            .carousel-container {
+                width: 100%;
+                padding: 0 40px 40px; /* Un poco de espacio para las flechas */
+            }
+            
+            /* Flechas pegadas a los bordes de la pantalla */
+            .nav-arrow.prev { left: 20px; }
+            .nav-arrow.next { right: 20px; }
+
+            /* Contacto y Footer sí los dejamos centrados/limitados para que no se vean raros tan anchos */
+            .contact-section, footer {
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
                 padding-left: max(20px, calc((100vw - 1200px) / 2 + 20px));
                 padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px));
             }
-            
-            /* Ajuste específico para que el carrusel aproveche el ancho pero se vea ordenado */
-            .carousel-container {
-                padding-left: 0; /* Ya tiene padding el padre */
-                padding-right: 0;
-            }
 
-            /* AJUSTE NUEVO: TARJETAS EN ESCRITORIO "SIN BLANCO" (COMO EN CELULAR) */
+            /* AJUSTE TARJETAS EN ESCRITORIO */
             .product-card {
-                /* Aseguramos que la tarjeta tenga el tamaño fijo correcto */
                 width: 270px !important;
                 min-width: 270px !important;
             }
             
             .card-image-box .product-photo {
-                /* Forzamos a que la imagen llene TODO el espacio disponible */
                 width: 100%;
                 height: 100%;
-                object-fit: cover !important; /* 'cover' elimina los espacios blancos rellenando la caja */
-                transform: scale(1.1) !important; /* Un pequeño zoom extra para asegurar bordes llenos */
+                object-fit: cover !important; 
+                transform: scale(1.1) !important; 
             }
 
-            /* Quitar sombra del contenedor principal en PC para que no se vea cortado */
             .app-container {
                 box-shadow: none;
-                background: transparent; /* Permitir que los fondos de secciones fluyan */
+                background: transparent; 
             }
         }
 
