@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="ChoriChava: Los mejores chorizos artesanales de Colombia. Línea gourmet, tradicional y más. Domicilios en Medellín y envíos nacionales.">
     
-    <!-- SEO & Open Graph -->
+    <!-- SEO & Open Graph (CORREGIDO) -->
     <meta property="og:title" content="ChoriChava | Chorizos Artesanales">
-    <meta property="og:desc+ontent="https://clata1014.github.io/chorichava7/Fondito.png">
+    <meta property="og:description" content="Los mejores chorizos artesanales de Colombia. Línea gourmet, tradicional y más.">
+    <meta property="og:image" content="https://clata1014.github.io/chorichava7/Fondito.png">
     <meta property="og:type" content="website">
 
     <title>ChoriChava | Chorizos Artesanales</title>
@@ -57,7 +58,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #F9F7F2; /* CAMBIO: De #FAFAFA a Crema Suave */
+            background-color: #F9F7F2;
             color: #2d2d2d;
             line-height: 1.4;
             overflow-x: hidden;
@@ -68,12 +69,11 @@
             --brand-gold: #FFD700;
             --brand-champagne: #F3E5AB; 
             --brand-dark: #1A1A1A;
-            --bg-cream: #F9F7F2; /* NUEVA VARIABLE: Color Crema */
+            --bg-cream: #F9F7F2;
             --card-shadow: 0 10px 25px rgba(0,0,0,0.08); 
             --card-hover-shadow: 0 20px 40px rgba(0,0,0,0.15); 
         }
 
-        /* Animación de entrada suave */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -89,7 +89,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            background: var(--bg-cream); /* CAMBIO: Fondo crema en vez de blanco */
+            background: var(--bg-cream);
             min-height: 100vh;
             box-shadow: 0 0 50px rgba(0,0,0,0.05);
             animation: fadeUp 0.8s ease-out;
@@ -98,7 +98,6 @@
             z-index: 1;
         }
 
-        /* Ocultar vistas para SPA */
         .view-section {
             display: none;
             animation: fadeUp 0.5s ease-out;
@@ -134,7 +133,7 @@
             height: 173px;
             width: auto;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-            margin-left: -64px; /* Ajuste 64px mantenido */
+            margin-left: -64px;
             margin-top: -15px;
             transition: transform 0.3s ease;
             cursor: pointer;
@@ -228,19 +227,17 @@
 
         .close-menu-btn {
             position: absolute;
-            top: 50px; /* AJUSTE: Más abajo para que no se tape */
-            right: 30px; /* AJUSTE: Un poco más adentro */
+            top: 50px;
+            right: 30px;
             background: none;
             border: none;
             color: white;
-            font-size: 1.8rem; /* AJUSTE: Más pequeña y delicada */
+            font-size: 1.8rem;
             cursor: pointer;
             transition: transform 0.3s;
             z-index: 2001;
         }
         .close-menu-btn:hover { transform: rotate(90deg); color: var(--brand-gold); }
-
-        /* ELIMINADO: Se quitó la clase .promo-bar como solicitaste */
 
         /* =========================================
            HERO SECTION
@@ -261,7 +258,7 @@
             filter: brightness(0.7);
         }
 
-        /* AJUSTE HERO SOLICITADO: Texto pequeño y abajo */
+        /* MANTENIDA LA ALTURA DEL BOTÓN ORIGINAL (75%) */
         .hero-content {
             position: absolute;
             top: 75%; 
@@ -287,8 +284,8 @@
         .hero-title span { color: var(--brand-gold); font-style: italic; }
 
         .hero-cta-btn {
-            background: #F3E5AB; /* Color Champaña */
-            color: #4A0E0E; /* Texto Rojo Vino */
+            background: #F3E5AB;
+            color: #4A0E0E;
             border: none;
             padding: 7px 15px; 
             font-size: 0.75rem; 
@@ -358,27 +355,26 @@
         /* Secciones de Productos */
         .products-section {
             padding: 20px 0 20px 0; 
-            background: transparent; /* CAMBIO: Transparente para heredar el crema */
-            border-bottom: 1px solid #e0dcd5; /* Borde más sutil */
+            background: transparent;
+            border-bottom: 1px solid #e0dcd5;
         }
 
-        /* CAMBIO: Alternar colores de fondo para que no se vea monótono */
         #gourmet {
-            background-color: #ffffff; /* Gourmet en Blanco para resaltar pureza/fino */
+            background-color: #ffffff;
             padding-top: 0 !important;
             margin-top: -20px; 
             border-top: none;
         }
 
         #tradicional {
-            background-color: var(--bg-cream); /* Tradicional en Crema para resaltar lo rústico */
+            background-color: var(--bg-cream);
             padding-top: 0 !important;
             margin-top: 0; 
             border-top: none;
         }
 
         #otros {
-            background-color: #ffffff; /* Otros en Blanco otra vez */
+            background-color: #ffffff;
             padding-top: 0 !important;
             margin-top: 0; 
             border-top: none;
@@ -577,12 +573,12 @@
         /* SECCIÓN RESEÑAS */
         .reviews-section {
             padding: 0 0 40px 0;
-            background: var(--bg-cream); /* Fondo crema */
+            background: var(--bg-cream);
             margin-top: -10px;
         }
         
         .review-card {
-            background: #ffffff; /* Tarjeta blanca para contrastar */
+            background: #ffffff;
             padding: 20px;
             border-radius: 20px; 
             width: 270px; 
@@ -751,13 +747,13 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.25);
         }
 
-        /* RESTAURADO: Estilos del Formulario y Contacto */
+        /* Contacto */
         .contact-section {
             padding: 30px 20px 60px;
             text-align: center;
-            background: #ffffff; /* Contacto en blanco para limpieza */
+            background: #ffffff; 
             border-top: 1px solid #eee;
-            margin-top: 0; /* Ajuste margen */
+            margin-top: 0; 
         }
 
         .contact-title {
@@ -869,8 +865,8 @@
             right: -100%;
             width: 100%;
             max-width: 400px;
-            height: 100vh; /* Fallback para navegadores viejos */
-            height: 100dvh; /* AJUSTE CLAVE: Altura dinámica para que no se oculte el botón en móviles */
+            height: 100vh;
+            height: 100dvh; 
             background: white;
             box-shadow: -5px 0 30px rgba(0,0,0,0.2);
             z-index: 2001;
@@ -886,20 +882,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative; /* IMPORTANTE: Para que la X se posicione respecto a esto */
+            position: relative; 
         }
         
         .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; }
         
-        /* AJUSTE: X del Carrito "Arribita" y visible */
         .close-cart { 
-            position: absolute; /* Flotando en la esquina */
-            top: 15px; /* Pegada arriba */
-            right: 20px; /* Pegada a la derecha */
+            position: absolute;
+            top: 15px; 
+            right: 20px; 
             background: none; 
             border: none; 
             color: white; 
-            font-size: 2.2rem; /* Tamaño grande para el dedo */
+            font-size: 2.2rem; 
             cursor: pointer; 
             padding: 0;
             line-height: 1;
@@ -916,6 +911,7 @@
         .remove-item { color: #ff4444; cursor: pointer; font-size: 1.2rem; margin-left: 10px; }
         .cart-footer { padding: 20px; border-top: 1px solid #eee; background: #f9f9f9; }
         .total-price { font-size: 1.2rem; font-weight: 800; color: var(--brand-dark); text-align: right; margin-bottom: 15px; }
+        
         .checkout-btn {
             display: block;
             width: 100%;
@@ -930,32 +926,87 @@
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
             border: none;
             cursor: pointer;
-            margin-top: 15px; /* Espacio arriba del botón final */
+            margin-top: 15px; 
         }
         
-        /* NUEVO: ESTILOS PARA LAS OPCIONES DE PAGO (CLEAN & GOURMET) */
+        /* ESTILOS MEJORADOS PARA OPCIONES DE PAGO */
         .payment-options {
             text-align: left;
             margin-top: 15px;
-            background: #fdfdfd;
+            background: #fff;
             border: 1px solid #eee;
             border-radius: 12px;
             padding: 10px;
         }
-        
-        .payment-option {
-            display: flex;
-            align-items: center;
-            margin: 8px 0;
-            cursor: pointer;
-            font-size: 0.95rem;
-            color: var(--brand-dark);
+
+        .payment-options-title {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
         
-        .payment-option input {
-            margin-right: 10px;
-            accent-color: var(--brand-red); /* Radio button color rojo marca */
-            transform: scale(1.2);
+        /* Ocultar el radio button real */
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+
+        .payment-option-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 12px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            background: #fdfdfd;
+            transition: all 0.2s ease;
+        }
+
+        /* Hover para Desktop */
+        .payment-option-label:hover {
+            background: #f9f9f9;
+            border-color: #d0d0d0;
+        }
+
+        /* Estilo cuando está seleccionado */
+        .payment-option input[type="radio"]:checked + .payment-option-label {
+            border-color: var(--brand-red);
+            background: #fff5f5;
+            box-shadow: 0 2px 5px rgba(74, 14, 14, 0.1);
+        }
+
+        .radio-circle {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            margin-right: 12px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .payment-option input[type="radio"]:checked + .payment-option-label .radio-circle {
+            border-color: var(--brand-red);
+        }
+
+        .payment-option input[type="radio"]:checked + .payment-option-label .radio-circle::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--brand-red);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .payment-text {
+            font-size: 0.95rem;
+            color: var(--brand-dark);
+            font-weight: 500;
         }
 
         .overlay {
@@ -1065,8 +1116,6 @@
                 </button>
             </div>
         </nav>
-        
-        <!-- ELIMINADO: Barra de promoción amarilla quitada del HTML -->
     </div>
 
     <div class="app-container">
@@ -1200,7 +1249,7 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN CONTACTO (RESTAURADA) -->
+            <!-- SECCIÓN CONTACTO -->
             <section class="contact-section" id="contacto">
                 <h2 class="contact-title">Contáctanos</h2>
                 <p class="contact-text">¿Tienes alguna duda o quieres hacer un pedido especial?</p>
@@ -1296,17 +1345,25 @@
                     <span id="totalPrice">$0</span>
                 </div>
                 
-                <!-- NUEVO SELECTOR DE PAGO INTEGRADO -->
+                <!-- SELECCIÓN DE PAGO MEJORADA VISUALMENTE -->
                 <div class="payment-options" id="paymentOptions">
-                    <div style="font-size:0.8rem; color:#999; margin-bottom:5px; font-weight:600;">ELIGE TU MÉTODO DE PAGO:</div>
-                    <label class="payment-option">
-                        <input type="radio" name="paymentMethod" value="wompi" checked>
-                        <span>Pagar Ahora en Línea (Wompi) 💳</span>
-                    </label>
-                    <label class="payment-option">
-                        <input type="radio" name="paymentMethod" value="cod">
-                        <span>Contra Entrega (Solo Medellín) 🛵</span>
-                    </label>
+                    <div class="payment-options-title">ELIGE TU MÉTODO DE PAGO:</div>
+                    
+                    <div class="payment-option">
+                        <input type="radio" name="paymentMethod" id="payWompi" value="wompi" checked>
+                        <label for="payWompi" class="payment-option-label">
+                            <span class="radio-circle"></span>
+                            <span class="payment-text">Pagar Ahora en Línea (Wompi) 💳</span>
+                        </label>
+                    </div>
+
+                    <div class="payment-option">
+                        <input type="radio" name="paymentMethod" id="payCod" value="cod">
+                        <label for="payCod" class="payment-option-label">
+                            <span class="radio-circle"></span>
+                            <span class="payment-text">Contra Entrega (Solo Medellín) 🛵</span>
+                        </label>
+                    </div>
                 </div>
 
                 <button class="checkout-btn" onclick="processCheckout()">Confirmar Pedido 🚀</button>
@@ -1344,6 +1401,9 @@
         window.onload = function() {
             const savedCart = localStorage.getItem('chorichava_cart');
             if (savedCart) { cart = JSON.parse(savedCart); updateCartUI(); }
+            
+            // Verificación inicial por si el carrito carga vacío
+            if (cart.length === 0) updateCartUI();
         }
 
         function saveCart() { localStorage.setItem('chorichava_cart', JSON.stringify(cart)); }
@@ -1411,26 +1471,26 @@
             }
 
             const checkoutBtn = document.querySelector('.checkout-btn');
-            const paymentOptionsDiv = document.getElementById('paymentOptions'); // Referencia al nuevo contenedor
+            const paymentOptionsDiv = document.getElementById('paymentOptions'); 
             
             if(cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p style="text-align:center; padding-top:40px; color:#999; font-size:1.1rem;">Tu carrito está vacío 🥺</p>';
                 
                 // Ocultar opciones de pago si está vacío
                 if(checkoutBtn) {
-                    checkoutBtn.style.display = 'block'; // Mostrar botón pero con otra función
+                    checkoutBtn.style.display = 'block'; 
                     checkoutBtn.innerText = "Pedir por WhatsApp 🚀";
                     checkoutBtn.onclick = checkoutWhatsApp;
                 }
-                if(paymentOptionsDiv) paymentOptionsDiv.style.display = 'none'; // Ocultar opciones
+                if(paymentOptionsDiv) paymentOptionsDiv.style.display = 'none'; 
                 
             } else {
                 if(checkoutBtn) {
                     checkoutBtn.style.display = 'block';
-                    checkoutBtn.innerText = "Confirmar Pedido 🚀"; // Texto genérico
-                    checkoutBtn.onclick = processCheckout; // Nueva función procesadora
+                    checkoutBtn.innerText = "Confirmar Pedido 🚀"; 
+                    checkoutBtn.onclick = processCheckout; 
                 }
-                if(paymentOptionsDiv) paymentOptionsDiv.style.display = 'block'; // Mostrar opciones
+                if(paymentOptionsDiv) paymentOptionsDiv.style.display = 'block'; 
                 
                 let html = '';
                 cart.forEach(item => {
@@ -1471,14 +1531,16 @@
 
         function checkoutWhatsApp() {
             if (cart.length === 0) { showToast("Agrega productos primero 😉"); return; }
-            // Redirige al home o abre whatsapp genérico
             window.location.href = `https://wa.me/${TELEFONO_WHATSAPP}`; 
         }
 
         function checkoutWompi() {
             if (cart.length === 0) { showToast("Agrega productos primero 😉"); return; }
             const totalPesos = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-            const totalCentavos = totalPesos * 100;
+            
+            // IMPORTANTE: Math.round para evitar decimales flotantes
+            const totalCentavos = Math.round(totalPesos * 100); 
+            
             const referenciaUnica = 'PEDIDO-' + Math.floor(Math.random() * 1000000);
             var checkout = new WidgetCheckout({
                 currency: 'COP',
@@ -1499,14 +1561,12 @@
             });
         }
         
-        // NUEVA FUNCIÓN: PAGO CONTRA ENTREGA
         function checkoutCOD() {
             if (cart.length === 0) { showToast("Agrega productos primero 😉"); return; }
             
             const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
             const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
             
-            // CAMBIO: Mensaje específico para Medellín en WhatsApp
             let message = "Hola ChoriChava 👋, quiero hacer un pedido *CONTRA ENTREGA (Medellín)*:\n\n";
             cart.forEach(item => {
                 message += `- ${item.qty}x ${item.name} (${currencyFormatter.format(item.price * item.qty)})\n`;
@@ -1542,9 +1602,6 @@
             const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
-        
-        // Asegurarse de que el carrito se actualice al cargar para ocultar botones si está vacío
-        // Modificación en window.onload original
     </script>
 </body>
 </html>
