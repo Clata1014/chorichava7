@@ -276,8 +276,8 @@
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 0.7rem; /* AJUSTE FINAL: Texto súper pequeño */
-            margin-bottom: 5px; /* Mínimo espacio */
+            font-size: 1.1rem; /* AJUSTE FINAL: Texto mucho más pequeño para desbloquear la vista (antes 2rem oculto) */
+            margin-bottom: 10px; 
             line-height: 1.1;
             text-shadow: 0 2px 5px rgba(0,0,0,0.9);
             color: #FFFFFF;
@@ -289,8 +289,8 @@
             background: #C5A059; /* CAMBIO: Dorado Antiguo/Mate */
             color: white; 
             border: none;
-            padding: 5px 12px; /* AJUSTE: Botón mini */
-            font-size: 0.6rem; /* AJUSTE: Letra de botón mini */
+            padding: 10px 22px; /* AJUSTE: Botón restaurado a tamaño cómodo */
+            font-size: 0.9rem; /* AJUSTE: Letra legible */
             font-weight: 600; 
             border-radius: 50px;
             cursor: pointer;
@@ -1126,7 +1126,8 @@
         }
 
         @media (max-width: 768px) {
-            .hero-title { font-size: 2rem; margin-bottom: 15px; }
+            /* AJUSTE: Eliminada la regla que forzaba la letra gigante (font-size: 2rem) */
+            /* Ahora la letra usará el tamaño 1.1rem definido arriba, mucho más pequeño */
             .hero-content { padding: 15px; width: 95%; }
 
             /* --- OPTIMIZACIÓN MÓVIL PARA HISTORIA --- */
