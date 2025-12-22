@@ -230,22 +230,31 @@
 
         .hero-content {
             position: absolute;
-            top: 40%; 
+            top: 40%;
             width: 100%;
             transform: translateY(-50%);
-            padding: 20px;
+            padding: 30px 20px;
             color: white;
             z-index: 2;
             line-height: 1.4;
             text-align: center;
+            /* Añade un degradado oscuro detrás del texto */
+            background: linear-gradient(to bottom,
+                rgba(0,0,0,0.7) 0%,
+                rgba(0,0,0,0.4) 100%);
+            border-radius: 15px;
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem; 
+            font-size: 3rem;
             margin-bottom: 10px;
             line-height: 1.1;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            /* Text-shadow más agresivo para mejor legibilidad */
+            text-shadow:
+                0 2px 4px rgba(0,0,0,0.8),
+                0 4px 8px rgba(0,0,0,0.6),
+                0 8px 16px rgba(0,0,0,0.4);
             color: #FFFFFF;
         }
 
