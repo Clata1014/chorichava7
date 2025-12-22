@@ -1065,6 +1065,14 @@
             .hero-title { font-size: 1.7rem; }
             .hero-subtitle { font-size: 0.9rem; }
             .hero-content { padding: 10px; }
+
+            /* Bandera más bonita en móvil */
+            #bandera-colombia {
+                content: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/320px-Flag_of_Colombia.svg.png');
+                border-radius: 8px !important;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                border: 2px solid #f0f0f0 !important;
+            }
             
             /* --- OPTIMIZACIÓN MÓVIL PARA HISTORIA --- */
             .history-container {
@@ -1138,16 +1146,14 @@
                     <img src="https://clata1014.github.io/chorichava7/Fondito.png" alt="Chorizos Artesanales ChoriChava" class="hero-img">
                 </picture>
 
-                <div class="hero-content">
-                    <h1 class="hero-title">El Arte del<br><span>Buen Chorizo</span></h1>
-                </div>
+                <!-- Texto del hero removido -->
             </header>
 
             <!-- BADGES -->
             <section class="trust-badges">
                 <div class="badge">
-                    <!-- CAMBIO: Reemplacé el emoji (que se ve como CO en Windows) por una IMAGEN real de la bandera -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Bandera de Colombia" style="object-fit: cover; border-radius: 5px; border: 1px solid #eee;">
+                    <!-- Bandera de Colombia (diferentes versiones para móvil y escritorio) -->
+                    <img id="bandera-colombia" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Bandera de Colombia" style="object-fit: cover; border-radius: 5px; border: 1px solid #eee;">
                     <p>Producto<br>Colombiano</p>
                 </div>
                 <div class="badge">
