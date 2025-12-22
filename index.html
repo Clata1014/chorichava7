@@ -239,19 +239,7 @@
         }
         .close-menu-btn:hover { transform: rotate(90deg); color: var(--brand-gold); }
 
-        /* NUEVO: BARRA DE PROMOCIÓN */
-        .promo-bar {
-            background-color: var(--brand-gold);
-            color: var(--brand-red);
-            text-align: center;
-            font-size: 0.85rem;
-            font-weight: 800;
-            padding: 8px;
-            width: 100%;
-            position: relative;
-            z-index: 999;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+        /* ELIMINADO: Se quitó la clase .promo-bar como solicitaste */
 
         /* =========================================
            HERO SECTION
@@ -864,7 +852,8 @@
             right: -100%;
             width: 100%;
             max-width: 400px;
-            height: 100vh;
+            height: 100vh; /* Fallback para navegadores viejos */
+            height: 100dvh; /* AJUSTE CLAVE: Altura dinámica para que no se oculte el botón en móviles */
             background: white;
             box-shadow: -5px 0 30px rgba(0,0,0,0.2);
             z-index: 2001;
@@ -880,10 +869,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative; /* IMPORTANTE: Para que la X se posicione respecto a esto */
         }
+        
         .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; }
-        /* REPARADO: Estilo de la X del carrito asegurado */
-        .close-cart { background: none; border: none; color: white; font-size: 2rem; cursor: pointer; padding: 0 10px; }
+        
+        /* AJUSTE: X del Carrito "Arribita" y visible */
+        .close-cart { 
+            position: absolute; /* Flotando en la esquina */
+            top: 15px; /* Pegada arriba */
+            right: 20px; /* Pegada a la derecha */
+            background: none; 
+            border: none; 
+            color: white; 
+            font-size: 2.2rem; /* Tamaño grande para el dedo */
+            cursor: pointer; 
+            padding: 0;
+            line-height: 1;
+            transition: transform 0.2s;
+        }
+        
+        .close-cart:hover { transform: scale(1.2) rotate(90deg); }
+
         .cart-items { flex: 1; padding: 20px; overflow-y: auto; }
         .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
         .cart-item-info { display: flex; flex-direction: column; }
@@ -1042,10 +1049,7 @@
             </div>
         </nav>
         
-        <!-- NUEVO: BARRA DE PROMOCIÓN CON CONTRA ENTREGA -->
-        <div class="promo-bar" id="promoBar">
-            🚚 Domicilio GRATIS (>5 unds) | 💵 Pago Contra Entrega (Solo Medellín)
-        </div>
+        <!-- ELIMINADO: Barra de promoción amarilla quitada del HTML -->
     </div>
 
     <div class="app-container">
