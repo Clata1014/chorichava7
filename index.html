@@ -24,13 +24,38 @@
     <!-- Script de Wompi para Pagos -->
     <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
 
+    <!-- DATOS ESTRUCTURADOS SEO (Schema.org) - Mejora #4 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ChoriChava",
+      "image": "https://clata1014.github.io/chorichava7/Fondito.png",
+      "telephone": "+573001234567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Medellín",
+        "addressLocality": "Medellín",
+        "addressRegion": "Antioquia",
+        "addressCountry": "CO"
+      },
+      "priceRange": "$$",
+      "servesCuisine": "Chorizos Artesanales, Parrilla",
+      "url": "https://clata1014.github.io/chorichava7/"
+    }
+    </script>
+
     <style>
         /* =========================================
            ESTILOS GENERALES
            ========================================= */
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            /* MEJORA #2: Esto evita que el menú fijo tape los títulos al hacer scroll en el cel */
+            scroll-padding-top: 80px; 
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -53,6 +78,13 @@
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Animación sutil para el botón del Hero */
+        @keyframes pulseBtn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .app-container {
@@ -81,12 +113,12 @@
            NAVBAR (AHORA GLOBAL Y FUERA DEL CONTAINER)
            ========================================= */
         .navbar-wrapper {
-            background-color: var(--brand-red);
+            background-color: var(--brand-dark); /* CAMBIO: Negro elegante en lugar de rojo */
             width: 100%;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         }
 
         .navbar {
@@ -104,7 +136,7 @@
             height: 173px;
             width: auto;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-            margin-left: -68px; /* Ajuste visual CELULAR */
+            margin-left: -64px; /* AJUSTE MICRO: 1px más a la derecha (-65px a -64px) */
             margin-top: -15px;
             transition: transform 0.3s ease;
             cursor: pointer;
@@ -172,7 +204,7 @@
             right: -100%;
             width: 100%;
             height: 100vh;
-            background: rgba(26, 26, 26, 0.98);
+            background: rgba(74, 14, 14, 0.98); /* CAMBIO: Fondo Rojo Corporativo para el menú abierto */
             backdrop-filter: blur(10px);
             transition: 0.4s ease;
             z-index: 2000;
@@ -225,14 +257,16 @@
             height: auto;
             display: block;
             object-fit: contain;
-            filter: brightness(0.85); 
+            filter: brightness(0.7); /* MEJORA: Oscurecido ligero para que el texto resalte en el cel */
         }
 
+        /* MEJORA #1: Texto y Botón sobre la imagen */
         .hero-content {
             position: absolute;
-            top: 40%;
-            width: 100%;
-            transform: translateY(-50%);
+            top: 50%; /* Centrado vertical */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
             padding: 20px;
             color: white;
             z-index: 2;
@@ -242,14 +276,36 @@
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             line-height: 1.1;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.9);
             color: #FFFFFF;
         }
 
-        .hero-title span { color: var(--brand-champagne); font-style: italic; }
+        .hero-title span { color: var(--brand-gold); font-style: italic; }
+
+        .hero-cta-btn {
+            background: #C5A059; /* CAMBIO: Dorado Antiguo/Mate (Más elegante, menos chillón) */
+            color: white; /* CAMBIO: Texto blanco para mejor contraste con este dorado */
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600; /* Un poco menos grueso para ser más fino */
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4); /* Sombra acorde al nuevo color */
+            text-transform: uppercase;
+            transition: all 0.3s;
+            animation: pulseBtn 2s infinite; 
+            letter-spacing: 1px; /* Un poco de espaciado para elegancia */
+        }
+        
+        .hero-cta-btn:hover {
+            transform: scale(1.05);
+            background: #d4b36e; /* Un poquito más claro al pasar el mouse */
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.6);
+        }
         
         /* Badges */
         .trust-badges {
@@ -304,6 +360,7 @@
             border-bottom: 1px solid #eee; 
         }
 
+        /* REVERTIDO: Espaciado original solicitado */
         #gourmet, #tradicional, #otros {
             padding-top: 0 !important;
             margin-top: -20px; 
@@ -914,7 +971,7 @@
 
             /* AJUSTE EXCLUSIVO ESCRITORIO: Logo pegado a la izquierda */
             .nav-logo {
-                margin-left: -58px; /* Ajuste desktop: 10px más hacia la izquierda que el ajuste previo */
+                margin-left: -55px; /* Ajuste desktop: También movido 3px a la derecha */
             }
 
             /* AJUSTE EXCLUSIVO ESCRITORIO: Botones pegados a la derecha */
@@ -948,6 +1005,8 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
+            
+            .hero-title { font-size: 4rem; } /* Más grande en PC */
 
             /* FIX: Badges (Producto Colombiano) a Pantalla Completa en PC */
             .trust-badges {
@@ -1062,9 +1121,8 @@
         }
 
         @media (max-width: 768px) {
-            .hero-title { font-size: 1.7rem; }
-            .hero-subtitle { font-size: 0.9rem; }
-            .hero-content { padding: 10px; }
+            .hero-title { font-size: 2rem; margin-bottom: 15px; }
+            .hero-content { padding: 15px; width: 95%; }
 
             /* --- OPTIMIZACIÓN MÓVIL PARA HISTORIA --- */
             .history-container {
@@ -1113,8 +1171,6 @@
 
     <div class="app-container">
 
-        <!-- (HEADER ELIMINADO DE AQUÍ PORQUE YA ESTÁ ARRIBA) -->
-
         <!-- MENU MÓVIL (Con Botón Cerrar) -->
         <div class="mobile-menu" id="mobileMenu">
             <button class="close-menu-btn" onclick="toggleMenu()">✕</button>
@@ -1128,17 +1184,19 @@
         <!-- VISTA HOME (Principal) -->
         <div id="home-view" class="view-section active">
 
-            <!-- HERO (CONFIGURADO PARA 2 FOTOS) -->
+            <!-- HERO (MEJORADO CON CTA) -->
             <header class="hero-section">
                 <picture>
-                    <!-- FOTO ESCRITORIO (Horizontal): Se muestra en pantallas grandes -->
                     <source media="(min-width: 769px)" srcset="https://github.com/Clata1014/chorichava7/blob/main/Banerescritorio.webp?raw=true">
-                    
-                    <!-- FOTO CELULAR (Vertical): Se muestra en móviles -->
                     <img src="https://clata1014.github.io/chorichava7/Fondito.png" alt="Chorizos Artesanales ChoriChava" class="hero-img">
                 </picture>
 
-                <!-- Texto del hero removido -->
+                <div class="hero-content">
+                    <h1 class="hero-title">Sabor <span>Artesanal</span> <br> a tu mesa</h1>
+                    <button class="hero-cta-btn" onclick="document.getElementById('gourmet').scrollIntoView()">
+                        Ver Menú & Pedir 🍖
+                    </button>
+                </div>
             </header>
 
             <!-- BADGES -->
@@ -1432,7 +1490,7 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN OTRAS DELICIAS -->
+            <!-- SECCIÓN OTRAS DELICIAS & KITS -->
             <section class="products-section" id="otros">
                 <h2 class="section-title">Otras <span>Delicias</span></h2>
 
@@ -1450,7 +1508,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h3 class="card-title" style="font-size: 1rem;">Bondiola de Cerdo Ahumada</h3>
-                                    <p class="card-desc">Corte de aguja de cerdo, marinado y madurado artesanalmente. Ahumado lento para una textura tierna y un marmoleo exquisito.</p>
+                                    <p class="card-desc">Corte de aguja de cerdo, marinado y madurado artesanalmente. Ahumado lento para una textura tierna.</p>
                                     <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
                                     <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Bondiola de Cerdo Ahumada')">Cotizar por WhatsApp 💬</button>
                                 </div>
@@ -1463,7 +1521,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h3 class="card-title">Cañón Ahumado</h3>
-                                    <p class="card-desc">Lomo de cerdo seleccionado, bajo en grasa, curado en salmuera de especias y ahumado con maderas nativas. Sabor suave y delicado.</p>
+                                    <p class="card-desc">Lomo de cerdo seleccionado, bajo en grasa, curado en salmuera de especias y ahumado con maderas nativas.</p>
                                     <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
                                     <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Cañón Ahumado')">Cotizar por WhatsApp 💬</button>
                                 </div>
@@ -1476,7 +1534,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h3 class="card-title">Papada Ahumada</h3>
-                                    <p class="card-desc">Papada de cerdo curada y ahumada. Textura untuosa y sabor intenso, ideal para aportar profundidad a guisos o disfrutar en finas lonjas.</p>
+                                    <p class="card-desc">Papada de cerdo curada y ahumada. Textura untuosa y sabor intenso, ideal para aportar profundidad a guisos.</p>
                                     <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
                                     <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Papada Ahumada')">Cotizar por WhatsApp 💬</button>
                                 </div>
@@ -1489,7 +1547,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h3 class="card-title">Panceta Ahumada</h3>
-                                    <p class="card-desc">Tocino carnudo sometido a un proceso de ahumado natural. Equilibrio perfecto entre carne y grasa, con un dorado irresistible.</p>
+                                    <p class="card-desc">Tocino carnudo sometido a un proceso de ahumado natural. Equilibrio perfecto entre carne y grasa.</p>
                                     <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
                                     <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Panceta Ahumada')">Cotizar por WhatsApp 💬</button>
                                 </div>
@@ -1502,7 +1560,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h3 class="card-title">Pernil Ahumado</h3>
-                                    <p class="card-desc">Pierna de cerdo ahumada, jugosa y tierna. Proceso de cocción lenta que resalta sus notas dulces y saladas. Lista para servir.</p>
+                                    <p class="card-desc">Pierna de cerdo ahumada, jugosa y tierna. Proceso de cocción lenta que resalta sus notas dulces y saladas.</p>
                                     <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
                                     <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Pernil Ahumado')">Cotizar por WhatsApp 💬</button>
                                 </div>
@@ -1515,7 +1573,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h3 class="card-title">Chistorra Española</h3>
-                                    <p class="card-desc">Embutido de origen navarro, delgado y de curación corta. Condimentado con pimentón y ajo. Intenso, ideal para tapear o asar.</p>
+                                    <p class="card-desc">Embutido de origen navarro, delgado y de curación corta. Condimentado con pimentón y ajo. Intenso.</p>
                                     <p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p>
                                     <button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Chistorra Española')">Cotizar por WhatsApp 💬</button>
                                 </div>
@@ -1780,8 +1838,16 @@
             totalPriceEl.innerText = currencyFormatter.format(total);
 
             const checkoutBtn = document.querySelector('.checkout-btn');
+            
+            // MEJORA: Carrito vacío inteligente - Botón visible en móvil
             if(cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p style="text-align:center; padding-top:40px; color:#999;">Tu carrito está vacío 🥺</p>';
+                cartItemsContainer.innerHTML = `
+                    <div style="text-align:center; padding-top:40px; display:flex; flex-direction:column; align-items:center; gap:20px;">
+                        <p style="color:#999; font-size:1.1rem;">Tu carrito está vacío 🥺</p>
+                        <button onclick="toggleCart(); document.getElementById('gourmet').scrollIntoView();" class="buy-btn" style="width:auto; padding:10px 25px; background:#4A0E0E; box-shadow:none;">
+                            Ir a Comprar 🏃
+                        </button>
+                    </div>`;
                 checkoutBtn.innerText = "Pedir por WhatsApp 🚀";
                 checkoutBtn.onclick = checkoutWhatsApp;
             } else {
