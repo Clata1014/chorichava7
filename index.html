@@ -113,12 +113,12 @@
            NAVBAR (AHORA GLOBAL Y FUERA DEL CONTAINER)
            ========================================= */
         .navbar-wrapper {
-            background-color: var(--brand-dark); /* CAMBIO: Negro elegante en lugar de rojo */
+            background-color: var(--brand-red); /* CAMBIO: Restaurado al Rojo Vino original */
             width: 100%;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .navbar {
@@ -276,8 +276,8 @@
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 1.7rem; /* AJUSTE: Más pequeño en móvil (antes 2.5rem) */
+            margin-bottom: 15px;
             line-height: 1.1;
             text-shadow: 0 4px 10px rgba(0,0,0,0.9);
             color: #FFFFFF;
@@ -286,24 +286,24 @@
         .hero-title span { color: var(--brand-gold); font-style: italic; }
 
         .hero-cta-btn {
-            background: #C5A059; /* CAMBIO: Dorado Antiguo/Mate (Más elegante, menos chillón) */
-            color: white; /* CAMBIO: Texto blanco para mejor contraste con este dorado */
+            background: #C5A059; /* CAMBIO: Dorado Antiguo/Mate */
+            color: white; 
             border: none;
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-weight: 600; /* Un poco menos grueso para ser más fino */
+            padding: 12px 24px; /* AJUSTE: Botón más delicado en móvil */
+            font-size: 0.9rem; /* AJUSTE: Letra más proporcionada */
+            font-weight: 600; 
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4); /* Sombra acorde al nuevo color */
+            box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4); 
             text-transform: uppercase;
             transition: all 0.3s;
             animation: pulseBtn 2s infinite; 
-            letter-spacing: 1px; /* Un poco de espaciado para elegancia */
+            letter-spacing: 1px; 
         }
         
         .hero-cta-btn:hover {
             transform: scale(1.05);
-            background: #d4b36e; /* Un poquito más claro al pasar el mouse */
+            background: #d4b36e; 
             box-shadow: 0 8px 25px rgba(197, 160, 89, 0.6);
         }
         
@@ -1006,7 +1006,12 @@
                 transform: translate(-50%, -50%);
             }
             
-            .hero-title { font-size: 4rem; } /* Más grande en PC */
+            .hero-title { font-size: 4rem; margin-bottom: 30px; } /* Grande en PC */
+
+            .hero-cta-btn {
+                padding: 18px 40px; /* Grande en PC */
+                font-size: 1.2rem;
+            }
 
             /* FIX: Badges (Producto Colombiano) a Pantalla Completa en PC */
             .trust-badges {
