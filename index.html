@@ -7,8 +7,7 @@
     
     <!-- SEO & Open Graph -->
     <meta property="og:title" content="ChoriChava | Chorizos Artesanales">
-    <meta property="og:description" content="Domicilios en Medellín.">
-    <meta property="og:image" content="https://clata1014.github.io/chorichava7/Fondito.png">
+    <meta property="og:desc+ontent="https://clata1014.github.io/chorichava7/Fondito.png">
     <meta property="og:type" content="website">
 
     <title>ChoriChava | Chorizos Artesanales</title>
@@ -228,16 +227,31 @@
 
         .close-menu-btn {
             position: absolute;
-            top: 55px;
-            right: 20px;
+            top: 50px; /* AJUSTE: Más abajo para que no se tape */
+            right: 30px; /* AJUSTE: Un poco más adentro */
             background: none;
             border: none;
             color: white;
-            font-size: 2rem;
+            font-size: 1.8rem; /* AJUSTE: Más pequeña y delicada */
             cursor: pointer;
             transition: transform 0.3s;
+            z-index: 2001;
         }
         .close-menu-btn:hover { transform: rotate(90deg); color: var(--brand-gold); }
+
+        /* NUEVO: BARRA DE PROMOCIÓN */
+        .promo-bar {
+            background-color: var(--brand-gold);
+            color: var(--brand-red);
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 8px;
+            width: 100%;
+            position: relative;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
         /* =========================================
            HERO SECTION
@@ -892,7 +906,34 @@
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
             border: none;
             cursor: pointer;
+            margin-top: 15px; /* Espacio arriba del botón final */
         }
+        
+        /* NUEVO: ESTILOS PARA LAS OPCIONES DE PAGO (CLEAN & GOURMET) */
+        .payment-options {
+            text-align: left;
+            margin-top: 15px;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 10px;
+        }
+        
+        .payment-option {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: var(--brand-dark);
+        }
+        
+        .payment-option input {
+            margin-right: 10px;
+            accent-color: var(--brand-red); /* Radio button color rojo marca */
+            transform: scale(1.2);
+        }
+
         .overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -1000,6 +1041,11 @@
                 </button>
             </div>
         </nav>
+        
+        <!-- NUEVO: BARRA DE PROMOCIÓN CON CONTRA ENTREGA -->
+        <div class="promo-bar" id="promoBar">
+            🚚 Domicilio GRATIS (>5 unds) | 💵 Pago Contra Entrega (Solo Medellín)
+        </div>
     </div>
 
     <div class="app-container">
@@ -1224,11 +1270,25 @@
                 <p style="text-align:center; padding-top:40px; color:#999; font-size:1.1rem;">Tu carrito está vacío 🥺</p>
             </div>
             <div class="cart-footer">
-                <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:800; font-size:1.2rem;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-weight:800; font-size:1.2rem;">
                     <span>Total:</span>
                     <span id="totalPrice">$0</span>
                 </div>
-                <button class="checkout-btn" onclick="checkout()">Pedir por WhatsApp 🚀</button>
+                
+                <!-- NUEVO SELECTOR DE PAGO INTEGRADO -->
+                <div class="payment-options" id="paymentOptions">
+                    <div style="font-size:0.8rem; color:#999; margin-bottom:5px; font-weight:600;">ELIGE TU MÉTODO DE PAGO:</div>
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="wompi" checked>
+                        <span>Pagar Ahora en Línea (Wompi) 💳</span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="cod">
+                        <span>Contra Entrega (Solo Medellín) 🛵</span>
+                    </label>
+                </div>
+
+                <button class="checkout-btn" onclick="processCheckout()">Confirmar Pedido 🚀</button>
             </div>
         </div>
 
@@ -1321,16 +1381,36 @@
             const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
             totalPriceEl.innerText = currencyFormatter.format(total);
 
+            // LOGICA DOMICILIO GRATIS
+            let freeShipMsg = "";
+            if (totalQty >= 5) {
+                freeShipMsg = `<div style="color:#25D366; font-weight:800; text-align:center; margin-top:10px; background:#e8f5e9; padding:8px; border-radius:10px;">¡Tienes Domicilio GRATIS! 🎉</div>`;
+            } else if (totalQty > 0) {
+                freeShipMsg = `<div style="color:#666; font-size:0.9rem; text-align:center; margin-top:10px;">Te faltan <b>${5 - totalQty}</b> unidades para domicilio GRATIS 🚚</div>`;
+            }
+
             const checkoutBtn = document.querySelector('.checkout-btn');
+            const paymentOptionsDiv = document.getElementById('paymentOptions'); // Referencia al nuevo contenedor
             
-            // REVERTIDO: Carrito clásico sin inventos raros
             if(cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p style="text-align:center; padding-top:40px; color:#999; font-size:1.1rem;">Tu carrito está vacío 🥺</p>';
-                checkoutBtn.innerText = "Pedir por WhatsApp 🚀";
-                checkoutBtn.onclick = checkoutWhatsApp;
+                
+                // Ocultar opciones de pago si está vacío
+                if(checkoutBtn) {
+                    checkoutBtn.style.display = 'block'; // Mostrar botón pero con otra función
+                    checkoutBtn.innerText = "Pedir por WhatsApp 🚀";
+                    checkoutBtn.onclick = checkoutWhatsApp;
+                }
+                if(paymentOptionsDiv) paymentOptionsDiv.style.display = 'none'; // Ocultar opciones
+                
             } else {
-                checkoutBtn.innerText = "Pagar Ahora 💳";
-                checkoutBtn.onclick = checkoutWompi; 
+                if(checkoutBtn) {
+                    checkoutBtn.style.display = 'block';
+                    checkoutBtn.innerText = "Confirmar Pedido 🚀"; // Texto genérico
+                    checkoutBtn.onclick = processCheckout; // Nueva función procesadora
+                }
+                if(paymentOptionsDiv) paymentOptionsDiv.style.display = 'block'; // Mostrar opciones
+                
                 let html = '';
                 cart.forEach(item => {
                     html += `
@@ -1345,7 +1425,7 @@
                         </div>
                     </div>`;
                 });
-                cartItemsContainer.innerHTML = html;
+                cartItemsContainer.innerHTML = html + freeShipMsg;
             }
         }
 
@@ -1354,9 +1434,24 @@
             document.getElementById('overlay').classList.toggle('active');
         }
 
+        // NUEVA FUNCIÓN MAESTRA DE CHECKOUT
+        function processCheckout() {
+            if (cart.length === 0) { showToast("Agrega productos primero 😉"); return; }
+
+            // Obtener la opción seleccionada
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+            if (selectedMethod === 'wompi') {
+                checkoutWompi();
+            } else {
+                checkoutCOD();
+            }
+        }
+
         function checkoutWhatsApp() {
             if (cart.length === 0) { showToast("Agrega productos primero 😉"); return; }
-            showToast("Usa el botón de Pagar 💳");
+            // Redirige al home o abre whatsapp genérico
+            window.location.href = `https://wa.me/${TELEFONO_WHATSAPP}`; 
         }
 
         function checkoutWompi() {
@@ -1382,6 +1477,31 @@
                 }
             });
         }
+        
+        // NUEVA FUNCIÓN: PAGO CONTRA ENTREGA
+        function checkoutCOD() {
+            if (cart.length === 0) { showToast("Agrega productos primero 😉"); return; }
+            
+            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            
+            // CAMBIO: Mensaje específico para Medellín en WhatsApp
+            let message = "Hola ChoriChava 👋, quiero hacer un pedido *CONTRA ENTREGA (Medellín)*:\n\n";
+            cart.forEach(item => {
+                message += `- ${item.qty}x ${item.name} (${currencyFormatter.format(item.price * item.qty)})\n`;
+            });
+            
+            message += `\n*Total: ${currencyFormatter.format(total)}*`;
+            
+            if (totalQty >= 5) {
+                message += "\n\n🎉 ¡Aplica para Domicilio GRATIS!";
+            } else {
+                message += "\n\n(Domicilio por cobrar)";
+            }
+            
+            const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
 
         function consultarPeso(nombreProducto) {
             const mensaje = `Hola ChoriChava 👋, estoy interesado en comprar *${nombreProducto}*. ¿Me podrían indicar el precio por peso y disponibilidad?`;
@@ -1401,6 +1521,9 @@
             const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
+        
+        // Asegurarse de que el carrito se actualice al cargar para ocultar botones si está vacío
+        // Modificación en window.onload original
     </script>
 </body>
 </html>
