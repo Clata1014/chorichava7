@@ -57,7 +57,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #FAFAFA;
+            background-color: #F9F7F2; /* CAMBIO: De #FAFAFA a Crema Suave */
             color: #2d2d2d;
             line-height: 1.4;
             overflow-x: hidden;
@@ -68,6 +68,7 @@
             --brand-gold: #FFD700;
             --brand-champagne: #F3E5AB; 
             --brand-dark: #1A1A1A;
+            --bg-cream: #F9F7F2; /* NUEVA VARIABLE: Color Crema */
             --card-shadow: 0 10px 25px rgba(0,0,0,0.08); 
             --card-hover-shadow: 0 20px 40px rgba(0,0,0,0.15); 
         }
@@ -88,7 +89,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            background: var(--bg-cream); /* CAMBIO: Fondo crema en vez de blanco */
             min-height: 100vh;
             box-shadow: 0 0 50px rgba(0,0,0,0.05);
             animation: fadeUp 0.8s ease-out;
@@ -357,13 +358,29 @@
         /* Secciones de Productos */
         .products-section {
             padding: 20px 0 20px 0; 
-            background: #FAFAFA;
-            border-bottom: 1px solid #eee; 
+            background: transparent; /* CAMBIO: Transparente para heredar el crema */
+            border-bottom: 1px solid #e0dcd5; /* Borde más sutil */
         }
 
-        #gourmet, #tradicional, #otros {
+        /* CAMBIO: Alternar colores de fondo para que no se vea monótono */
+        #gourmet {
+            background-color: #ffffff; /* Gourmet en Blanco para resaltar pureza/fino */
             padding-top: 0 !important;
             margin-top: -20px; 
+            border-top: none;
+        }
+
+        #tradicional {
+            background-color: var(--bg-cream); /* Tradicional en Crema para resaltar lo rústico */
+            padding-top: 0 !important;
+            margin-top: 0; 
+            border-top: none;
+        }
+
+        #otros {
+            background-color: #ffffff; /* Otros en Blanco otra vez */
+            padding-top: 0 !important;
+            margin-top: 0; 
             border-top: none;
         }
 
@@ -560,12 +577,12 @@
         /* SECCIÓN RESEÑAS */
         .reviews-section {
             padding: 0 0 40px 0;
-            background: #fff;
+            background: var(--bg-cream); /* Fondo crema */
             margin-top: -10px;
         }
         
         .review-card {
-            background: #f9f9f9;
+            background: #ffffff; /* Tarjeta blanca para contrastar */
             padding: 20px;
             border-radius: 20px; 
             width: 270px; 
@@ -738,9 +755,9 @@
         .contact-section {
             padding: 30px 20px 60px;
             text-align: center;
-            background: #FAFAFA;
+            background: #ffffff; /* Contacto en blanco para limpieza */
             border-top: 1px solid #eee;
-            margin-top: -20px;
+            margin-top: 0; /* Ajuste margen */
         }
 
         .contact-title {
