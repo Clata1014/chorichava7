@@ -237,10 +237,10 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón cerrar menú (AJUSTE MÓVIL SOLICITADO) */
+        /* Botón cerrar menú (AJUSTE MÓVIL SAGRADO) */
         .close-menu-btn {
             position: absolute;
-            top: 40px; /* Un poco más abajo de lo estándar pero no tanto */
+            top: 40px; /* Posición original que te gustaba */
             right: 30px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
@@ -352,6 +352,8 @@
             transition: transform 0.3s ease;
         }
 
+        .badge:hover { transform: translateY(-5px); } 
+
         .badge img, .badge span {
             font-size: 1.8rem; 
             margin-bottom: 5px;
@@ -369,8 +371,9 @@
         }
 
         /* =========================================
-           SECCIONES DE PRODUCTOS
+           SECCIONES DE PRODUCTOS - ESPACIADO ESTANDARIZADO
            ========================================= */
+        /* Aplicamos exactamente el mismo padding a las secciones principales */
         .products-section, .reviews-section {
             padding: 20px 0; 
             background: transparent;
@@ -378,6 +381,7 @@
             margin: 0;
         }
         
+        /* Sección contacto con ajustes para móvil */
         .contact-section {
             padding: 20px 20px 40px; 
             background: transparent;
@@ -396,6 +400,7 @@
             position: relative; 
         }
         
+        /* Títulos en tradicional */
         #tradicional .section-title { color: var(--brand-dark); }
         #tradicional .section-title span { color: var(--brand-red); }
 
@@ -886,6 +891,7 @@
             height: 100dvh; 
             background: white;
             box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            /* Z-INDEX EXTREMO para tapar todo */
             z-index: 100000; 
             transition: right 0.3s ease;
             display: flex;
@@ -1099,41 +1105,75 @@
             .nav-logo { margin-left: -55px; }
             .nav-actions { margin-right: -10px; }
             
-            /* Fondos Full Width pero contenido reseteado */
-            .hero-section, .trust-badges, .products-section, .reviews-section, .contact-section, footer { 
+            /* SOLUCIÓN ALINEACIÓN DEFINITIVA: 
+               1. El contenedor principal ocupa 100% de la pantalla
+               2. Los contenedores internos se limitan a 1200px y se centran
+            */
+            
+            .app-container {
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+            }
+
+            /* Reset de anchos para fondos */
+            .hero-section, .products-section, .reviews-section, .contact-section, footer { 
                 width: 100%;
-                left: auto;
-                right: auto;
                 margin-left: 0;
                 margin-right: 0;
                 padding-left: 0;
                 padding-right: 0;
             }
             
-            /* Contenido Centrado en 1200px */
-            .hero-content { width: 1200px; max-width: 100%; left: 50%; transform: translate(-50%, -50%); top: 40%; }
-            .hero-title { font-size: 4rem; margin-bottom: 30px; }
-            .hero-cta-btn { padding: 18px 40px; font-size: 1.2rem; }
-            
-            /* Wrapper Centrado para todo el contenido interno */
-            .carousel-wrapper, .form-box, .contact-details, .section-title, footer p, .social-icons, .trust-badges {
-                max-width: 1200px;
-                margin-left: auto;
-                margin-right: auto;
-                position: relative;
-            }
-            
+            /* AJUSTE SOLICITADO: Badges separados del Hero y Centrados */
             .trust-badges {
+                width: 100%;
+                max-width: 1200px; /* Ancho restringido para centrar contenido */
+                margin: 50px auto 20px auto !important; /* 50px arriba para bajar los botones */
                 display: flex;
                 justify-content: center;
                 gap: 20px;
-                padding: 20px 0;
+                padding: 0 20px; /* Padding interno seguro */
+                position: relative;
+                left: auto;
+                right: auto;
+                background: transparent; /* O white si se prefiere caja */
             }
 
-            /* Flechas pegadas al contenido */
-            .nav-arrow { position: absolute; z-index: 10; background: white; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+            /* CENTRADO DE CONTENIDOS INTERNOS (CARRUSELES) */
+            .hero-content { 
+                width: 1200px; 
+                max-width: 100%; 
+                left: 50%; 
+                top: 40%; 
+                transform: translate(-50%, -50%); 
+                position: absolute; 
+            }
+            
+            /* Carrusel y Títulos centrados en 1200px */
+            .carousel-wrapper, .form-box, .contact-details, .section-title {
+                max-width: 1200px;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                width: 100%;
+                position: relative; 
+            }
+            
+            .carousel-container { 
+                width: 100%; 
+                padding: 0 0 40px 0;
+            }
+            
+            .carousel-track { 
+                gap: 40px; 
+                padding-right: 0; 
+                justify-content: flex-start;
+            }
+
+            /* Flechas pegadas al carrusel */
             .nav-arrow.prev { left: -20px; }
             .nav-arrow.next { right: -20px; }
+            .nav-arrow { position: absolute; z-index: 10; background: white; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
             .trust-badges .badge { padding: 15px; min-height: 140px; justify-content: center; flex: 1; }
             .trust-badges .badge span, .trust-badges .badge img { font-size: 3.5rem; width: 70px; height: 70px; margin-bottom: 10px; }
@@ -1400,7 +1440,8 @@
                     <div style="font-size:3rem; margin-bottom:10px;">🍽️</div>
                     <p style="font-size:1.1rem;">Tu carrito está vacío</p>
                     <p style="font-size:0.85rem;">¡Antójate de algo rico!</p>
-                    <button class="checkout-btn" onclick="toggleCart()" style="margin-top:20px; width:auto; padding:10px 30px; font-size:0.9rem;">Volver al Menú</button>
+                    <!-- BOTÓN DE CERRAR EXTRA EN EL CONTENIDO VACÍO -->
+                    <button class="checkout-btn" onclick="toggleCart()" style="margin-top:20px; width:auto; padding:10px 30px; font-size:0.9rem;">Cerrar / Volver al Menú</button>
                 </div>
             </div>
             <div class="cart-footer">
