@@ -55,6 +55,7 @@
             scroll-behavior: smooth; 
             scroll-padding-top: 60px; 
             overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -64,6 +65,7 @@
             line-height: 1.4;
             overflow-x: hidden;
             width: 100%;
+            margin: 0; 
         }
 
         :root {
@@ -76,8 +78,6 @@
             /* COLORES "CUTE" */
             --card-bg-cute: #FFFBF2; 
             --card-border: #F0E6D2;  
-            
-            /* Sombra suave y cálida */
             --card-shadow: 0 12px 24px rgba(74, 14, 14, 0.06); 
             --card-hover-shadow: 0 15px 35px rgba(74, 14, 14, 0.12); 
         }
@@ -148,7 +148,8 @@
             height: 173px;
             width: auto;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-            margin-left: -64px;
+            /* Ajuste para móvil (NO TOCAR) */
+            margin-left: -64px; 
             margin-top: -15px;
             transition: transform 0.3s ease;
             cursor: pointer;
@@ -241,11 +242,11 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón cerrar menú (AJUSTE MÓVIL SAGRADO - 40px desde arriba para que se vea) */
+        /* Botón cerrar menú (AJUSTE MÓVIL SAGRADO - 30px) */
         .close-menu-btn {
             position: absolute;
-            top: 40px; 
-            right: 30px;
+            top: 30px; 
+            right: 25px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
             width: 50px;
@@ -1114,15 +1115,13 @@
            OPTIMIZACIÓN ESCRITORIO
            ========================================= */
         @media (min-width: 769px) {
-            /* AJUSTE SOLICITADO: Logo y menú a los extremos con padding mínimo */
             .navbar { 
-                max-width: none; /* Quitamos límite */
-                width: 100%;
-                padding: 0 5px; /* "Pegadito a la pared" - 5px visualmente */
-                margin: 0;
+                max-width: 100%; 
+                margin: 0; 
+                padding: 0 40px 0 5px; 
             }
-            .nav-logo { margin-left: 0; }
-            .nav-actions { margin-right: 0; }
+            .nav-logo { margin-left: -48px; } 
+            .nav-actions { margin-right: -16px; } /* AJUSTE AQUÍ: -16px a la derecha */
             
             /* SOLUCIÓN ALINEACIÓN DEFINITIVA */
             .app-container {
@@ -1154,9 +1153,9 @@
             
             /* BOTÓN GRANDE Y CENTRADO */
             .hero-cta-btn { 
-                padding: 25px 50px; 
-                font-size: 1.5rem; 
-                border-radius: 60px;
+                padding: 15px 40px; 
+                font-size: 1.2rem; 
+                border-radius: 50px;
             }
 
             /* "LA REGLA": Todos los bloques de contenido se centran en 1200px */
@@ -1176,6 +1175,7 @@
                 display: flex;
                 justify-content: center;
                 gap: 20px;
+                background: white;
             }
 
             /* Flechas pegadas al carrusel */
