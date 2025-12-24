@@ -242,18 +242,18 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón cerrar menú (AJUSTE MÓVIL SAGRADO - 30px) */
+        /* Botón cerrar menú (AJUSTE MÓVIL CORRECTO: 85px y más pequeño) */
         .close-menu-btn {
             position: absolute;
-            top: 30px; 
+            top: 85px; /* Bajado como solicitaste */
             right: 25px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
-            width: 50px;
-            height: 50px;
+            width: 40px; /* Reducido de 50px */
+            height: 40px; /* Reducido de 50px */
             border-radius: 50%; 
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.5rem; /* Reducido de 1.8rem */
             cursor: pointer;
             transition: all 0.3s;
             z-index: 2001;
@@ -925,7 +925,7 @@
         
         .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; }
         
-        /* Botón X del carrito PULIDO (AJUSTADO A 25px) */
+        /* Botón X del carrito */
         .close-cart { 
             position: absolute;
             top: 25px; 
@@ -1197,7 +1197,7 @@
             
             /* HISTORIA ESCRITORIO: ANCHA (1 COLUMNA) Y CENTRADA */
             .history-container {
-                max-width: 1200px; /* Ancho máximo 1200px como los productos */
+                max-width: 1000px; /* Más ancho que el original pero no full screen */
                 margin: 50px auto !important; /* Centrado automático */
                 padding: 60px;
                 display: block; /* 1 columna vertical */
