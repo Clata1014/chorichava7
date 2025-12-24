@@ -243,19 +243,32 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
+        /* CAMBIO: Botón de cerrar menú PULIDO y más abajo */
         .close-menu-btn {
             position: absolute;
-            top: 40px;
-            right: 25px;
-            background: none;
-            border: none;
+            top: 60px; /* Bajado para mejor visibilidad */
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1); /* Fondo sutil */
+            border: 2px solid rgba(255, 255, 255, 0.3); /* Borde elegante */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Redondo */
             color: white;
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s;
             z-index: 2001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 4px; /* Ajuste óptico */
         }
-        .close-menu-btn:hover { transform: rotate(90deg); color: var(--brand-gold); }
+        .close-menu-btn:hover { 
+            transform: rotate(90deg); 
+            background: white;
+            color: var(--brand-red);
+            border-color: white;
+        }
 
         /* =========================================
            HERO SECTION
@@ -374,7 +387,7 @@
            ========================================= */
         /* Aplicamos exactamente el mismo padding a las secciones principales */
         .products-section, .reviews-section {
-            padding: 20px 0 !important; 
+            padding: 20px 0 !important; /* Espacio idéntico arriba y abajo */
             background: transparent;
             border-bottom: none;
             margin: 0 !important;
@@ -391,6 +404,7 @@
 
         #gourmet {
             background-color: #ffffff;
+            /* Sin margen extra para subirla */
         }
 
         #tradicional {
@@ -423,7 +437,7 @@
             font-size: 2rem;
             margin-bottom: 20px;
             font-weight: 800;
-            padding-top: 0;
+            padding-top: 0; /* Sin padding extra arriba del título */
             margin-top: 0;
         }
 
