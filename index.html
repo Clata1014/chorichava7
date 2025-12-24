@@ -68,12 +68,16 @@
 
         :root {
             --brand-red: #4A0E0E;
+            /* Dorado elegante */
             --brand-gold: #D4AF37; 
             --brand-champagne: #F3E5AB; 
             --brand-dark: #1A1A1A;
             --bg-cream: #F9F7F2;
+            /* COLORES "CUTE" */
             --card-bg-cute: #FFFBF2; 
             --card-border: #F0E6D2;  
+            
+            /* Sombra suave y cálida */
             --card-shadow: 0 12px 24px rgba(74, 14, 14, 0.06); 
             --card-hover-shadow: 0 15px 35px rgba(74, 14, 14, 0.12); 
         }
@@ -110,6 +114,7 @@
             display: block;
         }
 
+        /* Clase para animar elementos al hacer scroll */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(20px); 
@@ -240,11 +245,11 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón de cerrar menú */
+        /* Botón de cerrar menú PULIDO y AJUSTADO */
         .close-menu-btn {
             position: absolute;
-            top: 85px; 
-            right: 30px;
+            top: 30px; /* Ajustado para que no quede ni muy arriba ni muy abajo */
+            right: 25px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
             width: 50px;
@@ -389,6 +394,7 @@
             margin: 0 !important;
         }
         
+        /* Sección contacto con ajustes para móvil */
         .contact-section {
             padding: 20px 20px 40px !important; 
             background: transparent;
@@ -407,6 +413,7 @@
             position: relative; 
         }
         
+        /* Títulos en tradicional */
         #tradicional .section-title { color: var(--brand-dark); }
         #tradicional .section-title span { color: var(--brand-red); }
 
