@@ -91,9 +91,11 @@
 
         .app-container {
             width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
             background: var(--bg-cream);
             min-height: 100vh;
+            box-shadow: 0 0 50px rgba(0,0,0,0.05);
             animation: fadeUp 0.8s ease-out;
             padding-bottom: 20px;
             position: relative;
@@ -128,7 +130,6 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(74, 14, 14, 0.3);
-            transition: opacity 0.3s; /* Transición suave para ocultar */
         }
 
         .navbar {
@@ -239,7 +240,7 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón de cerrar menú (INTACTO COMO PEDISTE) */
+        /* Botón de cerrar menú */
         .close-menu-btn {
             position: absolute;
             top: 85px; 
@@ -401,7 +402,8 @@
         }
 
         #tradicional {
-            background-color: var(--bg-cream);
+            /* CAMBIO: Fondo claro Crema Suave en vez de Vino Tinto */
+            background-color: var(--bg-cream); 
             position: relative; 
         }
         
@@ -488,7 +490,7 @@
         .nav-arrow.prev { left: 5px; }
         .nav-arrow.next { right: 5px; }
 
-        /* Tarjeta de Producto */
+        /* Tarjeta de Producto - ESTILO CUTE */
         .product-card {
             width: 270px;
             background: var(--card-bg-cute); 
@@ -1102,19 +1104,21 @@
         .toast-container.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         /* =========================================
-           OPTIMIZACIÓN ESCRITORIO
+           OPTIMIZACIÓN ESCRITORIO - CORRECCIÓN DE ALINEACIÓN
            ========================================= */
         @media (min-width: 769px) {
             .navbar { max-width: 100%; padding: 0 20px; }
             .nav-logo { margin-left: -55px; }
             .nav-actions { margin-right: -10px; }
             
-            /* ALINEACIÓN CORRECTA DE FONDO Y CONTENIDO */
+            /* CORRECCIÓN FINAL ESCRITORIO: ALINEACIÓN PERFECTA */
             .hero-section { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
             .hero-img { height: auto; width: 100%; object-fit: contain; object-position: center; display: block; }
             .hero-content { width: 80%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+            .hero-title { font-size: 4rem; margin-bottom: 30px; }
+            .hero-cta-btn { padding: 18px 40px; font-size: 1.2rem; }
             
-            /* Contenedores con fondo ancho pero contenido centrado en 1200px */
+            /* CONTENEDOR ANCHO COMPLETO */
             .trust-badges, .products-section, .reviews-section, .contact-section, footer { 
                 width: 100vw; 
                 position: relative; 
@@ -1122,18 +1126,30 @@
                 right: 50%; 
                 margin-left: -50vw; 
                 margin-right: -50vw; 
+                /* Padding importante para centrar el contenido interno */
                 padding-left: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
                 padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
             }
             
-            /* Asegurar que el contenido interno no se vaya a la derecha */
-            .carousel-wrapper, .form-box, .contact-details {
+            /* CARRUSEL CENTRADO */
+            .carousel-wrapper {
                 max-width: 1200px;
-                margin-left: auto;
-                margin-right: auto;
+                margin: 0 auto;
+                width: 100%;
             }
             
-            /* Flechas pegadas al bloque de contenido */
+            .carousel-container { 
+                width: 100%; 
+                padding: 0 0 40px 0; /* Sin padding lateral extra para alinear */
+            }
+            
+            .carousel-track { 
+                gap: 40px; 
+                padding-right: 0; 
+                justify-content: flex-start;
+            }
+
+            /* Flechas pegadas al borde del contenido (1200px) */
             .nav-arrow.prev { left: -20px; }
             .nav-arrow.next { right: -20px; }
 
