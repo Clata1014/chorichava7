@@ -128,6 +128,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(74, 14, 14, 0.3);
+            transition: opacity 0.3s; /* Transición suave para ocultar */
         }
 
         .navbar {
@@ -238,10 +239,10 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* CAMBIO: Botón de cerrar menú mucho MÁS ABAJO */
+        /* Botón de cerrar menú (INTACTO COMO PEDISTE) */
         .close-menu-btn {
             position: absolute;
-            top: 85px; /* Bajado para que no se superponga con nada */
+            top: 85px; 
             right: 30px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
@@ -343,13 +344,6 @@
             z-index: 5;
         }
 
-        /* Contenedor central para Escritorio */
-        .content-wrapper {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
         .badge {
             flex: 1;
             background: var(--card-bg-cute); 
@@ -392,7 +386,6 @@
             background: transparent;
             border-bottom: none;
             margin: 0 !important;
-            width: 100%;
         }
         
         .contact-section {
@@ -445,8 +438,6 @@
         .carousel-wrapper {
             position: relative;
             width: 100%;
-            max-width: 1200px; /* Asegura que el carrusel no se expanda más de 1200px */
-            margin: 0 auto;    /* Centra el carrusel en pantalla */
         }
 
         .carousel-container {
@@ -460,6 +451,7 @@
         }
         .carousel-container:active { cursor: grabbing; }
 
+        /* Barras de desplazamiento VISIBLES y grises */
         .carousel-container::-webkit-scrollbar { height: 6px; }
         .carousel-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
         .carousel-container::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 10px; }
@@ -804,7 +796,7 @@
             font-weight: 800;
             margin-bottom: 20px; 
         }
-
+        
         .form-box {
             background: white;
             padding: 40px;
@@ -903,12 +895,14 @@
             height: 100dvh; 
             background: white;
             box-shadow: -5px 0 30px rgba(0,0,0,0.2);
-            z-index: 3000; /* Z-INDEX ALTO para estar sobre todo */
+            /* Z-INDEX EXTREMO para tapar todo */
+            z-index: 100000; 
             transition: right 0.3s ease;
             display: flex;
             flex-direction: column;
         }
         .cart-modal.open { right: 0; }
+        
         .cart-header {
             padding: 20px;
             background: var(--brand-red);
@@ -921,7 +915,7 @@
         
         .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; }
         
-        /* CAMBIO: Botón X del carrito PULIDO */
+        /* Botón X del carrito PULIDO */
         .close-cart { 
             position: absolute;
             top: 15px; 
@@ -1059,7 +1053,8 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.5);
-            z-index: 2000;
+            /* Z-INDEX ALTO para tapar todo */
+            z-index: 99999; 
             display: none;
         }
         .overlay.active { display: block; }
@@ -1114,14 +1109,12 @@
             .nav-logo { margin-left: -55px; }
             .nav-actions { margin-right: -10px; }
             
-            /* CORRECCIÓN FINAL ESCRITORIO */
+            /* ALINEACIÓN CORRECTA DE FONDO Y CONTENIDO */
             .hero-section { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
             .hero-img { height: auto; width: 100%; object-fit: contain; object-position: center; display: block; }
             .hero-content { width: 80%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-            .hero-title { font-size: 4rem; margin-bottom: 30px; }
-            .hero-cta-btn { padding: 18px 40px; font-size: 1.2rem; }
             
-            /* Contenedores con fondo completo pero contenido centrado */
+            /* Contenedores con fondo ancho pero contenido centrado en 1200px */
             .trust-badges, .products-section, .reviews-section, .contact-section, footer { 
                 width: 100vw; 
                 position: relative; 
@@ -1129,30 +1122,18 @@
                 right: 50%; 
                 margin-left: -50vw; 
                 margin-right: -50vw; 
-                /* IMPORTANTE: Padding para centrar el contenido en 1200px */
                 padding-left: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
                 padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
             }
             
-            /* Carrusel centrado estrictamente */
-            .carousel-wrapper {
+            /* Asegurar que el contenido interno no se vaya a la derecha */
+            .carousel-wrapper, .form-box, .contact-details {
                 max-width: 1200px;
-                margin: 0 auto;
-                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
             }
             
-            .carousel-container { 
-                width: 100%; 
-                padding: 0 0 40px 0; /* Sin padding lateral extra */
-            }
-            
-            .carousel-track { 
-                gap: 40px; 
-                padding-right: 0; 
-                justify-content: flex-start;
-            }
-
-            /* Flechas pegadas al contenido */
+            /* Flechas pegadas al bloque de contenido */
             .nav-arrow.prev { left: -20px; }
             .nav-arrow.next { right: -20px; }
 
@@ -1656,8 +1637,19 @@
         }
 
         function toggleCart() {
-            document.getElementById('cartModal').classList.toggle('open');
-            document.getElementById('overlay').classList.toggle('active');
+            const modal = document.getElementById('cartModal');
+            const overlay = document.getElementById('overlay');
+            const navbar = document.querySelector('.navbar-wrapper');
+
+            modal.classList.toggle('open');
+            overlay.classList.toggle('active');
+
+            // Ocultar la barra de navegación para que no tape el carrito
+            if (modal.classList.contains('open')) {
+                navbar.style.display = 'none'; 
+            } else {
+                navbar.style.display = 'block';
+            }
         }
 
         // NUEVA FUNCIÓN MAESTRA DE CHECKOUT
