@@ -54,7 +54,7 @@
         html { 
             scroll-behavior: smooth; 
             scroll-padding-top: 60px; 
-            overflow-x: hidden; /* Previene scroll horizontal indeseado */
+            overflow-x: hidden;
         }
 
         body {
@@ -68,12 +68,16 @@
 
         :root {
             --brand-red: #4A0E0E;
+            /* Dorado elegante */
             --brand-gold: #D4AF37; 
             --brand-champagne: #F3E5AB; 
             --brand-dark: #1A1A1A;
             --bg-cream: #F9F7F2;
+            /* COLORES "CUTE" */
             --card-bg-cute: #FFFBF2; 
             --card-border: #F0E6D2;  
+            
+            /* Sombra suave y cálida */
             --card-shadow: 0 12px 24px rgba(74, 14, 14, 0.06); 
             --card-hover-shadow: 0 15px 35px rgba(74, 14, 14, 0.12); 
         }
@@ -241,10 +245,11 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
+        /* Botón de cerrar menú PULIDO y UBICADO CORRECTAMENTE */
         .close-menu-btn {
             position: absolute;
-            top: 60px; 
-            right: 30px;
+            top: 30px; /* Subida para mejor ubicación */
+            right: 25px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
             width: 50px;
@@ -389,6 +394,7 @@
             margin: 0 !important;
         }
         
+        /* Sección contacto con ajustes para móvil */
         .contact-section {
             padding: 20px 20px 40px !important; 
             background: transparent;
@@ -402,13 +408,14 @@
         }
 
         #tradicional {
-            /* Fondo Vino Tinto Original */
-            background-color: var(--brand-red); 
+            /* CAMBIO: Fondo claro Crema Suave en vez de Vino Tinto */
+            background-color: var(--bg-cream); 
             position: relative; 
         }
         
-        #tradicional .section-title { color: white; }
-        #tradicional .section-title span { color: var(--brand-gold); }
+        /* Títulos en tradicional */
+        #tradicional .section-title { color: var(--brand-dark); }
+        #tradicional .section-title span { color: var(--brand-red); }
 
         #otros {
             background-color: #ffffff;
@@ -459,11 +466,6 @@
         .carousel-container::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 10px; }
         .carousel-container::-webkit-scrollbar-thumb:hover { background: var(--brand-red); }
         
-        /* Ajuste scrollbar en sección oscura */
-        #tradicional .carousel-container::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); }
-        #tradicional .carousel-container::-webkit-scrollbar-thumb { background: #888888; }
-        #tradicional .carousel-container::-webkit-scrollbar-thumb:hover { background: #aaaaaa; }
-
         .carousel-track {
             display: flex;
             gap: 20px; 
@@ -495,7 +497,7 @@
         .nav-arrow.prev { left: 5px; }
         .nav-arrow.next { right: 5px; }
 
-        /* Tarjeta de Producto */
+        /* Tarjeta de Producto - ESTILO CUTE */
         .product-card {
             width: 270px;
             background: var(--card-bg-cute); 
@@ -925,8 +927,8 @@
             position: absolute;
             top: 15px; 
             right: 20px; 
-            background: rgba(255, 255, 255, 0.2); 
-            border: 2px solid rgba(255, 255, 255, 0.5); 
+            background: rgba(255, 255, 255, 0.15); 
+            border: 2px solid rgba(255, 255, 255, 0.4); 
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -1106,7 +1108,7 @@
         .toast-container.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         /* =========================================
-           OPTIMIZACIÓN ESCRITORIO
+           OPTIMIZACIÓN ESCRITORIO - CORRECCIÓN DE ALINEACIÓN
            ========================================= */
         @media (min-width: 769px) {
             .navbar { max-width: 100%; padding: 0 20px; }
@@ -1114,11 +1116,13 @@
             .nav-actions { margin-right: -10px; }
             
             /* CORRECCIÓN FINAL ESCRITORIO: ALINEACIÓN PERFECTA */
-            /* El truco del 100vw se mantiene solo para los fondos, pero el contenido se limita */
             .hero-section { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
             .hero-img { height: auto; width: 100%; object-fit: contain; object-position: center; display: block; }
             .hero-content { width: 80%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+            .hero-title { font-size: 4rem; margin-bottom: 30px; }
+            .hero-cta-btn { padding: 18px 40px; font-size: 1.2rem; }
             
+            /* CONTENEDOR ANCHO COMPLETO */
             .trust-badges, .products-section, .reviews-section, .contact-section, footer { 
                 width: 100vw; 
                 position: relative; 
@@ -1131,7 +1135,7 @@
                 padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
             }
             
-            /* El carrusel se fuerza a respetar el ancho y centrarse */
+            /* CARRUSEL CENTRADO */
             .carousel-wrapper {
                 max-width: 1200px;
                 margin: 0 auto;
@@ -1143,6 +1147,12 @@
                 padding: 0 0 40px 0; /* Sin padding lateral extra para alinear */
             }
             
+            .carousel-track { 
+                gap: 40px; 
+                padding-right: 0; 
+                justify-content: flex-start;
+            }
+
             /* Flechas pegadas al borde del contenido (1200px) */
             .nav-arrow.prev { left: -20px; }
             .nav-arrow.next { right: -20px; }
@@ -1498,6 +1508,11 @@
 
             document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
         }
+
+        // Función para Scroll to Top
+        window.onscroll = function() {
+            // Eliminada la función para mostrar la flecha
+        };
 
         // Función para arrastrar carrusel en Desktop (Mouse Drag)
         function setupDragScroll() {
