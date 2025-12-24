@@ -1174,7 +1174,7 @@
             .trust-badges {
                 max-width: 1600px;
                 margin: 0 auto !important; /* Centrado estricto */
-                padding: 20px 40px; /* AUMENTADO EL MARGEN LATERAL A 40px (Aprox 1cm) */
+                padding: 20px 25px; /* Margen lateral estandarizado a 25px */
                 display: flex;
                 justify-content: center;
                 gap: 20px;
@@ -1195,9 +1195,12 @@
             .product-card:hover .product-photo { transform: scale(1.35) !important; }
             
             /* Padding lateral interno */
-            /* AUMENTADO EL MARGEN LATERAL A 40px (Aprox 1cm) */
-            .products-section, .reviews-section { padding-left: 40px; padding-right: 40px; }
-            
+            /* Margen lateral estandarizado a 25px */
+            .products-section, .reviews-section { padding-left: 25px; padding-right: 25px; }
+
+            /* Eliminar padding lateral del carousel-track en desktop para respetar márgenes */
+            .carousel-track { padding-left: 0; padding-right: 0; }
+
             /* HISTORIA ESCRITORIO: ANCHA (1 COLUMNA) Y CENTRADA */
             .history-container {
                 max-width: 1400px; /* Aumentado a 1400px para pantalla ancha */
