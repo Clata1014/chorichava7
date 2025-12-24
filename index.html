@@ -1156,6 +1156,11 @@
                 justify-content: flex-start;
             }
 
+            .products-section .carousel-track {
+                justify-content: center;
+                margin: 0 auto;
+            }
+
             /* Flechas pegadas al borde del contenido (1200px) */
             .nav-arrow.prev { left: -20px; }
             .nav-arrow.next { right: -20px; }
@@ -1180,6 +1185,32 @@
             .history-quote { font-size: 1.2rem; margin: 20px 0; }
             
             .form-box { padding: 25px; } 
+        }
+
+        @media (min-width: 1024px) {
+            .app-container {
+                width: 100%;
+                max-width: none;
+                margin: 0 auto;
+            }
+
+            .products-section .carousel-track {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .product-card {
+                width: 320px !important;
+                min-width: 320px !important;
+            }
+
+            .trust-badges {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                width: 100%;
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
