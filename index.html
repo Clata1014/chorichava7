@@ -1170,38 +1170,57 @@
                 position: relative; 
             }
             
-            /* Ajuste específico para Trust Badges flexbox */
+            /* Ajuste específico para Trust Badges flexbox - VERSIÓN COMPACTA */
             .trust-badges {
-                max-width: 1600px;
-                margin: 0 auto !important; /* Centrado estricto */
-                padding: 20px 18px; /* Margen lateral optimizado a 18px */
+                max-width: 1200px; /* Ancho reducido para que se vean juntos */
+                margin: 0 auto !important; 
+                padding: 10px 18px; /* Menos padding vertical */
                 display: flex;
                 justify-content: center;
-                gap: 20px;
+                gap: 15px;
                 background: white;
             }
 
             /* Flechas pegadas al carrusel */
-            .nav-arrow.prev { left: 0px; } /* Ajustado al padding */
+            .nav-arrow.prev { left: 0px; } 
             .nav-arrow.next { right: 0px; }
             .nav-arrow { position: absolute; z-index: 10; background: white; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
-            .trust-badges .badge { padding: 15px; min-height: 140px; justify-content: center; flex: 1; }
-            .trust-badges .badge span, .trust-badges .badge img { font-size: 3.5rem; margin-bottom: 10px; }
-            .trust-badges .badge img { width: 70px; height: 70px; }
-            .trust-badges .badge p { font-size: 0.9rem; letter-spacing: 0.5px; }
+            /* Badges más pequeños y compactos */
+            .trust-badges .badge { 
+                padding: 10px; 
+                min-height: auto; /* Quitar altura forzada */
+                justify-content: center; 
+                flex: 1; 
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            /* Reducción drástica de tamaños para escritorio */
+            .trust-badges .badge span, .trust-badges .badge img { 
+                font-size: 2rem; /* Antes 3.5rem */
+                margin-bottom: 5px; /* Antes 10px */
+            }
+            .trust-badges .badge img { 
+                width: 40px; /* Antes 70px */
+                height: 40px; /* Antes 70px */
+            }
+            .trust-badges .badge p { 
+                font-size: 0.8rem; /* Antes 0.9rem */
+                letter-spacing: 0.5px; 
+            }
 
-            /* Asegurar visualización de bandera colombiana en desktop */
+            /* Asegurar visualización de bandera colombiana en desktop - Tamaño ajustado */
             .trust-badges .badge:first-child span {
                 display: inline-block !important;
-                font-size: 0 !important; /* Ocultar el emoji que no se renderiza */
-                width: 70px;
-                height: 70px;
+                font-size: 0 !important; 
+                width: 40px; /* Ajustado */
+                height: 40px; /* Ajustado */
                 background-image: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png');
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                margin-bottom: 10px;
+                margin-bottom: 5px;
             }
 
             /* Tarjetas de productos agrandadas para mejor visualización en desktop */
