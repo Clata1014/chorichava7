@@ -68,12 +68,16 @@
 
         :root {
             --brand-red: #4A0E0E;
+            /* Dorado elegante */
             --brand-gold: #D4AF37; 
             --brand-champagne: #F3E5AB; 
             --brand-dark: #1A1A1A;
             --bg-cream: #F9F7F2;
+            /* COLORES "CUTE" */
             --card-bg-cute: #FFFBF2; 
             --card-border: #F0E6D2;  
+            
+            /* Sombra suave y cálida */
             --card-shadow: 0 12px 24px rgba(74, 14, 14, 0.06); 
             --card-hover-shadow: 0 15px 35px rgba(74, 14, 14, 0.12); 
         }
@@ -237,11 +241,11 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón cerrar menú (AJUSTE MÓVIL SAGRADO) */
+        /* Botón cerrar menú (MÓVIL) - Bajado a 85px como pediste */
         .close-menu-btn {
             position: absolute;
             top: 85px; 
-            right: 25px;
+            right: 30px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
             width: 50px;
@@ -399,7 +403,7 @@
         }
 
         #tradicional {
-            /* Fondo claro */
+            /* Fondo claro Crema Suave */
             background-color: var(--bg-cream); 
             position: relative; 
         }
@@ -457,6 +461,11 @@
         .carousel-container::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 10px; }
         .carousel-container::-webkit-scrollbar-thumb:hover { background: var(--brand-red); }
         
+        /* Ajuste scrollbar en sección oscura */
+        #tradicional .carousel-container::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); }
+        #tradicional .carousel-container::-webkit-scrollbar-thumb { background: #888888; }
+        #tradicional .carousel-container::-webkit-scrollbar-thumb:hover { background: #aaaaaa; }
+
         .carousel-track {
             display: flex;
             gap: 20px; 
@@ -1102,27 +1111,33 @@
         .toast-container.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         /* =========================================
-           OPTIMIZACIÓN ESCRITORIO - CORRECCIÓN DE ALINEACIÓN
+           OPTIMIZACIÓN ESCRITORIO
            ========================================= */
         @media (min-width: 769px) {
-            .navbar { max-width: 1200px; margin: 0 auto; padding: 0 5px; } /* Más pegado a los bordes */
+            .navbar { max-width: 1200px; margin: 0 auto; padding: 0 5px; } /* Pegado a los bordes */
             .nav-logo { margin-left: 0; }
             .nav-actions { margin-right: 0; }
             
-            /* CORRECCIÓN FINAL ESCRITORIO: ALINEACIÓN PERFECTA */
+            .app-container {
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+            }
+
             .hero-section { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
             .hero-img { height: auto; width: 100%; object-fit: contain; object-position: center; display: block; }
-            .hero-content { width: 80%; top: 80%; left: 50%; transform: translate(-50%, -50%); } /* Bajado mucho más */
+            /* Botón centrado, grande y más abajo */
+            .hero-content { width: 80%; top: 80%; left: 50%; transform: translate(-50%, -50%); } 
             .hero-title { font-size: 4rem; margin-bottom: 30px; }
             
-            /* Botón Hero más pequeño y abajo */
+            /* BOTÓN GRANDE Y CENTRADO */
             .hero-cta-btn { 
-                padding: 15px 30px; 
-                font-size: 1.1rem; 
-                border-radius: 50px;
+                padding: 25px 50px; 
+                font-size: 1.5rem; 
+                border-radius: 60px;
             }
             
-            /* CONTENEDOR ANCHO COMPLETO */
+            /* Fondos Full Width pero contenido centrado */
             .trust-badges, .products-section, .reviews-section, .contact-section, footer { 
                 width: 100vw; 
                 position: relative; 
@@ -1130,35 +1145,32 @@
                 right: 50%; 
                 margin-left: -50vw; 
                 margin-right: -50vw; 
-                /* Padding importante para centrar el contenido interno */
                 padding-left: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
                 padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
             }
             
-            /* CARRUSEL CENTRADO */
-            .carousel-wrapper {
+            /* CONTENIDO INTERNO CENTRADO EN 1200PX (Bloqueo de movimiento) */
+            .carousel-wrapper, .form-box, .contact-details, .section-title {
                 max-width: 1200px;
-                margin: 0 auto;
+                margin-left: auto;
+                margin-right: auto;
                 width: 100%;
+                position: relative; 
             }
             
-            .carousel-container { 
-                width: 100%; 
-                padding: 0 0 40px 0; /* Sin padding lateral extra para alinear */
-            }
-            
-            .carousel-track { 
-                gap: 40px; 
-                padding-right: 0; 
-                justify-content: flex-start;
+            /* Trust Badges ajustados para no tener margen raro */
+            .trust-badges {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                padding: 20px 0;
+                margin-top: 0 !important; /* Sin margen superior raro */
             }
 
-            /* Flechas pegadas al borde del contenido (1200px) */
-            .nav-arrow.prev { left: -20px; }
-            .nav-arrow.next { right: -20px; }
-            
-            /* Badges arreglados sin margen raro */
-            .trust-badges { margin: 20px auto !important; padding: 20px 0; display: flex; justify-content: center; gap: 20px; }
+            .nav-arrow { position: absolute; z-index: 10; background: white; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+            .nav-arrow.prev { left: -10px; }
+            .nav-arrow.next { right: -10px; }
+
             .trust-badges .badge { padding: 15px; min-height: 140px; justify-content: center; flex: 1; }
             .trust-badges .badge span, .trust-badges .badge img { font-size: 3.5rem; width: 70px; height: 70px; margin-bottom: 10px; }
             .trust-badges .badge p { font-size: 0.9rem; letter-spacing: 0.5px; }
@@ -1166,7 +1178,8 @@
             .product-card { width: 270px !important; min-width: 270px !important; }
             .card-image-box .product-photo { width: 100%; height: 100%; object-fit: contain; transform: scale(1.28) !important; border: none !important; border-radius: 0; box-shadow: none; }
             .product-card:hover .product-photo { transform: scale(1.35) !important; }
-            .app-container { box-shadow: none; background: transparent; }
+            
+            .products-section { padding-left: 20px; padding-right: 20px; }
         }
 
         @media (max-width: 768px) {
@@ -1422,7 +1435,8 @@
                     <div style="font-size:3rem; margin-bottom:10px;">🍽️</div>
                     <p style="font-size:1.1rem;">Tu carrito está vacío</p>
                     <p style="font-size:0.85rem;">¡Antójate de algo rico!</p>
-                    <button class="checkout-btn" onclick="toggleCart()" style="margin-top:20px; width:auto; padding:10px 30px; font-size:0.9rem;">Volver al Menú</button>
+                    <!-- BOTÓN DE CERRAR EXTRA EN EL CONTENIDO VACÍO -->
+                    <button class="checkout-btn" onclick="toggleCart()" style="margin-top:20px; width:auto; padding:10px 30px; font-size:0.9rem;">Cerrar / Volver al Menú</button>
                 </div>
             </div>
             <div class="cart-footer">
