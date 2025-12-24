@@ -1191,6 +1191,13 @@
             .trust-badges .badge img { width: 70px; height: 70px; }
             .trust-badges .badge p { font-size: 0.9rem; letter-spacing: 0.5px; }
 
+            /* Asegurar visualización de bandera colombiana en desktop */
+            .trust-badges .badge:first-child span {
+                display: inline-block !important;
+                font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif !important;
+                line-height: 1 !important;
+            }
+
             /* Tarjetas de productos agrandadas para mejor visualización en desktop */
             .product-card { width: 350px !important; min-width: 350px !important; }
             .review-card { width: 350px !important; min-width: 350px !important; }
