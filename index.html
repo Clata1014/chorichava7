@@ -242,10 +242,10 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón cerrar menú (AJUSTE MÓVIL: BAJADO A 60PX - INTACTO) */
+        /* Botón cerrar menú (AJUSTE MÓVIL SAGRADO - 30px) */
         .close-menu-btn {
             position: absolute;
-            top: 60px; /* Bajado para mejor visibilidad */
+            top: 30px; 
             right: 25px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
@@ -1122,7 +1122,7 @@
                 padding: 0 40px 0 5px; /* Right 40px, Left 5px (Logo a la pared) */
             }
             .nav-logo { margin-left: -48px; } /* Pulling logo left by 48px */
-            .nav-actions { margin-right: -24px; } /* AJUSTE FINAL: -24px a la derecha */
+            .nav-actions { margin-right: -16px; } /* AJUSTE FINAL: -16px a la derecha */
             
             /* SOLUCIÓN ALINEACIÓN DEFINITIVA */
             .app-container {
@@ -1194,6 +1194,47 @@
             
             /* Padding lateral interno */
             .products-section { padding-left: 20px; padding-right: 20px; }
+            
+            /* HISTORIA ESCRITORIO: ANCHA (1 COLUMNA) Y CENTRADA */
+            .history-container {
+                max-width: 1200px; /* Ancho máximo 1200px como los productos */
+                margin: 50px auto !important; /* Centrado automático */
+                padding: 60px;
+                display: block; /* 1 columna vertical */
+                text-align: center; /* Centrado como en móvil */
+            }
+            
+            /* Reset de estilos de grid */
+            .history-container > .history-photo-frame, 
+            .history-container > .img-caption,
+            .history-text,
+            .back-btn {
+                grid-column: auto;
+                grid-row: auto;
+                width: auto;
+                margin: 0 auto;
+            }
+            
+            .history-photo-frame {
+                margin-bottom: 25px;
+                max-width: 450px; /* Imagen un poco más grande en escritorio */
+            }
+
+            .history-text {
+                padding-top: 20px;
+                text-align: left;
+                font-size: 1.1rem; /* Texto un poco más grande */
+            }
+            
+            /* AJUSTE ESCRITORIO: Botón X del menú más abajo en escritorio */
+            .close-menu-btn {
+                top: 85px !important; /* X del menú escritorio: BAJADA */
+            }
+            
+            /* AJUSTE ESCRITORIO: Botón X del carrito más abajo */
+            .close-cart {
+                top: 55px !important; /* X del carrito escritorio: BAJADA */
+            }
         }
 
         @media (max-width: 768px) {
