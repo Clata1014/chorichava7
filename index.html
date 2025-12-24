@@ -1188,17 +1188,28 @@
         }
 
         @media (min-width: 1024px) {
-            /* Neutraliza el offset causado por width: 100vw + left/right en desktop */
-            .trust-badges,
-            .products-section,
-            .reviews-section,
-            .contact-section,
-            footer {
+            .app-container {
                 width: 100%;
-                left: auto;
-                right: auto;
-                margin-left: 0;
-                margin-right: 0;
+                max-width: none;
+                margin: 0 auto;
+            }
+
+            .products-section .carousel-track {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .product-card {
+                width: 320px !important;
+                min-width: 320px !important;
+            }
+
+            .trust-badges {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                width: 100%;
+                margin: 0 auto;
             }
         }
     </style>
