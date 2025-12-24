@@ -242,7 +242,7 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón cerrar menú (AJUSTE MÓVIL: BAJADO A 60PX) */
+        /* Botón cerrar menú (AJUSTE MÓVIL: BAJADO A 60PX - INTACTO) */
         .close-menu-btn {
             position: absolute;
             top: 60px; /* Bajado para mejor visibilidad */
@@ -925,7 +925,7 @@
         
         .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; }
         
-        /* Botón X del carrito PULIDO (AJUSTADO A 25px para que se vea) */
+        /* Botón X del carrito PULIDO (AJUSTADO A 25px) */
         .close-cart { 
             position: absolute;
             top: 25px; 
@@ -1119,10 +1119,10 @@
             .navbar { 
                 max-width: 100%; /* Permitimos que se expanda */
                 margin: 0; 
-                padding: 0 40px 0 5px; 
+                padding: 0 40px 0 5px; /* Right 40px, Left 5px (Logo a la pared) */
             }
-            .nav-logo { margin-left: -48px; } 
-            .nav-actions { margin-right: -16px; } /* AJUSTE AQUÍ: -16px a la derecha */
+            .nav-logo { margin-left: -48px; } /* Pulling logo left by 48px */
+            .nav-actions { margin-right: -24px; } /* AJUSTE FINAL: -24px a la derecha */
             
             /* SOLUCIÓN ALINEACIÓN DEFINITIVA */
             .app-container {
@@ -1449,7 +1449,8 @@
                     <div style="font-size:3rem; margin-bottom:10px;">🍽️</div>
                     <p style="font-size:1.1rem;">Tu carrito está vacío</p>
                     <p style="font-size:0.85rem;">¡Antójate de algo rico!</p>
-                    <button class="checkout-btn" onclick="toggleCart()" style="margin-top:20px; width:auto; padding:10px 30px; font-size:0.9rem;">Volver al Menú</button>
+                    <!-- BOTÓN DE CERRAR EXTRA EN EL CONTENIDO VACÍO -->
+                    <button class="checkout-btn" onclick="toggleCart()" style="margin-top:20px; width:auto; padding:10px 30px; font-size:0.9rem;">Cerrar / Volver al Menú</button>
                 </div>
             </div>
             <div class="cart-footer">
