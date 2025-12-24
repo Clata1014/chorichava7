@@ -372,8 +372,9 @@
         /* =========================================
            SECCIONES DE PRODUCTOS - ESPACIADO ESTANDARIZADO
            ========================================= */
-        .products-section {
-            padding: 10px 0 !important; /* Reducido para subir el contenido */
+        /* Aplicamos exactamente el mismo padding a las 5 secciones principales */
+        .products-section, .reviews-section, .contact-section {
+            padding: 20px 0 !important; /* Espacio idéntico arriba y abajo */
             background: transparent;
             border-bottom: none;
             margin: 0 !important;
@@ -381,21 +382,31 @@
 
         #gourmet {
             background-color: #ffffff;
-            margin-top: 0;
+            /* Sin margen extra para subirla */
         }
 
         #tradicional {
-            /* CAMBIO: Vuelta al color Vino Tinto Original */
-            background-color: var(--brand-red); 
+            /* CAMBIO: Fondo claro Crema Suave en vez de Vino Tinto */
+            background-color: var(--bg-cream); 
             position: relative; 
         }
         
-        /* Títulos en fondo oscuro */
-        #tradicional .section-title { color: white; }
-        #tradicional .section-title span { color: var(--brand-gold); }
+        /* Ajuste: los títulos en tradicional ya no necesitan ser blancos */
+        #tradicional .section-title { color: var(--brand-dark); }
+        #tradicional .section-title span { color: var(--brand-red); }
 
         #otros {
             background-color: #ffffff;
+        }
+        
+        .reviews-section {
+            background-color: var(--bg-cream);
+        }
+        
+        .contact-section {
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+            padding-bottom: 40px !important; /* Un poco más abajo solo en contacto para el footer */
         }
 
         .section-title {
@@ -403,9 +414,9 @@
             font-family: 'Playfair Display', serif;
             color: var(--brand-dark);
             font-size: 2rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-weight: 800;
-            padding-top: 10px; /* Pequeño respiro arriba */
+            padding-top: 0; /* Sin padding extra arriba del título */
             margin-top: 0;
         }
 
@@ -428,14 +439,12 @@
         }
         .carousel-container:active { cursor: grabbing; }
 
-        /* CAMBIO: Barras de desplazamiento VISIBLES y grises */
+        /* Barras de desplazamiento VISIBLES y grises */
         .carousel-container::-webkit-scrollbar { height: 6px; }
         .carousel-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
         .carousel-container::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 10px; }
         .carousel-container::-webkit-scrollbar-thumb:hover { background: var(--brand-red); }
         
-        /* Eliminada la personalización de scrollbar para #tradicional */
-
         .carousel-track {
             display: flex;
             gap: 20px; 
@@ -445,7 +454,7 @@
 
         .nav-arrow {
             position: absolute;
-            top: 35%; /* Centrado visualmente con respecto a las tarjetas */
+            top: 35%; 
             transform: translateY(-50%);
             width: 40px;
             height: 40px;
@@ -594,13 +603,6 @@
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
             transform: translateY(-3px);
             filter: brightness(1.05);
-        }
-        
-        /* SECCIÓN RESEÑAS */
-        .reviews-section {
-            padding: 0 0 20px 0; 
-            background: var(--bg-cream);
-            margin-top: -10px;
         }
         
         .review-card {
@@ -775,14 +777,6 @@
         }
 
         /* Contacto */
-        .contact-section {
-            padding: 30px 20px 60px;
-            text-align: center;
-            background: #ffffff; 
-            border-top: 1px solid #eee;
-            margin-top: 0; 
-        }
-
         .contact-title {
             color: var(--brand-red);
             font-family: 'Playfair Display', serif;
@@ -1455,6 +1449,11 @@
 
             document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
         }
+
+        // Función para Scroll to Top
+        window.onscroll = function() {
+            // Eliminada la función para mostrar la flecha
+        };
 
         // Función para arrastrar carrusel en Desktop (Mouse Drag)
         function setupDragScroll() {
