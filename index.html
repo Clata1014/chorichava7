@@ -68,16 +68,12 @@
 
         :root {
             --brand-red: #4A0E0E;
-            /* Dorado elegante */
             --brand-gold: #D4AF37; 
             --brand-champagne: #F3E5AB; 
             --brand-dark: #1A1A1A;
             --bg-cream: #F9F7F2;
-            /* COLORES "CUTE" */
             --card-bg-cute: #FFFBF2; 
             --card-border: #F0E6D2;  
-            
-            /* Sombra suave y cálida */
             --card-shadow: 0 12px 24px rgba(74, 14, 14, 0.06); 
             --card-hover-shadow: 0 15px 35px rgba(74, 14, 14, 0.12); 
         }
@@ -245,10 +241,10 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón cerrar menú (AJUSTADO A POSICIÓN CORRECTA) */
+        /* Botón cerrar menú MÁS ABAJO (85px) */
         .close-menu-btn {
             position: absolute;
-            top: 30px; 
+            top: 85px; 
             right: 25px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
@@ -394,6 +390,7 @@
             margin: 0 !important;
         }
         
+        /* Sección contacto con ajustes para móvil */
         .contact-section {
             padding: 20px 20px 40px !important; 
             background: transparent;
@@ -407,14 +404,14 @@
         }
 
         #tradicional {
-            /* CAMBIO: VINO TINTO ORIGINAL (#4A0E0E) */
-            background-color: var(--brand-red); 
+            /* CAMBIO: RESTAURADO A COLOR CREMA (NO VINOTINTO) */
+            background-color: var(--bg-cream); 
             position: relative; 
         }
         
-        /* Títulos en tradicional BLANCOS (por fondo oscuro) */
-        #tradicional .section-title { color: white; }
-        #tradicional .section-title span { color: var(--brand-gold); }
+        /* Títulos en tradicional OSCUROS (fondo claro) */
+        #tradicional .section-title { color: var(--brand-dark); }
+        #tradicional .section-title span { color: var(--brand-red); }
 
         #otros {
             background-color: #ffffff;
@@ -1115,55 +1112,68 @@
         .toast-container.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         /* =========================================
-           OPTIMIZACIÓN ESCRITORIO
+           OPTIMIZACIÓN ESCRITORIO - CORRECCIÓN DE ALINEACIÓN
            ========================================= */
         @media (min-width: 769px) {
-            /* SOLUCIÓN ALINEACIÓN: Quitamos restricciones del contenedor principal */
-            .app-container {
-                width: 100% !important;
-                max-width: none !important;
-                margin: 0 !important;
-            }
-
-            .navbar { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+            .navbar { max-width: 100%; padding: 0 20px; }
             .nav-logo { margin-left: -55px; }
             .nav-actions { margin-right: -10px; }
             
-            /* Fondos Full Width pero contenido reseteado */
-            .hero-section, .trust-badges, .products-section, .reviews-section, .contact-section, footer { 
-                width: 100%;
-                left: auto;
-                right: auto;
-                margin-left: 0;
-                margin-right: 0;
-                padding-left: 0;
-                padding-right: 0;
-            }
-            
-            /* Contenido Centrado en 1200px */
-            .hero-content { width: 1200px; max-width: 100%; left: 50%; transform: translate(-50%, -50%); top: 40%; }
+            /* CORRECCIÓN FINAL ESCRITORIO: ALINEACIÓN PERFECTA */
+            .hero-section { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
+            .hero-img { height: auto; width: 100%; object-fit: contain; object-position: center; display: block; }
+            .hero-content { width: 80%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
             .hero-title { font-size: 4rem; margin-bottom: 30px; }
             .hero-cta-btn { padding: 18px 40px; font-size: 1.2rem; }
             
-            /* Wrapper Centrado para todo el contenido interno */
-            .carousel-wrapper, .form-box, .contact-details, .section-title, footer p, .social-icons, .trust-badges {
-                max-width: 1200px;
-                margin-left: auto;
-                margin-right: auto;
-                position: relative;
+            /* Separación de las fichitas en escritorio */
+            .trust-badges { 
+                margin-top: 60px; /* Margen superior para despegar del Hero */
+                width: 100vw; 
+                position: relative; 
+                left: 50%; 
+                right: 50%; 
+                margin-left: -50vw; 
+                margin-right: -50vw; 
+                padding-left: max(10px, calc((100vw - 1200px) / 2 + 10px)); 
+                padding-right: max(10px, calc((100vw - 1200px) / 2 + 10px)); 
+                border-bottom: 1px solid #eee; 
+                z-index: 5; 
+            }
+
+            .products-section, .reviews-section, .contact-section, footer { 
+                width: 100vw; 
+                position: relative; 
+                left: 50%; 
+                right: 50%; 
+                margin-left: -50vw; 
+                margin-right: -50vw; 
+                /* Padding importante para centrar el contenido interno */
+                padding-left: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
+                padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
             }
             
-            .trust-badges {
-                display: flex;
-                justify-content: center;
-                gap: 20px;
-                padding: 20px;
+            /* Carrusel centrado estrictamente */
+            .carousel-wrapper {
+                max-width: 1200px;
+                margin: 0 auto;
+                width: 100%;
+            }
+            
+            .carousel-container { 
+                width: 100%; 
+                padding: 0 0 40px 0; /* Sin padding lateral extra para alinear */
+            }
+            
+            .carousel-track { 
+                gap: 40px; 
+                padding-right: 0; 
+                justify-content: flex-start;
             }
 
             /* Flechas pegadas al contenido */
-            .nav-arrow { position: absolute; z-index: 10; }
-            .nav-arrow.prev { left: 0; transform: translateY(-50%) translateX(-120%); } /* Fuera del carrusel pero cerca */
-            .nav-arrow.next { right: 0; transform: translateY(-50%) translateX(120%); }
+            .nav-arrow.prev { left: -20px; }
+            .nav-arrow.next { right: -20px; }
 
             .trust-badges .badge { padding: 15px; min-height: 140px; justify-content: center; }
             .trust-badges .badge span, .trust-badges .badge img { font-size: 3.5rem; width: 70px; height: 70px; margin-bottom: 10px; }
@@ -1172,6 +1182,7 @@
             .product-card { width: 270px !important; min-width: 270px !important; }
             .card-image-box .product-photo { width: 100%; height: 100%; object-fit: contain; transform: scale(1.28) !important; border: none !important; border-radius: 0; box-shadow: none; }
             .product-card:hover .product-photo { transform: scale(1.35) !important; }
+            .app-container { box-shadow: none; background: transparent; }
         }
 
         @media (max-width: 768px) {
