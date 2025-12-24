@@ -54,8 +54,7 @@
         html { 
             scroll-behavior: smooth; 
             scroll-padding-top: 60px; 
-            overflow-x: hidden; /* CANDADO HORIZONTAL */
-            width: 100%;
+            overflow-x: hidden;
         }
 
         body {
@@ -63,18 +62,18 @@
             background-color: #F9F7F2;
             color: #4A0E0E; 
             line-height: 1.4;
-            overflow-x: hidden; /* CANDADO HORIZONTAL */
+            overflow-x: hidden;
             width: 100%;
-            margin: 0;
-            padding: 0;
         }
 
         :root {
             --brand-red: #4A0E0E;
+            /* Dorado elegante */
             --brand-gold: #D4AF37; 
             --brand-champagne: #F3E5AB; 
             --brand-dark: #1A1A1A;
             --bg-cream: #F9F7F2;
+            /* COLORES "CUTE" */
             --card-bg-cute: #FFFBF2; 
             --card-border: #F0E6D2;  
             --card-shadow: 0 12px 24px rgba(74, 14, 14, 0.06); 
@@ -94,7 +93,7 @@
 
         .app-container {
             width: 100%;
-            /* MÓVIL: Mantenemos la estructura que te gusta */
+            /* MÓVIL: Contenedor estándar */
             margin: 0 auto;
             background: var(--bg-cream);
             min-height: 100vh;
@@ -102,7 +101,6 @@
             padding-bottom: 20px;
             position: relative;
             z-index: 1;
-            overflow-x: hidden;
         }
 
         .view-section {
@@ -241,10 +239,10 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón cerrar menú (AJUSTE MÓVIL SAGRADO - 85px) */
+        /* Botón cerrar menú (AJUSTE MÓVIL SAGRADO) */
         .close-menu-btn {
             position: absolute;
-            top: 85px; 
+            top: 85px; /* Posición solicitada */
             right: 30px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
@@ -381,7 +379,7 @@
         }
 
         /* =========================================
-           SECCIONES DE PRODUCTOS
+           SECCIONES DE PRODUCTOS - ESPACIADO ESTANDARIZADO
            ========================================= */
         .products-section, .reviews-section {
             padding: 20px 0 !important; 
@@ -924,7 +922,7 @@
         
         .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; }
         
-        /* Botón X del carrito */
+        /* Botón X del carrito PULIDO */
         .close-cart { 
             position: absolute;
             top: 15px; 
@@ -1114,39 +1112,45 @@
            OPTIMIZACIÓN ESCRITORIO
            ========================================= */
         @media (min-width: 769px) {
-            .navbar { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-            .nav-logo { margin-left: -55px; }
-            .nav-actions { margin-right: -10px; }
+            .navbar { max-width: 1200px; margin: 0 auto; padding: 0 5px; } /* Más pegado a los bordes */
+            .nav-logo { margin-left: 0; }
+            .nav-actions { margin-right: 0; }
             
-            /* CORRECCIÓN FINAL ESCRITORIO: ALINEACIÓN PERFECTA */
-            .hero-section { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
+            /* SOLUCIÓN ALINEACIÓN DEFINITIVA */
+            .hero-section { width: 100%; position: relative; } /* Eliminamos márgenes negativos */
             .hero-img { height: auto; width: 100%; object-fit: contain; object-position: center; display: block; }
-            /* Botón centrado, PEQUEÑO y más abajo */
-            .hero-content { width: 80%; top: 80%; left: 50%; transform: translate(-50%, -50%); } 
+            
+            /* Botón centrado, TAMAÑO MEDIO y más abajo */
+            .hero-content { 
+                width: 100%; 
+                max-width: 1200px; 
+                left: 50%; 
+                top: 75%; /* UBICACIÓN SEGURA, MAS BAJA */
+                transform: translate(-50%, -50%); 
+                position: absolute; 
+            }
             .hero-title { font-size: 4rem; margin-bottom: 30px; }
             
-            /* BOTÓN MÁS PEQUEÑO (Solicitud usuario) */
+            /* BOTÓN TAMAÑO MEDIO (Ajuste solicitado) */
             .hero-cta-btn { 
-                padding: 12px 30px; /* Reducido de 25px 50px */
-                font-size: 1rem;    /* Reducido de 1.5rem */
+                padding: 15px 40px; 
+                font-size: 1.2rem;
                 border-radius: 50px;
             }
-            
-            /* CONTENEDOR ANCHO COMPLETO */
+
+            /* Fondos Full Width pero contenido centrado */
             .trust-badges, .products-section, .reviews-section, .contact-section, footer { 
-                width: 100vw; 
-                position: relative; 
-                left: 50%; 
-                right: 50%; 
-                margin-left: -50vw; 
-                margin-right: -50vw; 
-                /* Padding importante para centrar el contenido interno */
-                padding-left: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
-                padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
+                width: 100%;
+                left: auto;
+                right: auto;
+                margin-left: 0;
+                margin-right: 0;
+                padding-left: 0;
+                padding-right: 0;
             }
             
-            /* CONTENIDO INTERNO CENTRADO EN 1200PX (Bloqueo de movimiento) */
-            .carousel-wrapper, .form-box, .contact-details, .section-title {
+            /* Todos los bloques de contenido se centran en 1200px */
+            .carousel-wrapper, .form-box, .contact-details, .section-title, .trust-badges {
                 max-width: 1200px;
                 margin-left: auto;
                 margin-right: auto;
@@ -1160,7 +1164,7 @@
                 justify-content: center;
                 gap: 20px;
                 padding: 20px 0;
-                margin-top: 0 !important; /* Sin margen superior raro */
+                margin-top: 0 !important;
             }
 
             /* Flechas pegadas al carrusel */
@@ -1175,7 +1179,9 @@
             .product-card { width: 270px !important; min-width: 270px !important; }
             .card-image-box .product-photo { width: 100%; height: 100%; object-fit: contain; transform: scale(1.28) !important; border: none !important; border-radius: 0; box-shadow: none; }
             .product-card:hover .product-photo { transform: scale(1.35) !important; }
-            .app-container { box-shadow: none; background: transparent; }
+            
+            /* Padding lateral interno */
+            .products-section { padding-left: 20px; padding-right: 20px; }
         }
 
         @media (max-width: 768px) {
