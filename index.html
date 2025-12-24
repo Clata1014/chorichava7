@@ -1156,6 +1156,11 @@
                 justify-content: flex-start;
             }
 
+            .products-section .carousel-track {
+                justify-content: center;
+                margin: 0 auto;
+            }
+
             /* Flechas pegadas al borde del contenido (1200px) */
             .nav-arrow.prev { left: -20px; }
             .nav-arrow.next { right: -20px; }
@@ -1180,6 +1185,21 @@
             .history-quote { font-size: 1.2rem; margin: 20px 0; }
             
             .form-box { padding: 25px; } 
+        }
+
+        @media (min-width: 1024px) {
+            /* Neutraliza el offset causado por width: 100vw + left/right en desktop */
+            .trust-badges,
+            .products-section,
+            .reviews-section,
+            .contact-section,
+            footer {
+                width: 100%;
+                left: auto;
+                right: auto;
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
     </style>
 </head>
