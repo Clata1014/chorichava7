@@ -244,10 +244,10 @@
 
         .mobile-menu a:hover { color: var(--brand-gold); }
 
-        /* Botón cerrar menú (AJUSTE MÓVIL CORRECTO: 85px) */
+        /* Botón cerrar menú (AJUSTE MÓVIL CORRECTO: 60px y más pequeño) */
         .close-menu-btn {
             position: absolute;
-            top: 85px; /* Bajado para mejor visibilidad */
+            top: 60px; /* Posición móvil intacta */
             right: 25px;
             background: rgba(255, 255, 255, 0.1); 
             border: 2px solid rgba(255, 255, 255, 0.3); 
@@ -1146,7 +1146,7 @@
             
             /* CENTRADO DE CONTENIDOS INTERNOS (CARRUSELES) */
             .hero-content { 
-                width: 1600px; 
+                width: 1200px; 
                 max-width: 95%; 
                 left: 50%; 
                 top: 75%; 
@@ -1161,29 +1161,32 @@
                 border-radius: 50px;
             }
 
-            /* "LA REGLA": Todos los bloques de contenido se centran en 1600px */
-            .carousel-wrapper, .form-box, .contact-details, .section-title {
-                max-width: 1600px;
-                margin-left: auto;
-                margin-right: auto;
+            /* "LA REGLA": Todos los bloques de contenido se centran en 1200px + PADDING 40px */
+            /* APLICADO A TODAS LAS SECCIONES CLAVES */
+            .trust-badges, 
+            .carousel-wrapper, 
+            .contact-details, 
+            .section-title,
+            .form-box {
+                max-width: 1200px;
+                margin-left: auto !important;
+                margin-right: auto !important;
                 width: 100%;
                 position: relative; 
             }
             
             /* Ajuste específico para Trust Badges flexbox */
             .trust-badges {
-                max-width: 1600px;
-                margin: 0 auto !important; /* Centrado estricto */
-                padding: 20px 40px; /* AUMENTADO EL MARGEN LATERAL A 40px (Aprox 1cm) */
+                padding: 20px 40px; /* MARGEN LATERAL 40px */
                 display: flex;
                 justify-content: center;
                 gap: 20px;
                 background: white;
             }
 
-            /* Flechas pegadas al carrusel */
-            .nav-arrow.prev { left: 0px; } /* Ajustado al padding */
-            .nav-arrow.next { right: 0px; }
+            /* Flechas pegadas al carrusel - Ajustado al nuevo padding */
+            .nav-arrow.prev { left: 40px; } /* Coincide con padding */
+            .nav-arrow.next { right: 40px; }
             .nav-arrow { position: absolute; z-index: 10; background: white; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
             .trust-badges .badge { padding: 15px; min-height: 140px; justify-content: center; flex: 1; }
@@ -1195,12 +1198,14 @@
             .product-card:hover .product-photo { transform: scale(1.35) !important; }
             
             /* Padding lateral interno */
-            /* AUMENTADO EL MARGEN LATERAL A 40px (Aprox 1cm) */
-            .products-section, .reviews-section { padding-left: 40px; padding-right: 40px; }
+            /* MARGEN LATERAL 40px (Aprox 1cm) en SECCIONES */
+            .products-section { padding-left: 40px; padding-right: 40px; }
+            .reviews-section { padding-left: 40px; padding-right: 40px; }
+            .contact-section { padding-left: 40px; padding-right: 40px; }
             
             /* HISTORIA ESCRITORIO: ANCHA (1 COLUMNA) Y CENTRADA */
             .history-container {
-                max-width: 1400px; /* Aumentado a 1400px para pantalla ancha */
+                max-width: 1200px; /* Volviendo a 1200px */
                 margin: 50px auto !important; /* Centrado automático */
                 padding: 60px;
                 display: block; /* 1 columna vertical */
