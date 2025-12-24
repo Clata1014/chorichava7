@@ -46,3 +46,1793 @@
     </script>
 
     <style>
+        /* =========================================
+           ESTILOS GENERALES (BASE - MÓVIL)
+           ========================================= */
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 60px; 
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F9F7F2;
+            color: #4A0E0E; 
+            line-height: 1.4;
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0; 
+        }
+
+        :root {
+            --brand-red: #4A0E0E;
+            /* Dorado elegante */
+            --brand-gold: #D4AF37; 
+            --brand-champagne: #F3E5AB; 
+            --brand-dark: #1A1A1A;
+            --bg-cream: #F9F7F2;
+            /* COLORES "CUTE" */
+            --card-bg-cute: #FFFBF2; 
+            --card-border: #F0E6D2;  
+            
+            /* Sombra suave y cálida */
+            --card-shadow: 0 12px 24px rgba(74, 14, 14, 0.06); 
+            --card-hover-shadow: 0 15px 35px rgba(74, 14, 14, 0.12); 
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulseBtn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .app-container {
+            width: 100%;
+            /* MÓVIL: Mantenemos la estructura original */
+            margin: 0 auto;
+            background: var(--bg-cream);
+            min-height: 100vh;
+            animation: fadeUp 0.8s ease-out;
+            padding-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .view-section {
+            display: none;
+            animation: fadeUp 0.5s ease-out;
+        }
+        .view-section.active {
+            display: block;
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px); 
+            transition: all 0.6s ease-out;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           NAVBAR
+           ========================================= */
+        .navbar-wrapper {
+            background-color: var(--brand-red);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(74, 14, 14, 0.3);
+        }
+
+        .navbar {
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            width: 100%;
+        }
+
+        .nav-logo {
+            height: 173px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+            /* Ajuste para móvil (NO TOCAR) */
+            margin-left: -64px; 
+            margin-top: -15px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative; 
+            z-index: 1001;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-cart-btn {
+            position: relative;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: white; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background: none;
+        }
+
+        .nav-cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--brand-gold);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--brand-red);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        .menu-btn span {
+            width: 30px;
+            height: 3px;
+            background-color: #FFFFFF;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Menú Móvil */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(74, 14, 14, 0.98); 
+            backdrop-filter: blur(10px);
+            transition: 0.4s ease;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .mobile-menu.active { right: 0; }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover { color: var(--brand-gold); }
+
+        /* Botón cerrar menú (AJUSTE MÓVIL SAGRADO - 30px) */
+        .close-menu-btn {
+            position: absolute;
+            top: 30px; 
+            right: 25px;
+            background: rgba(255, 255, 255, 0.1); 
+            border: 2px solid rgba(255, 255, 255, 0.3); 
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; 
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 2001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 4px; 
+        }
+        .close-menu-btn:hover { 
+            transform: rotate(90deg); 
+            background: white;
+            color: var(--brand-red);
+            border-color: white;
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero-section {
+            width: 100%;
+            position: relative;
+            background: black;
+            line-height: 0; 
+            display: block;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            filter: brightness(0.7);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 75%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            padding: 0; 
+            color: white;
+            z-index: 2;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem; 
+            margin-bottom: 10px; 
+            line-height: 1.1;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+            color: #FFFFFF;
+        }
+
+        .hero-title span { color: var(--brand-gold); font-style: italic; }
+
+        .hero-cta-btn {
+            background: var(--brand-gold);
+            color: var(--brand-red);
+            border: none;
+            padding: 8px 18px; 
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6); 
+            text-transform: uppercase;
+            transition: all 0.3s;
+            animation: pulseBtn 2s infinite; 
+            letter-spacing: 0.5px; 
+        }
+        
+        .hero-cta-btn:hover {
+            transform: scale(1.05);
+            background: white;
+            color: var(--brand-red);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Badges */
+        .trust-badges {
+            padding: 15px 10px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            background: white;
+            margin-top: -5px; 
+            position: relative;
+            z-index: 5;
+        }
+
+        .badge {
+            flex: 1;
+            background: var(--card-bg-cute); 
+            border-radius: 20px; 
+            padding: 10px 5px; 
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--card-border); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90px; 
+            transition: transform 0.3s ease;
+        }
+
+        .badge:hover { transform: translateY(-5px); } 
+
+        .badge img, .badge span {
+            font-size: 1.8rem; 
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .badge img { width: 40px; height: 40px; object-fit: contain; }
+
+        .badge p {
+            font-size: 0.65rem; 
+            font-weight: 700;
+            color: var(--brand-red);
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        /* =========================================
+           SECCIONES DE PRODUCTOS
+           ========================================= */
+        .products-section, .reviews-section {
+            padding: 20px 0 !important; 
+            background: transparent;
+            border-bottom: none;
+            margin: 0 !important;
+        }
+        
+        .contact-section {
+            padding: 20px 20px 40px !important; 
+            background: transparent;
+            border-bottom: none;
+            margin: 0 !important;
+            text-align: center; 
+        }
+
+        #gourmet {
+            background-color: #ffffff;
+        }
+
+        #tradicional {
+            /* Fondo claro Crema Suave */
+            background-color: var(--bg-cream); 
+            position: relative; 
+        }
+        
+        /* Títulos en tradicional */
+        #tradicional .section-title { color: var(--brand-dark); }
+        #tradicional .section-title span { color: var(--brand-red); }
+
+        #otros {
+            background-color: #ffffff;
+        }
+        
+        .reviews-section {
+            background-color: var(--bg-cream);
+        }
+        
+        .contact-section {
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            color: var(--brand-dark);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .section-title span { color: var(--brand-red); }
+
+        /* Carrusel */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .carousel-container {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            -webkit-overflow-scrolling: touch; 
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth; 
+            cursor: grab; 
+        }
+        .carousel-container:active { cursor: grabbing; }
+
+        /* Barras de desplazamiento VISIBLES y grises */
+        .carousel-container::-webkit-scrollbar { height: 6px; }
+        .carousel-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .carousel-container::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 10px; }
+        .carousel-container::-webkit-scrollbar-thumb:hover { background: var(--brand-red); }
+        
+        /* Ajuste scrollbar en sección oscura */
+        #tradicional .carousel-container::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); }
+        #tradicional .carousel-container::-webkit-scrollbar-thumb { background: #888888; }
+        #tradicional .carousel-container::-webkit-scrollbar-thumb:hover { background: #aaaaaa; }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px; 
+            padding: 0 20px; 
+            width: max-content;
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 35%; 
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--brand-red);
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s;
+        }
+
+        .nav-arrow:hover { background: white; transform: translateY(-50%) scale(1.1); }
+        .nav-arrow.prev { left: 5px; }
+        .nav-arrow.next { right: 5px; }
+
+        /* Tarjeta de Producto */
+        .product-card {
+            width: 270px;
+            background: var(--card-bg-cute); 
+            border-radius: 24px; 
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            scroll-snap-align: center;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            user-select: none;
+            border: 2px solid var(--card-border); 
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover-shadow);
+            border-color: var(--brand-champagne); 
+        }
+
+        .card-image-box {
+            height: 210px;
+            width: 100%;
+            background-image: url('https://clata1014.github.io/chorichava7/fondochoriamor.png'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: relative;
+            border-bottom: none;
+            aspect-ratio: 270/210;
+        }
+
+        .product-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transform: scale(1.28);
+            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.15));
+            transition: transform 0.3s ease;
+            pointer-events: none;
+        }
+
+        .product-card:hover .product-photo { transform: scale(1.35); }
+        .ahumado-photo { transform: scale(1.12); height: 105%; width: auto; max-width: 110%; max-height: 110%; }
+        .product-card:hover .ahumado-photo { transform: scale(1.18); }
+
+        .card-details {
+            padding: 15px 15px 20px;
+            text-align: center;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--brand-red); 
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: #665; 
+            margin-bottom: 10px;
+            height: 72px; 
+            overflow: hidden;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+
+        .card-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--brand-dark);
+            margin-bottom: 12px;
+        }
+
+        .buy-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, var(--brand-red), #800000);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 15px rgba(139, 0, 0, 0.15);
+            transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+        }
+
+        .buy-btn:hover {
+            filter: brightness(1.1); 
+            box-shadow: 0 8px 20px rgba(139, 0, 0, 0.25);
+            transform: translateY(-2px);
+        }
+        .buy-btn:active { transform: scale(0.95); }
+        .buy-btn.added { background: #25D366; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
+
+        /* Botón estilo WhatsApp para cotizar */
+        .whatsapp-quote-btn {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            padding: 12px !important;
+            font-size: 0.9rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px;
+        }
+        .whatsapp-quote-btn:hover {
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+        }
+        
+        .review-card {
+            background: var(--card-bg-cute); 
+            padding: 20px;
+            border-radius: 24px; 
+            width: 270px; 
+            min-width: 270px; 
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            border: 2px solid var(--card-border);
+            scroll-snap-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 250px; 
+            user-select: none;
+        }
+        
+        .review-stars { color: var(--brand-gold); font-size: 1.2rem; margin-bottom: 10px; }
+        .review-text { font-style: italic; color: #555; font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5; }
+        .review-author { font-weight: 800; color: var(--brand-red); font-size: 0.9rem; margin-top: auto; }
+
+        /* =========================================
+           HISTORIA Y OTROS ESTILOS
+           ========================================= */
+        .history-container {
+            max-width: 850px; 
+            margin: -38px auto 40px;
+            padding: 40px 30px 30px; 
+            text-align: center;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.06); 
+            border: 1px solid rgba(0,0,0,0.04);
+            position: relative;
+            overflow: hidden; 
+        }
+        
+        .history-photo-frame {
+            width: 100%;
+            max-width: 380px; 
+            height: auto;
+            margin: 0 auto 15px; 
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            border: 4px solid white; 
+            outline: 1px solid #f0f0f0; 
+        }
+        
+        .history-photo-frame.landscape {
+            max-width: 100%;
+            margin: 15px 0; 
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: none;
+            outline: none;
+            overflow: hidden;
+        }
+        
+        .history-photo-frame.landscape img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .history-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #eee;
+            min-height: 300px; 
+            object-fit: cover;
+        }
+        
+        .history-text {
+            font-size: 1.1rem; 
+            line-height: 1.6; 
+            color: #4a4a4a; 
+            text-align: left; 
+            padding: 0 5px; 
+        }
+        
+        .history-highlight {
+            color: var(--brand-red);
+            font-weight: 700;
+        }
+        
+        .history-text p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem; 
+            color: var(--brand-red);
+            float: left;
+            line-height: 0.8;
+            margin-right: 12px;
+            margin-top: 6px;
+            font-weight: 700;
+        }
+
+        .history-text p { margin-bottom: 12px; }
+        
+        .img-caption {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: -10px; 
+            margin-bottom: 20px;
+            font-style: italic;
+            text-align: center;
+            display: block;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .history-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--brand-red);
+            text-align: center;
+            margin: 30px 0;
+            padding: 0 10px;
+            line-height: 1.4;
+        }
+        .history-quote::before, .history-quote::after {
+            content: "—";
+            color: var(--brand-gold);
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        
+        .history-decoration-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            margin: 30px auto 20px;
+            opacity: 1;
+            background: none;
+            height: auto;
+        }
+        .history-decoration-line::before, .history-decoration-line::after {
+            content: "";
+            height: 1px;
+            width: 60px;
+            background-color: var(--brand-gold);
+            opacity: 0.6;
+        }
+        .history-icon {
+            color: var(--brand-red);
+            font-size: 1.2rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px; 
+            padding: 12px 30px;
+            background: var(--brand-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .back-btn:hover { 
+            background: #333; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+
+        /* Contacto */
+        .contact-title {
+            color: var(--brand-red);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px; 
+        }
+        
+        .form-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(74, 14, 14, 0.08); 
+            max-width: 500px;
+            margin: 0 auto 50px;
+            text-align: left;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--brand-dark); font-size: 0.95rem; }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fdfdfd;
+        }
+        .form-input:focus, .form-textarea:focus { 
+            border-color: var(--brand-red); 
+            outline: none; 
+            background: white;
+            box-shadow: 0 0 0 4px rgba(74, 14, 14, 0.1);
+        }
+        .form-textarea { resize: vertical; min-height: 120px; }
+        
+        .form-btn {
+            width: 100%;
+            background: linear-gradient(45deg, var(--brand-red), #601212);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(74, 14, 14, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        .form-btn:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74, 14, 14, 0.4);
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .contact-icon { font-size: 2.2rem; margin-bottom: 5px; }
+        .contact-label { font-weight: 600; color: var(--brand-dark); font-size: 1rem; }
+
+        footer {
+            background: var(--brand-dark);
+            color: #888;
+            text-align: center;
+            padding: 40px 20px 20px;
+            font-size: 0.8rem;
+        }
+        footer img { width: 120px; margin-bottom: 20px; opacity: 0.9; }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .social-link {
+            font-size: 1.5rem;
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-link:hover { color: var(--brand-gold); }
+
+        /* MODAL DEL CARRITO */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            height: 100dvh; 
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            /* Z-INDEX EXTREMO para tapar todo */
+            z-index: 100000; 
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-modal.open { right: 0; }
+        
+        .cart-header {
+            padding: 20px;
+            background: var(--brand-red);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative; 
+        }
+        
+        .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; }
+        
+        /* Botón X del carrito */
+        .close-cart { 
+            position: absolute;
+            top: 25px; 
+            right: 20px; 
+            background: rgba(255, 255, 255, 0.15); 
+            border: 2px solid rgba(255, 255, 255, 0.4); 
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            padding-bottom: 3px;
+            transition: all 0.3s;
+        }
+        
+        .close-cart:hover { 
+            transform: rotate(90deg); 
+            background: white;
+            color: var(--brand-red);
+            border-color: white;
+        }
+
+        .cart-items { flex: 1; padding: 20px; overflow-y: auto; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .cart-item-info { display: flex; flex-direction: column; }
+        .cart-item-name { font-weight: 600; font-size: 0.95rem; }
+        .cart-item-price { font-size: 0.85rem; color: #666; }
+        .remove-item { color: #ff4444; cursor: pointer; font-size: 1.2rem; margin-left: 10px; }
+        .cart-footer { padding: 20px; border-top: 1px solid #eee; background: #f9f9f9; }
+        .total-price { font-size: 1.2rem; font-weight: 800; color: var(--brand-dark); text-align: right; margin-bottom: 15px; }
+        
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            background: #25D366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            border: none;
+            cursor: pointer;
+            margin-top: 15px; 
+        }
+        
+        /* ESTILOS MEJORADOS PARA OPCIONES DE PAGO */
+        .payment-options {
+            text-align: left;
+            margin-top: 15px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        .payment-options-title {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        /* Ocultar el radio button real */
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+
+        .payment-option-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 12px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            background: #fdfdfd;
+            transition: all 0.2s ease;
+        }
+
+        /* Hover para Desktop */
+        .payment-option-label:hover {
+            background: #f9f9f9;
+            border-color: #d0d0d0;
+        }
+
+        /* Estilo cuando está seleccionado */
+        .payment-option input[type="radio"]:checked + .payment-option-label {
+            border-color: var(--brand-red);
+            background: #fff5f5;
+            box-shadow: 0 2px 5px rgba(74, 14, 14, 0.1);
+        }
+
+        .radio-circle {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            margin-right: 12px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .payment-option input[type="radio"]:checked + .payment-option-label .radio-circle {
+            border-color: var(--brand-red);
+        }
+
+        .payment-option input[type="radio"]:checked + .payment-option-label .radio-circle::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--brand-red);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .payment-text {
+            font-size: 0.95rem;
+            color: var(--brand-dark);
+            font-weight: 500;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            /* Z-INDEX ALTO para tapar todo */
+            z-index: 99999; 
+            display: none;
+        }
+        .overlay.active { display: block; }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 2000;
+            border: 2px solid white;
+        }
+
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(26, 26, 26, 0.95);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            z-index: 3000;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27), opacity 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .toast-container.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        /* =========================================
+           OPTIMIZACIÓN ESCRITORIO - CORRECCIÓN DE ALINEACIÓN
+           ========================================= */
+        @media (min-width: 769px) {
+            /* AJUSTE SOLICITADO: Logo y menú a los extremos con padding de 40px */
+            .navbar { 
+                max-width: 100%; /* Permitimos que se expanda */
+                margin: 0; 
+                padding: 0 40px 0 5px; /* Right 40px, Left 5px (Logo a la pared) */
+            }
+            .nav-logo { margin-left: -48px; } /* Pulling logo left by 48px */
+            .nav-actions { margin-right: -16px; } /* AJUSTE FINAL: -16px a la derecha */
+            
+            /* SOLUCIÓN ALINEACIÓN DEFINITIVA */
+            .app-container {
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+            }
+
+            /* Fondos Full Width pero contenido reseteado */
+            .hero-section, .trust-badges, .products-section, .reviews-section, .contact-section, footer { 
+                width: 100%;
+                left: auto;
+                right: auto;
+                margin-left: 0;
+                margin-right: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            
+            /* CENTRADO DE CONTENIDOS INTERNOS (CARRUSELES) */
+            .hero-content { 
+                width: 1600px; 
+                max-width: 95%; 
+                left: 50%; 
+                top: 75%; 
+                transform: translate(-50%, -50%); 
+                position: absolute; 
+            }
+            
+            /* BOTÓN GRANDE Y CENTRADO */
+            .hero-cta-btn { 
+                padding: 15px 40px; 
+                font-size: 1.2rem; 
+                border-radius: 50px;
+            }
+
+            /* "LA REGLA": Todos los bloques de contenido se centran en 1600px */
+            .carousel-wrapper, .form-box, .contact-details, .section-title {
+                max-width: 1600px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+                position: relative; 
+            }
+            
+            /* Ajuste específico para Trust Badges flexbox */
+            .trust-badges {
+                max-width: 1600px;
+                margin: 0 auto !important; /* Centrado estricto */
+                padding: 20px 0;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                background: white;
+            }
+
+            /* Flechas pegadas al carrusel */
+            .nav-arrow.prev { left: -10px; }
+            .nav-arrow.next { right: -10px; }
+            .nav-arrow { position: absolute; z-index: 10; background: white; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+            .trust-badges .badge { padding: 15px; min-height: 140px; justify-content: center; flex: 1; }
+            .trust-badges .badge span, .trust-badges .badge img { font-size: 3.5rem; width: 70px; height: 70px; margin-bottom: 10px; }
+            .trust-badges .badge p { font-size: 0.9rem; letter-spacing: 0.5px; }
+            
+            .product-card { width: 270px !important; min-width: 270px !important; }
+            .card-image-box .product-photo { width: 100%; height: 100%; object-fit: contain; transform: scale(1.28) !important; border: none !important; border-radius: 0; box-shadow: none; }
+            .product-card:hover .product-photo { transform: scale(1.35) !important; }
+            
+            /* Padding lateral interno */
+            .products-section { padding-left: 20px; padding-right: 20px; }
+            
+            /* HISTORIA ESCRITORIO: ANCHA (1 COLUMNA) Y CENTRADA */
+            .history-container {
+                max-width: 1400px; /* Aumentado a 1400px para pantalla ancha */
+                margin: 50px auto !important; /* Centrado automático */
+                padding: 60px;
+                display: block; /* 1 columna vertical */
+                text-align: center; /* Centrado como en móvil */
+            }
+            
+            /* Reset de estilos de grid */
+            .history-container > .history-photo-frame, 
+            .history-container > .img-caption,
+            .history-text,
+            .back-btn {
+                grid-column: auto;
+                grid-row: auto;
+                width: auto;
+                margin: 0 auto;
+            }
+            
+            .history-photo-frame {
+                margin-bottom: 25px;
+                max-width: 550px; /* Imagen más grande en escritorio ancho */
+            }
+
+            .history-text {
+                padding-top: 20px;
+                text-align: left;
+                font-size: 1.1rem; /* Texto un poco más grande */
+                max-width: 1000px; /* Limitar ancho del texto */
+                margin: 0 auto;
+            }
+            
+            /* AJUSTE ESCRITORIO: Botón X del menú más abajo en escritorio */
+            .close-menu-btn {
+                top: 85px !important; /* X del menú escritorio: BAJADA */
+            }
+            
+            /* AJUSTE ESCRITORIO: Botón X del carrito más abajo */
+            .close-cart {
+                top: 55px !important; /* X del carrito escritorio: BAJADA */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content { padding: 15px; width: 95%; }
+            .history-container { padding: 40px 20px 30px; margin-top: -17px; border-radius: 20px; }
+            .history-text { font-size: 1.05rem; padding: 0; }
+            .history-text p:first-of-type::first-letter { font-size: 3.5rem; margin-right: 10px; margin-top: 4px; }
+            .history-photo-frame { margin-bottom: 20px; }
+            .contact-section { padding: 30px 15px 50px; }
+            .history-quote { font-size: 1.2rem; margin: 20px 0; }
+            
+            .form-box { padding: 25px; } 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Logo ChoriChava" class="nav-logo" onclick="switchView('home')">
+            <div class="nav-actions">
+                <button class="nav-cart-btn" onclick="toggleCart()" aria-label="Abrir carrito de compras">
+                    🛒
+                    <span class="nav-cart-count" id="cartCounter">0</span>
+                </button>
+                <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <div class="app-container">
+
+        <!-- MENU MÓVIL -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="close-menu-btn" onclick="toggleMenu()">✕</button>
+            <a href="#" onclick="switchView('home'); toggleMenu()">Inicio</a>
+            <a href="#" onclick="switchView('home'); document.getElementById('gourmet').scrollIntoView(); toggleMenu()">Línea Gourmet</a>
+            <a href="#" onclick="switchView('home'); document.getElementById('tradicional').scrollIntoView(); toggleMenu()">Tradicional</a>
+            <a href="#" onclick="switchView('history'); toggleMenu()">Nuestra Historia</a>
+            <a href="#" onclick="switchView('home'); document.getElementById('contacto').scrollIntoView(); toggleMenu()">Contacto</a>
+        </div>
+
+        <!-- VISTA HOME -->
+        <div id="home-view" class="view-section active">
+
+            <!-- HERO -->
+            <header class="hero-section">
+                <picture>
+                    <source media="(min-width: 769px)" srcset="https://github.com/Clata1014/chorichava7/blob/main/Banerescritorio.webp?raw=true">
+                    <img src="https://clata1014.github.io/chorichava7/Fondito.png" alt="Chorizos Artesanales ChoriChava" class="hero-img">
+                </picture>
+
+                <div class="hero-content">
+                    <button class="hero-cta-btn" onclick="document.getElementById('gourmet').scrollIntoView()">
+                        Ver Menú & Pedir 🍖
+                    </button>
+                </div>
+            </header>
+
+            <!-- BADGES -->
+            <section class="trust-badges">
+                <div class="badge reveal-on-scroll">
+                    <span>🇨🇴</span>
+                    <p>Producto<br>Colombiano</p>
+                </div>
+                <div class="badge reveal-on-scroll" style="transition-delay: 100ms;">
+                    <span>🧑‍🌾</span>
+                    <p>Mercados<br>Campesinos</p>
+                </div>
+                <div class="badge reveal-on-scroll" style="transition-delay: 200ms;">
+                    <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="Tulio" loading="lazy">
+                    <p>Tulio<br>Recomienda</p>
+                </div>
+            </section>
+
+            <!-- SECCIÓN GOURMET -->
+            <section class="products-section" id="gourmet">
+                <h2 class="section-title reveal-on-scroll">Línea <span>Gourmet</span></h2>
+                <div class="carousel-wrapper">
+                    <button class="nav-arrow prev" onclick="scrollCarousel('track-gourmet', -1)" aria-label="Anterior">‹</button>
+                    <button class="nav-arrow next" onclick="scrollCarousel('track-gourmet', 1)" aria-label="Siguiente">›</button>
+
+                    <div class="carousel-container drag-scroll" id="track-gourmet">
+                        <div class="carousel-track">
+                            <!-- Productos Gourmet aquí -->
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Argentinogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Argentino"></div><div class="card-details"><h3 class="card-title">Argentino</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, vino tinto, sal, nuez moscada, hinojo, orégano, perejil.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Argentino', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Ahumadogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Ahumado"></div><div class="card-details"><h3 class="card-title">Ahumado</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo, comino, sal.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Ahumado', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Antioqueñogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Antioqueño"></div><div class="card-details"><h3 class="card-title">Antioqueño</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, agua, cebolla de rama, comino, pimentón, ajo, ají, sal.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Antioqueño', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Españolgourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Español"></div><div class="card-details"><h3 class="card-title">Español</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, sal, vino blanco.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Español', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Marinerogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Marinero"></div><div class="card-details"><h3 class="card-title">Marinero</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, camarón, calamar, pulpo, palmito de cangrejo, vino blanco, especias naturales y sal.</p><p class="card-price">$28.000</p><button class="buy-btn" onclick="addToCart('Chorizo Marinero', 28000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Santarrosanogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Santarrosano"></div><div class="card-details"><h3 class="card-title">Santarrosano</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, ajo, cebolla de rama, comino, humo y sal.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Llanerogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Llanero"></div><div class="card-details"><h3 class="card-title">Llanero</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, sal, humo.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Llanero', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Jalapeñogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Jalapeño"></div><div class="card-details"><h3 class="card-title">Jalapeño</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, ajo, pimienta negra, jalapeño, cebolla en polvo.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Jalapeño', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Alemangourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Alemán"></div><div class="card-details"><h3 class="card-title">Alemán</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, semilla de mostaza, perejil, pimienta, humo, sal, cilantro, cerveza rubia.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Alemán', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN TRADICIONAL -->
+            <section class="products-section" id="tradicional">
+                <h2 class="section-title reveal-on-scroll">Línea <span>Tradicional</span></h2>
+                <div class="carousel-wrapper">
+                    <button class="nav-arrow prev" onclick="scrollCarousel('track-tradicional', -1)" aria-label="Anterior">‹</button>
+                    <button class="nav-arrow next" onclick="scrollCarousel('track-tradicional', 1)" aria-label="Siguiente">›</button>
+
+                    <div class="carousel-container drag-scroll" id="track-tradicional">
+                        <div class="carousel-track">
+                            <!-- Productos Tradicionales -->
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Chicharrontradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chicharrón"></div><div class="card-details"><h3 class="card-title">Chicharrón</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, papada, cebolla de rama, ajo, comino, ají, pimentón, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Chorizo de Chicharrón', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Españoltradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Español"></div><div class="card-details"><h3 class="card-title">Español</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, sal, vino blanco.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Español Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Jalapeñotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Jalapeño"></div><div class="card-details"><h3 class="card-title">Jalapeño</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, ajo, pimienta negra, jalapeño, cebolla en polvo.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Jalapeño Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Llanerotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Llanero"></div><div class="card-details"><h3 class="card-title">Llanero</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, sal, humo.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Llanero Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Ahumadotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Ahumado"></div><div class="card-details"><h3 class="card-title">Ahumado</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo, comino, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Ahumado Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Antioqueñotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Antioqueño"></div><div class="card-details"><h3 class="card-title">Antioqueño</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, agua, cebolla de rama, comino, pimentón, ajo, ají, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Antioqueño Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Argentinotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Argentino"></div><div class="card-details"><h3 class="card-title">Argentino</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, vino tinto, sal, nuez moscada, hinojo, orégano, perejil.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Argentino Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Calabrasetradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Brasileiro"></div><div class="card-details"><h3 class="card-title">Brasileiro</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, pimienta roja y negra, comino, ajo, semilla de hinojo, semilla de cilantro, pimienta, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Brasileiro', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Italianotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Italiano"></div><div class="card-details"><h3 class="card-title">Italiano</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, fresca, vino tinto, ajo, hierbas aromáticas, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Italiano Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Santarrosanotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Santarrosano"></div><div class="card-details"><h3 class="card-title">Santarrosano</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, ajo, cebolla de rama, comino, humo y sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Santarrosano Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN OTRAS DELICIAS -->
+            <section class="products-section" id="otros">
+                <h2 class="section-title reveal-on-scroll">Otras <span>Delicias</span></h2>
+                <div class="carousel-wrapper">
+                    <button class="nav-arrow prev" onclick="scrollCarousel('track-otros', -1)" aria-label="Anterior">‹</button>
+                    <button class="nav-arrow next" onclick="scrollCarousel('track-otros', 1)" aria-label="Siguiente">›</button>
+
+                    <div class="carousel-container drag-scroll" id="track-otros">
+                        <div class="carousel-track">
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Bandiola.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Bondiola"></div><div class="card-details"><h3 class="card-title" style="font-size: 1rem;">Bondiola de Cerdo Ahumada</h3><p class="card-desc">Corte de aguja de cerdo, marinado y madurado. Ahumado lento.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Bondiola de Cerdo Ahumada')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Ca%C3%B1on.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Cañón"></div><div class="card-details"><h3 class="card-title">Cañón Ahumado</h3><p class="card-desc">Lomo de cerdo seleccionado, bajo en grasa, curado en salmuera y ahumado.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Cañón Ahumado')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Papada.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Papada"></div><div class="card-details"><h3 class="card-title">Papada Ahumada</h3><p class="card-desc">Papada de cerdo curada y ahumada. Textura untuosa y sabor intenso.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Papada Ahumada')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Panceta.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Panceta"></div><div class="card-details"><h3 class="card-title">Panceta Ahumada</h3><p class="card-desc">Tocino carnudo ahumado natural. Equilibrio perfecto entre carne y grasa.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Panceta Ahumada')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Pernil.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Pernil"></div><div class="card-details"><h3 class="card-title">Pernil Ahumado</h3><p class="card-desc">Pierna de cerdo ahumada, jugosa y tierna. Proceso de cocción lenta.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Pernil Ahumado')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Chistorra.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Chistorra"></div><div class="card-details"><h3 class="card-title">Chistorra Española</h3><p class="card-desc">Embutido de origen navarro, delgado y de curación corta. Intenso.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Chistorra Española')">Cotizar por WhatsApp 💬</button></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN RESEÑAS -->
+            <section class="reviews-section">
+                <h2 class="section-title reveal-on-scroll">Clientes <span>Felices</span></h2>
+                <div class="carousel-wrapper">
+                    <button class="nav-arrow prev" onclick="scrollCarousel('track-reviews', -1)" aria-label="Anterior">‹</button>
+                    <button class="nav-arrow next" onclick="scrollCarousel('track-reviews', 1)" aria-label="Siguiente">›</button>
+                    <div class="carousel-container drag-scroll" id="track-reviews">
+                        <div class="carousel-track">
+                            <div class="review-card reveal-on-scroll"><div class="review-stars">★★★★★</div><p class="review-text">"Los mejores chorizos que he probado en Medellín. El sabor ahumado es increíble."</p><p class="review-author">- Carlos M.</p></div>
+                            <div class="review-card reveal-on-scroll"><div class="review-stars">★★★★★</div><p class="review-text">"Súper recomendados para asados. Compré el paquete surtido y todos quedaron encantados."</p><p class="review-author">- Juliana R.</p></div>
+                            <div class="review-card reveal-on-scroll"><div class="review-stars">★★★★★</div><p class="review-text">"Me encanta que sean artesanales y sin conservantes raros. Se siente la calidad."</p><p class="review-author">- Andrés T.</p></div>
+                            <div class="review-card reveal-on-scroll"><div class="review-stars">★★★★★</div><p class="review-text">"El servicio a domicilio fue muy rápido y llegaron empacados al vacío perfectos."</p><p class="review-author">- Maria Clara J.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN CONTACTO -->
+            <section class="contact-section" id="contacto">
+                <h2 class="contact-title reveal-on-scroll">Contáctanos</h2>
+
+                <div class="form-box reveal-on-scroll">
+                    <div class="form-group">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" id="contactName" class="form-input" placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Celular</label>
+                        <input type="tel" id="contactPhone" class="form-input" placeholder="Tu número">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mensaje</label>
+                        <textarea id="contactMessage" class="form-textarea" placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+                    <button class="form-btn" onclick="submitContactForm()">Enviar a WhatsApp 🚀</button>
+                </div>
+
+                <div class="contact-details reveal-on-scroll">
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span class="contact-label">Medellín, Colombia</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🚚</span>
+                        <span class="contact-label">Envíos a todo el país</span>
+                    </div>
+                </div>
+            </section>
+
+        </div> <!-- Fin VISTA HOME -->
+
+        <!-- VISTA HISTORIA -->
+        <div id="history-view" class="view-section">
+            <div class="history-container">
+                <div class="history-photo-frame">
+                    <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" alt="Carlos Chavarriaga Fundador ChoriChava" class="history-photo">
+                </div>
+                <span class="img-caption">Fundador y Visionario</span>
+                <div class="history-text">
+                    <p>Detrás de cada gran sabor, hay una historia de dedicación. Todo comenzó hace más de 13 años, cuando <strong>Carlos Chavarriaga</strong> decidió transformar su pasión por la buena mesa en una marca que hoy es orgullo paisa: <span class="history-highlight">ChoriChava</span>.</p>
+                    <div class="history-quote">"No vendemos chorizos, vendemos momentos en familia."</div>
+                    <p>Lo que inició como un sueño emprendedor, tomó fuerza y estructura gracias al reconocimiento del programa <strong>Capital Semilla</strong> de la Alcaldía de Medellín. Este impulso permitió a la empresa crecer y perfeccionar sus procesos, logrando lo que pocos alcanzan: mantener la esencia 100% artesanal cumpliendo con los más altos estándares de calidad y seguridad, respaldados por su <strong>registro INVIMA</strong>.</p>
+                    <div class="history-photo-frame landscape">
+                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" alt="Muestra de Chorizos Artesanales ChoriChava" class="history-photo">
+                    </div>
+                    <span class="img-caption">Calidad Artesanal en cada bocado</span>
+                    <p>Esta constancia ha dado frutos deliciosos. La marca ha sido destacada por referentes gastronómicos como <span class="history-highlight">Tulio Recomienda</span>, confirmando que cuando las cosas se hacen con amor y disciplina, se nota en el sabor. Hoy, más que un producto, ChoriChava lleva una experiencia completa a <strong>eventos y celebraciones</strong>, encargándose de brindar el auténtico sabor de la parrilla sin preocupaciones.</p>
+                    <div class="history-photo-frame landscape">
+                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" alt="Reconocimiento Tulio Recomienda a ChoriChava" class="history-photo">
+                    </div>
+                    <span class="img-caption">Reconocimiento de Tulio Recomienda</span>
+                    <p style="text-align: center; font-weight: 600; font-size: 1.2rem; margin-top: 30px;">
+                        ChoriChava es tradición, es calidad y, sobre todo, es una familia trabajando para llevar lo mejor a la mesa de cada cliente.
+                    </p>
+                    <div class="history-decoration-line"><span class="history-icon">🔥</span></div>
+                </div>
+                <a onclick="switchView('home')" class="back-btn">← Volver al Inicio</a>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Chorichava" loading="lazy">
+            <div class="social-icons">
+                <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                <a href="#" class="social-link" aria-label="TikTok">🎵</a>
+            </div>
+            <p>&copy; 2024 ChoriChava - Medellín, Colombia</p>
+        </footer>
+
+        <!-- WHATSAPP FLOAT -->
+        <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank" title="Chatea con nosotros" aria-label="Chatear por WhatsApp">
+            💬
+        </a>
+        
+        <!-- MODAL CARRITO (RESTAURADO COMPLETO) -->
+        <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+        <div class="cart-modal" id="cartModal">
+            <div class="cart-header">
+                <h3>Tu Canasta 🛒</h3>
+                <button class="close-cart" onclick="toggleCart()" aria-label="Cerrar carrito">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#999; padding-bottom:50px;">
+                    <div style="font-size:3rem; margin-bottom:10px;">🍽️</div>
+                    <p style="font-size:1.1rem;">Tu carrito está vacío</p>
+                    <p style="font-size:0.85rem;">¡Antójate de algo rico!</p>
+                    <button class="checkout-btn" onclick="toggleCart()" style="margin-top:20px; width:auto; padding:10px 30px; font-size:0.9rem;">Cerrar / Volver al Menú</button>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-weight:800; font-size:1.2rem;">
+                    <span>Total:</span>
+                    <span id="totalPrice">$0</span>
+                </div>
+                
+                <!-- SELECCIÓN DE PAGO MEJORADA VISUALMENTE -->
+                <div class="payment-options" id="paymentOptions">
+                    <div class="payment-options-title">ELIGE TU MÉTODO DE PAGO:</div>
+                    
+                    <div class="payment-option">
+                        <input type="radio" name="paymentMethod" id="payWompi" value="wompi" checked>
+                        <label for="payWompi" class="payment-option-label">
+                            <span class="radio-circle"></span>
+                            <span class="payment-text">Pagar Ahora en Línea (Wompi) 💳</span>
+                        </label>
+                    </div>
+
+                    <div class="payment-option">
+                        <input type="radio" name="paymentMethod" id="payCod" value="cod">
+                        <label for="payCod" class="payment-option-label">
+                            <span class="radio-circle"></span>
+                            <span class="payment-text">Contra Entrega (Solo Medellín) 🛵</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="checkout-btn" onclick="processCheckout()">Confirmar Pedido 🚀</button>
+            </div>
+        </div>
+
+        <div id="toast" class="toast-container">
+            <span>✔️</span> <span id="toastMessage">Producto agregado</span>
+        </div>
+
+    </div>
+
+    <script>
+        // --- CONFIGURACIÓN DE TU TIENDA ---
+        const MI_LLAVE_PUBLICA_WOMPI = "pub_test_Q5y8ClM4..."; 
+        const TELEFONO_WHATSAPP = "573001234567"; 
+
+        // --- NAVEGACIÓN SPA (VISTAS) ---
+        function switchView(viewName) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            if(viewName === 'home') {
+                document.getElementById('home-view').classList.add('active');
+            } else if (viewName === 'history') {
+                document.getElementById('history-view').classList.add('active');
+            }
+            window.scrollTo(0,0);
+        }
+
+        // --- LOGICA DEL CARRITO ---
+        let cart = [];
+        const currencyFormatter = new Intl.NumberFormat('es-CO', {
+            style: 'currency', currency: 'COP', minimumFractionDigits: 0
+        });
+
+        window.onload = function() {
+            const savedCart = localStorage.getItem('chorichava_cart');
+            if (savedCart) { cart = JSON.parse(savedCart); updateCartUI(); }
+            
+            // Verificación inicial por si el carrito carga vacío
+            if (cart.length === 0) updateCartUI();
+            
+            // Iniciar observador de scroll para animaciones
+            setupScrollObserver();
+            
+            // Iniciar lógica de arrastre para carruseles
+            setupDragScroll();
+        }
+        
+        // Función para animar elementos al hacer scroll
+        function setupScrollObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+        }
+
+        // Función para Scroll to Top
+        window.onscroll = function() {
+            // Eliminada la función para mostrar la flecha
+        };
+
+        // Función para arrastrar carrusel en Desktop (Mouse Drag)
+        function setupDragScroll() {
+            const sliders = document.querySelectorAll('.drag-scroll');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            sliders.forEach(slider => {
+                slider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    slider.classList.add('active');
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                });
+                slider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    slider.classList.remove('active');
+                });
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    slider.classList.remove('active');
+                });
+                slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 2; // Velocidad del scroll
+                    slider.scrollLeft = scrollLeft - walk;
+                });
+            });
+        }
+
+        function saveCart() { localStorage.setItem('chorichava_cart', JSON.stringify(cart)); }
+        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+        function scrollCarousel(trackId, direction) {
+            const track = document.getElementById(trackId);
+            if (track) {
+                const firstCard = track.querySelector('.product-card') || track.querySelector('.review-card');
+                const scrollAmount = firstCard ? firstCard.offsetWidth + 20 : 280; 
+                track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+            }
+        }
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function addToCart(productName, productPrice, btnElement) {
+            const existingItem = cart.find(item => item.name === productName);
+            if (existingItem) { existingItem.qty += 1; } 
+            else { cart.push({ name: productName, price: productPrice, qty: 1 }); }
+            saveCart();
+            updateCartUI();
+            showToast(`¡${productName} agregado!`);
+            const counter = document.getElementById('cartCounter');
+            counter.style.transform = 'scale(1.5)';
+            setTimeout(() => counter.style.transform = 'scale(1)', 200);
+            if (btnElement) {
+                const originalText = btnElement.innerText;
+                btnElement.innerText = "¡Agregado! ✔️";
+                btnElement.classList.add('added');
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.classList.remove('added');
+                }, 2000);
+            }
+        }
+
+        function removeFromCart(productName) {
+            cart = cart.filter(item => item.name !== productName);
+            saveCart();
+            updateCartUI();
+            showToast("Producto eliminado 🗑️");
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartCounter = document.getElementById('cartCounter');
+            const totalPriceEl = document.getElementById('totalPrice');
+
+            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+            cartCounter.innerText = totalQty;
+
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            totalPriceEl.innerText = currencyFormatter.format(total);
+
+            // LOGICA DOMICILIO GRATIS
+            let freeShipMsg = "";
+            if (totalQty >= 5) {
+                freeShipMsg = `<div style="color:#25D366; font-weight:800; text-align:center; margin-top:10px; background:#e8f5e9; padding:8px; border-radius:10px;">¡Tienes Domicilio GRATIS! 🎉</div>`;
+            } else if (totalQty > 0) {
+                freeShipMsg = `<div style="color:#666; font-size:0.9rem; text-align:center; margin-top:10px;">Te faltan <b>${5 - totalQty}</b> unidades para domicilio GRATIS 🚚</div>`;
+            }
+
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            const paymentOptionsDiv = document.getElementById('paymentOptions'); 
+            
+            if(cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#999; padding-bottom:50px;">
+                    <div style="font-size:3rem; margin-bottom:10px;">🍽️</div>
+                    <p style="font-size:1.1rem;">Tu carrito está vacío</p>
+                    <p style="font-size:0.85rem;">¡Antójate de algo rico!</p>
+                    <button class="checkout-btn" onclick="toggleCart()" style="margin-top:20px; width:auto; padding:10px 30px; font-size:0.9rem;">Cerrar / Volver al Menú</button>
+                </div>`;
+                
+                // Ocultar opciones de pago si está vacío
+                if(checkoutBtn) {
+                    checkoutBtn.style.display = 'block'; 
+                    checkoutBtn.innerText = "Pedir por WhatsApp 🚀";
+                    checkoutBtn.onclick = checkoutWhatsApp;
+                }
+                if(paymentOptionsDiv) paymentOptionsDiv.style.display = 'none'; 
+                
+            } else {
+                if(checkoutBtn) {
+                    checkoutBtn.style.display = 'block';
+                    checkoutBtn.innerText = "Confirmar Pedido 🚀"; 
+                    checkoutBtn.onclick = processCheckout; 
+                }
+                if(paymentOptionsDiv) paymentOptionsDiv.style.display = 'block'; 
+                
+                let html = '';
+                cart.forEach(item => {
+                    html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <span class="cart-item-name">${item.name}</span>
+                            <span class="cart-item-price">${currencyFormatter.format(item.price)} x ${item.qty}</span>
+                        </div>
+                        <div>
+                            <span style="font-weight:bold; margin-right:10px;">${currencyFormatter.format(item.price * item.qty)}</span>
+                            <span class="remove-item" onclick="removeFromCart('${item.name}')">🗑️</span>
+                        </div>
+                    </div>`;
+                });
+                cartItemsContainer.innerHTML = html + freeShipMsg;
+            }
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            const overlay = document.getElementById('overlay');
+            const navbar = document.querySelector('.navbar-wrapper');
+
+            modal.classList.toggle('open');
+            overlay.classList.toggle('active');
+
+            // Ocultar la barra de navegación para que no tape el carrito
+            if (modal.classList.contains('open')) {
+                navbar.style.display = 'none'; 
+            } else {
+                navbar.style.display = 'block';
+            }
+        }
+
+        // NUEVA FUNCIÓN MAESTRA DE CHECKOUT
+        function processCheckout() {
+            if (cart.length === 0) { showToast("Agrega productos primero 😉"); return; }
+
+            // Obtener la opción seleccionada
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+            if (selectedMethod === 'wompi') {
+                checkoutWompi();
+            } else {
+                checkoutCOD();
+            }
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) { showToast("Agrega productos primero 😉"); return; }
+            window.location.href = `https://wa.me/${TELEFONO_WHATSAPP}`; 
+        }
+
+        function checkoutWompi() {
+            if (cart.length === 0) { showToast("Agrega productos primero 😉"); return; }
+            const totalPesos = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            
+            // IMPORTANTE: Math.round para evitar decimales flotantes
+            const totalCentavos = Math.round(totalPesos * 100); 
+            
+            const referenciaUnica = 'PEDIDO-' + Math.floor(Math.random() * 1000000);
+            var checkout = new WidgetCheckout({
+                currency: 'COP',
+                amountInCents: totalCentavos,
+                reference: referenciaUnica,
+                publicKey: MI_LLAVE_PUBLICA_WOMPI,
+                redirectUrl: 'https://clata1014.github.io/chorichava7/', 
+            });
+            checkout.open(function (result) {
+                var transaction = result.transaction;
+                if(transaction.status === 'APPROVED'){
+                    alert("¡Pago Aprobado! Gracias por tu compra 🐷");
+                    cart = []; 
+                    saveCart();
+                    updateCartUI();
+                    toggleCart(); 
+                }
+            });
+        }
+        
+        function checkoutCOD() {
+            if (cart.length === 0) { showToast("Agrega productos primero 😉"); return; }
+            
+            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            
+            let message = "Hola ChoriChava 👋, quiero hacer un pedido *CONTRA ENTREGA (Medellín)*:\n\n";
+            cart.forEach(item => {
+                message += `- ${item.qty}x ${item.name} (${currencyFormatter.format(item.price * item.qty)})\n`;
+            });
+            
+            message += `\n*Total: ${currencyFormatter.format(total)}*`;
+            
+            if (totalQty >= 5) {
+                message += "\n\n🎉 ¡Aplica para Domicilio GRATIS!";
+            } else {
+                message += "\n\n(Domicilio por cobrar)";
+            }
+            
+            const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        function consultarPeso(nombreProducto) {
+            const mensaje = `Hola ChoriChava 👋, estoy interesado en comprar *${nombreProducto}*. ¿Me podrían indicar el precio por peso y disponibilidad?`;
+            const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        function submitContactForm() {
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+            const message = document.getElementById('contactMessage').value;
+            if(!name || !message) {
+                alert("Por favor escribe tu nombre y mensaje 😉");
+                return;
+            }
+            const text = `Hola, soy *${name}* (Tel: ${phone}).\n\n${message}`;
+            const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
