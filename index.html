@@ -372,17 +372,25 @@
         /* =========================================
            SECCIONES DE PRODUCTOS - ESPACIADO ESTANDARIZADO
            ========================================= */
-        /* Aplicamos exactamente el mismo padding a las 5 secciones principales */
-        .products-section, .reviews-section, .contact-section {
-            padding: 20px 0 !important; /* Espacio idéntico arriba y abajo */
+        /* Aplicamos exactamente el mismo padding a las secciones principales */
+        .products-section, .reviews-section {
+            padding: 20px 0 !important; 
             background: transparent;
             border-bottom: none;
             margin: 0 !important;
         }
+        
+        /* Sección contacto con ajustes para móvil */
+        .contact-section {
+            padding: 20px 20px 40px !important; 
+            background: transparent;
+            border-bottom: none;
+            margin: 0 !important;
+            text-align: center; /* Asegura centrado del contenido */
+        }
 
         #gourmet {
             background-color: #ffffff;
-            /* Sin margen extra para subirla */
         }
 
         #tradicional {
@@ -406,7 +414,6 @@
         .contact-section {
             background-color: #ffffff;
             border-top: 1px solid #eee;
-            padding-bottom: 40px !important; /* Un poco más abajo solo en contacto para el footer */
         }
 
         .section-title {
@@ -416,7 +423,7 @@
             font-size: 2rem;
             margin-bottom: 20px;
             font-weight: 800;
-            padding-top: 0; /* Sin padding extra arriba del título */
+            padding-top: 0;
             margin-top: 0;
         }
 
@@ -782,15 +789,10 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             font-weight: 800;
-            margin-bottom: 15px; 
+            margin-bottom: 20px; /* Un poco más de espacio debajo del título */
         }
-
-        .contact-text {
-            font-size: 1.1rem;
-            color: #444;
-            margin-bottom: 40px;
-            line-height: 1.6; 
-        }
+        
+        /* Texto "Tienes alguna duda..." eliminado en HTML */
 
         .form-box {
             background: white;
@@ -1118,6 +1120,9 @@
             .history-photo-frame { margin-bottom: 20px; }
             .contact-section { padding: 30px 15px 50px; }
             .history-quote { font-size: 1.2rem; margin: 20px 0; }
+            
+            /* Ajuste específico para el formulario en celular */
+            .form-box { padding: 25px; } 
         }
     </style>
 </head>
@@ -1273,7 +1278,6 @@
             <!-- SECCIÓN CONTACTO -->
             <section class="contact-section" id="contacto">
                 <h2 class="contact-title reveal-on-scroll">Contáctanos</h2>
-                <p class="contact-text reveal-on-scroll">¿Tienes alguna duda o quieres hacer un pedido especial?</p>
 
                 <div class="form-box reveal-on-scroll">
                     <div class="form-group">
