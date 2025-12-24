@@ -403,7 +403,7 @@
         }
 
         #tradicional {
-            /* CAMBIO: Fondo claro Crema Suave */
+            /* Fondo claro Crema Suave */
             background-color: var(--bg-cream); 
             position: relative; 
         }
@@ -924,7 +924,7 @@
         
         .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; }
         
-        /* Botón X del carrito PULIDO */
+        /* Botón X del carrito */
         .close-cart { 
             position: absolute;
             top: 15px; 
@@ -1114,52 +1114,39 @@
            OPTIMIZACIÓN ESCRITORIO
            ========================================= */
         @media (min-width: 769px) {
-            .navbar { max-width: 1200px; margin: 0 auto; padding: 0 5px; } /* Pegado a los bordes */
-            .nav-logo { margin-left: 0; }
-            .nav-actions { margin-right: 0; }
+            .navbar { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+            .nav-logo { margin-left: -55px; }
+            .nav-actions { margin-right: -10px; }
             
-            /* SOLUCIÓN ALINEACIÓN DEFINITIVA: 
-               1. El contenedor principal ocupa 100% de la pantalla
-               2. Los contenedores internos se limitan a 1200px y se centran con margin: 0 auto
-            */
+            /* CORRECCIÓN FINAL ESCRITORIO: ALINEACIÓN PERFECTA */
+            .hero-section { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
+            .hero-img { height: auto; width: 100%; object-fit: contain; object-position: center; display: block; }
+            /* Botón centrado, PEQUEÑO y más abajo */
+            .hero-content { width: 80%; top: 80%; left: 50%; transform: translate(-50%, -50%); } 
+            .hero-title { font-size: 4rem; margin-bottom: 30px; }
             
-            .app-container {
-                width: 100% !important;
-                max-width: none !important;
-                margin: 0 !important;
-            }
-
-            /* Fondos Full Width sin trucos */
-            .hero-section, .trust-badges, .products-section, .reviews-section, .contact-section, footer { 
-                width: 100%;
-                left: auto;
-                right: auto;
-                margin-left: 0;
-                margin-right: 0;
-                padding-left: 0;
-                padding-right: 0;
-            }
-            
-            /* CENTRADO DE CONTENIDOS INTERNOS */
-            
-            .hero-content { 
-                width: 1200px; 
-                max-width: 100%; 
-                left: 50%; 
-                top: 65%; /* UBICACIÓN SEGURA, MAS BAJA */
-                transform: translate(-50%, -50%); 
-                position: absolute; 
-            }
-            
-            /* BOTÓN GRANDE Y CENTRADO */
+            /* BOTÓN MÁS PEQUEÑO (Solicitud usuario) */
             .hero-cta-btn { 
-                padding: 25px 50px; 
-                font-size: 1.5rem; 
-                border-radius: 60px;
+                padding: 12px 30px; /* Reducido de 25px 50px */
+                font-size: 1rem;    /* Reducido de 1.5rem */
+                border-radius: 50px;
             }
-
-            /* Todos los bloques de contenido se centran en 1200px */
-            .carousel-wrapper, .form-box, .contact-details, .section-title, .trust-badges {
+            
+            /* CONTENEDOR ANCHO COMPLETO */
+            .trust-badges, .products-section, .reviews-section, .contact-section, footer { 
+                width: 100vw; 
+                position: relative; 
+                left: 50%; 
+                right: 50%; 
+                margin-left: -50vw; 
+                margin-right: -50vw; 
+                /* Padding importante para centrar el contenido interno */
+                padding-left: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
+                padding-right: max(20px, calc((100vw - 1200px) / 2 + 20px)); 
+            }
+            
+            /* CONTENIDO INTERNO CENTRADO EN 1200PX (Bloqueo de movimiento) */
+            .carousel-wrapper, .form-box, .contact-details, .section-title {
                 max-width: 1200px;
                 margin-left: auto;
                 margin-right: auto;
@@ -1167,7 +1154,7 @@
                 position: relative; 
             }
             
-            /* Ajuste específico para Trust Badges flexbox */
+            /* Trust Badges ajustados */
             .trust-badges {
                 display: flex;
                 justify-content: center;
@@ -1188,9 +1175,7 @@
             .product-card { width: 270px !important; min-width: 270px !important; }
             .card-image-box .product-photo { width: 100%; height: 100%; object-fit: contain; transform: scale(1.28) !important; border: none !important; border-radius: 0; box-shadow: none; }
             .product-card:hover .product-photo { transform: scale(1.35) !important; }
-            
-            /* Padding lateral interno */
-            .products-section { padding-left: 20px; padding-right: 20px; }
+            .app-container { box-shadow: none; background: transparent; }
         }
 
         @media (max-width: 768px) {
