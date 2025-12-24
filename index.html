@@ -1188,19 +1188,17 @@
         }
 
         @media (min-width: 1024px) {
-            /* Wrapper principal de página */
-            .app-container {
-                max-width: 100%;
+            /* Neutraliza el offset causado por width: 100vw + left/right en desktop */
+            .trust-badges,
+            .products-section,
+            .reviews-section,
+            .contact-section,
+            footer {
                 width: 100%;
-                margin: 0;
-            }
-
-            /* Contenedor de las 3 tarjetas (Producto colombiano, Mercados campesinos, Tulio recomienda) */
-            .trust-badges {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-                width: 100%;
+                left: auto;
+                right: auto;
+                margin-left: 0;
+                margin-right: 0;
             }
         }
     </style>
