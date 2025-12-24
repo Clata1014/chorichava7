@@ -248,11 +248,11 @@
             position: absolute;
             top: 60px; /* Bajado para mejor visibilidad */
             right: 30px;
-            background: rgba(255, 255, 255, 0.1); /* Fondo sutil */
-            border: 2px solid rgba(255, 255, 255, 0.3); /* Borde elegante */
+            background: rgba(255, 255, 255, 0.1); 
+            border: 2px solid rgba(255, 255, 255, 0.3); 
             width: 50px;
             height: 50px;
-            border-radius: 50%; /* Redondo */
+            border-radius: 50%; 
             color: white;
             font-size: 1.8rem;
             cursor: pointer;
@@ -261,7 +261,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-bottom: 4px; /* Ajuste óptico */
+            padding-bottom: 4px; 
         }
         .close-menu-btn:hover { 
             transform: rotate(90deg); 
@@ -387,7 +387,7 @@
            ========================================= */
         /* Aplicamos exactamente el mismo padding a las secciones principales */
         .products-section, .reviews-section {
-            padding: 20px 0 !important; /* Espacio idéntico arriba y abajo */
+            padding: 20px 0 !important; 
             background: transparent;
             border-bottom: none;
             margin: 0 !important;
@@ -399,12 +399,11 @@
             background: transparent;
             border-bottom: none;
             margin: 0 !important;
-            text-align: center; /* Asegura centrado del contenido */
+            text-align: center; 
         }
 
         #gourmet {
             background-color: #ffffff;
-            /* Sin margen extra para subirla */
         }
 
         #tradicional {
@@ -413,7 +412,7 @@
             position: relative; 
         }
         
-        /* Ajuste: los títulos en tradicional ya no necesitan ser blancos */
+        /* Títulos en tradicional */
         #tradicional .section-title { color: var(--brand-dark); }
         #tradicional .section-title span { color: var(--brand-red); }
 
@@ -437,7 +436,7 @@
             font-size: 2rem;
             margin-bottom: 20px;
             font-weight: 800;
-            padding-top: 0; /* Sin padding extra arriba del título */
+            padding-top: 0;
             margin-top: 0;
         }
 
@@ -806,7 +805,7 @@
             margin-bottom: 20px; /* Un poco más de espacio debajo del título */
         }
         
-        /* Texto "Tienes alguna duda..." eliminado en HTML */
+        /* Texto "Tienes alguna duda..." eliminado */
 
         .form-box {
             background: white;
@@ -1110,7 +1109,7 @@
         .toast-container.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         /* =========================================
-           OPTIMIZACIÓN ESCRITORIO
+           OPTIMIZACIÓN ESCRITORIO - CORRECCIÓN DE ALINEACIÓN
            ========================================= */
         @media (min-width: 769px) {
             .navbar { max-width: 100%; padding: 0 20px; }
@@ -1124,10 +1123,30 @@
             .trust-badges { margin-top: 0; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding-left: max(10px, calc((100vw - 1200px) / 2 + 10px)); padding-right: max(10px, calc((100vw - 1200px) / 2 + 10px)); border-bottom: 1px solid #eee; z-index: 5; }
             .products-section, .reviews-section { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding-left: 0; padding-right: 0; }
             .section-title { max-width: 1200px; margin: 0 auto 20px; padding-top: 20px; }
-            .carousel-container { width: 100%; padding: 0 40px 40px 40px; }
-            .carousel-track { gap: 40px; padding-right: 100px; }
-            .nav-arrow.prev { left: 20px; }
-            .nav-arrow.next { right: 20px; }
+            
+            /* CORRECCIÓN PRINCIPAL: CARRUSEL CENTRADO Y CONTENIDO EN 1200PX */
+            .carousel-wrapper {
+                max-width: 1200px;
+                margin: 0 auto;
+                position: relative;
+                overflow: visible; /* Permite ver las flechas si salen un poco */
+            }
+
+            .carousel-container { 
+                width: 100%; 
+                padding: 0 40px 40px 40px; 
+            }
+
+            .carousel-track { 
+                gap: 40px; 
+                padding-right: 0; /* Sin padding extra para que no se vea descentrado */
+                justify-content: flex-start; /* Alineación natural a la izquierda */
+            }
+
+            /* Flechas pegadas al contenido (1200px) */
+            .nav-arrow.prev { left: -20px; }
+            .nav-arrow.next { right: -20px; }
+
             .trust-badges .badge { padding: 15px; min-height: 140px; justify-content: center; }
             .trust-badges .badge span, .trust-badges .badge img { font-size: 3.5rem; width: 70px; height: 70px; margin-bottom: 10px; }
             .trust-badges .badge p { font-size: 0.9rem; letter-spacing: 0.5px; }
