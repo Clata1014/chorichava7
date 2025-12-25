@@ -1197,12 +1197,14 @@
                 border-radius: 50px;
             }
 
-            /* "LA REGLA": Todos los bloques de contenido se centran y se limitan para que no se anchen completo */
-            .carousel-wrapper, .form-box, .contact-details, .section-title {
-                max-width: 1200px; /* Reducido de 1600px a 1200px para evitar ancho total */
+            /* "LA REGLA": Márgenes estándar como los badges (solo escritorio) */
+            .carousel-wrapper, .contact-details, .section-title {
+                max-width: none;
                 margin-left: auto;
                 margin-right: auto;
                 width: 100%;
+                padding-left: 18px;
+                padding-right: 18px;
                 position: relative; 
             }
             
