@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ChoriChava: Los mejores chorizos artesanales de Colombia. Línea gourmet, tradicional y más. Domicilios en Medellín y envíos nacionales.">
+    
+    <!-- SEO OPTIMIZADO: Descripción rica en palabras clave -->
+    <meta name="description" content="Venta de chorizos en Medellín. ChoriChava ofrece chorizos premium y tradicionales: Santarrosano, Español, Argentino y más. Ideales para asados, eventos y reuniones. Domicilios rápidos.">
+    <meta name="keywords" content="chorizos medellin, venta de chorizos, chorizos para asado, chorizos a domicilio, chorizo santarrosano medellin, carnes frias, asados medellin, chorichava, comida rapida, eventos">
     
     <!-- SEO & Open Graph -->
-    <meta property="og:title" content="ChoriChava | Chorizos Artesanales">
-    <meta property="og:description" content="Los mejores chorizos artesanales de Colombia. Línea gourmet, tradicional y más.">
+    <meta property="og:title" content="ChoriChava | Los Mejores Chorizos de Medellín para Asados">
+    <meta property="og:description" content="Disfruta del auténtico sabor tradicional. Chorizos Santarrosanos, Argentinos, Españoles y más. ¡Pide tu domicilio hoy!">
     <meta property="og:image" content="https://clata1014.github.io/chorichava7/Fondito.png">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CO">
 
-    <title>ChoriChava | Chorizos Artesanales</title>
+    <title>ChoriChava | Venta de Chorizos Premium y Asados en Medellín</title>
 
     <!-- Favicon -->
     <link rel="icon" href="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" type="image/png">
@@ -24,7 +28,7 @@
     <!-- Script de Wompi para Pagos -->
     <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
 
-    <!-- DATOS ESTRUCTURADOS SEO (Schema.org) -->
+    <!-- DATOS ESTRUCTURADOS SEO (Schema.org) MEJORADOS -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -32,6 +36,7 @@
       "name": "ChoriChava",
       "image": "https://clata1014.github.io/chorichava7/Fondito.png",
       "telephone": "+573001234567",
+      "url": "https://clata1014.github.io/chorichava7/",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Medellín",
@@ -39,9 +44,27 @@
         "addressRegion": "Antioquia",
         "addressCountry": "CO"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 6.2442,
+        "longitude": -75.5812
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
       "priceRange": "$$",
-      "servesCuisine": "Chorizos Artesanales, Parrilla",
-      "url": "https://clata1014.github.io/chorichava7/"
+      "servesCuisine": "Chorizos, Parrilla, Asados, Comida Colombiana",
+      "description": "Venta de chorizos premium y tradicionales en Medellín. Domicilios de chorizo santarrosano, español, argentino y más."
     }
     </script>
 
@@ -66,6 +89,19 @@
             overflow-x: hidden;
             width: 100%;
             margin: 0; 
+        }
+
+        /* Clase para ocultar el H1 visualmente pero mantenerlo para SEO */
+        .seo-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         :root {
@@ -1161,9 +1197,9 @@
                 border-radius: 50px;
             }
 
-            /* "LA REGLA": Todos los bloques de contenido se centran en 1600px */
+            /* "LA REGLA": Todos los bloques de contenido se centran y se limitan para que no se anchen completo */
             .carousel-wrapper, .form-box, .contact-details, .section-title {
-                max-width: 1600px;
+                max-width: 1200px; /* Reducido de 1600px a 1200px para evitar ancho total */
                 margin-left: auto;
                 margin-right: auto;
                 width: 100%;
@@ -1239,7 +1275,7 @@
 
             /* HISTORIA ESCRITORIO: ANCHA (1 COLUMNA) Y CENTRADA */
             .history-container {
-                max-width: 1400px; /* Aumentado a 1400px para pantalla ancha */
+                max-width: 1200px; /* Reducido a 1200px para coherencia */
                 margin: 50px auto !important; /* Centrado automático */
                 padding: 60px;
                 display: block; /* 1 columna vertical */
@@ -1301,10 +1337,13 @@
 </head>
 <body>
 
+    <!-- H1 OCULTO PARA SEO (Google lo lee, el usuario ve el logo) -->
+    <h1 class="seo-hidden">ChoriChava: Venta de Chorizos Premium y Asados en Medellín</h1>
+
     <!-- BARRA DE NAVEGACIÓN -->
     <div class="navbar-wrapper">
         <nav class="navbar">
-            <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Logo ChoriChava" class="nav-logo" onclick="switchView('home')">
+            <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Logo ChoriChava - Fábrica de Chorizos en Medellín" class="nav-logo" onclick="switchView('home')">
             <div class="nav-actions">
                 <button class="nav-cart-btn" onclick="toggleCart()" aria-label="Abrir carrito de compras">
                     🛒
@@ -1336,7 +1375,7 @@
             <header class="hero-section">
                 <picture>
                     <source media="(min-width: 769px)" srcset="https://github.com/Clata1014/chorichava7/blob/main/Fonditoescritorio.webp?raw=true">
-                    <img src="https://clata1014.github.io/chorichava7/Fondito.png" alt="Chorizos Artesanales ChoriChava" class="hero-img">
+                    <img src="https://clata1014.github.io/chorichava7/Fondito.png" alt="Chorizos Premium ChoriChava Medellín - Sabor Tradicional para Asados" class="hero-img">
                 </picture>
 
                 <div class="hero-content">
@@ -1357,7 +1396,7 @@
                     <p>Mercados<br>Campesinos</p>
                 </div>
                 <div class="badge reveal-on-scroll" style="transition-delay: 200ms;">
-                    <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="Tulio" loading="lazy">
+                    <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="ChoriChava recomendado por Tulio Recomienda" loading="lazy">
                     <p>Tulio<br>Recomienda</p>
                 </div>
             </section>
@@ -1372,15 +1411,15 @@
                     <div class="carousel-container drag-scroll" id="track-gourmet">
                         <div class="carousel-track">
                             <!-- Productos Gourmet aquí -->
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Argentinogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Argentino"></div><div class="card-details"><h3 class="card-title">Argentino</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, vino tinto, sal, nuez moscada, hinojo, orégano, perejil.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Argentino', 21000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Ahumadogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Ahumado"></div><div class="card-details"><h3 class="card-title">Ahumado</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo, comino, sal.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Ahumado', 21000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Antioqueñogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Antioqueño"></div><div class="card-details"><h3 class="card-title">Antioqueño</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, agua, cebolla de rama, comino, pimentón, ajo, ají, sal.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Antioqueño', 21000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Españolgourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Español"></div><div class="card-details"><h3 class="card-title">Español</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, sal, vino blanco.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Español', 21000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Marinerogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Marinero"></div><div class="card-details"><h3 class="card-title">Marinero</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, camarón, calamar, pulpo, palmito de cangrejo, vino blanco, especias naturales y sal.</p><p class="card-price">$28.000</p><button class="buy-btn" onclick="addToCart('Chorizo Marinero', 28000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Santarrosanogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Santarrosano"></div><div class="card-details"><h3 class="card-title">Santarrosano</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, ajo, cebolla de rama, comino, humo y sal.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 21000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Llanerogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Llanero"></div><div class="card-details"><h3 class="card-title">Llanero</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, sal, humo.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Llanero', 21000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Jalapeñogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Jalapeño"></div><div class="card-details"><h3 class="card-title">Jalapeño</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, ajo, pimienta negra, jalapeño, cebolla en polvo.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Jalapeño', 21000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Alemangourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Alemán"></div><div class="card-details"><h3 class="card-title">Alemán</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, semilla de mostaza, perejil, pimienta, humo, sal, cilantro, cerveza rubia.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Alemán', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Argentinogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Argentino Premium para asados en Medellín"></div><div class="card-details"><h3 class="card-title">Argentino</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, vino tinto, sal, nuez moscada, hinojo, orégano, perejil.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Argentino', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Ahumadogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Ahumado Gourmet venta Medellín"></div><div class="card-details"><h3 class="card-title">Ahumado</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo, comino, sal.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Ahumado', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Antioqueñogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Antioqueño Tradicional a domicilio"></div><div class="card-details"><h3 class="card-title">Antioqueño</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, agua, cebolla de rama, comino, pimentón, ajo, ají, sal.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Antioqueño', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Españolgourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Español curado para picadas"></div><div class="card-details"><h3 class="card-title">Español</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, sal, vino blanco.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Español', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Marinerogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Marinero con mariscos especial"></div><div class="card-details"><h3 class="card-title">Marinero</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, camarón, calamar, pulpo, palmito de cangrejo, vino blanco, especias naturales y sal.</p><p class="card-price">$28.000</p><button class="buy-btn" onclick="addToCart('Chorizo Marinero', 28000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Santarrosanogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Santarrosano original Medellín"></div><div class="card-details"><h3 class="card-title">Santarrosano</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, ajo, cebolla de rama, comino, humo y sal.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Santarrosano', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Llanerogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Llanero para asar"></div><div class="card-details"><h3 class="card-title">Llanero</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, sal, humo.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Llanero', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Jalapeñogourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Picante con Jalapeño"></div><div class="card-details"><h3 class="card-title">Jalapeño</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, ajo, pimienta negra, jalapeño, cebolla en polvo.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Jalapeño', 21000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Alemangourmet.webp" class="product-photo ahumado-photo" loading="lazy" alt="Salchicha tipo Alemana para perros calientes"></div><div class="card-details"><h3 class="card-title">Alemán</h3><p class="card-desc">Paquete x6 (500g). Carne de cerdo, tocino, semilla de mostaza, perejil, pimienta, humo, sal, cilantro, cerveza rubia.</p><p class="card-price">$21.000</p><button class="buy-btn" onclick="addToCart('Chorizo Alemán', 21000, this)">Agregar al Carrito 🛒</button></div></div>
                         </div>
                     </div>
                 </div>
@@ -1396,16 +1435,16 @@
                     <div class="carousel-container drag-scroll" id="track-tradicional">
                         <div class="carousel-track">
                             <!-- Productos Tradicionales -->
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Chicharrontradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chicharrón"></div><div class="card-details"><h3 class="card-title">Chicharrón</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, papada, cebolla de rama, ajo, comino, ají, pimentón, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Chorizo de Chicharrón', 23000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Españoltradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Español"></div><div class="card-details"><h3 class="card-title">Español</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, sal, vino blanco.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Español Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Jalapeñotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Jalapeño"></div><div class="card-details"><h3 class="card-title">Jalapeño</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, ajo, pimienta negra, jalapeño, cebolla en polvo.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Jalapeño Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Llanerotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Llanero"></div><div class="card-details"><h3 class="card-title">Llanero</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, sal, humo.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Llanero Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Ahumadotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Ahumado"></div><div class="card-details"><h3 class="card-title">Ahumado</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo, comino, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Ahumado Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Antioqueñotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Antioqueño"></div><div class="card-details"><h3 class="card-title">Antioqueño</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, agua, cebolla de rama, comino, pimentón, ajo, ají, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Antioqueño Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Argentinotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Argentino"></div><div class="card-details"><h3 class="card-title">Argentino</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, vino tinto, sal, nuez moscada, hinojo, orégano, perejil.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Argentino Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Calabrasetradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Brasileiro"></div><div class="card-details"><h3 class="card-title">Brasileiro</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, pimienta roja y negra, comino, ajo, semilla de hinojo, semilla de cilantro, pimienta, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Brasileiro', 23000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Italianotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Italiano"></div><div class="card-details"><h3 class="card-title">Italiano</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, fresca, vino tinto, ajo, hierbas aromáticas, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Italiano Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Santarrosanotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Santarrosano"></div><div class="card-details"><h3 class="card-title">Santarrosano</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, ajo, cebolla de rama, comino, humo y sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Santarrosano Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Chicharrontradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo de Chicharrón crocante"></div><div class="card-details"><h3 class="card-title">Chicharrón</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, papada, cebolla de rama, ajo, comino, ají, pimentón, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Chorizo de Chicharrón', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Españoltradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Español Tradicional"></div><div class="card-details"><h3 class="card-title">Español</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, sal, vino blanco.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Español Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Jalapeñotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Picante Jalapeño Tradicional"></div><div class="card-details"><h3 class="card-title">Jalapeño</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, ajo, pimienta negra, jalapeño, cebolla en polvo.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Jalapeño Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Llanerotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Llanero Tradicional"></div><div class="card-details"><h3 class="card-title">Llanero</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, sal, humo.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Llanero Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Ahumadotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Ahumado Tradicional"></div><div class="card-details"><h3 class="card-title">Ahumado</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo, comino, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Ahumado Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Antioqueñotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Antioqueño Tradicional"></div><div class="card-details"><h3 class="card-title">Antioqueño</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, agua, cebolla de rama, comino, pimentón, ajo, ají, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Antioqueño Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Argentinotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Argentino Tradicional"></div><div class="card-details"><h3 class="card-title">Argentino</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, vino tinto, sal, nuez moscada, hinojo, orégano, perejil.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Argentino Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Calabrasetradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Brasileiro Calabresa"></div><div class="card-details"><h3 class="card-title">Brasileiro</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, pimienta roja y negra, comino, ajo, semilla de hinojo, semilla de cilantro, pimienta, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Brasileiro', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Italianotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Italiano Tradicional"></div><div class="card-details"><h3 class="card-title">Italiano</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, fresca, vino tinto, ajo, hierbas aromáticas, sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Italiano Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://clata1014.github.io/chorichava7/Santarrosanotradicional.webp" class="product-photo ahumado-photo" loading="lazy" alt="Chorizo Santarrosano Tradicional"></div><div class="card-details"><h3 class="card-title">Santarrosano</h3><p class="card-desc">Paquete x5 (600g). Carne de cerdo, tocino, ajo, cebolla de rama, comino, humo y sal.</p><p class="card-price">$23.000</p><button class="buy-btn" onclick="addToCart('Santarrosano Tradicional', 23000, this)">Agregar al Carrito 🛒</button></div></div>
                         </div>
                     </div>
                 </div>
@@ -1420,12 +1459,12 @@
 
                     <div class="carousel-container drag-scroll" id="track-otros">
                         <div class="carousel-track">
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Bandiola.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Bondiola"></div><div class="card-details"><h3 class="card-title" style="font-size: 1rem;">Bondiola de Cerdo Ahumada</h3><p class="card-desc">Corte de aguja de cerdo, marinado y madurado. Ahumado lento.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Bondiola de Cerdo Ahumada')">Cotizar por WhatsApp 💬</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Ca%C3%B1on.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Cañón"></div><div class="card-details"><h3 class="card-title">Cañón Ahumado</h3><p class="card-desc">Lomo de cerdo seleccionado, bajo en grasa, curado en salmuera y ahumado.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Cañón Ahumado')">Cotizar por WhatsApp 💬</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Papada.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Papada"></div><div class="card-details"><h3 class="card-title">Papada Ahumada</h3><p class="card-desc">Papada de cerdo curada y ahumada. Textura untuosa y sabor intenso.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Papada Ahumada')">Cotizar por WhatsApp 💬</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Panceta.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Panceta"></div><div class="card-details"><h3 class="card-title">Panceta Ahumada</h3><p class="card-desc">Tocino carnudo ahumado natural. Equilibrio perfecto entre carne y grasa.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Panceta Ahumada')">Cotizar por WhatsApp 💬</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Pernil.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Pernil"></div><div class="card-details"><h3 class="card-title">Pernil Ahumado</h3><p class="card-desc">Pierna de cerdo ahumada, jugosa y tierna. Proceso de cocción lenta.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Pernil Ahumado')">Cotizar por WhatsApp 💬</button></div></div>
-                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Chistorra.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Chistorra"></div><div class="card-details"><h3 class="card-title">Chistorra Española</h3><p class="card-desc">Embutido de origen navarro, delgado y de curación corta. Intenso.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Chistorra Española')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Bandiola.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Bondiola de Cerdo Ahumada venta Medellín"></div><div class="card-details"><h3 class="card-title" style="font-size: 1rem;">Bondiola de Cerdo Ahumada</h3><p class="card-desc">Corte de aguja de cerdo, marinado y madurado. Ahumado lento.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Bondiola de Cerdo Ahumada')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Ca%C3%B1on.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Cañón de Cerdo Ahumado"></div><div class="card-details"><h3 class="card-title">Cañón Ahumado</h3><p class="card-desc">Lomo de cerdo seleccionado, bajo en grasa, curado en salmuera y ahumado.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Cañón Ahumado')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Papada.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Papada de Cerdo Ahumada"></div><div class="card-details"><h3 class="card-title">Papada Ahumada</h3><p class="card-desc">Papada de cerdo curada y ahumada. Textura untuosa y sabor intenso.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Papada Ahumada')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Panceta.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Panceta Ahumada Tocino"></div><div class="card-details"><h3 class="card-title">Panceta Ahumada</h3><p class="card-desc">Tocino carnudo ahumado natural. Equilibrio perfecto entre carne y grasa.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Panceta Ahumada')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Pernil.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Pernil de Cerdo Ahumado para navidad"></div><div class="card-details"><h3 class="card-title">Pernil Ahumado</h3><p class="card-desc">Pierna de cerdo ahumada, jugosa y tierna. Proceso de cocción lenta.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Pernil Ahumado')">Cotizar por WhatsApp 💬</button></div></div>
+                            <div class="product-card reveal-on-scroll"><div class="card-image-box"><img src="https://github.com/Clata1014/chorichava7/blob/main/Chistorra.webp?raw=true" class="product-photo ahumado-photo" loading="lazy" alt="Chistorra Española Embutido"></div><div class="card-details"><h3 class="card-title">Chistorra Española</h3><p class="card-desc">Embutido de origen navarro, delgado y de curación corta. Intenso.</p><p class="card-price" style="font-size: 0.9rem; color: #666;">Precio según peso</p><button class="buy-btn whatsapp-quote-btn" onclick="consultarPeso('Chistorra Española')">Cotizar por WhatsApp 💬</button></div></div>
                         </div>
                     </div>
                 </div>
@@ -1441,8 +1480,8 @@
                         <div class="carousel-track">
                             <div class="review-card reveal-on-scroll"><div class="review-stars">★★★★★</div><p class="review-text">"Los mejores chorizos que he probado en Medellín. El sabor ahumado es increíble."</p><p class="review-author">- Carlos M.</p></div>
                             <div class="review-card reveal-on-scroll"><div class="review-stars">★★★★★</div><p class="review-text">"Súper recomendados para asados. Compré el paquete surtido y todos quedaron encantados."</p><p class="review-author">- Juliana R.</p></div>
-                            <div class="review-card reveal-on-scroll"><div class="review-stars">★★★★★</div><p class="review-text">"Me encanta que sean artesanales y sin conservantes raros. Se siente la calidad."</p><p class="review-author">- Andrés T.</p></div>
-                            <div class="review-card reveal-on-scroll"><div class="review-stars">★★★★★</div><p class="review-text">"El servicio a domicilio fue muy rápido y llegaron empacados al vacío perfectos."</p><p class="review-author">- Maria Clara J.</p></div>
+                            <div class="review-card reveal-on-scroll"><div class="review-stars">★★★★★</div><p class="review-text">"Me encanta la calidad y que sean sin conservantes raros. Se siente la diferencia."</p><p class="review-author">- Andrés T.</p></div>
+                            <div class="review-card reveal-on-scroll"><div class="review-stars">★★★★★</div><p class="review-text">"Llegaron empacados al vacío perfectos, listos para asar. La calidad se nota en cada bocado."</p><p class="review-author">- Maria Clara J.</p></div>
                         </div>
                     </div>
                 </div>
@@ -1486,20 +1525,20 @@
         <div id="history-view" class="view-section">
             <div class="history-container">
                 <div class="history-photo-frame">
-                    <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" alt="Carlos Chavarriaga Fundador ChoriChava" class="history-photo">
+                    <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" alt="Carlos Chavarriaga Fundador ChoriChava - Fábrica de Chorizos en Medellín" class="history-photo">
                 </div>
                 <span class="img-caption">Fundador y Visionario</span>
                 <div class="history-text">
                     <p>Detrás de cada gran sabor, hay una historia de dedicación. Todo comenzó hace más de 13 años, cuando <strong>Carlos Chavarriaga</strong> decidió transformar su pasión por la buena mesa en una marca que hoy es orgullo paisa: <span class="history-highlight">ChoriChava</span>.</p>
                     <div class="history-quote">"No vendemos chorizos, vendemos momentos en familia."</div>
-                    <p>Lo que inició como un sueño emprendedor, tomó fuerza y estructura gracias al reconocimiento del programa <strong>Capital Semilla</strong> de la Alcaldía de Medellín. Este impulso permitió a la empresa crecer y perfeccionar sus procesos, logrando lo que pocos alcanzan: mantener la esencia 100% artesanal cumpliendo con los más altos estándares de calidad y seguridad, respaldados por su <strong>registro INVIMA</strong>.</p>
+                    <p>Lo que inició como un sueño emprendedor, tomó fuerza y estructura gracias al reconocimiento del programa <strong>Capital Semilla</strong> de la Alcaldía de Medellín. Este impulso permitió a la empresa crecer y perfeccionar sus procesos, logrando lo que pocos alcanzan: mantener el auténtico sabor tradicional cumpliendo con los más altos estándares de calidad y seguridad, respaldados por su <strong>registro INVIMA</strong>.</p>
                     <div class="history-photo-frame landscape">
-                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" alt="Muestra de Chorizos Artesanales ChoriChava" class="history-photo">
+                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" alt="Muestra de Chorizos ChoriChava para eventos y asados" class="history-photo">
                     </div>
-                    <span class="img-caption">Calidad Artesanal en cada bocado</span>
+                    <span class="img-caption">Calidad Superior en cada bocado</span>
                     <p>Esta constancia ha dado frutos deliciosos. La marca ha sido destacada por referentes gastronómicos como <span class="history-highlight">Tulio Recomienda</span>, confirmando que cuando las cosas se hacen con amor y disciplina, se nota en el sabor. Hoy, más que un producto, ChoriChava lleva una experiencia completa a <strong>eventos y celebraciones</strong>, encargándose de brindar el auténtico sabor de la parrilla sin preocupaciones.</p>
                     <div class="history-photo-frame landscape">
-                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" alt="Reconocimiento Tulio Recomienda a ChoriChava" class="history-photo">
+                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" alt="Reconocimiento Tulio Recomienda a ChoriChava - Mejores Chorizos Medellín" class="history-photo">
                     </div>
                     <span class="img-caption">Reconocimiento de Tulio Recomienda</span>
                     <p style="text-align: center; font-weight: 600; font-size: 1.2rem; margin-top: 30px;">
@@ -1513,17 +1552,17 @@
 
         <!-- FOOTER -->
         <footer>
-            <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Chorichava" loading="lazy">
+            <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Chorichava - Venta de Chorizos y Carnes frías Medellín" loading="lazy">
             <div class="social-icons">
-                <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                <a href="#" class="social-link" aria-label="Facebook">📘</a>
-                <a href="#" class="social-link" aria-label="TikTok">🎵</a>
+                <a href="#" class="social-link" aria-label="Instagram de ChoriChava">📷</a>
+                <a href="#" class="social-link" aria-label="Facebook de ChoriChava">📘</a>
+                <a href="#" class="social-link" aria-label="TikTok de ChoriChava">🎵</a>
             </div>
             <p>&copy; 2024 ChoriChava - Medellín, Colombia</p>
         </footer>
 
         <!-- WHATSAPP FLOAT -->
-        <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank" title="Chatea con nosotros" aria-label="Chatear por WhatsApp">
+        <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank" title="Chatea con nosotros para pedir chorizos" aria-label="Chatear por WhatsApp para pedidos">
             💬
         </a>
         
