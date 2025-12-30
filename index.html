@@ -50,23 +50,26 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')">
-                    <div class="shrink-0 w-10 h-10 bg-[#4A0E0E] rounded-xl flex items-center justify-center shadow-lg relative z-20 backdrop-blur-sm border border-white/10">
-                        <i data-lucide="utensils" class="text-[#D4AF37] w-6 h-6"></i>
+                    <!-- AUMENTADO: Icono de utensilios más grande en escritorio (md:w-14 md:h-14) -->
+                    <div class="shrink-0 w-12 h-12 md:w-14 md:h-14 bg-[#4A0E0E] rounded-xl flex items-center justify-center shadow-lg relative z-20 backdrop-blur-sm border border-white/10 transition-all hover:scale-105">
+                        <i data-lucide="utensils" class="text-[#D4AF37] w-6 h-6 md:w-8 md:h-8"></i>
                     </div>
                     <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Logo" class="h-32 w-auto object-contain -my-8 -ml-6 relative z-10" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
                 </div>
 
                 <!-- Botones Derecha -->
                 <div class="flex items-center gap-4">
-                    <button onclick="toggleCart()" class="relative flex items-center justify-center w-12 h-12 rounded-full hover:bg-gray-100 transition-colors">
-                        <i data-lucide="shopping-bag" class="w-6 h-6 text-[#4A0E0E]"></i>
+                    <!-- AUMENTADO: Botón de carrito más grande (md:w-14 md:h-14) e icono interno (md:w-8 md:h-8) -->
+                    <button onclick="toggleCart()" class="relative flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full hover:bg-gray-100 transition-colors">
+                        <i data-lucide="shopping-bag" class="w-7 h-7 md:w-9 md:h-9 text-[#4A0E0E]"></i>
                         <span id="cart-count" class="absolute top-2 right-2 flex h-4 w-4 hidden">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-4 w-4 bg-[#D4AF37] text-[#4A0E0E] text-[10px] font-bold items-center justify-center border border-[#4A0E0E] cart-num">0</span>
                         </span>
                     </button>
-                    <button onclick="toggleMenu()" class="flex items-center justify-center w-12 h-12 rounded-full hover:bg-gray-100 transition-colors">
-                        <i data-lucide="menu" class="w-8 h-8 text-[#4A0E0E]"></i>
+                    <!-- AUMENTADO: Botón de menú más grande e icono interno (md:w-10 md:h-10) -->
+                    <button onclick="toggleMenu()" class="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full hover:bg-gray-100 transition-colors">
+                        <i data-lucide="menu" class="w-9 h-9 md:w-11 md:h-11 text-[#4A0E0E]"></i>
                     </button>
                 </div>
             </div>
