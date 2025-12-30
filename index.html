@@ -32,13 +32,15 @@
 </head>
 <body class="selection:bg-orange-200">
 
-    <!-- FONDO -->
-    <div class="fixed inset-0 -z-50 w-full h-full bg-[#3d0a0a]">
+    <!-- FONDO HERO - CARBÓN Y FUEGO (Mejor contraste) -->
+    <div class="fixed inset-0 -z-50 w-full h-full bg-[#1a0505]">
         <img 
-          src="https://github.com/Clata1014/chorichava7/blob/main/Asaditomari.webp?raw=true" 
-          alt="Fondo Parrilla" 
-          class="w-full h-full object-cover opacity-100 brightness-[0.6] object-center"
+          src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1920&auto=format&fit=crop" 
+          alt="Fondo Parrilla Carbón" 
+          class="w-full h-full object-cover opacity-90 brightness-[0.7] object-center"
         >
+        <!-- Capa oscura extra para asegurar lectura -->
+        <div class="absolute inset-0 bg-black/30"></div>
     </div>
 
     <!-- NAVEGACIÓN STICKY -->
@@ -101,9 +103,10 @@
             
             <!-- TARJETAS DE CONFIANZA -->
             <div class="w-full mb-8 pb-6 border-b border-white/50">
-                <div class="flex flex-row w-full gap-2">
+                <!-- Se cambió max-w-4xl a max-w-3xl para reducir más el ancho -->
+                <div class="flex flex-row w-full gap-2 max-w-3xl mx-auto">
                     <!-- Tarjeta 1 -->
-                    <div class="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50">
+                    <div class="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 hover:scale-105 transition-transform duration-300">
                         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Colombia" class="w-10 h-10 object-contain shrink-0">
                         <div class="flex flex-col text-left">
                             <span class="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Producto</span>
@@ -111,7 +114,7 @@
                         </div>
                     </div>
                     <!-- Tarjeta 2 -->
-                    <div class="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50">
+                    <div class="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 hover:scale-105 transition-transform duration-300">
                         <span class="text-4xl md:text-5xl shrink-0">🧑‍🌾</span>
                         <div class="flex flex-col text-left">
                             <span class="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Mercados</span>
@@ -119,7 +122,7 @@
                         </div>
                     </div>
                     <!-- Tarjeta 3 -->
-                    <div class="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50">
+                    <div class="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 hover:scale-105 transition-transform duration-300">
                         <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="Tulio" class="w-10 h-10 md:w-12 md:h-12 object-contain shrink-0">
                         <div class="flex flex-col text-left">
                             <span class="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Tulio</span>
