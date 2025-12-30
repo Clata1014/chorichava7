@@ -1,424 +1,484 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { 
-  ShoppingBag, 
-  Menu as MenuIcon, 
-  Utensils, 
-  X, 
-  Plus, 
-  Minus, 
-  Trash2, 
-  Star,
-  Flame,
-  ArrowRight,
-  Truck,
-  MapPin
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChoriChava | Chorizos Premium</title>
+    
+    <!-- Tailwind CSS (Diseño) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fuentes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-// --- DATOS DE PRODUCTOS ---
-const PRODUCTS = [
-  // LÍNEA GOURMET
-  { id: "g1", name: "Chorizo Argentino Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Argentinogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, vino tinto, sal, nuez moscada, hinojo, orégano, perejil." },
-  { id: "g2", name: "Chorizo Ahumado Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Ahumadogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo, comino, sal." },
-  { id: "g3", name: "Chorizo Antioqueño Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Antioqueñogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, agua, cebolla de rama, comino, pimentón, ajo, ají, sal." },
-  { id: "g4", name: "Chorizo Español Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Españolgourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, sal, vino blanco." },
-  { id: "g5", name: "Chorizo Marinero", price: 28000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Marinerogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, camarón, calamar, pulpo, palmito de cangrejo, vino blanco." },
-  { id: "g6", name: "Chorizo Santarrosano Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Santarrosanogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, ajo, cebolla de rama, comino, humo y sal." },
-  { id: "g7", name: "Chorizo Jalapeño Gourmet", price: 21000, category: "Gourmet", rating: 4, spiciness: 3, image: "https://clata1014.github.io/chorichava7/Jalapeñogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, ajo, pimienta negra, jalapeño, cebolla en polvo." },
-  { id: "g8", name: "Chorizo Llanero Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Llanerogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, sal, humo." },
-  { id: "g9", name: "Chorizo Alemán Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Alemangourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, semilla de mostaza, perejil, pimienta, humo, cerveza rubia." },
-  { id: "g10", name: "Chorizo Mixto Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Mixtogourmet.webp", description: "Paquete x6 (500g). Mezcla de cerdo con especias selectas, toque ahumado y hierbas." },
-
-  // LÍNEA TRADICIONAL
-  { id: "t1", name: "Chicharrón Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Chicharrontradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, papada, cebolla, ajo, comino, ají, pimentón." },
-  { id: "t2", name: "Español Tradicional", price: 23000, category: "Tradicional", rating: 4, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Españoltradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, vino blanco." },
-  { id: "t3", name: "Ahumado Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Ahumadotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo." },
-  { id: "t4", name: "Jalapeño Tradicional", price: 23000, category: "Tradicional", rating: 4, spiciness: 3, image: "https://clata1014.github.io/chorichava7/Jalapeñotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, ajo, pimienta negra, jalapeño." },
-  { id: "t5", name: "Llanero Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Llanerotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, humo." },
-  { id: "t6", name: "Antioqueño Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Antioqueñotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, cebolla de rama, comino, pimentón, ají." },
-  { id: "t7", name: "Argentino Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Argentinotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, vino tinto, nuez moscada, hinojo, orégano." },
-  { id: "t8", name: "Brasileiro Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Calabrasetradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, pimienta roja, comino, semilla de hinojo." },
-  { id: "t9", name: "Italiano Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Italianotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, vino tinto, ajo, hierbas aromáticas." },
-  { id: "t10", name: "Santarrosano Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Santarrosanotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, ajo, cebolla de rama, comino, humo." },
-  { id: "t11", name: "Mixto Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Mixtotradicional.webp", description: "Paquete x5 (600g). Sabor clásico con mezcla de cerdo y especias suaves." },
-
-  // OTRAS DELICIAS
-  { id: "o1", name: "Bondiola Ahumada", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Bandiola.webp?raw=true", description: "Corte de aguja de cerdo, marinado y ahumado lento. (Precio según peso)" },
-  { id: "o2", name: "Cañón Ahumado", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Ca%C3%B1on.webp?raw=true", description: "Lomo de cerdo seleccionado, curado en salmuera y ahumado. (Precio según peso)" },
-  { id: "o3", name: "Papada Ahumada", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Papada.webp?raw=true", description: "Textura untuosa y sabor intenso. Curada y ahumada. (Precio según peso)" },
-  { id: "o4", name: "Panceta Ahumada", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Panceta.webp?raw=true", description: "Tocino carnudo ahumado natural. Equilibrio perfecto. (Precio según peso)" },
-  { id: "o5", name: "Pernil Ahumado", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Pernil.webp?raw=true", description: "Pierna de cerdo ahumada, jugosa y tierna. Cocción lenta. (Precio según peso)" },
-  { id: "o6", name: "Chistorra Española", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Chistorra.webp?raw=true", description: "Embutido de origen navarro, delgado y de curación corta. (Precio según peso)" }
-];
-
-const CATEGORIES = ["Línea Gourmet", "Tradicional", "Otras Delicias"];
-
-export default function App() {
-  const [view, setView] = useState('store'); // 'store' | 'history'
-  const [activeCategory, setActiveCategory] = useState("Línea Gourmet");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [cart, setCart] = useState([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Scroll to top when switching views
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [view]);
-
-  // Filtrado inteligente
-  const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter(product => {
-      let matchesCategory = false;
-      if (activeCategory === "Línea Gourmet") {
-        matchesCategory = product.category === "Gourmet";
-      } else if (activeCategory === "Tradicional") {
-        matchesCategory = product.category === "Tradicional";
-      } else if (activeCategory === "Otras Delicias") {
-        matchesCategory = product.category === "Otras Delicias";
-      }
-
-      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            product.description.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-  }, [activeCategory, searchQuery]);
-
-  // Funciones del Carrito y Navegación
-  const addToCart = (product) => {
-    setCart(prev => {
-      const existing = prev.find(item => item.id === product.id);
-      if (existing) {
-        return prev.map(item => item.id === product.id ? { ...item, qty: item.qty + 1 } : item);
-      }
-      return [...prev, { ...product, qty: 1 }];
-    });
-    setIsCartOpen(true);
-  };
-
-  const updateQty = (id, delta) => {
-    setCart(prev => prev.map(item => {
-      if (item.id === id) return { ...item, qty: Math.max(0, item.qty + delta) };
-      return item;
-    }).filter(item => item.qty > 0));
-  };
-
-  const removeFromCart = (id) => setCart(prev => prev.filter(item => item.id !== id));
-  const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-  const cartItemCount = cart.reduce((sum, item) => sum + item.qty, 0);
-
-  const handleMenuNavigation = (targetView, category = null, sectionId = null) => {
-    setView(targetView);
-    if (category) setActiveCategory(category);
-    setIsMenuOpen(false);
-    if (sectionId) {
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
-  };
-
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
-    const name = document.getElementById('contactName').value;
-    const msg = document.getElementById('contactMessage').value;
-    if(!name || !msg) return alert("Por favor escribe tu nombre y mensaje");
-    const text = `Hola ChoriChava, soy ${name}. ${msg}`;
-    window.open(`https://wa.me/573126079424?text=${encodeURIComponent(text)}`, '_blank');
-  };
-
-  return (
-    <div className="min-h-screen relative font-sans selection:bg-orange-200">
-      
-      {/* FONDO GLOBAL FIJO - IMAGEN 'ASADITOMARI' */}
-      <div className="fixed inset-0 -z-50 w-full h-full bg-[#3d0a0a]">
-        <img 
-          src="https://github.com/Clata1014/chorichava7/blob/main/Asaditomari.webp?raw=true"
-          alt="Fondo Parrilla Chorizos Gourmet"
-          className="w-full h-full object-cover"
-          style={{ opacity: 1, filter: 'brightness(0.6)', objectPosition: 'center center' }}
-        />
-      </div>
-
-      {/* CONTENIDO PRINCIPAL */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #F9F7F2; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
         
-        {/* NAVBAR */}
-        <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-lg transition-colors duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-20">
-              <div className="flex items-center gap-0 group cursor-pointer" onClick={() => handleMenuNavigation('store', 'Línea Gourmet')}>
-                <div className="shrink-0 w-10 h-10 bg-[#4A0E0E] rounded-xl flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-all duration-300 relative z-20 backdrop-blur-sm border border-white/10">
-                  <Utensils className="text-[#D4AF37] w-6 h-6" />
-                </div>
-                <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="ChoriChava Logo" className="h-32 w-auto object-contain -my-8 -ml-6 -translate-y-1 transition-transform duration-300 hover:scale-105 relative z-10" style={{ filter: 'brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%)' }} />
-              </div>
+        /* Animaciones */
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .slide-in-right { animation: slideInRight 0.3s ease-out forwards; }
+        @keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
 
-              <div className="flex items-center gap-4">
-                <button onClick={() => setIsCartOpen(true)} className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-gray-100 transition-colors relative group">
-                  <ShoppingBag className="w-6 h-6 text-[#4A0E0E] group-hover:text-red-900 transition-colors" />
-                  {cartItemCount > 0 && (
-                    <span className="absolute top-2 right-2 flex h-4 w-4">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-4 w-4 bg-[#D4AF37] text-[#4A0E0E] text-[10px] font-bold items-center justify-center border border-[#4A0E0E]">{cartItemCount}</span>
-                    </span>
-                  )}
-                </button>
-                <button onClick={() => setIsMenuOpen(true)} className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-gray-100 transition-colors">
-                  <MenuIcon className="w-8 h-8 text-[#4A0E0E]" />
-                </button>
-              </div>
-            </div>
-          </div>
+        /* Scrollbar oculta para carrusel */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="selection:bg-orange-200">
 
-          {/* Filtros / Pills - COMO AL INICIO (GRIS y BOTONES) */}
-          <div className="bg-white border-t border-gray-100 shadow-sm">
-            <div className="max-w-7xl mx-auto px-4 py-4">
-              <div className="flex justify-center">
-                {/* Contenedor GRIS que agrupa los tres botones - Estilo Original */}
-                <div className="inline-flex bg-gray-100 rounded-full p-1 gap-1">
-                  {CATEGORIES.map(cat => (
-                    <button 
-                      key={cat}
-                      onClick={() => setActiveCategory(cat)}
-                      className={`
-                        px-6 py-2 rounded-full text-sm font-bold transition-all duration-200 whitespace-nowrap
-                        ${activeCategory === cat 
-                          ? 'bg-white text-[#4A0E0E] shadow-sm ring-1 ring-black/5' // ACTIVO
-                          : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50' // INACTIVO
-                        }
-                      `}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
-
-        {/* MENÚ MÓVIL FULL SCREEN */}
-        <div className={`fixed inset-0 bg-[#4A0E0E]/95 backdrop-blur-lg z-50 transition-transform duration-300 flex flex-col justify-center items-center gap-8 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-          <button onClick={() => setIsMenuOpen(false)} className="absolute top-6 right-6 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-all"><X className="w-8 h-8" /></button>
-          <a href="#" onClick={() => handleMenuNavigation('store', 'Línea Gourmet')} className="text-3xl font-serif text-white hover:text-[#D4AF37] transition-colors">Inicio</a>
-          <a href="#" onClick={() => handleMenuNavigation('store', 'Línea Gourmet')} className="text-3xl font-serif text-white hover:text-[#D4AF37] transition-colors">Línea Gourmet</a>
-          <a href="#" onClick={() => handleMenuNavigation('store', 'Tradicional')} className="text-3xl font-serif text-white hover:text-[#D4AF37] transition-colors">Tradicional</a>
-          <a href="#" onClick={() => handleMenuNavigation('store', 'Otras Delicias')} className="text-3xl font-serif text-white hover:text-[#D4AF37] transition-colors">Otras Delicias</a>
-          <a href="#" onClick={() => handleMenuNavigation('history')} className="text-3xl font-serif text-white hover:text-[#D4AF37] transition-colors">Nuestra Historia</a>
-          <a href="#" onClick={() => handleMenuNavigation('store', null, 'contact-section')} className="text-3xl font-serif text-white hover:text-[#D4AF37] transition-colors">Contacto</a>
-        </div>
-
-        {/* VISTA: TIENDA (HOME) */}
-        {view === 'store' && (
-          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-0 flex-1 w-full">
-            
-            {/* BADGES DE CONFIANZA */}
-            <div className="w-full mb-8 pb-6 border-b border-white/50">
-               <div className="flex flex-row w-full gap-2"> 
-                  <div className="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 hover:bg-gray-50 transition-colors">
-                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Bandera Colombia" className="w-10 h-10 object-contain shrink-0"/>
-                    <div className="flex flex-col text-left">
-                      <span className="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Producto</span>
-                      <span className="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Colombiano</span>
-                    </div>
-                  </div>
-                  <div className="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 hover:bg-gray-50 transition-colors">
-                    <span className="text-4xl md:text-5xl shrink-0">🧑‍🌾</span>
-                    <div className="flex flex-col text-left">
-                      <span className="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Mercados</span>
-                      <span className="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Campesinos</span>
-                    </div>
-                  </div>
-                  <div className="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 hover:bg-gray-50 transition-colors">
-                    <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="Tulio Recomienda" className="w-10 h-10 md:w-12 md:h-12 object-contain shrink-0" />
-                    <div className="flex flex-col text-left">
-                      <span className="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Tulio</span>
-                      <span className="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Recomienda</span>
-                    </div>
-                  </div>
-               </div>
-            </div>
-
-            {/* TITULO CATEGORÍA Y CONTADOR */}
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-4xl font-bold text-white font-serif drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">{activeCategory}</h3>
-              <span className="text-sm text-[#4A0E0E] font-bold bg-white/95 backdrop-blur-sm px-3 py-1 rounded-lg shadow-sm">{filteredProducts.length} delicias</span>
-            </div>
-
-            {/* PRODUCTOS */}
-            {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {filteredProducts.map(product => (
-                  <div key={product.id} className="group bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden border border-white/50 hover:border-[#D4AF37] hover:shadow-2xl transition-all duration-300 flex flex-row h-48 w-full">
-                    <div className="relative w-[35%] bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
-                      <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-300 drop-shadow-md" />
-                      {product.price > 0 && <div className="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-0.5 rounded-full text-xs font-black text-[#4A0E0E] shadow-sm border border-[#F0E6D2]">${product.price.toLocaleString()}</div>}
-                    </div>
-                    <div className="flex-1 p-4 flex flex-col justify-center text-left">
-                      <div className="flex items-center gap-1 mb-1">
-                        <Star className="w-3 h-3 fill-[#D4AF37] text-[#D4AF37]" /><span className="text-xs font-bold text-gray-400">{product.rating}.0</span>
-                        {product.spiciness > 1 && <div className="flex gap-0.5 ml-2">{[...Array(product.spiciness)].map((_,i) => <Flame key={i} className="w-3 h-3 text-red-500 fill-red-500" />)}</div>}
-                      </div>
-                      <h4 className="font-extrabold text-base md:text-lg text-[#4A0E0E] leading-tight mb-2">{product.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}</h4>
-                      <p className="text-xs text-gray-600 line-clamp-2 mb-3 leading-relaxed">{product.description}</p>
-                      <button onClick={() => product.price > 0 ? addToCart(product) : window.open(`https://wa.me/573126079424?text=Hola, quiero cotizar ${product.name}`)} className={`w-full py-2 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2 active:scale-95 shadow-sm mt-auto ${product.price > 0 ? 'bg-[#4A0E0E] text-white hover:bg-[#2b0505]' : 'bg-green-500 text-white hover:bg-green-600'}`}>
-                        {product.price > 0 ? <>Agregar <ShoppingBag className="w-4 h-4" /></> : <>Cotizar <span className="text-xs">💬</span></>}
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-20 bg-white/90 backdrop-blur-sm rounded-3xl border border-dashed border-gray-300">
-                <Search className="w-8 h-8 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">No encontramos ese antojo</h3>
-                <button onClick={() => {setSearchQuery(""); setActiveCategory("Línea Gourmet")}} className="text-[#4A0E0E] font-bold hover:underline">Ver todo el menú</button>
-              </div>
-            )}
-
-            {/* SECCIÓN DE TESTIMONIOS (NUEVA) */}
-            <section className="mt-16 pt-8 pb-12 bg-white/95 backdrop-blur-sm rounded-3xl shadow-xl px-6 text-center border border-white/50">
-              <h2 className="text-3xl font-serif font-bold text-[#4A0E0E] mb-8">Clientes <span className="text-[#D4AF37]">Felices</span></h2>
-              <div className="flex overflow-x-auto gap-4 snap-x pb-4">
-                {[
-                  { name: "Carlos M.", text: "Los mejores chorizos que he probado en Medellín. El sabor ahumado es increíble." },
-                  { name: "Juliana R.", text: "Súper recomendados para asados. Compré el paquete surtido y todos quedaron encantados." },
-                  { name: "Andrés T.", text: "Me encanta la calidad y que sean sin conservantes raros. Se siente la diferencia." },
-                  { name: "Maria Clara J.", text: "Llegaron empacados al vacío perfectos, listos para asar. La calidad se nota." }
-                ].map((review, idx) => (
-                  <div key={idx} className="min-w-[260px] bg-[#FFFBF2] p-6 rounded-2xl shadow-md border border-[#F0E6D2] snap-center flex flex-col justify-center">
-                    <div className="text-[#D4AF37] mb-2 text-lg">★★★★★</div>
-                    <p className="text-sm text-gray-600 italic mb-4">"{review.text}"</p>
-                    <p className="font-bold text-[#4A0E0E] text-sm mt-auto">- {review.name}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* SECCIÓN DE CONTACTO (NUEVA) */}
-            <section id="contact-section" className="mt-8 mb-12 bg-white rounded-3xl shadow-xl p-8 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-serif font-bold text-[#4A0E0E] mb-6 text-center">Contáctanos</h2>
-              <form onSubmit={handleContactSubmit} className="space-y-4">
-                <div><label className="block text-sm font-bold text-gray-700 mb-1">Nombre</label><input id="contactName" type="text" className="w-full p-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#4A0E0E] outline-none" placeholder="Tu nombre" /></div>
-                <div><label className="block text-sm font-bold text-gray-700 mb-1">Mensaje</label><textarea id="contactMessage" className="w-full p-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#4A0E0E] outline-none min-h-[100px]" placeholder="Hola, quisiera hacer un pedido para un evento..."></textarea></div>
-                <button type="submit" className="w-full bg-gradient-to-r from-[#4A0E0E] to-[#601212] text-white py-4 rounded-full font-bold shadow-lg hover:translate-y-[-2px] transition-all uppercase tracking-wide">Enviar a WhatsApp 🚀</button>
-              </form>
-              <div className="flex justify-center gap-8 mt-8 flex-wrap">
-                <div className="flex flex-col items-center"><MapPin className="text-[#4A0E0E] w-8 h-8 mb-2" /><span className="text-sm font-semibold">Medellín, Colombia</span></div>
-                <div className="flex flex-col items-center"><Truck className="text-[#4A0E0E] w-8 h-8 mb-2" /><span className="text-sm font-semibold">Envíos Nacionales</span></div>
-              </div>
-            </section>
-
-          </main>
-        )}
-
-        {/* VISTA: HISTORIA */}
-        {view === 'history' && (
-          <div className="max-w-4xl mx-auto px-4 py-8 animate-fade-in">
-            <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-white/50">
-              <div className="p-8 md:p-12 text-center">
-                <div className="relative w-full max-w-md mx-auto mb-6 rounded-2xl overflow-hidden shadow-xl border-4 border-white transform rotate-1">
-                   <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" className="w-full h-auto object-cover" alt="Carlos Chavarriaga" />
-                </div>
-                <p className="text-gray-500 italic mb-8 font-serif">Fundador y Visionario</p>
-                
-                <div className="text-left text-gray-700 space-y-6 leading-relaxed text-lg font-medium px-2 md:px-8">
-                   <p><span className="text-6xl float-left mr-3 text-[#4A0E0E] font-serif leading-none font-bold mt-[-10px]">D</span>etrás de cada gran sabor, hay una historia de dedicación. Todo comenzó hace más de 13 años, cuando <strong>Carlos Chavarriaga</strong> decidió transformar su pasión por la buena mesa en una marca que hoy es orgullo paisa: <span className="text-[#4A0E0E] font-bold">ChoriChava</span>.</p>
-                   
-                   <div className="text-center my-10 relative">
-                     <span className="text-4xl text-[#D4AF37] absolute top-[-20px] left-0">"</span>
-                     <p className="font-serif italic text-2xl text-[#4A0E0E] px-8">No vendemos chorizos, vendemos momentos en familia.</p>
-                     <span className="text-4xl text-[#D4AF37] absolute bottom-[-40px] right-0">"</span>
-                   </div>
-
-                   <p>Lo que inició como un sueño emprendedor, tomó fuerza y estructura gracias al reconocimiento del programa <strong>Capital Semilla</strong> de la Alcaldía de Medellín. Este impulso permitió a la empresa crecer y perfeccionar sus procesos, logrando lo que pocos alcanzan: mantener el auténtico sabor tradicional cumpliendo con los más altos estándares de calidad y seguridad, respaldados por su <strong>registro INVIMA</strong>.</p>
-                   
-                   <div className="w-full rounded-2xl overflow-hidden shadow-lg my-8"><img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" className="w-full object-cover" alt="Muestra de Calidad" /></div>
-                   <p className="text-center text-sm text-gray-500 italic -mt-6 mb-8">Calidad Superior</p>
-
-                   <p>Esta constancia ha dado frutos deliciosos. La marca ha sido destacada por referentes gastronómicos como <span className="text-[#4A0E0E] font-bold">Tulio Recomienda</span>, confirmando que cuando las cosas se hacen con amor y disciplina, se nota en el sabor.</p>
-
-                   <div className="w-full rounded-2xl overflow-hidden shadow-lg my-8"><img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" className="w-full object-cover" alt="Tulio Recomienda" /></div>
-                   <p className="text-center text-sm text-gray-500 italic -mt-6 mb-8">Reconocimiento de Tulio Recomienda</p>
-
-                   <p className="text-center font-bold text-xl text-[#4A0E0E] mt-8">ChoriChava es tradición, es calidad y, sobre todo, es una familia trabajando para llevar lo mejor a la mesa de cada cliente.</p>
-                   <div className="flex justify-center mt-4 text-2xl text-[#4A0E0E]">🔥</div>
-                </div>
-                
-                <button onClick={() => handleMenuNavigation('store')} className="mt-12 bg-[#1A1A1A] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-black transition-colors flex items-center gap-2 mx-auto">
-                  <ArrowRight className="w-5 h-5 rotate-180" /> Volver al Menú
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Footer Simple */}
-        <footer className="bg-[#1A1A1A] text-gray-400 py-12 mt-auto border-t border-gray-800 relative z-10">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <h2 className="text-2xl font-serif font-bold text-white">Chori<span className="text-[#D4AF37]">Chava</span></h2>
-            </div>
-            <p className="text-sm mb-6">Medellín, Colombia • Envíos a todo el país</p>
-            <div className="flex justify-center gap-6 text-2xl">
-              <span className="hover:text-[#D4AF37] cursor-pointer">📷</span>
-              <span className="hover:text-[#D4AF37] cursor-pointer">📘</span>
-              <span className="hover:text-[#D4AF37] cursor-pointer">💬</span>
-            </div>
-            <p className="text-xs mt-8 text-gray-600">© 2024 ChoriChava. Todos los derechos reservados.</p>
-          </div>
-        </footer>
-      </div>
-
-      {/* CART SLIDE-OVER */}
-      {isCartOpen && (
-        <div className="fixed inset-0 z-[60] flex justify-end">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setIsCartOpen(false)} />
-          <div className="relative w-full max-w-md bg-white shadow-2xl h-full flex flex-col animate-slide-in-right">
-            <div className="p-6 bg-[#4A0E0E] text-white flex items-center justify-between shadow-lg">
-              <h2 className="text-xl font-bold font-serif flex items-center gap-2"><ShoppingBag className="w-5 h-5 text-[#D4AF37]" /> Tu Canasta</h2>
-              <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors"><X className="w-6 h-6" /></button>
-            </div>
-            <div className="flex-1 overflow-y-auto p-6 space-y-6">
-              {cart.length === 0 ? (
-                <div className="h-full flex flex-col items-center justify-center text-center space-y-4 text-gray-400">
-                  <ShoppingBag className="w-16 h-16 opacity-20" />
-                  <p className="font-medium">Tu carrito está vacío</p>
-                  <button onClick={() => setIsCartOpen(false)} className="text-[#4A0E0E] font-bold underline">Volver al menú</button>
-                </div>
-              ) : (
-                cart.map(item => (
-                  <div key={item.id} className="flex gap-4 border-b border-gray-100 pb-4">
-                    <div className="w-20 h-20 rounded-xl bg-gray-50 border border-gray-100 overflow-hidden shrink-0 flex items-center justify-center"><img src={item.image} alt={item.name} className="w-full h-full object-contain" /></div>
-                    <div className="flex-1">
-                      <div className="flex justify-between items-start mb-1"><h4 className="font-bold text-[#4A0E0E] text-sm leading-tight">{item.name}</h4><span className="font-bold text-[#D4AF37] text-sm">${(item.price * item.qty).toLocaleString()}</span></div>
-                      <div className="flex items-center justify-between mt-3">
-                        <div className="flex items-center gap-3 bg-gray-50 rounded-lg p-1 border border-gray-200">
-                          <button onClick={() => updateQty(item.id, -1)} className="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-gray-600 hover:text-red-500"><Minus className="w-3 h-3" /></button>
-                          <span className="text-sm font-bold w-4 text-center">{item.qty}</span>
-                          <button onClick={() => updateQty(item.id, 1)} className="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-gray-600 hover:text-green-500"><Plus className="w-3 h-3" /></button>
-                        </div>
-                        <button onClick={() => removeFromCart(item.id)} className="text-gray-400 hover:text-red-500"><Trash2 className="w-4 h-4" /></button>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-            {cart.length > 0 && (
-              <div className="p-6 bg-gray-50 border-t border-gray-200">
-                <div className="mb-4 space-y-2">
-                   <div className="flex justify-between text-gray-600"><span>Subtotal</span><span>${cartTotal.toLocaleString()}</span></div>
-                   <div className="flex justify-between font-bold text-[#4A0E0E] text-lg pt-2 border-t border-gray-200"><span>Total</span><span>${cartTotal.toLocaleString()}</span></div>
-                   {cartItemCount >= 5 ? <div className="bg-green-100 text-green-800 text-xs font-bold p-2 rounded text-center flex items-center justify-center gap-1"><Truck className="w-3 h-3" /> ¡Tienes envío GRATIS!</div> : <div className="text-xs text-center text-gray-500">Agrega {5 - cartItemCount} unidades más para envío gratis.</div>}
-                </div>
-                <button className="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold shadow-lg shadow-green-500/30 hover:bg-green-600 active:scale-[0.98] transition-all flex items-center justify-center gap-2">Confirmar Pedido por WhatsApp 🚀</button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+    <!-- FONDO -->
+    <div class="fixed inset-0 -z-50 w-full h-full bg-[#3d0a0a]">
+        <img 
+          src="https://github.com/Clata1014/chorichava7/blob/main/Asaditomari.webp?raw=true" 
+          alt="Fondo Parrilla" 
+          class="w-full h-full object-cover opacity-100 brightness-[0.6] object-center"
+        >
     </div>
-  );
-}
+
+    <!-- NAVEGACIÓN STICKY -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-lg transition-colors duration-300">
+        <!-- Logo y Carrito -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')">
+                    <div class="shrink-0 w-10 h-10 bg-[#4A0E0E] rounded-xl flex items-center justify-center shadow-lg relative z-20 backdrop-blur-sm border border-white/10">
+                        <i data-lucide="utensils" class="text-[#D4AF37] w-6 h-6"></i>
+                    </div>
+                    <img src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" alt="Logo" class="h-32 w-auto object-contain -my-8 -ml-6 relative z-10" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
+                </div>
+
+                <!-- Botones Derecha -->
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleCart()" class="relative flex items-center justify-center w-12 h-12 rounded-full hover:bg-gray-100 transition-colors">
+                        <i data-lucide="shopping-bag" class="w-6 h-6 text-[#4A0E0E]"></i>
+                        <span id="cart-count" class="absolute top-2 right-2 flex h-4 w-4 hidden">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-4 w-4 bg-[#D4AF37] text-[#4A0E0E] text-[10px] font-bold items-center justify-center border border-[#4A0E0E] cart-num">0</span>
+                        </span>
+                    </button>
+                    <button onclick="toggleMenu()" class="flex items-center justify-center w-12 h-12 rounded-full hover:bg-gray-100 transition-colors">
+                        <i data-lucide="menu" class="w-8 h-8 text-[#4A0E0E]"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FILTROS (BOTONES) - COMO AL INICIO -->
+        <div class="bg-white border-t border-gray-100 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 py-4">
+                <div class="flex justify-center">
+                    <div class="inline-flex bg-gray-100 rounded-full p-1 gap-1" id="category-pills">
+                        <!-- Se llenan con JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MENÚ MÓVIL FULL SCREEN -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#4A0E0E]/95 backdrop-blur-lg z-50 transition-transform duration-300 translate-x-full flex flex-col justify-center items-center gap-8">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 p-2 bg-white/10 rounded-full text-white hover:bg-white/20"><i data-lucide="x" class="w-8 h-8"></i></button>
+        <a href="#" onclick="switchView('store', 'Línea Gourmet')" class="text-3xl font-serif text-white hover:text-[#D4AF37]">Inicio</a>
+        <a href="#" onclick="switchView('store', 'Línea Gourmet')" class="text-3xl font-serif text-white hover:text-[#D4AF37]">Línea Gourmet</a>
+        <a href="#" onclick="switchView('store', 'Tradicional')" class="text-3xl font-serif text-white hover:text-[#D4AF37]">Tradicional</a>
+        <a href="#" onclick="switchView('store', 'Otras Delicias')" class="text-3xl font-serif text-white hover:text-[#D4AF37]">Otras Delicias</a>
+        <a href="#" onclick="switchView('history')" class="text-3xl font-serif text-white hover:text-[#D4AF37]">Nuestra Historia</a>
+        <a href="#" onclick="scrollToContact()" class="text-3xl font-serif text-white hover:text-[#D4AF37]">Contacto</a>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="main-content" class="min-h-screen relative z-10 w-full pb-12">
+        
+        <!-- VISTA TIENDA -->
+        <div id="view-store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 fade-in">
+            
+            <!-- TARJETAS DE CONFIANZA -->
+            <div class="w-full mb-8 pb-6 border-b border-white/50">
+                <div class="flex flex-row w-full gap-2">
+                    <!-- Tarjeta 1 -->
+                    <div class="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Colombia" class="w-10 h-10 object-contain shrink-0">
+                        <div class="flex flex-col text-left">
+                            <span class="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Producto</span>
+                            <span class="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Colombiano</span>
+                        </div>
+                    </div>
+                    <!-- Tarjeta 2 -->
+                    <div class="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50">
+                        <span class="text-4xl md:text-5xl shrink-0">🧑‍🌾</span>
+                        <div class="flex flex-col text-left">
+                            <span class="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Mercados</span>
+                            <span class="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Campesinos</span>
+                        </div>
+                    </div>
+                    <!-- Tarjeta 3 -->
+                    <div class="flex-1 flex flex-row items-center justify-center gap-2 md:gap-4 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50">
+                        <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="Tulio" class="w-10 h-10 md:w-12 md:h-12 object-contain shrink-0">
+                        <div class="flex flex-col text-left">
+                            <span class="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Tulio</span>
+                            <span class="font-bold text-[#4A0E0E] text-xs md:text-base leading-tight">Recomienda</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Título Categoría -->
+            <div class="flex items-center justify-between mb-6">
+                <h3 id="category-title" class="text-4xl font-bold text-white font-serif drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">Línea Gourmet</h3>
+                <span id="product-count" class="text-sm text-[#4A0E0E] font-bold bg-white/95 backdrop-blur-sm px-3 py-1 rounded-lg shadow-sm">0 delicias</span>
+            </div>
+
+            <!-- GRID PRODUCTOS -->
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Se llena con JS -->
+            </div>
+
+            <!-- TESTIMONIOS -->
+            <section class="mt-16 pt-8 pb-12 bg-white/95 backdrop-blur-sm rounded-3xl shadow-xl px-6 text-center border border-white/50">
+                <h2 class="text-3xl font-serif font-bold text-[#4A0E0E] mb-8">Clientes <span class="text-[#D4AF37]">Felices</span></h2>
+                <div class="flex overflow-x-auto gap-4 snap-x pb-4 no-scrollbar">
+                    <div class="min-w-[260px] bg-[#FFFBF2] p-6 rounded-2xl shadow-md border border-[#F0E6D2] snap-center flex flex-col justify-center">
+                        <div class="text-[#D4AF37] mb-2 text-lg">★★★★★</div>
+                        <p class="text-sm text-gray-600 italic mb-4">"Los mejores chorizos que he probado en Medellín. El sabor ahumado es increíble."</p>
+                        <p class="font-bold text-[#4A0E0E] text-sm mt-auto">- Carlos M.</p>
+                    </div>
+                    <div class="min-w-[260px] bg-[#FFFBF2] p-6 rounded-2xl shadow-md border border-[#F0E6D2] snap-center flex flex-col justify-center">
+                        <div class="text-[#D4AF37] mb-2 text-lg">★★★★★</div>
+                        <p class="text-sm text-gray-600 italic mb-4">"Súper recomendados. Compré el paquete surtido y todos quedaron encantados."</p>
+                        <p class="font-bold text-[#4A0E0E] text-sm mt-auto">- Juliana R.</p>
+                    </div>
+                    <div class="min-w-[260px] bg-[#FFFBF2] p-6 rounded-2xl shadow-md border border-[#F0E6D2] snap-center flex flex-col justify-center">
+                        <div class="text-[#D4AF37] mb-2 text-lg">★★★★★</div>
+                        <p class="text-sm text-gray-600 italic mb-4">"Llegaron empacados al vacío perfectos, listos para asar. La calidad se nota."</p>
+                        <p class="font-bold text-[#4A0E0E] text-sm mt-auto">- Maria Clara J.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACTO -->
+            <section id="contact-section" class="mt-8 mb-12 bg-white rounded-3xl shadow-xl p-8 max-w-2xl mx-auto">
+                <h2 class="text-3xl font-serif font-bold text-[#4A0E0E] mb-6 text-center">Contáctanos</h2>
+                <form onsubmit="handleContact(event)" class="space-y-4">
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Nombre</label><input id="contactName" type="text" class="w-full p-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#4A0E0E] outline-none" placeholder="Tu nombre"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">Mensaje</label><textarea id="contactMessage" class="w-full p-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#4A0E0E] outline-none min-h-[100px]" placeholder="Hola, quisiera hacer un pedido..."></textarea></div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-[#4A0E0E] to-[#601212] text-white py-4 rounded-full font-bold shadow-lg hover:translate-y-[-2px] transition-all uppercase tracking-wide">Enviar a WhatsApp 🚀</button>
+                </form>
+                <div class="flex justify-center gap-8 mt-8 flex-wrap">
+                    <div class="flex flex-col items-center"><i data-lucide="map-pin" class="text-[#4A0E0E] w-8 h-8 mb-2"></i><span class="text-sm font-semibold">Medellín, Colombia</span></div>
+                    <div class="flex flex-col items-center"><i data-lucide="truck" class="text-[#4A0E0E] w-8 h-8 mb-2"></i><span class="text-sm font-semibold">Envíos Nacionales</span></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISTA HISTORIA (Oculta por defecto) -->
+        <div id="view-history" class="hidden max-w-4xl mx-auto px-4 py-8 fade-in">
+            <div class="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-white/50">
+                <div class="p-8 md:p-12 text-center">
+                    <div class="relative w-full max-w-md mx-auto mb-6 rounded-2xl overflow-hidden shadow-xl border-4 border-white transform rotate-1">
+                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" class="w-full h-auto object-cover" alt="Carlos Chavarriaga">
+                    </div>
+                    <p class="text-gray-500 italic mb-8 font-serif">Fundador y Visionario</p>
+                    
+                    <div class="text-left text-gray-700 space-y-6 leading-relaxed text-lg font-medium px-2 md:px-8">
+                        <p><span class="text-6xl float-left mr-3 text-[#4A0E0E] font-serif leading-none font-bold mt-[-10px]">D</span>etrás de cada gran sabor, hay una historia de dedicación. Todo comenzó hace más de 13 años, cuando <strong>Carlos Chavarriaga</strong> decidió transformar su pasión por la buena mesa en una marca que hoy es orgullo paisa: <span class="text-[#4A0E0E] font-bold">ChoriChava</span>.</p>
+                        
+                        <div class="text-center my-10 relative">
+                            <span class="text-4xl text-[#D4AF37] absolute top-[-20px] left-0">"</span>
+                            <p class="font-serif italic text-2xl text-[#4A0E0E] px-8">No vendemos chorizos, vendemos momentos en familia.</p>
+                            <span class="text-4xl text-[#D4AF37] absolute bottom-[-40px] right-0">"</span>
+                        </div>
+
+                        <p>Lo que inició como un sueño emprendedor, tomó fuerza y estructura gracias al reconocimiento del programa <strong>Capital Semilla</strong> de la Alcaldía de Medellín. Este impulso permitió a la empresa crecer y perfeccionar sus procesos, logrando lo que pocos alcanzan: mantener el auténtico sabor tradicional cumpliendo con los más altos estándares de calidad y seguridad, respaldados por su <strong>registro INVIMA</strong>.</p>
+                        
+                        <div class="w-full rounded-2xl overflow-hidden shadow-lg my-8"><img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" class="w-full object-cover" alt="Muestra de Calidad"></div>
+                        <p class="text-center text-sm text-gray-500 italic -mt-6 mb-8">Calidad Superior</p>
+
+                        <p>Esta constancia ha dado frutos deliciosos. La marca ha sido destacada por referentes gastronómicos como <span class="text-[#4A0E0E] font-bold">Tulio Recomienda</span>, confirmando que cuando las cosas se hacen con amor y disciplina, se nota en el sabor.</p>
+
+                        <div class="w-full rounded-2xl overflow-hidden shadow-lg my-8"><img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" class="w-full object-cover" alt="Tulio Recomienda"></div>
+                        <p class="text-center text-sm text-gray-500 italic -mt-6 mb-8">Reconocimiento de Tulio Recomienda</p>
+
+                        <p class="text-center font-bold text-xl text-[#4A0E0E] mt-8">ChoriChava es tradición, es calidad y, sobre todo, es una familia trabajando para llevar lo mejor a la mesa de cada cliente.</p>
+                        <div class="flex justify-center mt-4 text-2xl text-[#4A0E0E]">🔥</div>
+                    </div>
+                    
+                    <button onclick="switchView('store')" class="mt-12 bg-[#1A1A1A] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-black transition-colors flex items-center gap-2 mx-auto">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i> Volver al Menú
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="bg-[#1A1A1A] text-gray-400 py-12 mt-auto border-t border-gray-800 relative z-10 text-center">
+            <h2 class="text-2xl font-serif font-bold text-white mb-4">Chori<span class="text-[#D4AF37]">Chava</span></h2>
+            <p class="text-sm mb-6">Medellín, Colombia • Envíos a todo el país</p>
+            <div class="flex justify-center gap-6 text-2xl mb-6">
+                <span class="hover:text-[#D4AF37] cursor-pointer">📷</span>
+                <span class="hover:text-[#D4AF37] cursor-pointer">📘</span>
+                <span class="hover:text-[#D4AF37] cursor-pointer">💬</span>
+            </div>
+            <p class="text-xs text-gray-600">© 2024 ChoriChava. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- CART SIDEBAR -->
+    <div id="cart-sidebar" class="fixed inset-0 z-[60] flex justify-end hidden">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div class="relative w-full max-w-md bg-white shadow-2xl h-full flex flex-col slide-in-right">
+            <div class="p-6 bg-[#4A0E0E] text-white flex items-center justify-between shadow-lg">
+                <h2 class="text-xl font-bold font-serif flex items-center gap-2"><i data-lucide="shopping-bag" class="w-5 h-5 text-[#D4AF37]"></i> Tu Canasta</h2>
+                <button onclick="toggleCart()" class="p-2 hover:bg-white/10 rounded-full transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-6">
+                <!-- Items del carrito JS -->
+            </div>
+            <div id="cart-footer" class="p-6 bg-gray-50 border-t border-gray-200 hidden">
+                <div class="mb-4 space-y-2">
+                    <div class="flex justify-between text-gray-600"><span>Subtotal</span><span id="cart-subtotal">$0</span></div>
+                    <div class="flex justify-between font-bold text-[#4A0E0E] text-lg pt-2 border-t border-gray-200"><span>Total</span><span id="cart-total">$0</span></div>
+                    <div id="shipping-msg" class="text-xs text-center text-gray-500"></div>
+                </div>
+                <button onclick="checkoutWhatsApp()" class="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold shadow-lg shadow-green-500/30 hover:bg-green-600 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                    Confirmar Pedido por WhatsApp 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT PRINCIPAL -->
+    <script>
+        // DATOS
+        const PRODUCTS = [
+            { id: "g1", name: "Chorizo Argentino Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Argentinogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, vino tinto, sal, nuez moscada, hinojo, orégano, perejil." },
+            { id: "g2", name: "Chorizo Ahumado Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Ahumadogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo, comino, sal." },
+            { id: "g3", name: "Chorizo Antioqueño Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Antioqueñogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, agua, cebolla de rama, comino, pimentón, ajo, ají, sal." },
+            { id: "g4", name: "Chorizo Español Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Españolgourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, sal, vino blanco." },
+            { id: "g5", name: "Chorizo Marinero", price: 28000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Marinerogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, camarón, calamar, pulpo, palmito de cangrejo, vino blanco." },
+            { id: "g6", name: "Chorizo Santarrosano Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Santarrosanogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, ajo, cebolla de rama, comino, humo y sal." },
+            { id: "g7", name: "Chorizo Jalapeño Gourmet", price: 21000, category: "Gourmet", rating: 4, spiciness: 3, image: "https://clata1014.github.io/chorichava7/Jalapeñogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, ajo, pimienta negra, jalapeño, cebolla en polvo." },
+            { id: "g8", name: "Chorizo Llanero Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Llanerogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, sal, humo." },
+            { id: "g9", name: "Chorizo Alemán Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Alemangourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, semilla de mostaza, perejil, pimienta, humo, cerveza rubia." },
+            { id: "g10", name: "Chorizo Mixto Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Mixtogourmet.webp", description: "Paquete x6 (500g). Mezcla de cerdo con especias selectas, toque ahumado y hierbas." },
+            { id: "t1", name: "Chicharrón Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Chicharrontradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, papada, cebolla, ajo, comino, ají, pimentón." },
+            { id: "t2", name: "Español Tradicional", price: 23000, category: "Tradicional", rating: 4, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Españoltradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, vino blanco." },
+            { id: "t3", name: "Ahumado Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Ahumadotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo." },
+            { id: "t4", name: "Jalapeño Tradicional", price: 23000, category: "Tradicional", rating: 4, spiciness: 3, image: "https://clata1014.github.io/chorichava7/Jalapeñotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, ajo, pimienta negra, jalapeño." },
+            { id: "t5", name: "Llanero Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Llanerotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, humo." },
+            { id: "t6", name: "Antioqueño Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Antioqueñotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, cebolla de rama, comino, pimentón, ají." },
+            { id: "t7", name: "Argentino Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Argentinotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, vino tinto, nuez moscada, hinojo, orégano." },
+            { id: "t8", name: "Brasileiro Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Calabrasetradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, pimienta roja, comino, semilla de hinojo." },
+            { id: "t9", name: "Italiano Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Italianotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, vino tinto, ajo, hierbas aromáticas." },
+            { id: "t10", name: "Santarrosano Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Santarrosanotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, ajo, cebolla de rama, comino, humo." },
+            { id: "t11", name: "Mixto Tradicional", price: 23000, category: "Tradicional", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Mixtotradicional.webp", description: "Paquete x5 (600g). Sabor clásico con mezcla de cerdo y especias suaves." },
+            { id: "o1", name: "Bondiola Ahumada", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Bandiola.webp?raw=true", description: "Corte de aguja de cerdo, marinado y ahumado lento. (Precio según peso)" },
+            { id: "o2", name: "Cañón Ahumado", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Ca%C3%B1on.webp?raw=true", description: "Lomo de cerdo seleccionado, curado en salmuera y ahumado. (Precio según peso)" },
+            { id: "o3", name: "Papada Ahumada", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Papada.webp?raw=true", description: "Textura untuosa y sabor intenso. Curada y ahumada. (Precio según peso)" },
+            { id: "o4", name: "Panceta Ahumada", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Panceta.webp?raw=true", description: "Tocino carnudo ahumado natural. Equilibrio perfecto. (Precio según peso)" },
+            { id: "o5", name: "Pernil Ahumado", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Pernil.webp?raw=true", description: "Pierna de cerdo ahumada, jugosa y tierna. Cocción lenta. (Precio según peso)" },
+            { id: "o6", name: "Chistorra Española", price: 0, category: "Otras Delicias", rating: 5, spiciness: 1, image: "https://github.com/Clata1014/chorichava7/blob/main/Chistorra.webp?raw=true", description: "Embutido de origen navarro, delgado y de curación corta. (Precio según peso)" }
+        ];
+
+        const CATEGORIES = ["Línea Gourmet", "Tradicional", "Otras Delicias"];
+        let cart = [];
+        let activeCategory = "Línea Gourmet";
+
+        // INICIALIZACIÓN
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderProducts();
+            lucide.createIcons();
+        });
+
+        // FUNCIONES DE RENDERIZADO
+        function renderCategories() {
+            const container = document.getElementById('category-pills');
+            container.innerHTML = CATEGORIES.map(cat => `
+                <button 
+                    onclick="setCategory('${cat}')" 
+                    class="px-6 py-2 rounded-full text-sm font-bold transition-all duration-200 whitespace-nowrap ${activeCategory === cat ? 'bg-white text-[#4A0E0E] shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'}"
+                >
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('products-grid');
+            const filtered = PRODUCTS.filter(p => {
+                let matchCat = false;
+                if(activeCategory === "Línea Gourmet") matchCat = p.category === "Gourmet";
+                else if(activeCategory === "Tradicional") matchCat = p.category === "Tradicional";
+                else if(activeCategory === "Otras Delicias") matchCat = p.category === "Otras Delicias";
+                return matchCat;
+            });
+
+            document.getElementById('category-title').innerText = activeCategory;
+            document.getElementById('product-count').innerText = `${filtered.length} delicias`;
+
+            if(filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-20 bg-white/90 backdrop-blur rounded-3xl border border-dashed border-gray-300"><h3 class="font-bold text-gray-500">No hay productos aquí</h3></div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(p => `
+                <div class="group bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden border border-white/50 hover:border-[#D4AF37] hover:shadow-2xl transition-all duration-300 flex flex-row h-48 w-full">
+                    <div class="relative w-[35%] bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
+                        <img src="${p.image}" alt="${p.name}" class="absolute inset-0 w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                        ${p.price > 0 ? `<div class="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-0.5 rounded-full text-xs font-black text-[#4A0E0E] shadow-sm border border-[#F0E6D2]">$${p.price.toLocaleString()}</div>` : ''}
+                    </div>
+                    <div class="flex-1 p-4 flex flex-col justify-center text-left">
+                        <div class="flex items-center gap-1 mb-1">
+                            <i data-lucide="star" class="w-3 h-3 fill-[#D4AF37] text-[#D4AF37]"></i>
+                            <span class="text-xs font-bold text-gray-400">5.0</span>
+                            ${p.spiciness > 1 ? '<div class="flex gap-0.5 ml-2">' + Array(p.spiciness).fill('<i data-lucide="flame" class="w-3 h-3 text-red-500 fill-red-500"></i>').join('') + '</div>' : ''}
+                        </div>
+                        <h4 class="font-extrabold text-base md:text-lg text-[#4A0E0E] leading-tight mb-2">${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}</h4>
+                        <p class="text-xs text-gray-600 line-clamp-2 mb-3 leading-relaxed">${p.description}</p>
+                        <button onclick="${p.price > 0 ? `addToCart('${p.id}')` : `contactQuote('${p.name}')`}" 
+                            class="w-full py-2 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2 active:scale-95 shadow-sm mt-auto ${p.price > 0 ? 'bg-[#4A0E0E] text-white hover:bg-[#2b0505]' : 'bg-green-500 text-white hover:bg-green-600'}">
+                            ${p.price > 0 ? 'Agregar 🛒' : 'Cotizar 💬'}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            renderCategories();
+            renderProducts();
+        }
+
+        // CARRITO
+        function addToCart(id) {
+            const product = PRODUCTS.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) existing.qty++;
+            else cart.push({ ...product, qty: 1 });
+            updateCart();
+            toggleCart(true);
+        }
+
+        function updateQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if(item) {
+                item.qty += delta;
+                if(item.qty <= 0) cart = cart.filter(i => i.id !== id);
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            const container = document.getElementById('cart-items-container');
+            const footer = document.getElementById('cart-footer');
+            const counts = document.querySelectorAll('.cart-num');
+            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            
+            counts.forEach(c => c.innerText = totalCount);
+            document.getElementById('cart-count').classList.toggle('hidden', totalCount === 0);
+
+            if(cart.length === 0) {
+                container.innerHTML = `<div class="h-full flex flex-col items-center justify-center text-center space-y-4 text-gray-400"><i data-lucide="shopping-bag" class="w-16 h-16 opacity-20"></i><p class="font-medium">Tu carrito está vacío</p><button onclick="toggleCart()" class="text-[#4A0E0E] font-bold underline">Volver al menú</button></div>`;
+                footer.classList.add('hidden');
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex gap-4 border-b border-gray-100 pb-4">
+                        <div class="w-20 h-20 rounded-xl bg-gray-50 border border-gray-100 overflow-hidden shrink-0 flex items-center justify-center"><img src="${item.image}" class="w-full h-full object-contain"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-1"><h4 class="font-bold text-[#4A0E0E] text-sm leading-tight">${item.name}</h4><span class="font-bold text-[#D4AF37] text-sm">$${(item.price * item.qty).toLocaleString()}</span></div>
+                            <div class="flex items-center justify-between mt-3">
+                                <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-1 border border-gray-200">
+                                    <button onclick="updateQty('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-gray-600 hover:text-red-500"><i data-lucide="minus" class="w-3 h-3"></i></button>
+                                    <span class="text-sm font-bold w-4 text-center">${item.qty}</span>
+                                    <button onclick="updateQty('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-gray-600 hover:text-green-500"><i data-lucide="plus" class="w-3 h-3"></i></button>
+                                </div>
+                                <button onclick="updateQty('${item.id}', -100)" class="text-gray-400 hover:text-red-500"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                footer.classList.remove('hidden');
+                
+                const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+                document.getElementById('cart-subtotal').innerText = `$${total.toLocaleString()}`;
+                document.getElementById('cart-total').innerText = `$${total.toLocaleString()}`;
+                
+                const shippingMsg = document.getElementById('shipping-msg');
+                if(totalCount >= 5) shippingMsg.innerHTML = '<div class="bg-green-100 text-green-800 text-xs font-bold p-2 rounded text-center flex items-center justify-center gap-1">¡Tienes envío GRATIS! 🚚</div>';
+                else shippingMsg.innerText = `Agrega ${5 - totalCount} unidades más para envío gratis.`;
+            }
+            lucide.createIcons();
+        }
+
+        function toggleCart(forceOpen = null) {
+            const modal = document.getElementById('cart-sidebar');
+            if(forceOpen === true) modal.classList.remove('hidden');
+            else modal.classList.toggle('hidden');
+        }
+
+        // NAVEGACIÓN
+        function switchView(viewName, category = null) {
+            const store = document.getElementById('view-store');
+            const history = document.getElementById('view-history');
+            const menu = document.getElementById('mobile-menu');
+            
+            menu.classList.add('translate-x-full'); // Cerrar menú móvil
+            window.scrollTo(0,0);
+
+            if(viewName === 'store') {
+                store.classList.remove('hidden');
+                history.classList.add('hidden');
+                if(category) setCategory(category);
+            } else {
+                store.classList.add('hidden');
+                history.classList.remove('hidden');
+            }
+        }
+
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('translate-x-full');
+        }
+
+        function scrollToContact() {
+            switchView('store');
+            setTimeout(() => {
+                document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'});
+            }, 100);
+            toggleMenu();
+        }
+
+        // WHATSAPP
+        function checkoutWhatsApp() {
+            if(cart.length === 0) return;
+            let msg = "Hola ChoriChava! Quiero hacer este pedido: \n\n";
+            cart.forEach(i => msg += `- ${i.qty}x ${i.name} ($${(i.price * i.qty).toLocaleString()})\n`);
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            msg += `\n*Total: $${total.toLocaleString()}*`;
+            window.open(`https://wa.me/573126079424?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function contactQuote(name) {
+            const msg = `Hola! Quisiera cotizar ${name}.`;
+            window.open(`https://wa.me/573126079424?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function handleContact(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const text = document.getElementById('contactMessage').value;
+            if(!name || !text) return alert("Por favor llena los campos");
+            const msg = `Hola soy ${name}, ${text}`;
+            window.open(`https://wa.me/573126079424?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
