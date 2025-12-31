@@ -361,17 +361,14 @@
             }
 
             container.innerHTML = filtered.map(p => `
-                <!-- CAMBIO: flex-col en móvil (vertical), md:flex-row en escritorio (horizontal). h-auto en móvil (crece según texto), h-64 fijo en escritorio. -->
                 <div class="group bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden border border-white/50 hover:border-[#D4AF37] hover:shadow-2xl transition-all duration-300 flex flex-col md:flex-row h-auto md:h-64 w-full">
                     
-                    <!-- IMAGEN: Arriba y ancha en móvil (w-full h-48), Izquierda y 45% en escritorio (md:w-[45%] md:h-full) -->
-                    <!-- CAMBIO: h-48 para un tamaño equilibrado en móvil -->
-                    <div class="relative w-full md:w-[45%] h-48 md:h-full bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
-                        <!-- AJUSTE: p-2 en móvil para un margen sutil -->
-                        <img src="${p.image}" alt="${p.name}" class="absolute inset-0 w-full h-full object-contain p-2 md:p-1 group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                    <!-- AJUSTE: Altura móvil aumentada a h-60 (240px) -->
+                    <div class="relative w-full md:w-[45%] h-60 md:h-full bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
+                        <!-- AJUSTE: Padding reducido en móvil (p-1) -->
+                        <img src="${p.image}" alt="${p.name}" class="absolute inset-0 w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
                     </div>
 
-                    <!-- CONTENIDO: Abajo en móvil, Derecha en escritorio -->
                     <div class="flex-1 p-5 md:p-6 flex flex-col justify-between md:justify-center text-left">
                         <div>
                             <div class="flex items-center gap-1 mb-2 md:mb-1">
@@ -382,11 +379,9 @@
                             
                             <h4 class="font-extrabold text-xl md:text-2xl text-[#4A0E0E] leading-tight mb-2">${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}</h4>
                             
-                            <!-- Descripción en móvil se ve más completa (line-clamp-3) -->
                             <p class="text-sm md:text-sm text-gray-600 line-clamp-3 md:line-clamp-2 mb-4 md:mb-2 leading-relaxed">${p.description}</p>
                         </div>
                         
-                        <!-- PRECIO Y BOTÓN: En móvil se ponen en la misma línea para ahorrar espacio vertical, en escritorio uno sobre otro -->
                         <div class="flex items-center justify-between md:block">
                              ${p.price > 0 ? `
                             <div class="text-2xl md:text-xl font-bold text-gray-900 mb-0 md:mb-3">
