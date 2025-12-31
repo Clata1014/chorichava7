@@ -55,7 +55,8 @@
                         <i data-lucide="utensils" class="text-[#D4AF37] w-6 h-6 md:w-8 md:h-8"></i>
                     </div>
                     
-                    <!-- AJUSTE MÓVIL: Logo movido más a la izquierda (-ml-7) solo en celular. Escritorio intacto. -->
+                    <!-- AJUSTE MÓVIL: Logo un poco más controlado en celular (h-36 y márgenes ajustados) para que no invada tanto, 
+                         PERO MANTENIENDO EXACTAMENTE LO QUE PEDISTE EN ESCRITORIO (md:...) -->
                     <img 
                         src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" 
                         alt="Logo" 
@@ -68,7 +69,8 @@
                 <div class="flex items-center gap-3 md:gap-4 -mr-1 md:-mr-4">
                     <!-- Botón de carrito grande -->
                     <button onclick="toggleCart()" class="relative flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full hover:bg-gray-100 transition-colors">
-                        <i data-lucide="shopping-bag" class="w-6 h-6 md:w-9 md:h-9 text-[#4A0E0E]"></i>
+                        <!-- AJUSTE: Aumentado de w-6 h-6 a w-7 h-7 en móvil -->
+                        <i data-lucide="shopping-bag" class="w-7 h-7 md:w-9 md:h-9 text-[#4A0E0E]"></i>
                         <span id="cart-count" class="absolute top-2 right-2 flex h-4 w-4 hidden">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-4 w-4 bg-[#D4AF37] text-[#4A0E0E] text-[10px] font-bold items-center justify-center border border-[#4A0E0E] cart-num">0</span>
