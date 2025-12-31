@@ -86,8 +86,8 @@
         <!-- FILTROS (BOTONES) -->
         <div class="bg-white border-t border-gray-100 shadow-sm">
             <div class="max-w-7xl mx-auto px-4 py-3 md:py-4">
-                <!-- AJUSTE MÓVIL: overflow-x-auto para que los botones se deslicen horizontalmente en celular -->
-                <div class="flex justify-start md:justify-center overflow-x-auto no-scrollbar">
+                <!-- AJUSTE: Centrado en celular también porque ahora caben los 3 botones cortos -->
+                <div class="flex justify-center overflow-x-auto no-scrollbar">
                     <div class="inline-flex bg-gray-100 rounded-full p-1 gap-1 flex-nowrap min-w-max" id="category-pills">
                         <!-- Se llenan con JS -->
                     </div>
@@ -332,14 +332,20 @@
         // FUNCIONES DE RENDERIZADO
         function renderCategories() {
             const container = document.getElementById('category-pills');
-            container.innerHTML = CATEGORIES.map(cat => `
+            container.innerHTML = CATEGORIES.map(cat => {
+                // LÓGICA DE NOMBRE CORTO PARA MÓVIL
+                let label = cat;
+                if (cat === "Línea Gourmet") label = `<span class="md:hidden">Gourmet</span><span class="hidden md:inline">Línea Gourmet</span>`;
+                if (cat === "Otras Delicias") label = `<span class="md:hidden">Otros</span><span class="hidden md:inline">Otras Delicias</span>`;
+                
+                return `
                 <button 
                     onclick="setCategory('${cat}')" 
-                    class="px-6 py-2 rounded-full text-sm font-bold transition-all duration-200 whitespace-nowrap ${activeCategory === cat ? 'bg-white text-[#4A0E0E] shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'}"
+                    class="px-3 md:px-6 py-2 rounded-full text-xs md:text-sm font-bold transition-all duration-200 whitespace-nowrap ${activeCategory === cat ? 'bg-white text-[#4A0E0E] shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'}"
                 >
-                    ${cat}
+                    ${label}
                 </button>
-            `).join('');
+            `}).join('');
         }
 
         function renderProducts() {
