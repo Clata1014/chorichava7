@@ -94,6 +94,42 @@
             box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
         }
 
+        /* FLIP CARD STYLES (MOBILE) */
+        .flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        /* Al tocar (hover en movil actua como tap) gira */
+        .flip-card:hover .flip-card-inner, .flip-card:active .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+            padding: 4px;
+        }
+
         /* Custom Toast Notification */
         #toast-container {
             position: fixed;
@@ -233,44 +269,78 @@
         <!-- VISTA TIENDA -->
         <section id="view-store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 fade-in">
             
-            <!-- TARJETAS DE CONFIANZA (ESTILO CLEAN WHITE - TEXTO NEGRO) -->
+            <!-- TARJETAS DE CONFIANZA: SECCIÓN HÍBRIDA -->
             <div class="w-full mb-6 md:mb-8 pb-6 border-b border-white/20">
-                <!-- CORRECCIÓN: 'items-end' solo para móvil, 'md:items-stretch' restaura la vista de escritorio -->
-                <div class="flex flex-row justify-center items-end md:items-stretch w-full gap-1.5 md:gap-2 max-w-3xl mx-auto">
+                
+                <!-- 1. VISTA MÓVIL: FLIP CARDS (GIRATORIAS) -->
+                <div class="flex flex-row justify-center gap-3 md:hidden">
+                    <!-- Card 1: Colombia -->
+                    <div class="flip-card w-20 h-20">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-10 h-10 object-contain drop-shadow-sm">
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="font-bold text-gray-900 text-[9px] leading-none uppercase">Producto</span>
+                                <span class="font-black text-black text-[9px] leading-none uppercase">Colombiano</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Mercados -->
+                    <div class="flip-card w-20 h-20">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://em-content.zobj.net/source/apple/391/farmer_1f9d1-200d-1f33e.png" alt="Campesino" class="w-10 h-10 object-contain drop-shadow-sm">
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="font-bold text-gray-900 text-[9px] leading-none uppercase">Mercados</span>
+                                <span class="font-black text-black text-[9px] leading-none uppercase">Campesinos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Tulio -->
+                    <div class="flip-card w-20 h-20">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio" class="w-16 h-16 object-contain drop-shadow-sm">
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="font-bold text-gray-900 text-[9px] leading-none uppercase">Tulio</span>
+                                <span class="font-black text-black text-[9px] leading-none uppercase">Recomienda</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. VISTA ESCRITORIO: TARJETAS COMPLETAS (ORIGINAL) -->
+                <div class="hidden md:flex flex-row justify-center items-stretch w-full gap-2 max-w-3xl mx-auto">
                     
-                    <!-- Tarjeta 1: Producto Colombiano -->
-                    <div class="w-auto md:flex-1 flex flex-col md:flex-row items-center justify-center gap-0 md:gap-4 px-1 py-0.5 md:p-4 rounded-xl md:rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                        <!-- Imagen Móvil -->
-                        <img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-9 h-9 object-contain shrink-0 mb-0 md:mb-1 md:hidden drop-shadow-sm">
-                        <!-- Imagen Escritorio -->
-                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-10 h-10 object-contain shrink-0 hidden md:block drop-shadow-sm">
-                        
-                        <div class="flex flex-col text-center md:text-left">
-                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Producto</span>
-                            <span class="font-black text-black text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Colombiano</span>
+                    <!-- Tarjeta 1 -->
+                    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-10 h-10 object-contain shrink-0 drop-shadow-sm">
+                        <div class="flex flex-col text-left">
+                            <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Producto</span>
+                            <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Colombiano</span>
                         </div>
                     </div>
                     
-                    <!-- Tarjeta 2: Mercados Campesinos -->
-                    <div class="w-auto md:flex-1 flex flex-col md:flex-row items-center justify-center gap-0 md:gap-4 px-1 py-0.5 md:p-4 rounded-xl md:rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                        <!-- Imagen Móvil -->
-                        <img src="https://em-content.zobj.net/source/apple/391/farmer_1f9d1-200d-1f33e.png" alt="Campesino" class="w-9 h-9 object-contain shrink-0 mb-0 md:mb-1 md:hidden drop-shadow-sm">
-                        <!-- Imagen Escritorio -->
-                        <span class="text-5xl shrink-0 hidden md:block drop-shadow-sm">🧑‍🌾</span>
-                        
-                        <div class="flex flex-col text-center md:text-left">
-                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Mercados</span>
-                            <span class="font-black text-black text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Campesinos</span>
+                    <!-- Tarjeta 2 -->
+                    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
+                        <span class="text-5xl shrink-0 drop-shadow-sm">🧑‍🌾</span>
+                        <div class="flex flex-col text-left">
+                            <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Mercados</span>
+                            <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Campesinos</span>
                         </div>
                     </div>
                     
-                    <!-- Tarjeta 3: Tulio Recomienda -->
-                    <div class="w-auto md:flex-1 flex flex-col md:flex-row items-center justify-center gap-0 md:gap-4 px-1 py-0.5 md:p-4 rounded-xl md:rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                        <!-- Tulio (AUMENTADO, PEGADITO Y COMPACTO) -->
-                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio Recomienda" class="w-16 h-16 md:w-16 md:h-16 object-contain shrink-0 mb-0 md:mb-0 drop-shadow-sm">
-                        <div class="flex flex-col text-center md:text-left -mt-1.5 md:mt-0">
-                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Tulio</span>
-                            <span class="font-black text-black text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Recomienda</span>
+                    <!-- Tarjeta 3 -->
+                    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
+                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio Recomienda" class="w-16 h-16 object-contain shrink-0 drop-shadow-sm">
+                        <div class="flex flex-col text-left">
+                            <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Tulio</span>
+                            <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Recomienda</span>
                         </div>
                     </div>
 
