@@ -121,7 +121,8 @@
                     <!-- Tarjeta 1 -->
                     <!-- CAMBIO MÓVIL: flex-col (icono arriba), text-center (texto centrado) -->
                     <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 p-2 md:p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 hover:scale-105 transition-transform duration-300">
-                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Colombia" class="w-8 h-8 md:w-10 md:h-10 object-contain shrink-0 mb-1 md:mb-0">
+                        <!-- AUMENTADO MÓVIL: w-12 h-12 -->
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Colombia" class="w-12 h-12 md:w-10 md:h-10 object-contain shrink-0 mb-1 md:mb-0">
                         <div class="flex flex-col text-center md:text-left">
                             <span class="font-bold text-[#4A0E0E] text-[10px] md:text-xs md:text-base leading-tight">Producto</span>
                             <span class="font-bold text-[#4A0E0E] text-[10px] md:text-xs md:text-base leading-tight">Colombiano</span>
@@ -131,7 +132,8 @@
                     <!-- Tarjeta 2 -->
                     <!-- CAMBIO MÓVIL: flex-col, text-center -->
                     <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 p-2 md:p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 hover:scale-105 transition-transform duration-300">
-                        <span class="text-3xl md:text-5xl shrink-0 mb-1 md:mb-0">🧑‍🌾</span>
+                        <!-- AUMENTADO MÓVIL: text-5xl -->
+                        <span class="text-5xl md:text-5xl shrink-0 mb-1 md:mb-0">🧑‍🌾</span>
                         <div class="flex flex-col text-center md:text-left">
                             <span class="font-bold text-[#4A0E0E] text-[10px] md:text-xs md:text-base leading-tight">Mercados</span>
                             <span class="font-bold text-[#4A0E0E] text-[10px] md:text-xs md:text-base leading-tight">Campesinos</span>
@@ -362,9 +364,11 @@
                 <!-- CAMBIO: flex-col en móvil (vertical), md:flex-row en escritorio (horizontal). h-auto en móvil (crece según texto), h-64 fijo en escritorio. -->
                 <div class="group bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden border border-white/50 hover:border-[#D4AF37] hover:shadow-2xl transition-all duration-300 flex flex-col md:flex-row h-auto md:h-64 w-full">
                     
-                    <!-- IMAGEN: Arriba y ancha en móvil (w-full h-56), Izquierda y 45% en escritorio (md:w-[45%] md:h-full) -->
-                    <div class="relative w-full md:w-[45%] h-56 md:h-full bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
-                        <img src="${p.image}" alt="${p.name}" class="absolute inset-0 w-full h-full object-contain p-4 md:p-1 group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                    <!-- IMAGEN: Arriba y ancha en móvil (w-full h-72), Izquierda y 45% en escritorio (md:w-[45%] md:h-full) -->
+                    <!-- AUMENTADO: h-72 en móvil para hacerla GIGANTE -->
+                    <div class="relative w-full md:w-[45%] h-72 md:h-full bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
+                        <!-- AJUSTE: p-0 (sin padding) en móvil para que ocupe TODO el ancho -->
+                        <img src="${p.image}" alt="${p.name}" class="absolute inset-0 w-full h-full object-contain p-0 md:p-1 group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
                     </div>
 
                     <!-- CONTENIDO: Abajo en móvil, Derecha en escritorio -->
