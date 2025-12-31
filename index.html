@@ -360,8 +360,8 @@
 
             container.innerHTML = filtered.map(p => `
                 <div class="group bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden border border-white/50 hover:border-[#D4AF37] hover:shadow-2xl transition-all duration-300 flex flex-row h-48 md:h-64 w-full">
-                    <!-- AJUSTE: Aumentado el ancho en escritorio a 45% (md:w-[45%]) -->
-                    <div class="relative w-[35%] md:w-[45%] bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
+                    <!-- AJUSTE: Aumentado ancho móvil a 45% (antes 35%) para que la foto se vea más grande -->
+                    <div class="relative w-[45%] md:w-[45%] bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
                         <!-- AJUSTE: Reducido el padding a p-1 para que la imagen sea más grande -->
                         <img src="${p.image}" alt="${p.name}" class="absolute inset-0 w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
                     </div>
