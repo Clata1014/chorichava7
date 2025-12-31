@@ -235,41 +235,42 @@
             
             <!-- TARJETAS DE CONFIANZA (ESTILO CLEAN WHITE - TEXTO NEGRO) -->
             <div class="w-full mb-6 md:mb-8 pb-6 border-b border-white/20">
-                <div class="flex flex-row w-full gap-2 max-w-3xl mx-auto">
+                <!-- Se agregó 'items-end' para que las tarjetas no se estiren y no tengan espacio alto innecesario -->
+                <div class="flex flex-row justify-center items-end w-full gap-1.5 md:gap-2 max-w-3xl mx-auto">
                     
                     <!-- Tarjeta 1: Producto Colombiano -->
-                    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 p-2 md:p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                        <!-- Imagen Móvil (Bandera Estilo Apple con Curvita) -->
-                        <img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-9 h-9 object-contain shrink-0 mb-1 md:hidden drop-shadow-sm">
-                        <!-- Imagen Escritorio (Twemoji Plano) -->
+                    <div class="w-auto md:flex-1 flex flex-col md:flex-row items-center justify-center gap-0 md:gap-4 px-1 py-0.5 md:p-4 rounded-xl md:rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
+                        <!-- Imagen Móvil -->
+                        <img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-9 h-9 object-contain shrink-0 mb-0 md:mb-1 md:hidden drop-shadow-sm">
+                        <!-- Imagen Escritorio -->
                         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-10 h-10 object-contain shrink-0 hidden md:block drop-shadow-sm">
                         
                         <div class="flex flex-col text-center md:text-left">
-                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-tight tracking-wide uppercase">Producto</span>
-                            <span class="font-black text-black text-[10px] md:text-sm leading-tight tracking-wide uppercase">Colombiano</span>
+                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Producto</span>
+                            <span class="font-black text-black text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Colombiano</span>
                         </div>
                     </div>
                     
                     <!-- Tarjeta 2: Mercados Campesinos -->
-                    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 p-2 md:p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                        <!-- Imagen Móvil (Campesinito Estilo Apple) -->
-                        <img src="https://em-content.zobj.net/source/apple/391/farmer_1f9d1-200d-1f33e.png" alt="Campesino" class="w-9 h-9 object-contain shrink-0 mb-1 md:hidden drop-shadow-sm">
-                        <!-- Imagen Escritorio (Emoji) -->
+                    <div class="w-auto md:flex-1 flex flex-col md:flex-row items-center justify-center gap-0 md:gap-4 px-1 py-0.5 md:p-4 rounded-xl md:rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
+                        <!-- Imagen Móvil -->
+                        <img src="https://em-content.zobj.net/source/apple/391/farmer_1f9d1-200d-1f33e.png" alt="Campesino" class="w-9 h-9 object-contain shrink-0 mb-0 md:mb-1 md:hidden drop-shadow-sm">
+                        <!-- Imagen Escritorio -->
                         <span class="text-5xl shrink-0 hidden md:block drop-shadow-sm">🧑‍🌾</span>
                         
                         <div class="flex flex-col text-center md:text-left">
-                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-tight tracking-wide uppercase">Mercados</span>
-                            <span class="font-black text-black text-[10px] md:text-sm leading-tight tracking-wide uppercase">Campesinos</span>
+                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Mercados</span>
+                            <span class="font-black text-black text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Campesinos</span>
                         </div>
                     </div>
                     
                     <!-- Tarjeta 3: Tulio Recomienda -->
-                    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 p-2 md:p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                        <!-- Tulio (AUMENTADO TAMAÑO MÓVIL) -->
-                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio Recomienda" class="w-16 h-16 md:w-16 md:h-16 object-contain shrink-0 mb-1 md:mb-0 drop-shadow-sm">
-                        <div class="flex flex-col text-center md:text-left">
-                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-tight tracking-wide uppercase">Tulio</span>
-                            <span class="font-black text-black text-[10px] md:text-sm leading-tight tracking-wide uppercase">Recomienda</span>
+                    <div class="w-auto md:flex-1 flex flex-col md:flex-row items-center justify-center gap-0 md:gap-4 px-1 py-0.5 md:p-4 rounded-xl md:rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
+                        <!-- Tulio (AUMENTADO, PEGADITO Y COMPACTO) -->
+                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio Recomienda" class="w-16 h-16 md:w-16 md:h-16 object-contain shrink-0 mb-0 md:mb-0 drop-shadow-sm">
+                        <div class="flex flex-col text-center md:text-left -mt-1.5 md:mt-0">
+                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Tulio</span>
+                            <span class="font-black text-black text-[10px] md:text-sm leading-none md:leading-tight tracking-wide uppercase">Recomienda</span>
                         </div>
                     </div>
 
