@@ -49,8 +49,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
-                <!-- AJUSTE ESCRITORIO: md:-ml-16 para correrlo un poquitín más a la izquierda -->
-                <div class="flex items-center gap-0 group cursor-pointer md:-ml-16" onclick="switchView('store')">
+                <!-- AJUSTE: Se quitó md:-ml-16 para que respete los márgenes seguros en escritorio -->
+                <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')">
                     <!-- Icono de utensilios -->
                     <div class="shrink-0 w-12 h-12 md:w-14 md:h-14 bg-[#4A0E0E] rounded-xl flex items-center justify-center shadow-lg relative z-20 backdrop-blur-sm border border-white/10 transition-all hover:scale-105">
                         <i data-lucide="utensils" class="text-[#D4AF37] w-6 h-6 md:w-8 md:h-8"></i>
@@ -67,8 +67,8 @@
                 </div>
 
                 <!-- Botones Derecha -->
-                <!-- AJUSTE ESCRITORIO: md:-mr-20 para correrlos un poquitín más a la derecha -->
-                <div class="flex items-center gap-3 md:gap-4 -mr-1 md:-mr-20">
+                <!-- AJUSTE: Se quitó md:-mr-20 para que respete los márgenes seguros en escritorio -->
+                <div class="flex items-center gap-3 md:gap-4 -mr-1">
                     <!-- Botón de carrito grande -->
                     <button onclick="toggleCart()" class="relative flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full hover:bg-gray-100 transition-colors">
                         <i data-lucide="shopping-bag" class="w-6 h-6 md:w-9 md:h-9 text-[#4A0E0E]"></i>
@@ -89,7 +89,7 @@
         <div class="bg-white border-t border-gray-100 shadow-sm">
             <div class="max-w-7xl mx-auto px-4 py-3 md:py-4">
                 <!-- AJUSTE MÓVIL: overflow-x-auto para que los botones se deslicen horizontalmente en celular -->
-                <div class="flex justify-center overflow-x-auto no-scrollbar">
+                <div class="flex justify-start md:justify-center overflow-x-auto no-scrollbar">
                     <div class="inline-flex bg-gray-100 rounded-full p-1 gap-1 flex-nowrap min-w-max" id="category-pills">
                         <!-- Se llenan con JS -->
                     </div>
@@ -126,9 +126,9 @@
                         <!-- AJUSTE MÓVIL: w-9 h-9 (INTACTO) | ESCRITORIO: w-10 h-10 (INTACTO) -->
                         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Colombia" class="w-9 h-9 md:w-10 md:h-10 object-contain shrink-0 mb-1 md:mb-0">
                         <div class="flex flex-col text-center md:text-left">
-                            <!-- AJUSTE ESCRITORIO: Texto ajustado a md:text-base (Proporcional) -->
-                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-base leading-tight">Producto</span>
-                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-base leading-tight">Colombiano</span>
+                            <!-- AJUSTE ESCRITORIO: Texto ajustado a md:text-xl (ANTES era lg) -->
+                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-xl leading-tight">Producto</span>
+                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-xl leading-tight">Colombiano</span>
                         </div>
                     </div>
                     
@@ -138,9 +138,9 @@
                         <!-- AJUSTE MÓVIL: text-4xl (INTACTO) | ESCRITORIO: text-5xl (INTACTO) -->
                         <span class="text-4xl md:text-5xl shrink-0 mb-1 md:mb-0">🧑‍🌾</span>
                         <div class="flex flex-col text-center md:text-left">
-                            <!-- AJUSTE ESCRITORIO: Texto ajustado a md:text-base (Proporcional) -->
-                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-base leading-tight">Mercados</span>
-                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-base leading-tight">Campesinos</span>
+                            <!-- AJUSTE ESCRITORIO: Texto ajustado a md:text-xl (ANTES era lg) -->
+                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-xl leading-tight">Mercados</span>
+                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-xl leading-tight">Campesinos</span>
                         </div>
                     </div>
                     
@@ -150,9 +150,9 @@
                         <!-- AJUSTE MÓVIL: AUMENTADO A w-12 h-12 | ESCRITORIO: AUMENTADO A w-16 h-16 (SOLO TULIO) -->
                         <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="Tulio" class="w-12 h-12 md:w-16 md:h-16 object-contain shrink-0 mb-1 md:mb-0">
                         <div class="flex flex-col text-center md:text-left">
-                            <!-- AJUSTE ESCRITORIO: Texto ajustado a md:text-base (Proporcional) -->
-                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-base leading-tight">Tulio</span>
-                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-base leading-tight">Recomienda</span>
+                            <!-- AJUSTE ESCRITORIO: Texto ajustado a md:text-xl (ANTES era lg) -->
+                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-xl leading-tight">Tulio</span>
+                            <span class="font-bold text-[#4A0E0E] text-[10px] md:text-xl leading-tight">Recomienda</span>
                         </div>
                     </div>
 
@@ -245,23 +245,21 @@
 
         <!-- FOOTER -->
         <footer class="bg-white text-gray-600 py-12 mt-auto border-t border-gray-200 relative z-10 text-center">
-            <!-- AJUSTE ESCRITORIO: md:text-5xl (más grande en PC), mantiene text-2xl en móvil -->
-            <h2 class="text-2xl md:text-5xl font-serif font-bold text-[#4A0E0E] mb-4 md:mb-6">Chori<span class="text-[#D4AF37]">Chava</span></h2>
+            <h2 class="text-2xl font-serif font-bold text-[#4A0E0E] mb-4">Chori<span class="text-[#D4AF37]">Chava</span></h2>
             
             <!-- AJUSTE: flex-col para celular (uno encima del otro), md:flex-row para escritorio (al lado) -->
-            <!-- AJUSTE ESCRITORIO: md:text-xl (más grande en PC), mantiene text-sm en móvil -->
-            <p class="text-sm md:text-xl mb-6 md:mb-8 text-gray-700 font-medium flex flex-col md:flex-row justify-center items-center gap-1 md:gap-3">
+            <p class="text-sm mb-6 text-gray-700 font-medium flex flex-col md:flex-row justify-center items-center gap-1 md:gap-3">
                 <span>📍 Medellín, Colombia</span>
                 <span class="hidden md:inline">•</span> <!-- El punto solo se ve en escritorio -->
                 <span>🚚 Envíos a todo el país</span>
             </p>
 
-            <div class="flex justify-center gap-6 text-2xl md:text-3xl mb-6 text-[#4A0E0E]">
+            <div class="flex justify-center gap-6 text-2xl mb-6 text-[#4A0E0E]">
                 <span class="hover:text-[#D4AF37] cursor-pointer">📷</span>
                 <span class="hover:text-[#D4AF37] cursor-pointer">📘</span>
                 <span class="hover:text-[#D4AF37] cursor-pointer">💬</span>
             </div>
-            <p class="text-xs md:text-sm text-gray-400">© 2024 ChoriChava. Todos los derechos reservados.</p>
+            <p class="text-xs text-gray-400">© 2024 ChoriChava. Todos los derechos reservados.</p>
         </footer>
     </div>
 
