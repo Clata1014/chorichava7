@@ -3,7 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChoriChava | Chorizos Premium</title>
+    
+    <!-- SEO OPTIMIZATION: ENFOQUE EN PRECOCIDOS Y GOURMET -->
+    <title>ChoriChava | Chorizos Precocidos Gourmet en Medellín - Listos para Calentar</title>
+    <meta name="description" content="Chorizos gourmet precocidos en Medellín. La mejor calidad, listos para calentar y servir. No necesitas freír. Ideales para asados fáciles y rápidos en casa.">
+    <meta name="keywords" content="chorizos gourmet, chorizos precocidos, chorizos listos para comer, chorizos medellin, comida facil, asados medellin, chorizo argentino, chorizo sin freir, chorichava">
+    <meta name="author" content="ChoriChava">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusitio.com/">
+    <meta property="og:title" content="ChoriChava | Chorizos Precocidos Gourmet">
+    <meta property="og:description" content="Chorizos premium precocidos. Solo calienta y disfruta. Sin complicaciones, sin freír. Calidad gourmet garantizada.">
+    <meta property="og:image" content="https://clata1014.github.io/chorichava7/fondochoriamor.png">
+
+    <!-- PERFORMANCE: Preconnect -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://images.unsplash.com">
     
     <!-- Tailwind CSS (Diseño) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
     
     <!-- Iconos Lucide -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <script>
         tailwind.config = {
@@ -25,12 +45,16 @@
                             gold: '#D4AF37',
                             goldLight: '#F3E5AB',
                             cream: '#F9F7F2',
-                            dark: '#1A1A1A'
+                            dark: '#1A1A1A',
+                            whatsapp: '#25D366'
                         }
                     },
                     fontFamily: {
                         sans: ['Montserrat', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
                     }
                 }
             }
@@ -99,19 +123,44 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Utility for SEO Hidden H1 */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
     </style>
 </head>
 <body class="selection:bg-brand-red selection:text-white antialiased text-gray-800">
 
+    <!-- SEO: Hidden Main Title -->
+    <h1 class="sr-only">ChoriChava - Chorizos Precocidos Gourmet en Medellín - Listos para calentar</h1>
+
     <!-- Toast Container -->
     <div id="toast-container"></div>
 
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/573126079424?text=Hola%20ChoriChava!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" class="fixed bottom-6 right-6 z-50 bg-brand-whatsapp text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center border-2 border-white/20 animate-bounce-slow hover:shadow-green-500/50" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="0" fill="currentColor" class="w-8 h-8 fill-white">
+            <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.07 0C5.537 0 .181 5.703.181 12.533c0 2.21.578 4.305 1.583 6.132l-1.621 5.925 6.077-1.594a11.777 11.777 0 005.855 1.57h.005c6.527 0 11.885-5.358 11.889-11.886.001-3.18-1.235-6.17-3.483-8.418"/>
+        </svg>
+    </a>
+
     <!-- FONDO HERO -->
     <div class="fixed inset-0 -z-50 w-full h-full bg-[#1a0505]">
+        <!-- Performance: Priority High para LCP -->
         <img 
           src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1920&auto=format&fit=crop" 
-          alt="Fondo Parrilla Carbón" 
+          alt="Fondo Parrilla Carbón Asado" 
           class="w-full h-full object-cover opacity-90 brightness-[0.7] object-center"
+          fetchpriority="high"
         >
         <!-- Degradado sutil para mejorar lectura -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60"></div>
@@ -123,7 +172,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
-                <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')">
+                <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')" role="button" aria-label="Ir al inicio">
                     <!-- Icono de utensilios -->
                     <div class="shrink-0 w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-brand-red to-brand-redLight rounded-2xl flex items-center justify-center shadow-lg relative z-20 border border-white/20 transition-all hover:scale-105 hover:shadow-brand-red/30">
                         <i data-lucide="utensils" class="text-brand-gold w-6 h-6 md:w-8 md:h-8"></i>
@@ -131,7 +180,7 @@
                     
                     <img 
                         src="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" 
-                        alt="Logo" 
+                        alt="Logo ChoriChava Medellín" 
                         class="h-36 md:h-48 w-auto object-contain -my-8 md:-my-14 -ml-5 md:-ml-10 relative z-10 -translate-y-1 md:-translate-y-2 drop-shadow-xl" 
                         style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);"
                     >
@@ -140,7 +189,7 @@
                 <!-- Botones Derecha -->
                 <div class="flex items-center gap-3 md:gap-4 -mr-1">
                     <!-- Botón de carrito grande -->
-                    <button onclick="toggleCart()" class="relative flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full hover:bg-gray-100 transition-all active:scale-95 group">
+                    <button onclick="toggleCart()" class="relative flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full hover:bg-gray-100 transition-all active:scale-95 group" aria-label="Ver carrito">
                         <i data-lucide="shopping-bag" class="w-6 h-6 md:w-9 md:h-9 text-brand-red group-hover:text-brand-redLight transition-colors"></i>
                         <span id="cart-count" class="absolute top-2 right-2 flex h-4 w-4 hidden">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
@@ -148,7 +197,7 @@
                         </span>
                     </button>
                     <!-- Botón de menú grande -->
-                    <button onclick="toggleMenu()" class="flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full hover:bg-gray-100 transition-all active:scale-95">
+                    <button onclick="toggleMenu()" class="flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full hover:bg-gray-100 transition-all active:scale-95" aria-label="Abrir menú">
                         <i data-lucide="menu" class="w-8 h-8 md:w-11 md:h-11 text-brand-red"></i>
                     </button>
                 </div>
@@ -159,9 +208,9 @@
         <div class="bg-white/80 backdrop-blur-md border-t border-gray-100 shadow-inner">
             <div class="max-w-7xl mx-auto px-4 py-3 md:py-4">
                 <div class="flex justify-center overflow-x-auto no-scrollbar">
-                    <div class="inline-flex bg-gray-100/80 rounded-full p-1.5 gap-1 flex-nowrap min-w-max shadow-inner" id="category-pills">
+                    <nav class="inline-flex bg-gray-100/80 rounded-full p-1.5 gap-1 flex-nowrap min-w-max shadow-inner" id="category-pills" aria-label="Categorías de productos">
                         <!-- Se llenan con JS -->
-                    </div>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -169,7 +218,7 @@
 
     <!-- MENÚ MÓVIL FULL SCREEN -->
     <div id="mobile-menu" class="fixed inset-0 bg-brand-red/98 backdrop-blur-xl z-50 transition-transform duration-500 translate-x-full flex flex-col justify-center items-center gap-8">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"><i data-lucide="x" class="w-8 h-8"></i></button>
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors" aria-label="Cerrar menú"><i data-lucide="x" class="w-8 h-8"></i></button>
         <a href="#" onclick="switchView('store', 'Línea Gourmet')" class="text-3xl font-serif font-bold text-white hover:text-brand-gold transition-colors tracking-tight">Inicio</a>
         <a href="#" onclick="switchView('store', 'Línea Gourmet')" class="text-3xl font-serif font-bold text-white hover:text-brand-gold transition-colors tracking-tight">Línea Gourmet</a>
         <a href="#" onclick="switchView('store', 'Tradicional')" class="text-3xl font-serif font-bold text-white hover:text-brand-gold transition-colors tracking-tight">Tradicional</a>
@@ -179,10 +228,10 @@
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <div id="main-content" class="min-h-screen relative z-10 w-full pb-12">
+    <main id="main-content" class="min-h-screen relative z-10 w-full pb-12">
         
         <!-- VISTA TIENDA -->
-        <div id="view-store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 fade-in">
+        <section id="view-store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 fade-in">
             
             <!-- TARJETAS DE CONFIANZA (ESTILO CLEAN WHITE - TEXTO NEGRO) -->
             <div class="w-full mb-6 md:mb-8 pb-6 border-b border-white/20">
@@ -191,9 +240,9 @@
                     <!-- Tarjeta 1: Producto Colombiano -->
                     <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 p-2 md:p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
                         <!-- Imagen Móvil (Bandera Estilo Apple con Curvita) -->
-                        <img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" alt="Colombia" class="w-9 h-9 object-contain shrink-0 mb-1 md:hidden drop-shadow-sm">
+                        <img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-9 h-9 object-contain shrink-0 mb-1 md:hidden drop-shadow-sm">
                         <!-- Imagen Escritorio (Twemoji Plano) -->
-                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Colombia" class="w-10 h-10 object-contain shrink-0 hidden md:block drop-shadow-sm">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-10 h-10 object-contain shrink-0 hidden md:block drop-shadow-sm">
                         
                         <div class="flex flex-col text-center md:text-left">
                             <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-tight tracking-wide uppercase">Producto</span>
@@ -209,15 +258,15 @@
                         <span class="text-5xl shrink-0 hidden md:block drop-shadow-sm">🧑‍🌾</span>
                         
                         <div class="flex flex-col text-center md:text-left">
-                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-tight tracking-wide uppercase">Mercados</span>
-                            <span class="font-black text-black text-[10px] md:text-sm leading-tight tracking-wide uppercase">Campesinos</span>
+                            <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-tight tracking-wide uppercase">Apoyo</span>
+                            <span class="font-black text-black text-[10px] md:text-sm leading-tight tracking-wide uppercase">Campesino</span>
                         </div>
                     </div>
                     
                     <!-- Tarjeta 3: Tulio Recomienda -->
                     <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 p-2 md:p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
                         <!-- Tulio -->
-                        <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="Tulio" class="w-10 h-10 md:w-16 md:h-16 object-contain shrink-0 mb-1 md:mb-0 drop-shadow-sm">
+                        <img src="https://github.com/Clata1014/Chorichava4/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio Recomienda" class="w-10 h-10 md:w-16 md:h-16 object-contain shrink-0 mb-1 md:mb-0 drop-shadow-sm">
                         <div class="flex flex-col text-center md:text-left">
                             <span class="font-bold text-gray-900 text-[10px] md:text-sm leading-tight tracking-wide uppercase">Tulio</span>
                             <span class="font-black text-black text-[10px] md:text-sm leading-tight tracking-wide uppercase">Recomienda</span>
@@ -229,7 +278,7 @@
 
             <!-- Título Categoría -->
             <div class="flex items-center justify-between mb-6">
-                <h3 id="category-title" class="text-2xl md:text-4xl font-black text-white font-serif tracking-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">Línea Gourmet</h3>
+                <h2 id="category-title" class="text-2xl md:text-4xl font-black text-white font-serif tracking-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">Línea Gourmet</h2>
                 <span id="product-count" class="text-xs md:text-sm text-brand-red font-bold bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg border border-white">0 delicias</span>
             </div>
 
@@ -266,23 +315,23 @@
                 <form onsubmit="handleContact(event)" class="space-y-5">
                     <div>
                         <label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider">Nombre</label>
-                        <input id="contactName" type="text" class="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all" placeholder="Tu nombre">
+                        <input id="contactName" type="text" class="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all" placeholder="Tu nombre" required>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider">Mensaje</label>
-                        <textarea id="contactMessage" class="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none min-h-[120px] transition-all" placeholder="Hola, quisiera hacer un pedido..."></textarea>
+                        <textarea id="contactMessage" class="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none min-h-[120px] transition-all" placeholder="Hola, quisiera hacer un pedido..." required></textarea>
                     </div>
                     <button type="submit" class="w-full bg-gradient-to-r from-brand-red to-[#601212] text-white py-4 rounded-xl font-bold shadow-lg shadow-brand-red/30 hover:-translate-y-1 hover:shadow-brand-red/50 transition-all uppercase tracking-widest text-sm">Enviar a WhatsApp 🚀</button>
                 </form>
             </section>
-        </div>
+        </section>
 
         <!-- VISTA HISTORIA -->
-        <div id="view-history" class="hidden max-w-4xl mx-auto px-4 py-8 fade-in">
+        <section id="view-history" class="hidden max-w-4xl mx-auto px-4 py-8 fade-in">
             <div class="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/50">
                 <div class="p-6 md:p-12 text-center">
                     <div class="relative w-full max-w-md mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl border-[6px] border-white transform rotate-1">
-                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" class="w-full h-auto object-cover" alt="Carlos Chavarriaga">
+                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" class="w-full h-auto object-cover" alt="Carlos Chavarriaga Fundador ChoriChava" loading="lazy">
                     </div>
                     <p class="text-gray-500 italic mb-10 font-serif text-lg">Fundador y Visionario</p>
                     
@@ -297,12 +346,12 @@
 
                         <p>Lo que inició como un sueño emprendedor, tomó fuerza y estructura gracias al reconocimiento del programa <strong>Capital Semilla</strong> de la Alcaldía de Medellín. Este impulso permitió a la empresa crecer y perfeccionar sus procesos, logrando lo que pocos alcanzan: mantener el auténtico sabor tradicional cumpliendo con los más altos estándares de calidad y seguridad, respaldados por su <strong>registro INVIMA</strong>.</p>
                         
-                        <div class="w-full rounded-2xl overflow-hidden shadow-xl my-10"><img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" class="w-full object-cover" alt="Muestra de Calidad"></div>
+                        <div class="w-full rounded-2xl overflow-hidden shadow-xl my-10"><img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" class="w-full object-cover" alt="Muestra de Calidad y Empaque" loading="lazy"></div>
                         <p class="text-center text-sm text-gray-400 italic -mt-8 mb-10 font-serif">Calidad Superior Certificada</p>
 
                         <p>Esta constancia ha dado frutos deliciosos. La marca ha sido destacada por referentes gastronómicos como <span class="text-brand-red font-bold">Tulio Recomienda</span>, confirmando que cuando las cosas se hacen con amor y disciplina, se nota en el sabor.</p>
 
-                        <div class="w-full rounded-2xl overflow-hidden shadow-xl my-10"><img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" class="w-full object-cover" alt="Tulio Recomienda"></div>
+                        <div class="w-full rounded-2xl overflow-hidden shadow-xl my-10"><img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" class="w-full object-cover" alt="Tulio Recomienda ChoriChava" loading="lazy"></div>
                         <p class="text-center text-sm text-gray-400 italic -mt-8 mb-10 font-serif">Reconocimiento de Tulio Recomienda</p>
 
                         <p class="text-center font-bold text-xl md:text-2xl text-brand-red mt-10 font-serif">ChoriChava es tradición, es calidad y, sobre todo, es una familia trabajando para llevar lo mejor a la mesa de cada cliente.</p>
@@ -314,7 +363,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- FOOTER -->
         <footer class="bg-white text-gray-600 py-16 mt-auto border-t border-gray-100 relative z-10 text-center">
@@ -327,13 +376,13 @@
             </p>
 
             <div class="flex justify-center gap-8 text-2xl md:text-3xl mb-8 text-brand-red">
-                <span class="hover:text-brand-gold cursor-pointer transition-colors transform hover:scale-110 duration-200">📷</span>
-                <span class="hover:text-brand-gold cursor-pointer transition-colors transform hover:scale-110 duration-200">📘</span>
-                <span class="hover:text-brand-gold cursor-pointer transition-colors transform hover:scale-110 duration-200">💬</span>
+                <span class="hover:text-brand-gold cursor-pointer transition-colors transform hover:scale-110 duration-200" aria-label="Instagram">📷</span>
+                <span class="hover:text-brand-gold cursor-pointer transition-colors transform hover:scale-110 duration-200" aria-label="Facebook">📘</span>
+                <span class="hover:text-brand-gold cursor-pointer transition-colors transform hover:scale-110 duration-200" aria-label="WhatsApp">💬</span>
             </div>
             <p class="text-xs md:text-sm text-gray-400 font-medium">© 2024 ChoriChava. Todos los derechos reservados.</p>
         </footer>
-    </div>
+    </main>
 
     <!-- CART SIDEBAR -->
     <div id="cart-sidebar" class="fixed inset-0 z-[60] flex justify-end hidden">
@@ -341,7 +390,7 @@
         <div class="relative w-full max-w-md bg-white shadow-2xl h-full flex flex-col slide-in-right">
             <div class="p-6 bg-brand-red text-white flex items-center justify-between shadow-lg">
                 <h2 class="text-xl font-bold font-serif flex items-center gap-2 tracking-wide"><i data-lucide="shopping-bag" class="w-5 h-5 text-brand-gold"></i> Tu Canasta</h2>
-                <button onclick="toggleCart()" class="p-2 hover:bg-white/10 rounded-full transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+                <button onclick="toggleCart()" class="p-2 hover:bg-white/10 rounded-full transition-colors" aria-label="Cerrar carrito"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-6">
                 <!-- Items del carrito JS -->
@@ -465,7 +514,7 @@
             container.innerHTML = filtered.map(p => `
                 <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-brand-gold/30 hover:shadow-2xl hover:shadow-brand-red/10 transition-all duration-500 flex flex-col md:flex-row h-auto md:h-auto w-full">
                     <div class="relative w-full md:w-[45%] h-60 md:min-h-[16rem] bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
-                        <img src="${p.image}" alt="${p.name}" class="absolute inset-0 w-full h-full object-contain p-1 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl">
+                        <img src="${p.image}" alt="Chorizo ${p.name} - ChoriChava Medellín" loading="lazy" class="absolute inset-0 w-full h-full object-contain p-1 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl">
                     </div>
 
                     <div class="flex-1 p-5 md:p-8 flex flex-col justify-between md:justify-center text-left bg-white relative">
@@ -476,7 +525,7 @@
                                 ${p.spiciness > 1 ? '<div class="flex gap-0.5 ml-2">' + Array(p.spiciness).fill('<i data-lucide="flame" class="w-3.5 h-3.5 text-brand-red fill-brand-red"></i>').join('') + '</div>' : ''}
                             </div>
                             
-                            <h4 class="font-black text-xl md:text-2xl text-brand-red leading-tight mb-2 tracking-tight">${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}</h4>
+                            <h3 class="font-black text-xl md:text-2xl text-brand-red leading-tight mb-2 tracking-tight">${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}</h3>
                             
                             <p class="text-sm md:text-sm text-gray-600 line-clamp-3 md:line-clamp-none mb-4 md:mb-3 leading-relaxed font-medium">${p.description}</p>
                         </div>
@@ -488,6 +537,7 @@
                             </div>` : ''}
 
                             <button onclick="${p.price > 0 ? `addToCart('${p.id}')` : `contactQuote('${p.name}')`}" 
+                                aria-label="${p.price > 0 ? 'Agregar al carrito' : 'Cotizar producto'}"
                                 class="w-auto md:w-full px-6 md:px-0 py-3 md:py-3.5 rounded-full md:rounded-xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 active:scale-95 shadow-lg shadow-brand-red/20 mt-0 md:mt-auto ${p.price > 0 ? 'bg-gradient-to-r from-brand-red to-[#601212] text-white hover:shadow-xl hover:-translate-y-0.5' : 'bg-green-500 text-white hover:bg-green-600'}">
                                 ${p.price > 0 ? 'Agregar' : 'Cotizar'} <i data-lucide="${p.price > 0 ? 'shopping-bag' : 'message-circle'}" class="w-4 h-4"></i>
                             </button>
@@ -538,16 +588,16 @@
             } else {
                 container.innerHTML = cart.map(item => `
                     <div class="flex gap-4 border-b border-gray-50 pb-6">
-                        <div class="w-20 h-20 rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden shrink-0 flex items-center justify-center shadow-sm"><img src="${item.image}" class="w-full h-full object-contain p-1"></div>
+                        <div class="w-20 h-20 rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden shrink-0 flex items-center justify-center shadow-sm"><img src="${item.image}" alt="${item.name}" class="w-full h-full object-contain p-1"></div>
                         <div class="flex-1">
                             <div class="flex justify-between items-start mb-2"><h4 class="font-bold text-brand-red text-sm leading-tight pr-2">${item.name}</h4><span class="font-bold text-gray-900 text-sm">$${(item.price * item.qty).toLocaleString()}</span></div>
                             <div class="flex items-center justify-between mt-auto">
                                 <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-1 border border-gray-200 shadow-sm">
-                                    <button onclick="updateQty('${item.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded-md shadow-sm text-gray-600 hover:text-brand-red transition-colors"><i data-lucide="minus" class="w-3 h-3"></i></button>
+                                    <button onclick="updateQty('${item.id}', -1)" aria-label="Disminuir cantidad" class="w-7 h-7 flex items-center justify-center bg-white rounded-md shadow-sm text-gray-600 hover:text-brand-red transition-colors"><i data-lucide="minus" class="w-3 h-3"></i></button>
                                     <span class="text-sm font-bold w-6 text-center text-gray-800">${item.qty}</span>
-                                    <button onclick="updateQty('${item.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded-md shadow-sm text-gray-600 hover:text-green-600 transition-colors"><i data-lucide="plus" class="w-3 h-3"></i></button>
+                                    <button onclick="updateQty('${item.id}', 1)" aria-label="Aumentar cantidad" class="w-7 h-7 flex items-center justify-center bg-white rounded-md shadow-sm text-gray-600 hover:text-green-600 transition-colors"><i data-lucide="plus" class="w-3 h-3"></i></button>
                                 </div>
-                                <button onclick="updateQty('${item.id}', -100)" class="text-gray-300 hover:text-red-500 transition-colors p-2"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                <button onclick="updateQty('${item.id}', -100)" aria-label="Eliminar producto" class="text-gray-300 hover:text-red-500 transition-colors p-2"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                             </div>
                         </div>
                     </div>
@@ -623,8 +673,7 @@
             const text = document.getElementById('contactMessage').value;
             
             if(!name || !text) {
-                showToast("Por favor llena todos los campos");
-                return;
+                showTo+
             }
             
             const msg = `Hola soy ${name}, ${text}`;
