@@ -481,6 +481,32 @@
         </footer>
     </main>
 
+    <!-- PRODUCT DETAILS BOTTOM SHEET (Nuevo) -->
+    <div id="product-sheet-overlay" class="fixed inset-0 bg-black/60 z-[70] hidden opacity-0 transition-opacity duration-300" onclick="closeDetails()"></div>
+    <div id="product-sheet" class="fixed bottom-0 left-0 right-0 bg-white z-[80] rounded-t-3xl p-6 transform translate-y-full transition-transform duration-300 shadow-[0_-10px_40px_-10px_rgba(0,0,0,0.2)]">
+        <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6"></div> <!-- Handle -->
+        <button onclick="closeDetails()" class="absolute top-6 right-6 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"><i data-lucide="x" class="w-5 h-5 text-gray-600"></i></button>
+        
+        <div class="flex gap-4 mb-6">
+            <img id="sheet-img" src="" class="w-24 h-24 rounded-2xl object-cover bg-gray-50">
+            <div>
+                <h3 id="sheet-title" class="font-black text-xl text-brand-red leading-tight mb-2"></h3>
+                <p id="sheet-price" class="text-lg font-bold text-gray-900"></p>
+            </div>
+        </div>
+        
+        <div class="space-y-4">
+            <h4 class="font-bold text-gray-900 text-sm uppercase tracking-wide">Descripción e Ingredientes</h4>
+            <p id="sheet-desc" class="text-gray-600 text-sm leading-relaxed"></p>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-gray-100">
+            <button id="sheet-btn" onclick="" class="w-full bg-gradient-to-r from-brand-red to-[#601212] text-white py-4 rounded-xl font-bold shadow-lg shadow-brand-red/30 flex items-center justify-center gap-2 uppercase tracking-wide text-sm hover:-translate-y-1 transition-transform">
+                Agregar al Carrito <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+
     <!-- CART SIDEBAR -->
     <div id="cart-sidebar" class="fixed inset-0 z-[60] flex justify-end hidden">
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
@@ -609,34 +635,43 @@
             }
 
             container.innerHTML = filtered.map(p => `
-                <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-brand-gold/30 hover:shadow-2xl hover:shadow-brand-red/10 transition-all duration-500 flex flex-col md:flex-row h-auto md:h-auto w-full">
-                    <div class="relative w-full md:w-[45%] h-60 md:min-h-[16rem] bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
-                        <img src="${p.image}" alt="Chorizo ${p.name} - ChoriChava Medellín" loading="lazy" class="absolute inset-0 w-full h-full object-contain p-1 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl">
+                <div class="group bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 hover:border-brand-gold/30 hover:shadow-2xl hover:shadow-brand-red/10 transition-all duration-500 flex flex-row md:flex-row h-auto w-full">
+                    
+                    <!-- IMAGEN (Izquierda en móvil: 35% ancho | Escritorio: 45%) -->
+                    <div class="relative w-[35%] md:w-[45%] bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
+                        <img src="${p.image}" alt="Chorizo ${p.name} - ChoriChava Medellín" loading="lazy" class="absolute inset-0 w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl">
                     </div>
 
-                    <div class="flex-1 p-5 md:p-8 flex flex-col justify-between md:justify-center text-left bg-white relative">
+                    <!-- DETALLES (Derecha) -->
+                    <div class="flex-1 p-3 md:p-8 flex flex-col justify-between text-left bg-white relative">
                         <div>
-                            <div class="flex items-center gap-1.5 mb-2 md:mb-1">
-                                <i data-lucide="star" class="w-3.5 h-3.5 fill-brand-gold text-brand-gold"></i>
-                                <span class="text-xs font-bold text-gray-400">5.0</span>
-                                ${p.spiciness > 1 ? '<div class="flex gap-0.5 ml-2">' + Array(p.spiciness).fill('<i data-lucide="flame" class="w-3.5 h-3.5 text-brand-red fill-brand-red"></i>').join('') + '</div>' : ''}
+                            <div class="flex items-center gap-1 mb-1 md:mb-1">
+                                <i data-lucide="star" class="w-3 h-3 md:w-3.5 md:h-3.5 fill-brand-gold text-brand-gold"></i>
+                                <span class="text-[10px] md:text-xs font-bold text-gray-400">5.0</span>
+                                ${p.spiciness > 1 ? '<div class="flex gap-0.5 ml-2">' + Array(p.spiciness).fill('<i data-lucide="flame" class="w-3 h-3 md:w-3.5 md:h-3.5 text-brand-red fill-brand-red"></i>').join('') + '</div>' : ''}
                             </div>
                             
-                            <h3 class="font-black text-xl md:text-2xl text-brand-red leading-tight mb-2 tracking-tight">${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}</h3>
+                            <h3 class="font-black text-base md:text-2xl text-brand-red leading-tight mb-1 md:mb-2 tracking-tight">${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}</h3>
                             
-                            <p class="text-sm md:text-sm text-gray-600 line-clamp-3 md:line-clamp-none mb-4 md:mb-3 leading-relaxed font-medium">${p.description}</p>
+                            <!-- DESCRIPCIÓN: Visible solo en escritorio (md:block) -->
+                            <p class="hidden md:block text-sm md:text-sm text-gray-600 line-clamp-3 md:line-clamp-none mb-4 md:mb-3 leading-relaxed font-medium">${p.description}</p>
+
+                            <!-- LINK "VER DETALLES": Solo móvil -->
+                            <button onclick="openDetails('${p.id}')" class="md:hidden text-xs font-bold text-gray-400 underline mb-2 hover:text-brand-red transition-colors">
+                                Ver detalles
+                            </button>
                         </div>
                         
-                        <div class="flex items-center justify-between md:block">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mt-auto">
                              ${p.price > 0 ? `
-                            <div class="text-lg md:text-xl font-black text-gray-900 mb-0 md:mb-4 tracking-tight">
+                            <div class="text-sm md:text-xl font-black text-gray-900 tracking-tight">
                                 $${p.price.toLocaleString()}
                             </div>` : ''}
 
                             <button onclick="${p.price > 0 ? `addToCart('${p.id}')` : `contactQuote('${p.name}')`}" 
                                 aria-label="${p.price > 0 ? 'Agregar al carrito' : 'Cotizar producto'}"
-                                class="w-auto md:w-full px-6 md:px-0 py-3 md:py-3.5 rounded-full md:rounded-xl font-bold text-sm md:text-base transition-all flex items-center justify-center gap-2 active:scale-95 shadow-lg shadow-brand-red/20 mt-0 md:mt-auto ${p.price > 0 ? 'bg-gradient-to-r from-brand-red to-[#601212] text-white hover:shadow-xl hover:-translate-y-0.5' : 'bg-green-500 text-white hover:bg-green-600'}">
-                                ${p.price > 0 ? 'Agregar' : 'Cotizar'} <i data-lucide="${p.price > 0 ? 'shopping-bag' : 'message-circle'}" class="w-4 h-4"></i>
+                                class="w-full md:w-auto px-3 py-2 md:px-6 md:py-3.5 rounded-lg md:rounded-xl font-bold text-xs md:text-base transition-all flex items-center justify-center gap-1.5 active:scale-95 shadow-md shadow-brand-red/20 ${p.price > 0 ? 'bg-gradient-to-r from-brand-red to-[#601212] text-white hover:shadow-xl' : 'bg-green-500 text-white hover:bg-green-600'}">
+                                ${p.price > 0 ? 'Agregar' : 'Cotizar'} <i data-lucide="${p.price > 0 ? 'shopping-bag' : 'message-circle'}" class="w-3 h-3 md:w-4 md:h-4"></i>
                             </button>
                         </div>
                     </div>
@@ -649,6 +684,60 @@
             activeCategory = cat;
             renderCategories();
             renderProducts();
+        }
+
+        // BOTTOM SHEET LOGIC
+        function openDetails(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            // Populate sheet
+            document.getElementById('sheet-img').src = product.image;
+            document.getElementById('sheet-title').innerText = product.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "");
+            document.getElementById('sheet-price').innerText = product.price > 0 ? `$${product.price.toLocaleString()}` : "Precio variable";
+            document.getElementById('sheet-desc').innerText = product.description;
+            
+            // Setup button action
+            const btn = document.getElementById('sheet-btn');
+            if (product.price > 0) {
+                btn.innerHTML = 'Agregar al Carrito <i data-lucide="shopping-bag" class="w-4 h-4"></i>';
+                btn.onclick = () => {
+                    addToCart(product.id);
+                    closeDetails();
+                };
+                btn.classList.remove('hidden');
+            } else {
+                btn.innerHTML = 'Cotizar <i data-lucide="message-circle" class="w-4 h-4"></i>';
+                btn.onclick = () => {
+                    contactQuote(product.name);
+                    closeDetails();
+                };
+                btn.classList.remove('hidden');
+            }
+            lucide.createIcons();
+
+            // Show overlay and slide up sheet
+            const overlay = document.getElementById('product-sheet-overlay');
+            const sheet = document.getElementById('product-sheet');
+            
+            overlay.classList.remove('hidden');
+            // Small timeout to allow display:block to apply before opacity transition
+            requestAnimationFrame(() => {
+                overlay.classList.remove('opacity-0');
+                sheet.classList.remove('translate-y-full');
+            });
+        }
+
+        function closeDetails() {
+            const overlay = document.getElementById('product-sheet-overlay');
+            const sheet = document.getElementById('product-sheet');
+            
+            overlay.classList.add('opacity-0');
+            sheet.classList.add('translate-y-full');
+            
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 300); // Match transition duration
         }
 
         // CARRITO
