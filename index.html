@@ -133,14 +133,22 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
         }
+
+        /* Frente: Transparente (solo ícono flotando) */
+        .flip-card-front {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        /* Atrás: Tarjeta completa con estilos */
         .flip-card-back {
             transform: rotateY(180deg);
             padding: 2px;
-            background: #F9F7F2; /* Fondo crema suave para el reverso */
+            background: #F9F7F2; /* Fondo crema para legibilidad */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
         }
 
         /* Custom Toast Notification */
@@ -317,7 +325,8 @@
                     <div class="flip-card w-20 h-20">
                         <div class="flip-card-inner" style="animation-delay: 0.4s;">
                             <div class="flip-card-front">
-                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio" class="w-14 h-14 object-contain drop-shadow-sm">
+                                <!-- AUMENTADO: De w-14 a w-16 (un tris más grande) -->
+                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio" class="w-16 h-16 object-contain drop-shadow-sm">
                             </div>
                             <div class="flip-card-back">
                                 <span class="font-bold text-brand-red text-[9px] leading-none uppercase">Tulio</span>
