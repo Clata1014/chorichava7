@@ -334,7 +334,8 @@
             </div>
 
             <!-- GRID PRODUCTOS -->
-            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- MODIFICADO: grid-cols-2 en móvil (antes era cols-1) -->
+            <div id="products-grid" class="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-4">
                 <!-- Se llena con JS -->
             </div>
 
@@ -635,43 +636,49 @@
             }
 
             container.innerHTML = filtered.map(p => `
-                <div class="group bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 hover:border-brand-gold/30 hover:shadow-2xl hover:shadow-brand-red/10 transition-all duration-500 flex flex-row md:flex-row h-auto w-full">
+                <div class="group bg-white rounded-xl md:rounded-3xl overflow-hidden border border-gray-100 hover:border-brand-gold/30 hover:shadow-2xl transition-all duration-500 flex flex-col md:flex-row h-full w-full shadow-sm">
                     
-                    <!-- IMAGEN (Izquierda en móvil: 35% ancho | Escritorio: 45%) -->
-                    <div class="relative w-[35%] md:w-[45%] bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
-                        <img src="${p.image}" alt="Chorizo ${p.name} - ChoriChava Medellín" loading="lazy" class="absolute inset-0 w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl">
+                    <!-- IMAGEN -->
+                    <!-- Móvil: h-36 (más alto) y p-0 (sin borde) para que el chorizo se vea GRANDE -->
+                    <div class="relative w-full h-36 md:w-[45%] md:h-auto bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
+                        <img src="${p.image}" alt="Chorizo ${p.name}" loading="lazy" class="absolute inset-0 w-full h-full object-contain p-0 md:p-2 hover:scale-110 transition-transform duration-500 drop-shadow-2xl scale-110">
                     </div>
 
-                    <!-- DETALLES (Derecha) -->
-                    <div class="flex-1 p-3 md:p-8 flex flex-col justify-between text-left bg-white relative">
-                        <div>
-                            <div class="flex items-center gap-1 mb-1 md:mb-1">
-                                <i data-lucide="star" class="w-3 h-3 md:w-3.5 md:h-3.5 fill-brand-gold text-brand-gold"></i>
-                                <span class="text-[10px] md:text-xs font-bold text-gray-400">5.0</span>
-                                ${p.spiciness > 1 ? '<div class="flex gap-0.5 ml-2">' + Array(p.spiciness).fill('<i data-lucide="flame" class="w-3 h-3 md:w-3.5 md:h-3.5 text-brand-red fill-brand-red"></i>').join('') + '</div>' : ''}
+                    <!-- DETALLES -->
+                    <!-- Móvil: p-1.5 (muy compacto) | Escritorio: p-8 -->
+                    <div class="flex-1 p-1.5 md:p-8 flex flex-col text-left bg-white relative">
+                        
+                        <!-- Header: Estrellas y Titulo -->
+                        <div class="mb-0.5">
+                            <div class="flex items-center gap-1 mb-0.5">
+                                <i data-lucide="star" class="w-2.5 h-2.5 md:w-3.5 md:h-3.5 fill-brand-gold text-brand-gold"></i>
+                                <span class="text-[9px] md:text-xs font-bold text-gray-400">5.0</span>
                             </div>
                             
-                            <h3 class="font-black text-base md:text-2xl text-brand-red leading-tight mb-1 md:mb-2 tracking-tight">${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}</h3>
-                            
-                            <!-- DESCRIPCIÓN: Visible solo en escritorio (md:block) -->
-                            <p class="hidden md:block text-sm md:text-sm text-gray-600 line-clamp-3 md:line-clamp-none mb-4 md:mb-3 leading-relaxed font-medium">${p.description}</p>
-
-                            <!-- LINK "VER DETALLES": Solo móvil -->
-                            <button onclick="openDetails('${p.id}')" class="md:hidden text-xs font-bold text-gray-400 underline mb-2 hover:text-brand-red transition-colors">
-                                Ver detalles
-                            </button>
+                            <h3 class="font-black text-xs md:text-2xl text-brand-red leading-tight tracking-tight line-clamp-2 min-h-[2rem] md:min-h-0">${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}</h3>
                         </div>
+
+                        <!-- Link "Ver detalles" (Pegadito al título) -->
+                        <button onclick="openDetails('${p.id}')" class="md:hidden text-[9px] font-bold text-gray-400 underline mb-1.5 self-start hover:text-brand-red transition-colors">
+                            Ver detalles
+                        </button>
                         
-                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mt-auto">
+                        <!-- Descripción Desktop -->
+                        <p class="hidden md:block text-sm text-gray-600 line-clamp-3 mb-4 leading-relaxed font-medium">${p.description}</p>
+                        
+                        <!-- Footer: Precio y Botón (Compacto) -->
+                        <div class="mt-auto flex flex-col gap-1">
                              ${p.price > 0 ? `
-                            <div class="text-sm md:text-xl font-black text-gray-900 tracking-tight">
+                            <div class="text-xs md:text-xl font-black text-gray-900 tracking-tight">
                                 $${p.price.toLocaleString()}
                             </div>` : ''}
 
                             <button onclick="${p.price > 0 ? `addToCart('${p.id}')` : `contactQuote('${p.name}')`}" 
                                 aria-label="${p.price > 0 ? 'Agregar al carrito' : 'Cotizar producto'}"
-                                class="w-full md:w-auto px-3 py-2 md:px-6 md:py-3.5 rounded-lg md:rounded-xl font-bold text-xs md:text-base transition-all flex items-center justify-center gap-1.5 active:scale-95 shadow-md shadow-brand-red/20 ${p.price > 0 ? 'bg-gradient-to-r from-brand-red to-[#601212] text-white hover:shadow-xl' : 'bg-green-500 text-white hover:bg-green-600'}">
-                                ${p.price > 0 ? 'Agregar' : 'Cotizar'} <i data-lucide="${p.price > 0 ? 'shopping-bag' : 'message-circle'}" class="w-3 h-3 md:w-4 md:h-4"></i>
+                                class="w-full px-2 py-1.5 md:px-6 md:py-3.5 rounded-lg md:rounded-xl font-bold text-[10px] md:text-base transition-all flex items-center justify-center gap-1 active:scale-95 shadow-sm shadow-brand-red/20 ${p.price > 0 ? 'bg-gradient-to-r from-brand-red to-[#601212] text-white hover:shadow-xl' : 'bg-green-500 text-white hover:bg-green-600'}">
+                                <span class="md:hidden">Agregar</span>
+                                <span class="hidden md:inline">${p.price > 0 ? 'Agregar' : 'Cotizar'}</span>
+                                <i data-lucide="${p.price > 0 ? 'shopping-bag' : 'message-circle'}" class="w-3 h-3 md:w-4 md:h-4"></i>
                             </button>
                         </div>
                     </div>
