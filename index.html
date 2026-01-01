@@ -135,20 +135,19 @@
             flex-direction: column;
         }
 
-        /* Frente: Semi-transparente elegante (Mejora visual) */
+        /* Frente: Transparente (solo ícono flotando) */
         .flip-card-front {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            backdrop-filter: blur(4px);
+            background: transparent;
+            border: none;
+            box-shadow: none;
         }
 
         /* Atrás: Tarjeta completa con estilos */
         .flip-card-back {
             transform: rotateY(180deg);
             padding: 2px;
-            background: #FFF; /* Blanco puro para contraste */
-            border: 1px solid rgba(212, 175, 55, 0.2); /* Borde dorado sutil */
+            background: #F9F7F2; /* Fondo crema para legibilidad */
+            border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
         }
 
@@ -654,7 +653,8 @@
                 <div class="group bg-white rounded-xl md:rounded-3xl overflow-hidden border border-gray-100 hover:border-brand-gold/30 hover:shadow-2xl transition-all duration-500 flex flex-row h-64 md:h-64 w-full shadow-sm">
                     
                     <!-- IMAGEN (Izquierda 50%) - Fondo Blanco y Centrado Perfecto -->
-                    <div class="relative w-[50%] md:w-[45%] h-full bg-white shrink-0 overflow-hidden flex items-center justify-center">
+                    <!-- Decoración Sutil: Borde dashed y sombra interna suave -->
+                    <div class="relative w-[50%] md:w-[45%] h-full bg-white shrink-0 overflow-hidden flex items-center justify-center border-r-2 border-dashed border-gray-100 shadow-inner">
                         <img src="${p.image}" alt="Chorizo ${p.name} - ChoriChava Medellín" loading="lazy" class="relative z-10 w-full h-full object-contain p-2 group-hover:scale-125 transition-transform duration-700 drop-shadow-xl scale-125 md:scale-100">
                     </div>
 
@@ -693,15 +693,15 @@
                         <!-- Precio y Botón (Al fondo) -->
                         <div class="mt-auto flex flex-col gap-2">
                              ${p.price > 0 ? `
-                            <!-- Precio Negro Solido -->
+                            <!-- Precio Negro Solido con PUNTO (.) -->
                             <div class="font-black text-lg md:text-2xl text-gray-900 tracking-tight leading-none">
-                                $${p.price.toLocaleString()}
+                                $${p.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                             </div>` : '<div class="text-xs font-bold text-gray-500">Variable</div>'}
 
-                            <!-- BOTÓN VINO TINTO (Estilo original con canastica) -->
+                            <!-- BOTÓN VINO TINTO (Estilo original con canastica y decoración inferior) -->
                             <button onclick="${p.price > 0 ? `addToCart('${p.id}')` : `contactQuote('${p.name}')`}" 
                                 aria-label="${p.price > 0 ? 'Agregar' : 'Cotizar'}"
-                                class="w-full px-3 py-2.5 rounded-lg font-bold text-xs shadow-md shadow-brand-red/20 flex items-center justify-center gap-2 transform active:scale-95 transition-all
+                                class="w-full px-3 py-2.5 rounded-lg font-bold text-xs shadow-md shadow-brand-red/20 flex items-center justify-center gap-2 transform active:scale-95 transition-all border-b-4 border-brand-redLight
                                 ${p.price > 0 ? 'bg-gradient-to-r from-brand-red to-[#601212] text-white hover:shadow-lg' : 'bg-green-600 text-white'}">
                                 ${p.price > 0 ? 'Agregar' : 'Cotizar'} <i data-lucide="${p.price > 0 ? 'shopping-bag' : 'message-circle'}" class="w-3.5 h-3.5"></i>
                             </button>
