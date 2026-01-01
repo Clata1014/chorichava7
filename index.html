@@ -642,18 +642,18 @@
 
             container.innerHTML = filtered.map(p => `
                 <!-- TARJETA -->
-                <!-- Móvil: h-44 (176px - Un tris más grande) para que quepa descripción. Flex-row. -->
+                <!-- Móvil: h-44 (176px). Flex-row. -->
                 <!-- Escritorio (md): h-64 (256px). -->
                 <div class="group bg-white rounded-xl md:rounded-3xl overflow-hidden border border-gray-100 hover:border-brand-gold/30 hover:shadow-2xl transition-all duration-500 flex flex-row h-44 md:h-64 w-full shadow-sm">
                     
                     <!-- IMAGEN -->
-                    <!-- Móvil: w-[40%] (Izquierda) sin padding -->
-                    <div class="relative w-[40%] md:w-[45%] h-full bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
+                    <!-- Móvil: w-[48%] (Casi la mitad) para que el chorizo se vea MUY GRANDE -->
+                    <div class="relative w-[48%] md:w-[45%] h-full bg-[url('https://clata1014.github.io/chorichava7/fondochoriamor.png')] bg-cover bg-center shrink-0">
                         <img src="${p.image}" alt="Chorizo ${p.name} - ChoriChava Medellín" loading="lazy" class="absolute inset-0 w-full h-full object-contain p-0 md:p-2 group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl scale-110 md:scale-100">
                     </div>
 
                     <!-- DETALLES (Derecha) -->
-                    <div class="flex-1 p-2.5 md:p-8 flex flex-col justify-between text-left bg-white relative min-w-0">
+                    <div class="flex-1 p-2 md:p-8 flex flex-col justify-between text-left bg-white relative min-w-0">
                         
                         <!-- Info Superior -->
                         <div class="flex flex-col">
@@ -666,13 +666,8 @@
                             <!-- Título -->
                             <h3 class="font-black text-xs md:text-2xl text-brand-red leading-tight tracking-tight line-clamp-2 md:line-clamp-none mb-1">${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}</h3>
                             
-                            <!-- Descripción (Ahora visible en móvil, texto pequeño, máx 2-3 líneas) -->
-                            <p class="text-[10px] md:text-sm text-gray-600 line-clamp-3 md:line-clamp-2 leading-tight md:leading-relaxed font-medium mb-0.5">${p.description}</p>
-
-                            <!-- Link "Ver más" (Solo móvil) -->
-                            <button onclick="openDetails('${p.id}')" class="md:hidden text-[9px] font-bold text-gray-400 underline self-start hover:text-brand-red transition-colors mb-1">
-                                Ver más...
-                            </button>
+                            <!-- Descripción (Móvil: Visible completa o hasta 4 líneas, sin botón extra) -->
+                            <p class="text-[10px] md:text-sm text-gray-600 line-clamp-4 md:line-clamp-2 leading-tight md:leading-relaxed font-medium mb-0.5">${p.description}</p>
                         </div>
                         
                         <!-- Precio y Botón (Al fondo) -->
