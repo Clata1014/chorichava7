@@ -4,34 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO OPTIMIZATION: ENFOQUE EN PRECOCIDOS Y GOURMET -->
+    <!-- SEO OPTIMIZATION -->
     <title>ChoriChava | Chorizos Precocidos Gourmet en Medellín - Listos para Calentar</title>
-    <meta name="description" content="Chorizos gourmet precocidos en Medellín. La mejor calidad, listos para calentar y servir. No necesitas freír. Ideales para asados fáciles y rápidos en casa.">
-    <meta name="keywords" content="chorizos gourmet, chorizos precocidos, chorizos listos para comer, chorizos medellin, comida facil, asados medellin, chorizo argentino, chorizo sin freir, chorichava">
-    <meta name="author" content="ChoriChava">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Chorizos gourmet precocidos en Medellín. La mejor calidad, listos para calentar y servir. No necesitas freír.">
     
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tusitio.com/">
-    <meta property="og:title" content="ChoriChava | Chorizos Precocidos Gourmet">
-    <meta property="og:description" content="Chorizos premium precocidos. Solo calienta y disfruta. Sin complicaciones, sin freír. Calidad gourmet garantizada.">
-    <meta property="og:image" content="https://clata1014.github.io/chorichava7/fondochoriamor.png">
-
-    <!-- PERFORMANCE: Preconnect -->
+    <!-- PERFORMANCE & LIBRARIES -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com">
-    <link rel="preconnect" href="https://images.unsplash.com">
-    
-    <!-- Tailwind CSS (Diseño) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Fuentes Google -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Iconos Lucide -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <script>
@@ -40,12 +22,12 @@
                 extend: {
                     colors: {
                         brand: {
-                            red: '#4A0E0E',
-                            redLight: '#6B1A1A',
-                            gold: '#D4AF37',
+                            red: '#4A0E0E',         /* Rojo Vino Profundo */
+                            redLight: '#8B2E2E',    /* Rojo más vibrante para hovers */
+                            gold: '#C5A02F',        /* Oro más metálico, menos amarillo */
                             goldLight: '#F3E5AB',
                             cream: '#F9F7F2',
-                            dark: '#1A1A1A',
+                            dark: '#0F0F0F',
                             whatsapp: '#25D366'
                         }
                     },
@@ -56,6 +38,17 @@
                     animation: {
                         'bounce-slow': 'bounce 3s infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -15px rgba(74, 14, 14, 0.15)', /* Sombra roja sutil */
+                        'glow': '0 0 20px rgba(197, 160, 47, 0.3)', /* Resplandor dorado */
                     }
                 }
             }
@@ -63,351 +56,240 @@
     </script>
 
     <style>
-        body { background-color: #F9F7F2; }
+        /* FONDO CON TEXTURA */
+        body { 
+            background-color: #F9F7F2;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
         
-        /* Animaciones */
-        .fade-in { animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* Animaciones Suaves */
+        .fade-in { animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         
-        .slide-in-right { animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .slide-in-right { animation: slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
 
-        /* Scrollbar oculta */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Efectos Premium */
+        /* Efectos de Vidrio Premium */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 10px 40px -10px rgba(74, 14, 14, 0.1);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(74, 14, 14, 0.05);
         }
 
         .hero-glass {
-            background: rgba(0, 0, 0, 0.4); 
-            backdrop-filter: blur(4px);
+            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(20,0,0,0.4) 100%);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .pop-in { animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
         .gold-gradient-text {
-            background: linear-gradient(to right, #D4AF37, #F3E5AB, #D4AF37);
+            background: linear-gradient(to right, #C5A02F, #F3E5AB, #C5A02F, #B88A00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
-            animation: shine 5s linear infinite;
+            animation: shine 4s linear infinite;
         }
         
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
+        @keyframes shine { to { background-position: 200% center; } }
 
-        .premium-shadow {
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
-        }
-
-        /* FLIP CARD STYLES (MOBILE) */
+        /* Flip Card refinada */
         .flip-card { perspective: 1000px; }
         .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-            animation: autoFlip 6s infinite ease-in-out;
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d;
+            animation: autoFlip 8s infinite ease-in-out;
         }
         @keyframes autoFlip {
-            0%, 40% { transform: rotateY(0deg); }
-            50%, 90% { transform: rotateY(180deg); }
+            0%, 45% { transform: rotateY(0deg); }
+            50%, 95% { transform: rotateY(180deg); }
             100% { transform: rotateY(360deg); }
         }
-        .flip-card:active .flip-card-inner { animation: none; transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
+            position: absolute; width: 100%; height: 100%;
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            border-radius: 1rem; display: flex; align-items: center; justify-content: center; flex-direction: column;
         }
-        .flip-card-front { background: transparent; border: none; box-shadow: none; }
+        .flip-card-front { background: transparent; }
         .flip-card-back {
-            transform: rotateY(180deg);
-            padding: 2px;
-            background: #F9F7F2;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+            transform: rotateY(180deg); padding: 4px; background: #FFF;
+            border: 1px solid rgba(197, 160, 47, 0.2); 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
 
-        /* Custom Toast Notification */
-        #toast-container {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            pointer-events: none;
-        }
+        #toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; pointer-events: none; }
         .toast {
-            background: #4A0E0E;
-            color: #F3E5AB;
-            padding: 12px 24px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3);
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: #1A1A1A; color: #FFF; padding: 14px 28px; border-radius: 50px;
+            box-shadow: 0 15px 30px -5px rgba(0,0,0,0.4); font-weight: 500; font-size: 0.9rem;
+            display: flex; align-items: center; gap: 12px; opacity: 0; transform: translateY(20px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(255,255,255,0.1);
         }
-        .toast.show { opacity: 1; transform: translateY(0); }
+        .toast.show { opacity: 1; transform: translateY(0) scale(1); }
         
-        /* Utility for SEO Hidden H1 */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+        
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="selection:bg-brand-red selection:text-white antialiased text-gray-800">
+<body class="selection:bg-brand-gold selection:text-white antialiased text-gray-800">
 
-    <!-- SEO: Hidden Main Title -->
-    <h1 class="sr-only">ChoriChava - Chorizos Precocidos Gourmet en Medellín - Listos para calentar</h1>
+    <h1 class="sr-only">ChoriChava - Chorizos Precocidos Gourmet en Medellín</h1>
 
-    <!-- Toast Container -->
     <div id="toast-container"></div>
 
+    <!-- CINTA SUPERIOR: Restaurada al ROJO (Como pediste) -->
+    <div class="bg-brand-red text-white text-[10px] md:text-xs py-2.5 text-center font-bold tracking-[0.2em] uppercase border-b border-brand-gold/30 relative z-50">
+        <div class="flex items-center justify-center gap-6 overflow-hidden whitespace-nowrap px-4 opacity-90">
+            <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín: Domicilios</span>
+            <span class="text-brand-gold/50">|</span>
+            <span class="flex items-center gap-2"><i data-lucide="truck" class="w-3 h-3 text-brand-gold"></i> Envíos Nacionales</span>
+            <span class="text-brand-gold/50">|</span>
+            <span class="flex items-center gap-2"><i data-lucide="shield-check" class="w-3 h-3 text-brand-gold"></i> Compra Segura</span>
+        </div>
+    </div>
+
     <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/573126079424?text=Hola%20ChoriChava!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" class="fixed bottom-6 right-6 z-50 bg-brand-whatsapp text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center border-2 border-white/20 animate-bounce-slow hover:shadow-green-500/50" aria-label="Contactar por WhatsApp">
-        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="0" fill="currentColor" class="w-8 h-8 fill-white">
+    <a href="https://wa.me/573126079424?text=Hola%20ChoriChava!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" class="fixed bottom-8 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300 flex items-center justify-center border-4 border-white/20 animate-bounce-slow" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" width="30" height="30" stroke="currentColor" stroke-width="0" fill="currentColor" class="w-7 h-7 fill-white">
             <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.07 0C5.537 0 .181 5.703.181 12.533c0 2.21.578 4.305 1.583 6.132l-1.621 5.925 6.077-1.594a11.777 11.777 0 005.855 1.57h.005c6.527 0 11.885-5.358 11.889-11.886.001-3.18-1.235-6.17-3.483-8.418"/>
         </svg>
     </a>
 
     <!-- FONDO HERO -->
     <div class="fixed inset-0 -z-50 w-full h-full bg-[#1a0505]">
-        <!-- Performance: Priority High para LCP -->
-        <img 
-          src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1920&auto=format&fit=crop" 
-          alt="Fondo Parrilla Carbón Asado" 
-          class="w-full h-full object-cover opacity-90 brightness-[0.7] object-center"
-          fetchpriority="high"
-        >
-        <!-- Degradado sutil para mejorar lectura -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80"></div>
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1920&auto=format&fit=crop" alt="Fondo Parrilla" class="w-full h-full object-cover opacity-80 brightness-[0.6] object-center scale-105" fetchpriority="high">
+        <!-- Overlay Gradiente Cinemático -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90"></div>
     </div>
 
-    <!-- NUEVO: BARRA DE ANUNCIO SUPERIOR (PERSUASIÓN DE ENVÍO) -->
-    <div class="bg-brand-red text-brand-goldLight text-xs md:text-sm py-2 text-center font-bold tracking-wider relative z-50 border-b border-brand-gold/20 shadow-md">
-        <p class="flex items-center justify-center gap-2 animate-pulse-slow">
-            <i data-lucide="map-pin" class="w-3 h-3 md:w-4 md:h-4"></i> Medellín, Colombia • Envíos a todo el país 
-            <span class="hidden md:inline"> | 🛵 ¡Pide hoy y recibe fresco!</span>
-        </p>
-    </div>
-
-    <!-- NAVEGACIÓN STICKY (Glassmorphism mejorado) -->
-    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-white/20 shadow-xl transition-colors duration-300">
-        <!-- Logo y Carrito -->
+    <!-- NAVEGACIÓN -->
+    <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-white/40 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 md:h-20"> <!-- Altura reducida en móvil (h-16) -->
-                <!-- Logo -->
-                <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')" role="button" aria-label="Ir al inicio">
-                    <!-- Icono de utensilios -->
-                    <div class="shrink-0 w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-brand-red to-brand-redLight rounded-2xl flex items-center justify-center shadow-lg relative z-20 border border-white/20 transition-all hover:scale-105 hover:shadow-brand-red/30">
-                        <i data-lucide="utensils" class="text-brand-gold w-6 h-6 md:w-8 md:h-8"></i>
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')" role="button">
+                    <div class="shrink-0 w-12 h-12 bg-gradient-to-br from-brand-red to-brand-redLight rounded-2xl flex items-center justify-center shadow-lg shadow-brand-red/30 relative z-20 border border-white/20 transition-all hover:scale-105 hover:rotate-3">
+                        <i data-lucide="utensils" class="text-brand-gold w-6 h-6"></i>
                     </div>
-                    
-                    <img 
-                        src="https://github.com/Clata1014/chorichava7/blob/main/Fonditonuevo.png?raw=true" 
-                        alt="Logo ChoriChava Medellín" 
-                        class="h-36 md:h-48 w-auto object-contain -my-8 md:-my-14 -ml-9 md:-ml-10 relative z-10 -translate-y-1 md:-translate-y-2 drop-shadow-xl" 
-                        style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);"
-                    >
+                    <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditonuevo.png?raw=true" alt="Logo" class="h-44 w-auto object-contain -my-12 -ml-9 relative z-10 drop-shadow-2xl" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
                 </div>
-
-                <!-- Botones Derecha -->
-                <div class="flex items-center gap-3 md:gap-4 -mr-1">
-                    <!-- Botón de carrito grande -->
-                    <button onclick="toggleCart()" class="relative flex items-center justify-center w-14 h-14 md:w-14 md:h-14 rounded-full hover:bg-gray-100 transition-all active:scale-95 group" aria-label="Ver carrito">
-                        <i data-lucide="shopping-bag" class="w-8 h-8 md:w-9 md:h-9 text-brand-red group-hover:text-brand-redLight transition-colors"></i>
-                        <span id="cart-count" class="absolute top-2 right-2 flex h-4 w-4 hidden">
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleCart()" class="relative flex items-center justify-center w-12 h-12 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
+                        <i data-lucide="shopping-bag" class="w-6 h-6 text-brand-red"></i>
+                        <span id="cart-count" class="absolute top-1 right-1 flex h-4 w-4 hidden">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-4 w-4 bg-brand-gold text-brand-red text-[10px] font-bold items-center justify-center border border-brand-red cart-num">0</span>
+                            <span class="relative inline-flex rounded-full h-4 w-4 bg-brand-gold text-brand-red text-[10px] font-bold items-center justify-center shadow-sm cart-num">0</span>
                         </span>
                     </button>
-                    <!-- Botón de menú grande -->
-                    <button onclick="toggleMenu()" class="flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full hover:bg-gray-100 transition-all active:scale-95" aria-label="Abrir menú">
-                        <i data-lucide="menu" class="w-8 h-8 md:w-11 md:h-11 text-brand-red"></i>
+                    <button onclick="toggleMenu()" class="flex items-center justify-center w-12 h-12 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
+                        <i data-lucide="menu" class="w-6 h-6 text-brand-red"></i>
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- FILTROS (BOTONES) -->
-        <div class="bg-white/80 backdrop-blur-md border-t border-gray-100 shadow-inner">
-            <div class="max-w-7xl mx-auto px-4 py-2 md:py-4"> <!-- Padding reducido en móvil -->
+        <!-- FILTROS -->
+        <div class="bg-white/60 backdrop-blur-md border-t border-gray-100/50">
+            <div class="max-w-7xl mx-auto px-4 py-3">
                 <div class="flex justify-center overflow-x-auto no-scrollbar">
-                    <nav class="inline-flex bg-gray-100/80 rounded-full p-1.5 gap-1 flex-nowrap min-w-max shadow-inner" id="category-pills" aria-label="Categorías de productos">
-                        <!-- Se llenan con JS -->
-                    </nav>
+                    <nav class="inline-flex bg-white/80 rounded-full p-1 gap-2 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] border border-gray-100" id="category-pills"></nav>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- MENÚ MÓVIL FULL SCREEN -->
-    <div id="mobile-menu" class="fixed inset-0 bg-brand-red/98 backdrop-blur-xl z-50 transition-transform duration-500 translate-x-full flex flex-col justify-center items-center gap-8">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors" aria-label="Cerrar menú"><i data-lucide="x" class="w-8 h-8"></i></button>
-        <a href="#" onclick="switchView('store', 'Línea Gourmet')" class="text-3xl font-serif font-bold text-white hover:text-brand-gold transition-colors tracking-tight">Inicio</a>
-        <a href="#" onclick="switchView('store', 'Línea Gourmet')" class="text-3xl font-serif font-bold text-white hover:text-brand-gold transition-colors tracking-tight">Línea Gourmet</a>
-        <a href="#" onclick="switchView('store', 'Tradicional')" class="text-3xl font-serif font-bold text-white hover:text-brand-gold transition-colors tracking-tight">Tradicional</a>
-        <a href="#" onclick="switchView('store', 'Otras Delicias')" class="text-3xl font-serif font-bold text-white hover:text-brand-gold transition-colors tracking-tight">Otras Delicias</a>
-        <a href="#" onclick="switchView('store', 'history')" class="text-3xl font-serif font-bold text-white hover:text-brand-gold transition-colors tracking-tight">Nuestra Historia</a>
-        <a href="#" onclick="scrollToContact()" class="text-3xl font-serif font-bold text-white hover:text-brand-gold transition-colors tracking-tight">Contacto</a>
+    <!-- MENÚ MÓVIL -->
+    <div id="mobile-menu" class="fixed inset-0 bg-gradient-to-br from-brand-red to-[#2a0505] backdrop-blur-xl z-50 transition-transform duration-500 translate-x-full flex flex-col justify-center items-center gap-8 text-center">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"><i data-lucide="x" class="w-8 h-8"></i></button>
+        <a href="#" onclick="switchView('store', 'Línea Gourmet')" class="text-4xl font-serif font-bold text-white/90 hover:text-brand-gold transition-colors tracking-tighter">Inicio</a>
+        <a href="#" onclick="switchView('store', 'Línea Gourmet')" class="text-4xl font-serif font-bold text-white/90 hover:text-brand-gold transition-colors tracking-tighter">Gourmet</a>
+        <a href="#" onclick="switchView('store', 'Tradicional')" class="text-4xl font-serif font-bold text-white/90 hover:text-brand-gold transition-colors tracking-tighter">Tradicional</a>
+        <a href="#" onclick="switchView('store', 'Otras Delicias')" class="text-4xl font-serif font-bold text-white/90 hover:text-brand-gold transition-colors tracking-tighter">Delicias</a>
+        <a href="#" onclick="switchView('store', 'history')" class="text-2xl font-sans font-light text-white/70 hover:text-white mt-8 tracking-widest uppercase">Historia</a>
+        <a href="#" onclick="scrollToContact()" class="text-2xl font-sans font-light text-white/70 hover:text-white tracking-widest uppercase">Contacto</a>
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
     <main id="main-content" class="min-h-screen relative z-10 w-full pb-12">
-        
-        <!-- VISTA TIENDA -->
         <section id="view-store" class="fade-in">
 
-            <!-- NUEVO: HERO SECTION (OPTIMIZADO MÓVIL) -->
-            <!-- Se redujeron drásticamente los margenes y tamaños de letra en móvil (clases md: mantienen el tamaño original en PC) -->
-            <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2 md:mt-6 mb-4 md:mb-8">
-                <div class="hero-glass rounded-3xl p-4 md:p-12 text-center relative overflow-hidden group">
-                    <!-- Brillo decorativo -->
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-50"></div>
+            <!-- HERO SECTION SUPER COMPACTA (Optimizada Desktop y Móvil) -->
+            <!-- Reduje el padding vertical (py-8) para que ocupe menos altura -->
+            <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-6">
+                <div class="hero-glass rounded-[1.5rem] py-8 px-6 md:px-12 text-center relative overflow-hidden group shadow-xl ring-1 ring-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
                     
-                    <span class="inline-block py-0.5 px-2 md:py-1 md:px-3 rounded-full bg-brand-gold/20 border border-brand-gold/40 text-brand-goldLight text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2 md:mb-4 backdrop-blur-md">
-                        Calidad Premium
-                    </span>
+                    <!-- Decoración sutil -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent"></div>
                     
-                    <h2 class="text-2xl md:text-6xl font-serif font-black text-white mb-2 md:mb-4 leading-tight drop-shadow-lg">
-                        El Arte del <span class="gold-gradient-text italic">Chorizo Gourmet</span>
-                    </h2>
-                    
-                    <p class="text-gray-200 text-xs md:text-lg max-w-2xl mx-auto leading-relaxed mb-3 md:mb-8 drop-shadow-md">
-                        Olvídate de freír. Nuestros chorizos vienen <strong class="text-brand-gold">precocidos</strong>. Solo necesitas calentarlos unos minutos y disfrutar.
-                    </p>
+                    <!-- Texto Izquierda (Compacto) -->
+                    <div class="text-center md:text-left flex-1">
+                        <h2 class="pop-in text-3xl md:text-4xl font-serif font-black text-white mb-2 leading-tight drop-shadow-xl tracking-tight">
+                            Arte <span class="gold-gradient-text italic">Gourmet</span>
+                        </h2>
+                        <p class="text-gray-200 text-sm md:text-base leading-relaxed font-light opacity-90">
+                            Precocidos. Sin freír. Listos en minutos.
+                        </p>
+                    </div>
 
-                    <!-- Beneficios Visuales (Iconos Compactos en Móvil) -->
-                    <div class="flex flex-wrap justify-center gap-2 md:gap-8 border-t border-white/10 pt-3 md:pt-6">
-                        <div class="flex items-center gap-1.5 md:gap-2 text-white/90 bg-black/30 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl backdrop-blur-sm">
-                            <i data-lucide="flame" class="text-brand-gold w-3 h-3 md:w-5 md:h-5"></i>
-                            <span class="text-[10px] md:text-sm font-bold">Listos para Asar</span>
-                        </div>
-                        <div class="flex items-center gap-1.5 md:gap-2 text-white/90 bg-black/30 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl backdrop-blur-sm">
-                            <i data-lucide="ban" class="text-brand-gold w-3 h-3 md:w-5 md:h-5"></i>
-                            <span class="text-[10px] md:text-sm font-bold">Sin Aceite</span>
-                        </div>
-                        <div class="flex items-center gap-1.5 md:gap-2 text-white/90 bg-black/30 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl backdrop-blur-sm">
-                            <i data-lucide="award" class="text-brand-gold w-3 h-3 md:w-5 md:h-5"></i>
-                            <span class="text-[10px] md:text-sm font-bold">100% Carne</span>
-                        </div>
+                    <!-- Iconos Derecha (Compactos) -->
+                    <div class="flex flex-wrap justify-center md:justify-end gap-3 md:gap-4">
+                        <div class="flex items-center gap-2 text-white/90 bg-white/5 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/5 hover:bg-white/10 transition-colors"><i data-lucide="flame" class="text-brand-gold w-4 h-4"></i><span class="text-xs font-semibold tracking-wide">Asar</span></div>
+                        <div class="flex items-center gap-2 text-white/90 bg-white/5 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/5 hover:bg-white/10 transition-colors"><i data-lucide="ban" class="text-brand-gold w-4 h-4"></i><span class="text-xs font-semibold tracking-wide">Sin Aceite</span></div>
                     </div>
                 </div>
             </div>
 
-            <!-- CONTENEDOR PRODUCTOS (Original Structure preserved) -->
+            <!-- CONTENEDOR PRODUCTOS -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-                
-                <!-- TARJETAS DE CONFIANZA: SOLO ESCRITORIO (ARRIBA) -->
-                <div class="hidden md:block w-full mb-6 md:mb-8 pb-6 border-b border-white/20">
-                    <div class="flex flex-row justify-center items-stretch w-full gap-2 max-w-3xl mx-auto">
-                        <!-- Tarjeta 1 -->
-                        <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-10 h-10 object-contain shrink-0 drop-shadow-sm">
-                            <div class="flex flex-col text-left">
-                                <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Producto</span>
-                                <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Colombiano</span>
-                            </div>
-                        </div>
-                        <!-- Tarjeta 2 -->
-                        <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                            <span class="text-5xl shrink-0 drop-shadow-sm">🧑‍🌾</span>
-                            <div class="flex flex-col text-left">
-                                <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Mercados</span>
-                                <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Campesinos</span>
-                            </div>
-                        </div>
-                        <!-- Tarjeta 3 -->
-                        <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                            <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio Recomienda" class="w-16 h-16 object-contain shrink-0 drop-shadow-sm">
-                            <div class="flex flex-col text-left">
-                                <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Tulio</span>
-                                <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Recomienda</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Se eliminó la cabecera de categoría para limpiar la vista -->
 
-                <!-- Título Categoría (OCULTO EN MÓVIL) -->
-                <!-- Se agregó 'hidden md:flex' para que no ocupe espacio en celular -->
-                <div class="hidden md:flex items-center justify-between mb-6">
-                    <h2 id="category-title" class="text-2xl md:text-4xl font-black text-white font-serif tracking-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">Línea Gourmet</h2>
-                    <span id="product-count" class="text-xs md:text-sm text-brand-red font-bold bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg border border-white">0 delicias</span>
-                </div>
+                <!-- GRID PRODUCTOS -->
+                <div id="products-grid" class="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8"></div>
 
-                <!-- GRID PRODUCTOS (ESTRUCTURA INTACTA) -->
-                <div id="products-grid" class="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-4">
-                    <!-- Se llena con JS -->
-                </div>
-
-                <!-- TESTIMONIOS -->
-                <section class="mt-12 md:mt-16 pt-8 pb-12 glass-panel rounded-3xl px-4 md:px-6 text-center border border-white/60">
-                    <h2 class="text-2xl md:text-3xl font-serif font-black text-brand-red mb-6 md:mb-8 tracking-tight">Clientes <span class="text-brand-gold italic">Felices</span></h2>
-                    <div class="flex overflow-x-auto gap-4 snap-x pb-4 no-scrollbar">
-                        <div class="min-w-[260px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 snap-center flex flex-col justify-center transition-transform hover:-translate-y-1">
-                            <div class="text-brand-gold mb-3 text-lg tracking-widest">★★★★★</div>
-                            <p class="text-sm text-gray-600 italic mb-4 leading-relaxed">"Los mejores chorizos que he probado en Medellín. El sabor ahumado es increíble."</p>
-                            <p class="font-bold text-brand-red text-sm mt-auto border-t border-gray-100 pt-3 uppercase tracking-wide">- Carlos M.</p>
+                <!-- TESTIMONIOS (Diseño Glass) -->
+                <section class="mt-16 pt-10 pb-16 glass-panel rounded-[2rem] px-6 text-center">
+                    <i data-lucide="quote" class="w-10 h-10 text-brand-gold/30 mx-auto mb-4"></i>
+                    <h2 class="text-3xl md:text-4xl font-serif font-black text-brand-red mb-10">Clientes <span class="italic text-brand-gold">Felices</span></h2>
+                    <div class="flex overflow-x-auto gap-6 snap-x pb-8 no-scrollbar px-2">
+                        <div class="min-w-[280px] bg-white p-8 rounded-3xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] snap-center flex flex-col justify-center border border-gray-50">
+                            <div class="flex gap-1 justify-center mb-4"><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i></div>
+                            <p class="text-sm text-gray-600 italic mb-6 leading-relaxed font-medium">"El sabor ahumado es increíble. Se nota que son artesanales de verdad."</p>
+                            <p class="font-bold text-brand-red text-xs uppercase tracking-widest opacity-80">Carlos M.</p>
                         </div>
-                        <div class="min-w-[260px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 snap-center flex flex-col justify-center transition-transform hover:-translate-y-1">
-                            <div class="text-brand-gold mb-3 text-lg tracking-widest">★★★★★</div>
-                            <p class="text-sm text-gray-600 italic mb-4 leading-relaxed">"Súper recomendados. Compré el paquete surtido y todos quedaron encantados."</p>
-                            <p class="font-bold text-brand-red text-sm mt-auto border-t border-gray-100 pt-3 uppercase tracking-wide">- Juliana R.</p>
-                        </div>
-                        <div class="min-w-[260px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 snap-center flex flex-col justify-center transition-transform hover:-translate-y-1">
-                            <div class="text-brand-gold mb-3 text-lg tracking-widest">★★★★★</div>
-                            <p class="text-sm text-gray-600 italic mb-4 leading-relaxed">"Llegaron empacados al vacío perfectos, listos para asar. La calidad se nota."</p>
-                            <p class="font-bold text-brand-red text-sm mt-auto border-t border-gray-100 pt-3 uppercase tracking-wide">- Maria Clara J.</p>
+                        <div class="min-w-[280px] bg-white p-8 rounded-3xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] snap-center flex flex-col justify-center border border-gray-50">
+                            <div class="flex gap-1 justify-center mb-4"><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i></div>
+                            <p class="text-sm text-gray-600 italic mb-6 leading-relaxed font-medium">"Compré el paquete surtido y todos quedaron encantados. Repetiré."</p>
+                            <p class="font-bold text-brand-red text-xs uppercase tracking-widest opacity-80">Juliana R.</p>
                         </div>
                     </div>
                 </section>
 
                 <!-- CONTACTO -->
-                <section id="contact-section" class="mt-8 mb-12 bg-white rounded-3xl shadow-2xl p-6 md:p-10 max-w-2xl mx-auto border border-gray-100">
-                    <h2 class="text-2xl md:text-3xl font-serif font-black text-brand-red mb-6 text-center tracking-tight">Contáctanos</h2>
-                    <form onsubmit="handleContact(event)" class="space-y-5">
+                <section id="contact-section" class="mt-12 mb-12 bg-white rounded-[2.5rem] shadow-premium p-8 md:p-12 max-w-2xl mx-auto border border-white/50 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    <h2 class="text-3xl md:text-4xl font-serif font-black text-brand-red mb-8 text-center">Hablemos</h2>
+                    <form onsubmit="handleContact(event)" class="space-y-6 relative z-10">
                         <div>
-                            <label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider">Nombre</label>
-                            <input id="contactName" type="text" class="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all" placeholder="Tu nombre" required>
+                            <label class="block text-[10px] font-bold text-gray-400 mb-2 uppercase tracking-widest ml-1">Tu Nombre</label>
+                            <input id="contactName" type="text" class="w-full p-4 border border-gray-200 rounded-2xl bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold outline-none transition-all placeholder-gray-300 font-medium" placeholder="Escribe aquí..." required>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider">Mensaje</label>
-                            <textarea id="contactMessage" class="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none min-h-[120px] transition-all" placeholder="Hola, quisiera hacer un pedido..." required></textarea>
+                            <label class="block text-[10px] font-bold text-gray-400 mb-2 uppercase tracking-widest ml-1">Mensaje</label>
+                            <textarea id="contactMessage" class="w-full p-4 border border-gray-200 rounded-2xl bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold outline-none min-h-[120px] transition-all placeholder-gray-300 font-medium" placeholder="Hola, quisiera saber..." required></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-brand-red to-[#601212] text-white py-4 rounded-xl font-bold shadow-lg shadow-brand-red/30 hover:-translate-y-1 hover:shadow-brand-red/50 transition-all uppercase tracking-widest text-sm">Enviar a WhatsApp 🚀</button>
+                        <button type="submit" class="w-full bg-brand-red text-white py-4 rounded-xl font-bold shadow-lg hover:shadow-xl hover:bg-brand-redLight transition-all uppercase tracking-widest text-xs flex items-center justify-center gap-2 group">
+                            Enviar Mensaje <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
                     </form>
                 </section>
             </div>
@@ -415,161 +297,107 @@
 
         <!-- VISTA HISTORIA -->
         <section id="view-history" class="hidden max-w-4xl mx-auto px-4 py-8 fade-in">
-            <div class="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/50">
-                <div class="p-6 md:p-12 text-center">
-                    <div class="relative w-full max-w-md mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl border-[6px] border-white transform rotate-1">
-                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" class="w-full h-auto object-cover" alt="Carlos Chavarriaga Fundador ChoriChava" loading="lazy">
+             <div class="bg-white/90 backdrop-blur-xl rounded-[2.5rem] shadow-2xl overflow-hidden border border-white/60">
+                <div class="p-8 md:p-16 text-center">
+                    <div class="relative w-full max-w-md mx-auto mb-10 rounded-2xl overflow-hidden shadow-2xl border-[8px] border-white transform rotate-1">
+                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Carlos Chavarriaga" loading="lazy">
                     </div>
-                    <p class="text-gray-500 italic mb-10 font-serif text-lg">Fundador y Visionario</p>
                     
-                    <div class="text-left text-gray-700 space-y-8 leading-relaxed text-lg font-medium px-2 md:px-10">
-                        <p><span class="text-6xl float-left mr-4 text-brand-red font-serif leading-none font-black mt-[-10px]">D</span>etrás de cada gran sabor, hay una historia de dedicación. Todo comenzó hace más de 13 años, cuando <strong>Carlos Chavarriaga</strong> decidió transformar su pasión por la buena mesa en una marca que hoy es orgullo paisa: <span class="text-brand-red font-bold">ChoriChava</span>.</p>
-                        
-                        <div class="text-center my-12 relative py-4">
-                            <span class="text-5xl text-brand-gold/30 absolute top-[-10px] left-0 font-serif">"</span>
-                            <p class="font-serif italic text-2xl md:text-3xl text-brand-red px-8 font-semibold">No vendemos chorizos, vendemos momentos en familia.</p>
-                            <span class="text-5xl text-brand-gold/30 absolute bottom-[-20px] right-0 font-serif">"</span>
+                    <div class="text-left text-gray-700 space-y-8 leading-relaxed text-lg font-light px-2 md:px-8">
+                        <p class="first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:text-brand-red first-letter:font-serif first-letter:font-black">Detrás de cada gran sabor, hay una historia de dedicación. Todo comenzó hace más de 13 años, cuando <strong>Carlos Chavarriaga</strong> decidió transformar su pasión por la buena mesa en una marca que hoy es orgullo paisa.</p>
+                        <blockquote class="text-center my-14 relative py-6 px-8 border-y border-brand-gold/20">
+                            <p class="font-serif italic text-2xl md:text-3xl text-brand-red font-medium leading-tight">"No vendemos chorizos, vendemos momentos en familia."</p>
+                        </blockquote>
+                        <p>Lo que inició como un sueño, se convirtió en realidad gracias al programa <strong>Capital Semilla</strong> de Medellín. Hoy, cumplimos con los más altos estándares y registro INVIMA.</p>
+                        <div class="grid grid-cols-2 gap-4 my-12">
+                            <img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" class="rounded-2xl shadow-lg hover:scale-105 transition-transform" alt="Muestra">
+                            <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" class="rounded-2xl shadow-lg hover:scale-105 transition-transform" alt="Tulio">
                         </div>
-
-                        <p>Lo que inició como un sueño emprendedor, tomó fuerza y estructura gracias al reconocimiento del programa <strong>Capital Semilla</strong> de la Alcaldía de Medellín. Este impulso permitió a la empresa crecer y perfeccionar sus procesos, logrando lo que pocos alcanzan: mantener el auténtico sabor tradicional cumpliendo con los más altos estándares de calidad y seguridad, respaldados por su <strong>registro INVIMA</strong>.</p>
-                        
-                        <div class="w-full rounded-2xl overflow-hidden shadow-xl my-10"><img src="https://github.com/Clata1014/chorichava7/blob/main/Muestra.webp?raw=true" class="w-full object-cover" alt="Muestra de Calidad y Empaque" loading="lazy"></div>
-                        <p class="text-center text-sm text-gray-400 italic -mt-8 mb-10 font-serif">Calidad Superior Certificada</p>
-
-                        <p>Esta constancia ha dado frutos deliciosos. La marca ha sido destacada por referentes gastronómicos como <span class="text-brand-red font-bold">Tulio Recomienda</span>, confirmando que cuando las cosas se hacen con amor y disciplina, se nota en el sabor.</p>
-
-                        <div class="w-full rounded-2xl overflow-hidden shadow-xl my-10"><img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomiendafoto.webp?raw=true" class="w-full object-cover" alt="Tulio Recomienda ChoriChava" loading="lazy"></div>
-                        <p class="text-center text-sm text-gray-400 italic -mt-8 mb-10 font-serif">Reconocimiento de Tulio Recomienda</p>
-
-                        <p class="text-center font-bold text-xl md:text-2xl text-brand-red mt-10 font-serif">ChoriChava es tradición, es calidad y, sobre todo, es una familia trabajando para llevar lo mejor a la mesa de cada cliente.</p>
-                        <div class="flex justify-center mt-6 text-3xl text-brand-red animate-pulse">🔥</div>
+                        <p class="text-center font-serif text-2xl text-brand-dark">Tradición. Calidad. Familia.</p>
                     </div>
-                    
-                    <button onclick="switchView('store')" class="mt-16 bg-brand-dark text-white px-10 py-4 rounded-full font-bold shadow-lg hover:bg-black transition-all hover:-translate-y-1 flex items-center gap-3 mx-auto uppercase tracking-wider text-sm">
-                        <i data-lucide="arrow-left" class="w-5 h-5"></i> Volver al Menú
-                    </button>
+                    <button onclick="switchView('store')" class="mt-16 bg-gray-100 text-brand-dark px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-all flex items-center gap-2 mx-auto text-xs uppercase tracking-widest"><i data-lucide="arrow-left" class="w-4 h-4"></i> Regresar</button>
                 </div>
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <footer class="bg-white text-gray-600 py-16 mt-auto border-t border-gray-100 relative z-10 text-center">
+        <!-- FOOTER (Con Sellos Dinámicos Visibles en Desktop) -->
+        <footer class="bg-white text-gray-400 py-20 mt-auto border-t border-gray-100 relative z-10 text-center">
+            <h2 class="text-3xl md:text-5xl font-serif font-black text-brand-red mb-10 opacity-90">Chori<span class="text-brand-gold">Chava</span></h2>
             
-            <h2 class="text-2xl md:text-4xl font-serif font-black text-brand-red mb-6">Chori<span class="text-brand-gold">Chava</span></h2>
-
-            <!-- TARJETAS DE CONFIANZA: VISTA MÓVIL (AQUI EN EL FOOTER) -->
-            <div class="md:hidden mb-6">
-                <p class="text-xs font-bold text-brand-red uppercase tracking-widest mb-4">Sellos de Calidad</p>
-                <div class="flex flex-row justify-center gap-4">
-                    <!-- Card 1: Colombia (w-20 h-20) -->
-                    <div class="flip-card w-20 h-20">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-12 h-12 object-contain drop-shadow-sm">
-                            </div>
-                            <div class="flip-card-back">
-                                <span class="font-bold text-brand-red text-[9px] leading-none uppercase">Producto</span>
-                                <span class="font-black text-black text-[9px] leading-none uppercase">Colombiano</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Mercados -->
-                    <div class="flip-card w-20 h-20">
-                        <div class="flip-card-inner" style="animation-delay: 0.2s;">
-                            <div class="flip-card-front">
-                                <img src="https://em-content.zobj.net/source/apple/391/farmer_1f9d1-200d-1f33e.png" alt="Campesino" class="w-12 h-12 object-contain drop-shadow-sm">
-                            </div>
-                            <div class="flip-card-back">
-                                <span class="font-bold text-brand-red text-[9px] leading-none uppercase">Mercados</span>
-                                <span class="font-black text-black text-[9px] leading-none uppercase">Campesinos</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Tulio -->
-                    <div class="flip-card w-20 h-20">
-                        <div class="flip-card-inner" style="animation-delay: 0.4s;">
-                            <div class="flip-card-front">
-                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio" class="w-16 h-16 object-contain drop-shadow-sm">
-                            </div>
-                            <div class="flip-card-back">
-                                <span class="font-bold text-brand-red text-[9px] leading-none uppercase">Tulio</span>
-                                <span class="font-black text-black text-[9px] leading-none uppercase">Recomienda</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- TARJETAS FLIP (Ahora visibles SIEMPRE) -->
+            <div class="mb-12">
+                <p class="text-[10px] font-bold text-brand-red/50 uppercase tracking-[0.2em] mb-6">Reconocimientos</p>
+                <div class="flex flex-row justify-center gap-6 md:gap-8">
+                     <!-- Card 1: Colombia -->
+                     <div class="flip-card w-16 h-16 md:w-24 md:h-24"><div class="flip-card-inner"><div class="flip-card-front"><img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" class="w-10 h-10 md:w-16 md:h-16 object-contain"></div><div class="flip-card-back"><span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Producto</span><span class="font-black text-[9px] md:text-xs text-brand-dark uppercase">Local</span></div></div></div>
+                     
+                     <!-- Card 2: Tulio -->
+                     <div class="flip-card w-16 h-16 md:w-24 md:h-24"><div class="flip-card-inner" style="animation-delay: 0.2s;"><div class="flip-card-front"><img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" class="w-12 h-12 md:w-20 md:h-20 object-contain"></div><div class="flip-card-back"><span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Tulio</span><span class="font-black text-[9px] md:text-xs text-brand-dark uppercase">Recomienda</span></div></div></div>
+                     
+                     <!-- Card 3: Campesino (Al final como pediste) -->
+                     <div class="flip-card w-16 h-16 md:w-24 md:h-24"><div class="flip-card-inner" style="animation-delay: 0.4s;"><div class="flip-card-front"><img src="https://em-content.zobj.net/source/apple/391/farmer_1f9d1-200d-1f33e.png" class="w-10 h-10 md:w-16 md:h-16 object-contain"></div><div class="flip-card-back"><span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Mercados</span><span class="font-black text-[9px] md:text-xs text-brand-dark uppercase">Campesinos</span></div></div></div>
                 </div>
             </div>
-            
-            <p class="text-sm md:text-xl mb-8 text-gray-500 font-medium flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 tracking-wide">
-                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-5 h-5 text-brand-red"></i> Medellín, Colombia</span>
-                <span class="hidden md:inline text-gray-300">•</span>
-                <span class="flex items-center gap-2"><i data-lucide="truck" class="w-5 h-5 text-brand-red"></i> Envíos a todo el país</span>
-            </p>
 
-            <div class="flex justify-center gap-8 text-2xl md:text-3xl mb-8 text-brand-red">
-                <span class="hover:text-brand-gold cursor-pointer transition-colors transform hover:scale-110 duration-200" aria-label="Instagram">📷</span>
-                <span class="hover:text-brand-gold cursor-pointer transition-colors transform hover:scale-110 duration-200" aria-label="Facebook">📘</span>
-                <span class="hover:text-brand-gold cursor-pointer transition-colors transform hover:scale-110 duration-200" aria-label="WhatsApp">💬</span>
+            <p class="text-sm md:text-lg mb-10 font-light tracking-wider opacity-80">Medellín • Colombia</p>
+            <div class="flex justify-center gap-10 text-2xl mb-10 text-brand-red opacity-80">
+                <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">📷</span>
+                <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">📘</span>
+                <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">💬</span>
             </div>
-            <p class="text-xs md:text-sm text-gray-400 font-medium">© 2024 ChoriChava. Todos los derechos reservados.</p>
+            <p class="text-[10px] uppercase tracking-widest opacity-40">© 2024 ChoriChava.</p>
         </footer>
     </main>
 
-    <!-- PRODUCT DETAILS BOTTOM SHEET (Nuevo) -->
-    <div id="product-sheet-overlay" class="fixed inset-0 bg-black/60 z-[70] hidden opacity-0 transition-opacity duration-300" onclick="closeDetails()"></div>
-    <div id="product-sheet" class="fixed bottom-0 left-0 right-0 bg-white z-[80] rounded-t-3xl p-6 transform translate-y-full transition-transform duration-300 shadow-[0_-10px_40px_-10px_rgba(0,0,0,0.2)]">
-        <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6"></div> <!-- Handle -->
-        <button onclick="closeDetails()" class="absolute top-6 right-6 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"><i data-lucide="x" class="w-5 h-5 text-gray-600"></i></button>
-        
-        <div class="flex gap-4 mb-6">
-            <img id="sheet-img" src="" class="w-24 h-24 rounded-2xl object-cover bg-gray-50">
+    <!-- PRODUCT SHEET (Bottom Sheet) -->
+    <div id="product-sheet-overlay" class="fixed inset-0 bg-brand-dark/60 backdrop-blur-sm z-[70] hidden opacity-0 transition-opacity duration-300" onclick="closeDetails()"></div>
+    <div id="product-sheet" class="fixed bottom-0 left-0 right-0 bg-white z-[80] rounded-t-[2.5rem] p-8 transform translate-y-full transition-transform duration-300 shadow-2xl">
+        <div class="w-12 h-1 bg-gray-200 rounded-full mx-auto mb-8"></div>
+        <button onclick="closeDetails()" class="absolute top-6 right-6 p-2 bg-gray-50 rounded-full hover:bg-gray-100 transition-colors"><i data-lucide="x" class="w-5 h-5 text-gray-400"></i></button>
+        <div class="flex gap-6 mb-8 items-start">
+            <img id="sheet-img" src="" class="w-28 h-28 rounded-2xl object-cover bg-gray-50 shadow-sm border border-gray-100">
             <div>
-                <h3 id="sheet-title" class="font-black text-xl text-brand-red leading-tight mb-2"></h3>
-                <p id="sheet-price" class="text-lg font-bold text-gray-900"></p>
+                <h3 id="sheet-title" class="font-serif font-black text-2xl text-brand-red leading-none mb-2"></h3>
+                <p id="sheet-price" class="text-xl font-bold text-gray-900 font-sans"></p>
+                <div class="flex gap-1 mt-2">
+                    <i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i>
+                </div>
             </div>
         </div>
-        
-        <div class="space-y-4">
-            <h4 class="font-bold text-gray-900 text-sm uppercase tracking-wide">Descripción e Ingredientes</h4>
-            <p id="sheet-desc" class="text-gray-600 text-sm leading-relaxed"></p>
+        <div class="space-y-4 mb-8">
+            <h4 class="font-bold text-gray-900 text-xs uppercase tracking-widest border-b border-gray-100 pb-2">Detalles del Producto</h4>
+            <p id="sheet-desc" class="text-gray-600 text-sm leading-relaxed font-light"></p>
         </div>
-
-        <div class="mt-8 pt-4 border-t border-gray-100">
-            <button id="sheet-btn" onclick="" class="w-full bg-gradient-to-r from-brand-red to-[#601212] text-white py-4 rounded-xl font-bold shadow-lg shadow-brand-red/30 flex items-center justify-center gap-2 uppercase tracking-wide text-sm hover:-translate-y-1 transition-transform">
-                Agregar al Carrito <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-            </button>
-        </div>
+        <button id="sheet-btn" onclick="" class="w-full bg-brand-red text-white py-4 rounded-xl font-bold shadow-lg shadow-brand-red/30 hover:bg-brand-redLight transition-all uppercase tracking-widest text-xs flex justify-center items-center gap-2">Agregar <i data-lucide="shopping-bag" class="w-4 h-4"></i></button>
     </div>
 
     <!-- CART SIDEBAR -->
     <div id="cart-sidebar" class="fixed inset-0 z-[60] flex justify-end hidden">
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div class="absolute inset-0 bg-brand-dark/40 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
         <div class="relative w-full max-w-md bg-white shadow-2xl h-full flex flex-col slide-in-right">
-            <div class="p-6 bg-brand-red text-white flex items-center justify-between shadow-lg">
-                <h2 class="text-xl font-bold font-serif flex items-center gap-2 tracking-wide"><i data-lucide="shopping-bag" class="w-5 h-5 text-brand-gold"></i> Tu Canasta</h2>
-                <button onclick="toggleCart()" class="p-2 hover:bg-white/10 rounded-full transition-colors" aria-label="Cerrar carrito"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <div class="p-8 bg-white border-b border-gray-100 flex items-center justify-between">
+                <h2 class="text-2xl font-serif font-black text-brand-red">Tu Pedido</h2>
+                <button onclick="toggleCart()" class="p-2 hover:bg-gray-50 rounded-full transition-colors"><i data-lucide="x" class="w-6 h-6 text-gray-400"></i></button>
             </div>
-            <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-6">
-                <!-- Items del carrito JS -->
-            </div>
-            <div id="cart-footer" class="p-6 bg-gray-50 border-t border-gray-200 hidden">
-                <div class="mb-4 space-y-2">
-                    <div class="flex justify-between text-gray-600 font-medium"><span>Subtotal</span><span id="cart-subtotal" class="font-bold text-gray-800">$0</span></div>
-                    <div class="flex justify-between font-black text-brand-red text-xl pt-3 border-t border-gray-200"><span>Total</span><span id="cart-total">$0</span></div>
-                    <div id="shipping-msg" class="text-xs text-center text-gray-500 font-medium mt-2"></div>
+            <div id="cart-items-container" class="flex-1 overflow-y-auto p-8 space-y-6 bg-gray-50/50"></div>
+            <div id="cart-footer" class="p-8 bg-white border-t border-gray-100 hidden shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+                <div class="mb-6 space-y-3">
+                    <div class="flex justify-between text-gray-500 text-sm font-medium"><span>Subtotal</span><span id="cart-subtotal" class="font-bold text-gray-800">$0</span></div>
+                    <div class="flex justify-between font-serif font-black text-brand-red text-2xl pt-4 border-t border-gray-100"><span>Total</span><span id="cart-total">$0</span></div>
+                    <div id="shipping-msg" class="text-xs text-center text-gray-400 font-medium mt-2"></div>
                 </div>
-                <button onclick="checkoutWhatsApp()" class="w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white py-4 rounded-xl font-bold shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:-translate-y-1 active:scale-[0.98] transition-all flex items-center justify-center gap-2 uppercase tracking-wide text-sm">
-                    Confirmar Pedido por WhatsApp 🚀
+                <button onclick="checkoutWhatsApp()" class="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold shadow-lg shadow-green-500/20 hover:bg-[#1da851] transition-all flex items-center justify-center gap-2 uppercase tracking-widest text-xs hover:-translate-y-1">
+                    Pedir por WhatsApp <i data-lucide="message-circle" class="w-4 h-4"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPT PRINCIPAL -->
     <script>
-        // DATOS
         const PRODUCTS = [
             { id: "g1", name: "Chorizo Argentino Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Argentinogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, vino tinto, sal, nuez moscada, hinojo, orégano, perejil." },
             { id: "g2", name: "Chorizo Ahumado Gourmet", price: 21000, category: "Gourmet", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Ahumadogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo, comino, sal." },
@@ -604,227 +432,139 @@
         let cart = [];
         let activeCategory = "Línea Gourmet";
 
-        // INICIALIZACIÓN
         document.addEventListener('DOMContentLoaded', () => {
             renderCategories();
             renderProducts();
             lucide.createIcons();
         });
 
-        // TOAST NOTIFICATION SYSTEM
         function showToast(message) {
             const container = document.getElementById('toast-container');
             const toast = document.createElement('div');
             toast.className = 'toast';
             toast.innerHTML = `<i data-lucide="info" class="w-5 h-5 text-brand-gold"></i><span>${message}</span>`;
-            
             container.appendChild(toast);
             lucide.createIcons();
-
-            // Trigger reflow
             void toast.offsetWidth;
-
-            requestAnimationFrame(() => {
-                toast.classList.add('show');
-            });
-
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            requestAnimationFrame(() => toast.classList.add('show'));
+            setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 300); }, 3000);
         }
 
-        // FUNCIONES DE RENDERIZADO
         function renderCategories() {
             const container = document.getElementById('category-pills');
             container.innerHTML = CATEGORIES.map(cat => {
                 let label = cat;
                 if (cat === "Línea Gourmet") label = `<span class="md:hidden">Gourmet</span><span class="hidden md:inline">Línea Gourmet</span>`;
                 if (cat === "Otras Delicias") label = `<span class="md:hidden">Otros</span><span class="hidden md:inline">Otras Delicias</span>`;
-                
-                return `
-                <button 
-                    onclick="setCategory('${cat}')" 
-                    class="px-5 md:px-6 py-2.5 md:py-2 rounded-full text-sm md:text-sm font-bold transition-all duration-300 ease-out whitespace-nowrap border border-transparent ${activeCategory === cat ? 'bg-white text-brand-red shadow-lg ring-1 ring-black/5 transform scale-105' : 'text-gray-500 hover:text-gray-900 hover:bg-white/60 hover:shadow-sm'}"
-                >
-                    ${label}
-                </button>
-            `}).join('');
+                return `<button onclick="setCategory('${cat}')" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 tracking-wide border ${activeCategory === cat ? 'bg-brand-red text-white border-brand-red shadow-lg transform scale-105' : 'bg-white text-gray-400 border-transparent hover:text-brand-red hover:bg-gray-50'}">${label}</button>`;
+            }).join('');
         }
 
         function renderProducts() {
             const container = document.getElementById('products-grid');
-            
-            // ASEGURAR GRID: 1 columna en móvil, 2 en escritorio
-            container.className = "grid grid-cols-1 md:grid-cols-2 gap-4";
-
+            container.className = "grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8";
             const filtered = PRODUCTS.filter(p => {
-                let matchCat = false;
-                if(activeCategory === "Línea Gourmet") matchCat = p.category === "Gourmet";
-                else if(activeCategory === "Tradicional") matchCat = p.category === "Tradicional";
-                else if(activeCategory === "Otras Delicias") matchCat = p.category === "Otras Delicias";
-                return matchCat;
+                if(activeCategory === "Línea Gourmet") return p.category === "Gourmet";
+                else if(activeCategory === "Tradicional") return p.category === "Tradicional";
+                else return p.category === "Otras Delicias";
             });
 
-            document.getElementById('category-title').innerText = activeCategory;
-            document.getElementById('product-count').innerText = `${filtered.length} delicias`;
-
+            // Título eliminado como se solicitó, solo lógica de filtro
+            
             if(filtered.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center py-20 bg-white/90 backdrop-blur rounded-3xl border border-dashed border-gray-300"><h3 class="font-bold text-gray-500">No hay productos aquí</h3></div>`;
+                container.innerHTML = `<div class="col-span-full text-center py-20 bg-white/50 backdrop-blur rounded-3xl border border-dashed border-gray-200"><h3 class="font-light text-gray-400">Colección no disponible</h3></div>`;
                 return;
             }
 
             container.innerHTML = filtered.map(p => {
-                // Lógica para extraer "Paquete x..." de la descripción
                 const parts = p.description.split('.');
                 const unitInfo = parts[0]; 
                 const hasPackageInfo = unitInfo.includes("Paquete");
-                const displayInfo = hasPackageInfo ? unitInfo : (p.price === 0 ? "Venta por peso" : "Presentación individual");
+                const displayInfo = hasPackageInfo ? unitInfo : (p.price === 0 ? "Venta por peso" : "Individual");
 
                 return `
-                <!-- TARJETA -->
-                <div class="group bg-white rounded-xl md:rounded-3xl overflow-hidden border border-gray-100 hover:border-brand-gold/30 hover:shadow-2xl transition-all duration-500 flex flex-row h-64 md:h-64 w-full shadow-sm">
-                    
-                    <!-- IMAGEN -->
-                    <!-- Móvil: w-[50%] (Mitad), Borde punteado derecho, Sombra interna -->
-                    <!-- Escritorio (md): w-[45%] (Original), SIN borde punteado, SIN sombra interna -->
-                    <div class="relative w-[50%] md:w-[45%] h-full bg-white shrink-0 overflow-hidden flex items-center justify-center border-r-2 border-dashed border-gray-100 shadow-inner md:border-r-0 md:shadow-none">
-                        <img src="${p.image}" alt="Chorizo ${p.name} - ChoriChava Medellín" loading="lazy" class="relative z-10 w-full h-full object-contain p-2 group-hover:scale-125 transition-transform duration-700 drop-shadow-xl scale-125 md:scale-100">
+                <div class="group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-transparent hover:border-brand-gold/20 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03)] hover:shadow-premium transition-all duration-500 flex flex-row h-52 md:h-72 w-full relative">
+                    <!-- Efecto de brillo en hover -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 z-20 pointer-events-none"></div>
+
+                    <!-- Estructura EXACTA: Imagen Izquierda, Info Derecha -->
+                    <div class="relative w-[45%] h-full bg-gradient-to-b from-gray-50 to-white shrink-0 overflow-hidden flex items-center justify-center">
+                        <img src="${p.image}" alt="${p.name}" loading="lazy" class="relative z-10 w-full h-full object-contain p-3 group-hover:scale-110 transition-transform duration-700 drop-shadow-xl filter saturate-[0.9] group-hover:saturate-100">
                     </div>
 
-                    <!-- DETALLES -->
-                    <div class="flex-1 p-3 md:p-8 flex flex-col justify-between text-left relative min-w-0">
-                        
-                        <!-- Info Superior -->
-                        <div class="flex flex-col">
-                            <!-- Estrellas -->
-                            <div class="flex items-center gap-1 mb-1">
-                                <i data-lucide="star" class="w-3 h-3 md:w-3.5 md:h-3.5 fill-brand-gold text-brand-gold"></i>
-                                <span class="text-[10px] md:text-xs font-bold text-gray-400">5.0</span>
-                                ${p.spiciness > 1 ? '<div class="flex gap-0.5 ml-2">' + Array(p.spiciness).fill('<i data-lucide="flame" class="w-3 h-3 text-brand-red fill-brand-red"></i>').join('') + '</div>' : ''}
+                    <div class="flex-1 p-4 md:p-8 flex flex-col justify-between text-left relative min-w-0 bg-white">
+                        <div class="flex flex-col h-full">
+                            <!-- Header de la tarjeta -->
+                            <div class="flex justify-between items-start mb-1">
+                                <div class="flex items-center gap-0.5">
+                                    <i data-lucide="star" class="w-3 h-3 fill-brand-gold text-brand-gold"></i>
+                                    <span class="text-[10px] font-bold text-gray-300 ml-1">5.0</span>
+                                </div>
+                                ${p.spiciness > 1 ? '<div class="flex gap-0.5 opacity-60">' + Array(p.spiciness).fill('<i data-lucide="flame" class="w-3 h-3 text-brand-red fill-brand-red"></i>').join('') + '</div>' : ''}
                             </div>
                             
-                            <!-- Título -->
-                            <h3 class="font-black text-sm md:text-2xl text-brand-red leading-tight tracking-tight line-clamp-3 md:line-clamp-none mb-2">
+                            <h3 class="font-serif font-black text-sm md:text-2xl text-brand-red leading-tight tracking-tight line-clamp-3 md:line-clamp-none mb-1 group-hover:text-brand-gold transition-colors">
                                 ${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}
                             </h3>
                             
-                            <!-- BADGE (Solo Móvil) -->
-                            <div class="md:hidden inline-flex items-center gap-1.5 bg-gray-50 text-gray-600 px-2 py-1 rounded-md text-[10px] font-bold tracking-wide w-fit mb-2 border border-gray-200 shadow-sm">
-                                <i data-lucide="package" class="w-3 h-3 text-brand-gold"></i>
-                                ${displayInfo}
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-2 md:mb-4">${displayInfo}</p>
+                            
+                            <p class="hidden md:block text-sm text-gray-500 line-clamp-2 leading-relaxed font-light mb-auto">${p.description}</p>
+                            
+                            <!-- Footer de la tarjeta -->
+                            <div class="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-3 pt-2">
+                                ${p.price > 0 ? `<div class="font-sans font-bold text-base md:text-xl text-brand-dark tracking-tight">$${p.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>` : '<div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Cotizar</div>'}
+                                
+                                <button onclick="${p.price > 0 ? `addToCart('${p.id}')` : `contactQuote('${p.name}')`}" 
+                                    class="w-full md:w-auto px-4 py-2 md:py-2.5 rounded-lg md:rounded-xl font-bold text-[10px] md:text-xs shadow-lg shadow-brand-red/10 flex items-center justify-center gap-2 transform active:scale-95 transition-all
+                                    ${p.price > 0 ? 'bg-brand-red text-white hover:bg-brand-redLight' : 'bg-green-50 text-green-700 hover:bg-green-100'}">
+                                    ${p.price > 0 ? 'AGREGAR' : 'CONSULTAR'}
+                                </button>
                             </div>
-
-                            <!-- Link Detalles (Solo Móvil) -->
-                            <button onclick="openDetails('${p.id}')" class="md:hidden text-[10px] font-bold text-gray-400 hover:text-brand-red transition-colors flex items-center gap-1 underline decoration-gray-200 underline-offset-2">
-                                Ver ingredientes
-                            </button>
-
-                            <!-- Descripción Completa (Solo Escritorio - Restaurada) -->
-                            <p class="hidden md:block text-sm text-gray-600 line-clamp-2 leading-relaxed font-medium mb-4">${p.description}</p>
-                        </div>
-                        
-                        <!-- Precio y Botón (Al fondo) -->
-                        <div class="mt-auto flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                             ${p.price > 0 ? `
-                            <!-- Precio -->
-                            <div class="font-black text-lg md:text-xl text-gray-900 tracking-tight leading-none">
-                                $${p.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
-                            </div>` : '<div class="text-xs font-bold text-gray-500">Variable</div>'}
-
-                            <!-- BOTÓN -->
-                            <!-- Móvil: Borde inferior grueso (Efecto relieve/Ticket) -->
-                            <!-- Escritorio (md): Sin borde inferior (Plano elegante original) -->
-                            <button onclick="${p.price > 0 ? `addToCart('${p.id}')` : `contactQuote('${p.name}')`}" 
-                                aria-label="${p.price > 0 ? 'Agregar' : 'Cotizar'}"
-                                class="w-full md:w-auto px-3 py-2.5 md:px-6 md:py-3.5 rounded-lg md:rounded-xl font-bold text-xs md:text-sm shadow-md shadow-brand-red/20 flex items-center justify-center gap-2 transform active:scale-95 transition-all border-b-4 md:border-b-0 border-brand-redLight md:border-transparent
-                                ${p.price > 0 ? 'bg-gradient-to-r from-brand-red to-[#601212] text-white hover:shadow-lg' : 'bg-green-600 text-white'}">
-                                ${p.price > 0 ? 'Agregar' : 'Cotizar'} <i data-lucide="${p.price > 0 ? 'shopping-bag' : 'message-circle'}" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
-                            </button>
                         </div>
                     </div>
                 </div>
-            `}).join(''); // Cierre correcto del map y join
+            `}).join('');
             lucide.createIcons();
         }
 
-        function setCategory(cat) {
-            activeCategory = cat;
-            renderCategories();
-            renderProducts();
-        }
+        function setCategory(cat) { activeCategory = cat; renderCategories(); renderProducts(); }
 
-        // BOTTOM SHEET LOGIC
         function openDetails(productId) {
             const product = PRODUCTS.find(p => p.id === productId);
             if (!product) return;
-
-            // Populate sheet
             document.getElementById('sheet-img').src = product.image;
             document.getElementById('sheet-title').innerText = product.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "");
             document.getElementById('sheet-price').innerText = product.price > 0 ? `$${product.price.toLocaleString()}` : "Precio variable";
             document.getElementById('sheet-desc').innerText = product.description;
-            
-            // Setup button action
             const btn = document.getElementById('sheet-btn');
-            if (product.price > 0) {
-                btn.innerHTML = 'Agregar al Carrito <i data-lucide="shopping-bag" class="w-4 h-4"></i>';
-                btn.onclick = () => {
-                    addToCart(product.id);
-                    closeDetails();
-                };
-                btn.classList.remove('hidden');
-            } else {
-                btn.innerHTML = 'Cotizar <i data-lucide="message-circle" class="w-4 h-4"></i>';
-                btn.onclick = () => {
-                    contactQuote(product.name);
-                    closeDetails();
-                };
-                btn.classList.remove('hidden');
-            }
+            if (product.price > 0) { btn.innerHTML = 'AGREGAR <i data-lucide="shopping-bag" class="w-4 h-4"></i>'; btn.onclick = () => { addToCart(product.id); closeDetails(); }; } 
+            else { btn.innerHTML = 'COTIZAR <i data-lucide="message-circle" class="w-4 h-4"></i>'; btn.onclick = () => { contactQuote(product.name); closeDetails(); }; }
             lucide.createIcons();
-
-            // Show overlay and slide up sheet
             const overlay = document.getElementById('product-sheet-overlay');
             const sheet = document.getElementById('product-sheet');
-            
             overlay.classList.remove('hidden');
-            // Small timeout to allow display:block to apply before opacity transition
-            requestAnimationFrame(() => {
-                overlay.classList.remove('opacity-0');
-                sheet.classList.remove('translate-y-full');
-            });
+            requestAnimationFrame(() => { overlay.classList.remove('opacity-0'); sheet.classList.remove('translate-y-full'); });
         }
 
         function closeDetails() {
             const overlay = document.getElementById('product-sheet-overlay');
             const sheet = document.getElementById('product-sheet');
-            
-            overlay.classList.add('opacity-0');
-            sheet.classList.add('translate-y-full');
-            
-            setTimeout(() => {
-                overlay.classList.add('hidden');
-            }, 300); // Match transition duration
+            overlay.classList.add('opacity-0'); sheet.classList.add('translate-y-full');
+            setTimeout(() => { overlay.classList.add('hidden'); }, 300);
         }
 
-        // CARRITO
         function addToCart(id) {
             const product = PRODUCTS.find(p => p.id === id);
             const existing = cart.find(item => item.id === id);
-            if (existing) existing.qty++;
-            else cart.push({ ...product, qty: 1 });
-            updateCart();
-            toggleCart(true);
+            if (existing) existing.qty++; else cart.push({ ...product, qty: 1 });
+            updateCart(); toggleCart(true);
+            showToast(`Agregaste ${product.name} al carrito`);
         }
 
         function updateQty(id, delta) {
             const item = cart.find(i => i.id === id);
-            if(item) {
-                item.qty += delta;
-                if(item.qty <= 0) cart = cart.filter(i => i.id !== id);
-                updateCart();
-            }
+            if(item) { item.qty += delta; if(item.qty <= 0) cart = cart.filter(i => i.id !== id); updateCart(); }
         }
 
         function updateCart() {
@@ -832,81 +572,52 @@
             const footer = document.getElementById('cart-footer');
             const counts = document.querySelectorAll('.cart-num');
             const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
-            
             counts.forEach(c => c.innerText = totalCount);
             document.getElementById('cart-count').classList.toggle('hidden', totalCount === 0);
 
             if(cart.length === 0) {
-                container.innerHTML = `<div class="h-full flex flex-col items-center justify-center text-center space-y-4 text-gray-300"><i data-lucide="shopping-bag" class="w-20 h-20 opacity-20 mb-4"></i><p class="font-medium text-lg text-gray-400">Tu carrito está vacío</p><button onclick="toggleCart()" class="text-brand-red font-bold underline mt-4 hover:text-brand-redLight transition-colors">Volver al menú</button></div>`;
+                container.innerHTML = `<div class="h-full flex flex-col items-center justify-center text-center space-y-4 text-gray-300 opacity-60"><i data-lucide="shopping-bag" class="w-16 h-16 mb-2"></i><p class="font-light text-sm">Tu carrito está vacío</p><button onclick="toggleCart()" class="text-brand-red text-xs font-bold underline mt-2">Volver al menú</button></div>`;
                 footer.classList.add('hidden');
             } else {
                 container.innerHTML = cart.map(item => `
-                    <div class="flex gap-4 border-b border-gray-50 pb-6">
-                        <div class="w-20 h-20 rounded-2xl bg-gray-50 border border-gray-100 overflow-hidden shrink-0 flex items-center justify-center shadow-sm"><img src="${item.image}" alt="${item.name}" class="w-full h-full object-contain p-1"></div>
+                    <div class="flex gap-4 border-b border-gray-100 pb-4 last:border-0">
+                        <div class="w-16 h-16 rounded-xl bg-gray-50 border border-gray-100 overflow-hidden shrink-0 flex items-center justify-center"><img src="${item.image}" alt="${item.name}" class="w-full h-full object-contain p-1"></div>
                         <div class="flex-1">
-                            <div class="flex justify-between items-start mb-2"><h4 class="font-bold text-brand-red text-sm leading-tight pr-2">${item.name}</h4><span class="font-bold text-gray-900 text-sm">$${(item.price * item.qty).toLocaleString()}</span></div>
-                            <div class="flex items-center justify-between mt-auto">
-                                <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-1 border border-gray-200 shadow-sm">
-                                    <button onclick="updateQty('${item.id}', -1)" aria-label="Disminuir cantidad" class="w-7 h-7 flex items-center justify-center bg-white rounded-md shadow-sm text-gray-600 hover:text-brand-red transition-colors"><i data-lucide="minus" class="w-3 h-3"></i></button>
-                                    <span class="text-sm font-bold w-6 text-center text-gray-800">${item.qty}</span>
-                                    <button onclick="updateQty('${item.id}', 1)" aria-label="Aumentar cantidad" class="w-7 h-7 flex items-center justify-center bg-white rounded-md shadow-sm text-gray-600 hover:text-green-600 transition-colors"><i data-lucide="plus" class="w-3 h-3"></i></button>
-                                </div>
-                                <button onclick="updateQty('${item.id}', -100)" aria-label="Eliminar producto" class="text-gray-300 hover:text-red-500 transition-colors p-2"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                            <div class="flex justify-between items-start mb-1"><h4 class="font-serif font-bold text-brand-red text-sm leading-tight pr-2">${item.name}</h4><span class="font-bold text-gray-900 text-sm">$${(item.price * item.qty).toLocaleString()}</span></div>
+                            <div class="flex items-center justify-between mt-2">
+                                <div class="flex items-center gap-2 bg-gray-50 rounded-lg p-1 border border-gray-100"><button onclick="updateQty('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm text-gray-400 hover:text-brand-red transition-colors"><i data-lucide="minus" class="w-3 h-3"></i></button><span class="text-xs font-bold w-6 text-center text-gray-800">${item.qty}</span><button onclick="updateQty('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center bg-white rounded-md shadow-sm text-gray-400 hover:text-green-600 transition-colors"><i data-lucide="plus" class="w-3 h-3"></i></button></div>
+                                <button onclick="updateQty('${item.id}', -100)" class="text-gray-300 hover:text-red-500 transition-colors p-1"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                             </div>
                         </div>
-                    </div>
-                `).join('');
+                    </div>`).join('');
                 footer.classList.remove('hidden');
-                
                 const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
                 document.getElementById('cart-subtotal').innerText = `$${total.toLocaleString()}`;
                 document.getElementById('cart-total').innerText = `$${total.toLocaleString()}`;
-                
                 const shippingMsg = document.getElementById('shipping-msg');
-                if(totalCount >= 5) shippingMsg.innerHTML = '<div class="bg-green-50 text-green-700 text-xs font-bold p-3 rounded-xl text-center flex items-center justify-center gap-2 border border-green-100 shadow-sm"><i data-lucide="truck" class="w-4 h-4"></i> ¡Tienes envío GRATIS! 🚚</div>';
-                else shippingMsg.innerText = `Agrega ${5 - totalCount} unidades más para envío gratis.`;
+                if(totalCount >= 5) shippingMsg.innerHTML = '<span class="text-green-600 flex items-center justify-center gap-1"><i data-lucide="check-circle" class="w-3 h-3"></i> Envío Gratis Califica</span>';
+                else shippingMsg.innerText = `Faltan ${5 - totalCount} para envío gratis`;
             }
             lucide.createIcons();
         }
 
         function toggleCart(forceOpen = null) {
             const modal = document.getElementById('cart-sidebar');
-            if(forceOpen === true) modal.classList.remove('hidden');
-            else modal.classList.toggle('hidden');
+            if(forceOpen === true) modal.classList.remove('hidden'); else modal.classList.toggle('hidden');
         }
 
-        // NAVEGACIÓN
         function switchView(viewName, category = null) {
             const store = document.getElementById('view-store');
             const history = document.getElementById('view-history');
             const menu = document.getElementById('mobile-menu');
-            
-            menu.classList.add('translate-x-full'); // Cerrar menú móvil
-            window.scrollTo(0,0);
-
-            if(viewName === 'store') {
-                store.classList.remove('hidden');
-                history.classList.add('hidden');
-                if(category) setCategory(category);
-            } else {
-                store.classList.add('hidden');
-                history.classList.remove('hidden');
-            }
+            menu.classList.add('translate-x-full'); window.scrollTo(0,0);
+            if(viewName === 'store') { store.classList.remove('hidden'); history.classList.add('hidden'); if(category) setCategory(category); } 
+            else { store.classList.add('hidden'); history.classList.remove('hidden'); }
         }
 
-        function toggleMenu() {
-            document.getElementById('mobile-menu').classList.toggle('translate-x-full');
-        }
+        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('translate-x-full'); }
+        function scrollToContact() { switchView('store'); setTimeout(() => { document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'}); }, 100); toggleMenu(); }
 
-        function scrollToContact() {
-            switchView('store');
-            setTimeout(() => {
-                document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'});
-            }, 100);
-            toggleMenu();
-        }
-
-        // WHATSAPP
         function checkoutWhatsApp() {
             if(cart.length === 0) return;
             let msg = "Hola ChoriChava! Quiero hacer este pedido: \n\n";
@@ -925,12 +636,7 @@
             e.preventDefault();
             const name = document.getElementById('contactName').value;
             const text = document.getElementById('contactMessage').value;
-            
-            if(!name || !text) {
-                showToast("Por favor llena todos los campos");
-                return;
-            }
-            
+            if(!name || !text) { showToast("Por favor llena todos los campos"); return; }
             const msg = `Hola soy ${name}, ${text}`;
             window.open(`https://wa.me/573126079424?text=${encodeURIComponent(msg)}`, '_blank');
         }
