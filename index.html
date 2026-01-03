@@ -24,7 +24,7 @@
                         brand: {
                             red: '#4A0E0E',         /* Rojo Vino Profundo */
                             redLight: '#8B2E2E',    /* Rojo más vibrante para hovers */
-                            gold: '#C5A02F',        /* Oro más metálico, menos amarillo */
+                            gold: '#C5A02F',        /* Oro más metálico */
                             goldLight: '#F3E5AB',
                             cream: '#F9F7F2',
                             dark: '#0F0F0F',
@@ -38,17 +38,9 @@
                     animation: {
                         'bounce-slow': 'bounce 3s infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
                     },
                     boxShadow: {
-                        'premium': '0 20px 40px -15px rgba(74, 14, 14, 0.15)', /* Sombra roja sutil */
-                        'glow': '0 0 20px rgba(197, 160, 47, 0.3)', /* Resplandor dorado */
+                        'premium': '0 20px 40px -15px rgba(74, 14, 14, 0.15)',
                     }
                 }
             }
@@ -56,13 +48,11 @@
     </script>
 
     <style>
-        /* FONDO CON TEXTURA */
         body { 
             background-color: #F9F7F2;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
         }
         
-        /* Animaciones Suaves */
         .fade-in { animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         
@@ -72,7 +62,6 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Efectos de Vidrio Premium */
         .glass-panel {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
@@ -104,7 +93,6 @@
         
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* Flip Card refinada */
         .flip-card { perspective: 1000px; }
         .flip-card-inner {
             position: relative; width: 100%; height: 100%; text-align: center;
@@ -139,7 +127,6 @@
         
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
         
-        /* Smooth Scroll */
         html { scroll-behavior: smooth; }
     </style>
 </head>
@@ -149,7 +136,7 @@
 
     <div id="toast-container"></div>
 
-    <!-- CINTA SUPERIOR: Restaurada al ROJO (Como pediste) -->
+    <!-- CINTA SUPERIOR: Roja -->
     <div class="bg-brand-red text-white text-[10px] md:text-xs py-2.5 text-center font-bold tracking-[0.2em] uppercase border-b border-brand-gold/30 relative z-50">
         <div class="flex items-center justify-center gap-6 overflow-hidden whitespace-nowrap px-4 opacity-90">
             <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín: Domicilios</span>
@@ -170,7 +157,6 @@
     <!-- FONDO HERO -->
     <div class="fixed inset-0 -z-50 w-full h-full bg-[#1a0505]">
         <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1920&auto=format&fit=crop" alt="Fondo Parrilla" class="w-full h-full object-cover opacity-80 brightness-[0.6] object-center scale-105" fetchpriority="high">
-        <!-- Overlay Gradiente Cinemático -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90"></div>
     </div>
 
@@ -223,15 +209,10 @@
     <main id="main-content" class="min-h-screen relative z-10 w-full pb-12">
         <section id="view-store" class="fade-in">
 
-            <!-- HERO SECTION SUPER COMPACTA (Optimizada Desktop y Móvil) -->
-            <!-- Reduje el padding vertical (py-8) para que ocupe menos altura -->
+            <!-- HERO SECTION SUPER COMPACTA -->
             <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-6">
                 <div class="hero-glass rounded-[1.5rem] py-8 px-6 md:px-12 text-center relative overflow-hidden group shadow-xl ring-1 ring-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-                    
-                    <!-- Decoración sutil -->
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent"></div>
-                    
-                    <!-- Texto Izquierda (Compacto) -->
                     <div class="text-center md:text-left flex-1">
                         <h2 class="pop-in text-3xl md:text-4xl font-serif font-black text-white mb-2 leading-tight drop-shadow-xl tracking-tight">
                             Arte <span class="gold-gradient-text italic">Gourmet</span>
@@ -240,8 +221,6 @@
                             Precocidos. Sin freír. Listos en minutos.
                         </p>
                     </div>
-
-                    <!-- Iconos Derecha (Compactos) -->
                     <div class="flex flex-wrap justify-center md:justify-end gap-3 md:gap-4">
                         <div class="flex items-center gap-2 text-white/90 bg-white/5 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/5 hover:bg-white/10 transition-colors"><i data-lucide="flame" class="text-brand-gold w-4 h-4"></i><span class="text-xs font-semibold tracking-wide">Asar</span></div>
                         <div class="flex items-center gap-2 text-white/90 bg-white/5 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/5 hover:bg-white/10 transition-colors"><i data-lucide="ban" class="text-brand-gold w-4 h-4"></i><span class="text-xs font-semibold tracking-wide">Sin Aceite</span></div>
@@ -251,12 +230,9 @@
 
             <!-- CONTENEDOR PRODUCTOS -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-                <!-- Se eliminó la cabecera de categoría para limpiar la vista -->
+                <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8"></div>
 
-                <!-- GRID PRODUCTOS -->
-                <div id="products-grid" class="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8"></div>
-
-                <!-- TESTIMONIOS (Diseño Glass) -->
+                <!-- TESTIMONIOS -->
                 <section class="mt-16 pt-10 pb-16 glass-panel rounded-[2rem] px-6 text-center">
                     <i data-lucide="quote" class="w-10 h-10 text-brand-gold/30 mx-auto mb-4"></i>
                     <h2 class="text-3xl md:text-4xl font-serif font-black text-brand-red mb-10">Clientes <span class="italic text-brand-gold">Felices</span></h2>
@@ -302,7 +278,6 @@
                     <div class="relative w-full max-w-md mx-auto mb-10 rounded-2xl overflow-hidden shadow-2xl border-[8px] border-white transform rotate-1">
                         <img src="https://github.com/Clata1014/chorichava7/blob/main/Fundador.webp?raw=true" class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Carlos Chavarriaga" loading="lazy">
                     </div>
-                    
                     <div class="text-left text-gray-700 space-y-8 leading-relaxed text-lg font-light px-2 md:px-8">
                         <p class="first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:text-brand-red first-letter:font-serif first-letter:font-black">Detrás de cada gran sabor, hay una historia de dedicación. Todo comenzó hace más de 13 años, cuando <strong>Carlos Chavarriaga</strong> decidió transformar su pasión por la buena mesa en una marca que hoy es orgullo paisa.</p>
                         <blockquote class="text-center my-14 relative py-6 px-8 border-y border-brand-gold/20">
@@ -320,25 +295,17 @@
             </div>
         </section>
 
-        <!-- FOOTER (Con Sellos Dinámicos Visibles en Desktop) -->
+        <!-- FOOTER -->
         <footer class="bg-white text-gray-400 py-20 mt-auto border-t border-gray-100 relative z-10 text-center">
             <h2 class="text-3xl md:text-5xl font-serif font-black text-brand-red mb-10 opacity-90">Chori<span class="text-brand-gold">Chava</span></h2>
-            
-            <!-- TARJETAS FLIP (Ahora visibles SIEMPRE) -->
             <div class="mb-12">
                 <p class="text-[10px] font-bold text-brand-red/50 uppercase tracking-[0.2em] mb-6">Reconocimientos</p>
                 <div class="flex flex-row justify-center gap-6 md:gap-8">
-                     <!-- Card 1: Colombia -->
                      <div class="flip-card w-16 h-16 md:w-24 md:h-24"><div class="flip-card-inner"><div class="flip-card-front"><img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" class="w-10 h-10 md:w-16 md:h-16 object-contain"></div><div class="flip-card-back"><span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Producto</span><span class="font-black text-[9px] md:text-xs text-brand-dark uppercase">Local</span></div></div></div>
-                     
-                     <!-- Card 2: Tulio -->
                      <div class="flip-card w-16 h-16 md:w-24 md:h-24"><div class="flip-card-inner" style="animation-delay: 0.2s;"><div class="flip-card-front"><img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" class="w-12 h-12 md:w-20 md:h-20 object-contain"></div><div class="flip-card-back"><span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Tulio</span><span class="font-black text-[9px] md:text-xs text-brand-dark uppercase">Recomienda</span></div></div></div>
-                     
-                     <!-- Card 3: Campesino (Al final como pediste) -->
                      <div class="flip-card w-16 h-16 md:w-24 md:h-24"><div class="flip-card-inner" style="animation-delay: 0.4s;"><div class="flip-card-front"><img src="https://em-content.zobj.net/source/apple/391/farmer_1f9d1-200d-1f33e.png" class="w-10 h-10 md:w-16 md:h-16 object-contain"></div><div class="flip-card-back"><span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Mercados</span><span class="font-black text-[9px] md:text-xs text-brand-dark uppercase">Campesinos</span></div></div></div>
                 </div>
             </div>
-
             <p class="text-sm md:text-lg mb-10 font-light tracking-wider opacity-80">Medellín • Colombia</p>
             <div class="flex justify-center gap-10 text-2xl mb-10 text-brand-red opacity-80">
                 <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">📷</span>
@@ -470,8 +437,6 @@
                 else return p.category === "Otras Delicias";
             });
 
-            // Título eliminado como se solicitó, solo lógica de filtro
-            
             if(filtered.length === 0) {
                 container.innerHTML = `<div class="col-span-full text-center py-20 bg-white/50 backdrop-blur rounded-3xl border border-dashed border-gray-200"><h3 class="font-light text-gray-400">Colección no disponible</h3></div>`;
                 return;
@@ -484,42 +449,63 @@
                 const displayInfo = hasPackageInfo ? unitInfo : (p.price === 0 ? "Venta por peso" : "Individual");
 
                 return `
-                <div class="group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-transparent hover:border-brand-gold/20 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03)] hover:shadow-premium transition-all duration-500 flex flex-row h-64 md:h-72 w-full relative">
-                    <!-- Efecto de brillo en hover -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 z-20 pointer-events-none"></div>
+                <!-- TARJETA: Original Movil + Nuevo Desktop -->
+                <!-- Wrapper: Clases originales para movil, md: clases nuevas para desktop -->
+                <div class="group bg-white rounded-xl md:rounded-[2rem] overflow-hidden border border-gray-100 md:border-transparent hover:border-brand-gold/20 md:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03)] hover:shadow-2xl md:hover:shadow-premium transition-all duration-500 flex flex-row h-64 md:h-72 w-full relative shadow-sm">
+                    
+                    <!-- Efecto de brillo en hover (Solo desktop) -->
+                    <div class="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 z-20 pointer-events-none"></div>
 
-                    <!-- Estructura EXACTA RESTAURADA: Imagen 50% en móvil + Borde Punteado -->
-                    <div class="relative w-[50%] md:w-[45%] h-full bg-gradient-to-b from-gray-50 to-white shrink-0 overflow-hidden flex items-center justify-center border-r-2 border-dashed border-gray-100 md:border-r-0">
-                        <img src="${p.image}" alt="${p.name}" loading="lazy" class="relative z-10 w-full h-full object-contain p-3 group-hover:scale-110 transition-transform duration-700 drop-shadow-xl filter saturate-[0.9] group-hover:saturate-100">
+                    <!-- IMAGEN: 50% en movil con borde punteado (Original) -->
+                    <div class="relative w-[50%] md:w-[45%] h-full bg-white md:bg-gradient-to-b md:from-gray-50 md:to-white shrink-0 overflow-hidden flex items-center justify-center border-r-2 border-dashed border-gray-100 md:border-r-0 shadow-inner md:shadow-none">
+                        <img src="${p.image}" alt="${p.name}" loading="lazy" class="relative z-10 w-full h-full object-contain p-2 md:p-3 group-hover:scale-125 md:group-hover:scale-110 transition-transform duration-700 drop-shadow-xl scale-125 md:scale-100 md:filter md:saturate-[0.9] md:group-hover:saturate-100">
                     </div>
 
+                    <!-- DETALLES -->
                     <div class="flex-1 p-3 md:p-8 flex flex-col justify-between text-left relative min-w-0 bg-white">
                         <div class="flex flex-col h-full">
                             <!-- Header de la tarjeta -->
-                            <div class="flex justify-between items-start mb-1">
-                                <div class="flex items-center gap-0.5">
-                                    <i data-lucide="star" class="w-3 h-3 fill-brand-gold text-brand-gold"></i>
-                                    <span class="text-[10px] font-bold text-gray-300 ml-1">5.0</span>
+                            <div class="flex justify-between items-start mb-1 md:mb-1">
+                                <div class="flex items-center gap-1 md:gap-0.5 mb-1 md:mb-0">
+                                    <i data-lucide="star" class="w-3 h-3 md:w-3 md:h-3 fill-brand-gold text-brand-gold"></i>
+                                    <span class="text-[10px] font-bold text-gray-400 md:text-gray-300 ml-0 md:ml-1">5.0</span>
                                 </div>
-                                ${p.spiciness > 1 ? '<div class="flex gap-0.5 opacity-60">' + Array(p.spiciness).fill('<i data-lucide="flame" class="w-3 h-3 text-brand-red fill-brand-red"></i>').join('') + '</div>' : ''}
+                                ${p.spiciness > 1 ? '<div class="flex gap-0.5 ml-2 md:opacity-60">' + Array(p.spiciness).fill('<i data-lucide="flame" class="w-3 h-3 text-brand-red fill-brand-red"></i>').join('') + '</div>' : ''}
                             </div>
                             
-                            <h3 class="font-serif font-black text-sm md:text-2xl text-brand-red leading-tight tracking-tight line-clamp-3 md:line-clamp-none mb-1 group-hover:text-brand-gold transition-colors">
+                            <!-- Titulo: Estilo original movil vs nuevo desktop -->
+                            <h3 class="font-black text-sm md:text-2xl md:font-serif text-brand-red leading-tight tracking-tight line-clamp-3 md:line-clamp-none mb-2 md:mb-1 md:group-hover:text-brand-gold transition-colors">
                                 ${p.name.replace("Chorizo ", "").replace(" Gourmet", "").replace(" Tradicional", "")}
                             </h3>
                             
-                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-2 md:mb-4">${displayInfo}</p>
+                            <!-- BADGE (Solo Movil - Original) -->
+                            <div class="md:hidden inline-flex items-center gap-1.5 bg-gray-50 text-gray-600 px-2 py-1 rounded-md text-[10px] font-bold tracking-wide w-fit mb-2 border border-gray-200 shadow-sm">
+                                <i data-lucide="package" class="w-3 h-3 text-brand-gold"></i>
+                                ${displayInfo}
+                            </div>
+
+                            <!-- Link Detalles (Solo Movil - Original) -->
+                            <button onclick="openDetails('${p.id}')" class="md:hidden text-[10px] font-bold text-gray-400 hover:text-brand-red transition-colors flex items-center gap-1 underline decoration-gray-200 underline-offset-2 mb-auto">
+                                Ver ingredientes
+                            </button>
                             
+                            <!-- Info Desktop (Nuevo diseño) -->
+                            <p class="hidden md:block text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-4">${displayInfo}</p>
                             <p class="hidden md:block text-sm text-gray-500 line-clamp-2 leading-relaxed font-light mb-auto">${p.description}</p>
                             
                             <!-- Footer de la tarjeta -->
-                            <div class="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-3 pt-2">
-                                ${p.price > 0 ? `<div class="font-sans font-bold text-base md:text-xl text-brand-dark tracking-tight">$${p.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>` : '<div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Cotizar</div>'}
+                            <div class="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-2 md:gap-3 pt-0 md:pt-2">
+                                ${p.price > 0 ? `
+                                <div class="font-black text-lg md:text-xl md:font-sans md:font-bold text-gray-900 md:text-brand-dark tracking-tight leading-none">
+                                    $${p.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                                </div>` : '<div class="text-xs md:text-[10px] font-bold text-gray-500 md:text-gray-400 uppercase tracking-wider">Variable</div>'}
                                 
+                                <!-- BOTON: Estilo Original Movil vs Nuevo Desktop -->
                                 <button onclick="${p.price > 0 ? `addToCart('${p.id}')` : `contactQuote('${p.name}')`}" 
-                                    class="w-full md:w-auto px-4 py-2 md:py-2.5 rounded-lg md:rounded-xl font-bold text-[10px] md:text-xs shadow-lg shadow-brand-red/10 flex items-center justify-center gap-2 transform active:scale-95 transition-all
-                                    ${p.price > 0 ? 'bg-brand-red text-white hover:bg-brand-redLight' : 'bg-green-50 text-green-700 hover:bg-green-100'}">
-                                    ${p.price > 0 ? 'AGREGAR' : 'CONSULTAR'}
+                                    aria-label="${p.price > 0 ? 'Agregar' : 'Cotizar'}"
+                                    class="w-full md:w-auto px-3 py-2.5 md:px-4 md:py-2.5 rounded-lg md:rounded-xl font-bold text-xs md:text-[10px] md:text-xs shadow-md md:shadow-lg shadow-brand-red/20 md:shadow-brand-red/10 flex items-center justify-center gap-2 transform active:scale-95 transition-all border-b-4 md:border-b-0 border-brand-redLight md:border-transparent
+                                    ${p.price > 0 ? 'bg-gradient-to-r from-brand-red to-[#601212] md:bg-none md:bg-brand-red text-white hover:shadow-lg md:hover:bg-brand-redLight' : 'bg-green-600 md:bg-green-50 text-white md:text-green-700 md:hover:bg-green-100'}">
+                                    ${p.price > 0 ? 'Agregar' : 'CONSULTAR'} <i data-lucide="${p.price > 0 ? 'shopping-bag' : 'message-circle'}" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
                                 </button>
                             </div>
                         </div>
