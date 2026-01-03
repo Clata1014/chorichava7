@@ -462,7 +462,8 @@
 
         function renderProducts() {
             const container = document.getElementById('products-grid');
-            container.className = "grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8";
+            // FIX: Grid 1 columna en móvil (como original) y 2 en desktop
+            container.className = "grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8";
             const filtered = PRODUCTS.filter(p => {
                 if(activeCategory === "Línea Gourmet") return p.category === "Gourmet";
                 else if(activeCategory === "Tradicional") return p.category === "Tradicional";
@@ -483,16 +484,16 @@
                 const displayInfo = hasPackageInfo ? unitInfo : (p.price === 0 ? "Venta por peso" : "Individual");
 
                 return `
-                <div class="group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-transparent hover:border-brand-gold/20 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03)] hover:shadow-premium transition-all duration-500 flex flex-row h-52 md:h-72 w-full relative">
+                <div class="group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-transparent hover:border-brand-gold/20 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03)] hover:shadow-premium transition-all duration-500 flex flex-row h-64 md:h-72 w-full relative">
                     <!-- Efecto de brillo en hover -->
                     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 z-20 pointer-events-none"></div>
 
-                    <!-- Estructura EXACTA: Imagen Izquierda, Info Derecha -->
-                    <div class="relative w-[45%] h-full bg-gradient-to-b from-gray-50 to-white shrink-0 overflow-hidden flex items-center justify-center">
+                    <!-- Estructura EXACTA RESTAURADA: Imagen 50% en móvil + Borde Punteado -->
+                    <div class="relative w-[50%] md:w-[45%] h-full bg-gradient-to-b from-gray-50 to-white shrink-0 overflow-hidden flex items-center justify-center border-r-2 border-dashed border-gray-100 md:border-r-0">
                         <img src="${p.image}" alt="${p.name}" loading="lazy" class="relative z-10 w-full h-full object-contain p-3 group-hover:scale-110 transition-transform duration-700 drop-shadow-xl filter saturate-[0.9] group-hover:saturate-100">
                     </div>
 
-                    <div class="flex-1 p-4 md:p-8 flex flex-col justify-between text-left relative min-w-0 bg-white">
+                    <div class="flex-1 p-3 md:p-8 flex flex-col justify-between text-left relative min-w-0 bg-white">
                         <div class="flex flex-col h-full">
                             <!-- Header de la tarjeta -->
                             <div class="flex justify-between items-start mb-1">
