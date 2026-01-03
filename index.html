@@ -29,7 +29,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Fuentes Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
     
     <!-- Iconos Lucide -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -55,6 +55,7 @@
                     },
                     animation: {
                         'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
@@ -84,10 +85,24 @@
             box-shadow: 0 10px 40px -10px rgba(74, 14, 14, 0.1);
         }
 
+        .hero-glass {
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         .gold-gradient-text {
-            background: linear-gradient(to right, #D4AF37, #B5922B);
+            background: linear-gradient(to right, #D4AF37, #F3E5AB, #D4AF37);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+        
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
         }
 
         .premium-shadow {
@@ -95,9 +110,7 @@
         }
 
         /* FLIP CARD STYLES (MOBILE) */
-        .flip-card {
-            perspective: 1000px;
-        }
+        .flip-card { perspective: 1000px; }
         .flip-card-inner {
             position: relative;
             width: 100%;
@@ -105,23 +118,14 @@
             text-align: center;
             transition: transform 0.6s;
             transform-style: preserve-3d;
-            /* Animación automática infinita */
             animation: autoFlip 6s infinite ease-in-out;
         }
-        
-        /* Definición de la animación de giro automático */
         @keyframes autoFlip {
-            0%, 40% { transform: rotateY(0deg); }   /* Muestra frente */
-            50%, 90% { transform: rotateY(180deg); } /* Muestra atrás */
-            100% { transform: rotateY(360deg); }    /* Vuelve al frente */
+            0%, 40% { transform: rotateY(0deg); }
+            50%, 90% { transform: rotateY(180deg); }
+            100% { transform: rotateY(360deg); }
         }
-
-        /* Al tocar también gira (opcional, mantiene interacción) */
-        .flip-card:active .flip-card-inner {
-            animation: none; /* Pausa la auto animación al tocar */
-            transform: rotateY(180deg);
-        }
-
+        .flip-card:active .flip-card-inner { animation: none; transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
             position: absolute;
             width: 100%;
@@ -134,19 +138,11 @@
             justify-content: center;
             flex-direction: column;
         }
-
-        /* Frente: Transparente (solo ícono flotando) */
-        .flip-card-front {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-        }
-
-        /* Atrás: Tarjeta completa con estilos */
+        .flip-card-front { background: transparent; border: none; box-shadow: none; }
         .flip-card-back {
             transform: rotateY(180deg);
             padding: 2px;
-            background: #F9F7F2; /* Fondo crema para legibilidad */
+            background: #F9F7F2;
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
         }
@@ -176,10 +172,7 @@
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
-        .toast.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .toast.show { opacity: 1; transform: translateY(0); }
         
         /* Utility for SEO Hidden H1 */
         .sr-only {
@@ -220,7 +213,15 @@
           fetchpriority="high"
         >
         <!-- Degradado sutil para mejorar lectura -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80"></div>
+    </div>
+
+    <!-- NUEVO: BARRA DE ANUNCIO SUPERIOR (PERSUASIÓN DE ENVÍO) -->
+    <div class="bg-brand-red text-brand-goldLight text-xs md:text-sm py-2 text-center font-bold tracking-wider relative z-50 border-b border-brand-gold/20 shadow-md">
+        <p class="flex items-center justify-center gap-2 animate-pulse-slow">
+            <i data-lucide="map-pin" class="w-3 h-3 md:w-4 md:h-4"></i> Envíos a todo el país 
+            <span class="hidden md:inline"> | 🛵 ¡Pide hoy y recibe fresco!</span>
+        </p>
     </div>
 
     <!-- NAVEGACIÓN STICKY (Glassmorphism mejorado) -->
@@ -288,94 +289,127 @@
     <main id="main-content" class="min-h-screen relative z-10 w-full pb-12">
         
         <!-- VISTA TIENDA -->
-        <section id="view-store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 fade-in">
-            
-            <!-- TARJETAS DE CONFIANZA: SOLO ESCRITORIO (ARRIBA) -->
-            <!-- En móvil (md:hidden) este bloque desaparece por completo para limpiar la vista -->
-            <div class="hidden md:block w-full mb-6 md:mb-8 pb-6 border-b border-white/20">
+        <section id="view-store" class="fade-in">
+
+            <!-- NUEVO: HERO SECTION (PARA CONVENCER AL CLIENTE) -->
+            <!-- Esta sección agrega el "DISEÑO" y la "INFORMACIÓN" que faltaba sin tocar los productos -->
+            <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-8">
+                <div class="hero-glass rounded-3xl p-6 md:p-12 text-center relative overflow-hidden group">
+                    <!-- Brillo decorativo -->
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-50"></div>
+                    
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-gold/20 border border-brand-gold/40 text-brand-goldLight text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-md">
+                        Calidad Premium Garantizada
+                    </span>
+                    
+                    <h2 class="text-4xl md:text-6xl font-serif font-black text-white mb-4 leading-tight drop-shadow-lg">
+                        El Arte del <span class="gold-gradient-text italic">Chorizo Gourmet</span>
+                    </h2>
+                    
+                    <p class="text-gray-200 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed mb-8 drop-shadow-md">
+                        Olvídate de freír. Nuestros chorizos vienen <strong class="text-brand-gold">precocidos</strong>. Solo necesitas calentarlos unos minutos y disfrutar de una experiencia gastronómica única en casa.
+                    </p>
+
+                    <!-- Beneficios Visuales (Iconos) -->
+                    <div class="flex flex-wrap justify-center gap-4 md:gap-8 border-t border-white/10 pt-6">
+                        <div class="flex items-center gap-2 text-white/90 bg-black/30 px-4 py-2 rounded-xl backdrop-blur-sm">
+                            <i data-lucide="flame" class="text-brand-gold w-5 h-5"></i>
+                            <span class="text-xs md:text-sm font-bold">Listos para Asar</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-white/90 bg-black/30 px-4 py-2 rounded-xl backdrop-blur-sm">
+                            <i data-lucide="ban" class="text-brand-gold w-5 h-5"></i>
+                            <span class="text-xs md:text-sm font-bold">Sin Aceites Extra</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-white/90 bg-black/30 px-4 py-2 rounded-xl backdrop-blur-sm">
+                            <i data-lucide="award" class="text-brand-gold w-5 h-5"></i>
+                            <span class="text-xs md:text-sm font-bold">100% Carne Premium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENEDOR PRODUCTOS (Original Structure preserved) -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
                 
-                <!-- 2. VISTA ESCRITORIO: TARJETAS COMPLETAS (ORIGINAL) -->
-                <div class="flex flex-row justify-center items-stretch w-full gap-2 max-w-3xl mx-auto">
-                    
-                    <!-- Tarjeta 1 -->
-                    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-10 h-10 object-contain shrink-0 drop-shadow-sm">
-                        <div class="flex flex-col text-left">
-                            <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Producto</span>
-                            <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Colombiano</span>
+                <!-- TARJETAS DE CONFIANZA: SOLO ESCRITORIO (ARRIBA) -->
+                <div class="hidden md:block w-full mb-6 md:mb-8 pb-6 border-b border-white/20">
+                    <div class="flex flex-row justify-center items-stretch w-full gap-2 max-w-3xl mx-auto">
+                        <!-- Tarjeta 1 -->
+                        <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f1e8-1f1f4.png" alt="Bandera Colombia" class="w-10 h-10 object-contain shrink-0 drop-shadow-sm">
+                            <div class="flex flex-col text-left">
+                                <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Producto</span>
+                                <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Colombiano</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <!-- Tarjeta 2 -->
-                    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                        <span class="text-5xl shrink-0 drop-shadow-sm">🧑‍🌾</span>
-                        <div class="flex flex-col text-left">
-                            <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Mercados</span>
-                            <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Campesinos</span>
+                        <!-- Tarjeta 2 -->
+                        <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
+                            <span class="text-5xl shrink-0 drop-shadow-sm">🧑‍🌾</span>
+                            <div class="flex flex-col text-left">
+                                <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Mercados</span>
+                                <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Campesinos</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <!-- Tarjeta 3 -->
-                    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
-                        <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio Recomienda" class="w-16 h-16 object-contain shrink-0 drop-shadow-sm">
-                        <div class="flex flex-col text-left">
-                            <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Tulio</span>
-                            <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Recomienda</span>
+                        <!-- Tarjeta 3 -->
+                        <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-4 p-4 rounded-2xl transition-transform duration-300 hover:-translate-y-1 bg-white/95 backdrop-blur-xl border border-white/40 shadow-xl shadow-brand-red/5">
+                            <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" alt="Sello Tulio Recomienda" class="w-16 h-16 object-contain shrink-0 drop-shadow-sm">
+                            <div class="flex flex-col text-left">
+                                <span class="font-bold text-gray-900 text-sm leading-tight tracking-wide uppercase">Tulio</span>
+                                <span class="font-black text-black text-sm leading-tight tracking-wide uppercase">Recomienda</span>
+                            </div>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Título Categoría (MODIFICADO: Oculto en móvil 'hidden', visible en PC 'md:flex') -->
-            <div class="hidden md:flex items-center justify-between mb-6">
-                <h2 id="category-title" class="text-2xl md:text-4xl font-black text-white font-serif tracking-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">Línea Gourmet</h2>
-                <span id="product-count" class="text-xs md:text-sm text-brand-red font-bold bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg border border-white">0 delicias</span>
-            </div>
-
-            <!-- GRID PRODUCTOS -->
-            <!-- MODIFICADO: grid-cols-2 en móvil (antes era cols-1) -->
-            <div id="products-grid" class="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-4">
-                <!-- Se llena con JS -->
-            </div>
-
-            <!-- TESTIMONIOS -->
-            <section class="mt-12 md:mt-16 pt-8 pb-12 glass-panel rounded-3xl px-4 md:px-6 text-center border border-white/60">
-                <h2 class="text-2xl md:text-3xl font-serif font-black text-brand-red mb-6 md:mb-8 tracking-tight">Clientes <span class="text-brand-gold italic">Felices</span></h2>
-                <div class="flex overflow-x-auto gap-4 snap-x pb-4 no-scrollbar">
-                    <div class="min-w-[260px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 snap-center flex flex-col justify-center transition-transform hover:-translate-y-1">
-                        <div class="text-brand-gold mb-3 text-lg tracking-widest">★★★★★</div>
-                        <p class="text-sm text-gray-600 italic mb-4 leading-relaxed">"Los mejores chorizos que he probado en Medellín. El sabor ahumado es increíble."</p>
-                        <p class="font-bold text-brand-red text-sm mt-auto border-t border-gray-100 pt-3 uppercase tracking-wide">- Carlos M.</p>
-                    </div>
-                    <div class="min-w-[260px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 snap-center flex flex-col justify-center transition-transform hover:-translate-y-1">
-                        <div class="text-brand-gold mb-3 text-lg tracking-widest">★★★★★</div>
-                        <p class="text-sm text-gray-600 italic mb-4 leading-relaxed">"Súper recomendados. Compré el paquete surtido y todos quedaron encantados."</p>
-                        <p class="font-bold text-brand-red text-sm mt-auto border-t border-gray-100 pt-3 uppercase tracking-wide">- Juliana R.</p>
-                    </div>
-                    <div class="min-w-[260px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 snap-center flex flex-col justify-center transition-transform hover:-translate-y-1">
-                        <div class="text-brand-gold mb-3 text-lg tracking-widest">★★★★★</div>
-                        <p class="text-sm text-gray-600 italic mb-4 leading-relaxed">"Llegaron empacados al vacío perfectos, listos para asar. La calidad se nota."</p>
-                        <p class="font-bold text-brand-red text-sm mt-auto border-t border-gray-100 pt-3 uppercase tracking-wide">- Maria Clara J.</p>
                     </div>
                 </div>
-            </section>
 
-            <!-- CONTACTO -->
-            <section id="contact-section" class="mt-8 mb-12 bg-white rounded-3xl shadow-2xl p-6 md:p-10 max-w-2xl mx-auto border border-gray-100">
-                <h2 class="text-2xl md:text-3xl font-serif font-black text-brand-red mb-6 text-center tracking-tight">Contáctanos</h2>
-                <form onsubmit="handleContact(event)" class="space-y-5">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider">Nombre</label>
-                        <input id="contactName" type="text" class="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all" placeholder="Tu nombre" required>
+                <!-- Título Categoría -->
+                <div class="flex items-center justify-between mb-6">
+                    <h2 id="category-title" class="text-2xl md:text-4xl font-black text-white font-serif tracking-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">Línea Gourmet</h2>
+                    <span id="product-count" class="text-xs md:text-sm text-brand-red font-bold bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg border border-white">0 delicias</span>
+                </div>
+
+                <!-- GRID PRODUCTOS (ESTRUCTURA INTACTA) -->
+                <div id="products-grid" class="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-4">
+                    <!-- Se llena con JS -->
+                </div>
+
+                <!-- TESTIMONIOS -->
+                <section class="mt-12 md:mt-16 pt-8 pb-12 glass-panel rounded-3xl px-4 md:px-6 text-center border border-white/60">
+                    <h2 class="text-2xl md:text-3xl font-serif font-black text-brand-red mb-6 md:mb-8 tracking-tight">Clientes <span class="text-brand-gold italic">Felices</span></h2>
+                    <div class="flex overflow-x-auto gap-4 snap-x pb-4 no-scrollbar">
+                        <div class="min-w-[260px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 snap-center flex flex-col justify-center transition-transform hover:-translate-y-1">
+                            <div class="text-brand-gold mb-3 text-lg tracking-widest">★★★★★</div>
+                            <p class="text-sm text-gray-600 italic mb-4 leading-relaxed">"Los mejores chorizos que he probado en Medellín. El sabor ahumado es increíble."</p>
+                            <p class="font-bold text-brand-red text-sm mt-auto border-t border-gray-100 pt-3 uppercase tracking-wide">- Carlos M.</p>
+                        </div>
+                        <div class="min-w-[260px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 snap-center flex flex-col justify-center transition-transform hover:-translate-y-1">
+                            <div class="text-brand-gold mb-3 text-lg tracking-widest">★★★★★</div>
+                            <p class="text-sm text-gray-600 italic mb-4 leading-relaxed">"Súper recomendados. Compré el paquete surtido y todos quedaron encantados."</p>
+                            <p class="font-bold text-brand-red text-sm mt-auto border-t border-gray-100 pt-3 uppercase tracking-wide">- Juliana R.</p>
+                        </div>
+                        <div class="min-w-[260px] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 snap-center flex flex-col justify-center transition-transform hover:-translate-y-1">
+                            <div class="text-brand-gold mb-3 text-lg tracking-widest">★★★★★</div>
+                            <p class="text-sm text-gray-600 italic mb-4 leading-relaxed">"Llegaron empacados al vacío perfectos, listos para asar. La calidad se nota."</p>
+                            <p class="font-bold text-brand-red text-sm mt-auto border-t border-gray-100 pt-3 uppercase tracking-wide">- Maria Clara J.</p>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider">Mensaje</label>
-                        <textarea id="contactMessage" class="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none min-h-[120px] transition-all" placeholder="Hola, quisiera hacer un pedido..." required></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-gradient-to-r from-brand-red to-[#601212] text-white py-4 rounded-xl font-bold shadow-lg shadow-brand-red/30 hover:-translate-y-1 hover:shadow-brand-red/50 transition-all uppercase tracking-widest text-sm">Enviar a WhatsApp 🚀</button>
-                </form>
-            </section>
+                </section>
+
+                <!-- CONTACTO -->
+                <section id="contact-section" class="mt-8 mb-12 bg-white rounded-3xl shadow-2xl p-6 md:p-10 max-w-2xl mx-auto border border-gray-100">
+                    <h2 class="text-2xl md:text-3xl font-serif font-black text-brand-red mb-6 text-center tracking-tight">Contáctanos</h2>
+                    <form onsubmit="handleContact(event)" class="space-y-5">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider">Nombre</label>
+                            <input id="contactName" type="text" class="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all" placeholder="Tu nombre" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider">Mensaje</label>
+                            <textarea id="contactMessage" class="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none min-h-[120px] transition-all" placeholder="Hola, quisiera hacer un pedido..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-brand-red to-[#601212] text-white py-4 rounded-xl font-bold shadow-lg shadow-brand-red/30 hover:-translate-y-1 hover:shadow-brand-red/50 transition-all uppercase tracking-widest text-sm">Enviar a WhatsApp 🚀</button>
+                    </form>
+                </section>
+            </div>
         </section>
 
         <!-- VISTA HISTORIA -->
