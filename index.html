@@ -91,12 +91,19 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Nueva animación "Pop In" para el título */
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .pop-in { animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
         .gold-gradient-text {
             background: linear-gradient(to right, #D4AF37, #F3E5AB, #D4AF37);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
-            animation: shine 5s linear infinite;
+            animation: shine 3s linear infinite; /* Más rápido para ser más dinámico */
         }
         
         @keyframes shine {
@@ -302,11 +309,13 @@
                         Calidad Premium
                     </span>
                     
-                    <h2 class="text-2xl md:text-6xl font-serif font-black text-white mb-2 md:mb-4 leading-tight drop-shadow-lg">
+                    <!-- AUMENTO DE FUENTE: text-3xl (antes 2xl) + ANIMACIÓN pop-in -->
+                    <h2 class="pop-in text-3xl md:text-6xl font-serif font-black text-white mb-2 md:mb-4 leading-none md:leading-tight drop-shadow-lg">
                         El Arte del <span class="gold-gradient-text italic">Chorizo Gourmet</span>
                     </h2>
                     
-                    <p class="text-gray-200 text-xs md:text-lg max-w-2xl mx-auto leading-relaxed mb-3 md:mb-8 drop-shadow-md">
+                    <!-- AUMENTO DE FUENTE: text-sm (antes xs) -->
+                    <p class="text-gray-200 text-sm md:text-lg max-w-2xl mx-auto leading-tight md:leading-relaxed mb-3 md:mb-8 drop-shadow-md">
                         Olvídate de freír. Nuestros chorizos vienen <strong class="text-brand-gold">precocidos</strong>. Solo necesitas calentarlos unos minutos y disfrutar.
                     </p>
 
