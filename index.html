@@ -228,7 +228,7 @@
     <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-white/20 shadow-xl transition-colors duration-300">
         <!-- Logo y Carrito -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+            <div class="flex items-center justify-between h-16 md:h-20"> <!-- Altura reducida en móvil (h-16) -->
                 <!-- Logo -->
                 <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')" role="button" aria-label="Ir al inicio">
                     <!-- Icono de utensilios -->
@@ -264,7 +264,7 @@
 
         <!-- FILTROS (BOTONES) -->
         <div class="bg-white/80 backdrop-blur-md border-t border-gray-100 shadow-inner">
-            <div class="max-w-7xl mx-auto px-4 py-3 md:py-4">
+            <div class="max-w-7xl mx-auto px-4 py-2 md:py-4"> <!-- Padding reducido en móvil -->
                 <div class="flex justify-center overflow-x-auto no-scrollbar">
                     <nav class="inline-flex bg-gray-100/80 rounded-full p-1.5 gap-1 flex-nowrap min-w-max shadow-inner" id="category-pills" aria-label="Categorías de productos">
                         <!-- Se llenan con JS -->
@@ -291,38 +291,38 @@
         <!-- VISTA TIENDA -->
         <section id="view-store" class="fade-in">
 
-            <!-- NUEVO: HERO SECTION (PARA CONVENCER AL CLIENTE) -->
-            <!-- Esta sección agrega el "DISEÑO" y la "INFORMACIÓN" que faltaba sin tocar los productos -->
-            <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-8">
-                <div class="hero-glass rounded-3xl p-6 md:p-12 text-center relative overflow-hidden group">
+            <!-- NUEVO: HERO SECTION (OPTIMIZADO MÓVIL) -->
+            <!-- Se redujeron drásticamente los margenes y tamaños de letra en móvil (clases md: mantienen el tamaño original en PC) -->
+            <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2 md:mt-6 mb-4 md:mb-8">
+                <div class="hero-glass rounded-3xl p-4 md:p-12 text-center relative overflow-hidden group">
                     <!-- Brillo decorativo -->
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-50"></div>
                     
-                    <span class="inline-block py-1 px-3 rounded-full bg-brand-gold/20 border border-brand-gold/40 text-brand-goldLight text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-md">
-                        Calidad Premium Garantizada
+                    <span class="inline-block py-0.5 px-2 md:py-1 md:px-3 rounded-full bg-brand-gold/20 border border-brand-gold/40 text-brand-goldLight text-[10px] md:text-xs font-bold uppercase tracking-widest mb-2 md:mb-4 backdrop-blur-md">
+                        Calidad Premium
                     </span>
                     
-                    <h2 class="text-4xl md:text-6xl font-serif font-black text-white mb-4 leading-tight drop-shadow-lg">
+                    <h2 class="text-2xl md:text-6xl font-serif font-black text-white mb-2 md:mb-4 leading-tight drop-shadow-lg">
                         El Arte del <span class="gold-gradient-text italic">Chorizo Gourmet</span>
                     </h2>
                     
-                    <p class="text-gray-200 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed mb-8 drop-shadow-md">
-                        Olvídate de freír. Nuestros chorizos vienen <strong class="text-brand-gold">precocidos</strong>. Solo necesitas calentarlos unos minutos y disfrutar de una experiencia gastronómica única en casa.
+                    <p class="text-gray-200 text-xs md:text-lg max-w-2xl mx-auto leading-relaxed mb-3 md:mb-8 drop-shadow-md">
+                        Olvídate de freír. Nuestros chorizos vienen <strong class="text-brand-gold">precocidos</strong>. Solo necesitas calentarlos unos minutos y disfrutar.
                     </p>
 
-                    <!-- Beneficios Visuales (Iconos) -->
-                    <div class="flex flex-wrap justify-center gap-4 md:gap-8 border-t border-white/10 pt-6">
-                        <div class="flex items-center gap-2 text-white/90 bg-black/30 px-4 py-2 rounded-xl backdrop-blur-sm">
-                            <i data-lucide="flame" class="text-brand-gold w-5 h-5"></i>
-                            <span class="text-xs md:text-sm font-bold">Listos para Asar</span>
+                    <!-- Beneficios Visuales (Iconos Compactos en Móvil) -->
+                    <div class="flex flex-wrap justify-center gap-2 md:gap-8 border-t border-white/10 pt-3 md:pt-6">
+                        <div class="flex items-center gap-1.5 md:gap-2 text-white/90 bg-black/30 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl backdrop-blur-sm">
+                            <i data-lucide="flame" class="text-brand-gold w-3 h-3 md:w-5 md:h-5"></i>
+                            <span class="text-[10px] md:text-sm font-bold">Listos para Asar</span>
                         </div>
-                        <div class="flex items-center gap-2 text-white/90 bg-black/30 px-4 py-2 rounded-xl backdrop-blur-sm">
-                            <i data-lucide="ban" class="text-brand-gold w-5 h-5"></i>
-                            <span class="text-xs md:text-sm font-bold">Sin Aceites Extra</span>
+                        <div class="flex items-center gap-1.5 md:gap-2 text-white/90 bg-black/30 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl backdrop-blur-sm">
+                            <i data-lucide="ban" class="text-brand-gold w-3 h-3 md:w-5 md:h-5"></i>
+                            <span class="text-[10px] md:text-sm font-bold">Sin Aceite</span>
                         </div>
-                        <div class="flex items-center gap-2 text-white/90 bg-black/30 px-4 py-2 rounded-xl backdrop-blur-sm">
-                            <i data-lucide="award" class="text-brand-gold w-5 h-5"></i>
-                            <span class="text-xs md:text-sm font-bold">100% Carne Premium</span>
+                        <div class="flex items-center gap-1.5 md:gap-2 text-white/90 bg-black/30 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl backdrop-blur-sm">
+                            <i data-lucide="award" class="text-brand-gold w-3 h-3 md:w-5 md:h-5"></i>
+                            <span class="text-[10px] md:text-sm font-bold">100% Carne</span>
                         </div>
                     </div>
                 </div>
@@ -361,8 +361,9 @@
                     </div>
                 </div>
 
-                <!-- Título Categoría -->
-                <div class="flex items-center justify-between mb-6">
+                <!-- Título Categoría (OCULTO EN MÓVIL) -->
+                <!-- Se agregó 'hidden md:flex' para que no ocupe espacio en celular -->
+                <div class="hidden md:flex items-center justify-between mb-6">
                     <h2 id="category-title" class="text-2xl md:text-4xl font-black text-white font-serif tracking-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">Línea Gourmet</h2>
                     <span id="product-count" class="text-xs md:text-sm text-brand-red font-bold bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg border border-white">0 delicias</span>
                 </div>
