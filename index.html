@@ -234,41 +234,39 @@
     <main id="main-content" class="min-h-screen relative z-10 w-full pb-12">
         <section id="view-store" class="fade-in">
 
-            <!-- HERO SECTION: Diseño "Opción Ganadora + Ajuste Experiencia" para Móvil -->
-            <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 mb-6">
+            <!-- HERO SECTION: Diseño "Opción 2 - Minimalista Total" para Móvil -->
+            <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 mb-6"> <!-- Menos margen top en móvil -->
                 <div class="hero-glass rounded-[1.5rem] py-8 px-5 md:px-12 text-center relative overflow-hidden group shadow-xl ring-1 ring-brand-gold/20 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-6">
                     
                     <!-- Decoración sutil -->
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-80"></div>
                     
-                    <!-- Texto: ESTRUCTURA MEJORADA PARA MÓVIL (EXPERIENCIA Estilo Opción 1) -->
+                    <!-- Texto: OPCIÓN 2 APLICADA (CHORIZOS GOURMET + Botón) -->
                     <div class="text-center md:text-left flex-1 relative z-10">
                         <h2 class="pop-in text-white mb-2 drop-shadow-xl tracking-tight leading-none">
                             
-                            <!-- MOVIL: EXPERIENCIA (Estilo Opción 1) + GOURMET (Grande) -->
+                            <!-- OPCION 2 MOVIL: Minimalista Directo -->
                             <span class="md:hidden flex flex-col items-center gap-1">
-                                <!-- Palabra Experiencia estilo Opción 1: Delgada, Espaciada, Elegante -->
-                                <span class="font-sans font-light text-lg tracking-[0.3em] text-gray-200 uppercase mb-1">EXPERIENCIA</span>
-                                <!-- Título impactante en dorado -->
-                                <span class="gold-gradient-text font-serif italic text-5xl leading-none">Gourmet</span>
+                                <span class="font-sans font-black text-3xl tracking-tighter uppercase text-white">CHORIZOS</span>
+                                <span class="gold-gradient-text font-serif italic text-5xl">Gourmet</span>
                             </span>
 
-                            <!-- DESKTOP (INTACTO) -->
+                            <!-- DESKTOP (INTACTO según tu diseño aprobado) -->
                             <span class="hidden md:block font-serif font-black text-4xl gold-gradient-text italic">Gourmet</span>
                         </h2>
 
-                        <!-- Texto Descriptivo (Móvil y Desktop) -->
-                        <p class="text-gray-200 text-sm md:text-base leading-relaxed font-light opacity-90 mt-2 md:mt-0">
-                            Precocidos. <span class="text-brand-gold font-medium">Listos en 5 min.</span>
+                        <!-- Texto (Mantenemos, pero ajustamos margen para el botón móvil) -->
+                        <p class="text-gray-200 text-sm md:text-base leading-relaxed font-medium md:font-light opacity-90 mt-2 md:mt-0">
+                            Precocidos. <span class="text-brand-gold">Cero Aceite.</span> Sabor Real.
                         </p>
 
-                        <!-- BOTON VER MENU (Agregado a la versión elegante) -->
-                        <button onclick="document.getElementById('products-grid').scrollIntoView({behavior: 'smooth'})" class="md:hidden mt-5 bg-white/10 backdrop-blur-md border border-brand-gold/40 text-brand-goldLight px-8 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg animate-pulse-slow active:scale-95 transition-transform hover:bg-white/20">
+                        <!-- BOTON VER MENU (SOLO MOVIL - OPCION 2) -->
+                        <button onclick="document.getElementById('products-grid').scrollIntoView({behavior: 'smooth'})" class="md:hidden mt-4 bg-white/10 backdrop-blur-md border border-brand-gold/30 text-brand-goldLight px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg animate-pulse-slow">
                             Ver Menú ↓
                         </button>
                     </div>
 
-                    <!-- ICONOS (Desktop Only) -->
+                    <!-- ICONOS (Ocultos en móvil para "Minimalista Total", visibles en Desktop) -->
                     <div class="hidden md:flex flex-wrap justify-center md:justify-end gap-2 md:gap-4 w-full md:w-auto">
                         <div class="flex items-center gap-1.5 text-white/90 bg-brand-red/40 md:bg-white/5 px-3 py-1.5 rounded-lg border border-brand-red/30 md:border-white/5 backdrop-blur-sm"><i data-lucide="flame" class="text-brand-gold w-3.5 h-3.5"></i><span class="text-[10px] md:text-xs font-bold uppercase tracking-wider">Listo en 5'</span></div>
                         <div class="flex items-center gap-1.5 text-white/90 bg-brand-red/40 md:bg-white/5 px-3 py-1.5 rounded-lg border border-brand-red/30 md:border-white/5 backdrop-blur-sm"><i data-lucide="ban" class="text-brand-gold w-3.5 h-3.5"></i><span class="text-[10px] md:text-xs font-bold uppercase tracking-wider">Sin Freír</span></div>
