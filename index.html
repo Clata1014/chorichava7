@@ -138,17 +138,13 @@
         
         .marquee-content {
             display: inline-block;
-            animation: scroll-left 15s linear infinite;
-            padding-left: 100%; /* Empieza fuera de la pantalla a la derecha */
+            animation: scroll-left 30s linear infinite; /* Tiempo ajustado para contenido más corto */
+            /* padding-left removido para bucle continuo manual */
         }
 
         @keyframes scroll-left {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Se mueve el 50% (la mitad duplicada) para seamless loop */
         }
     </style>
 </head>
@@ -160,14 +156,27 @@
 
     <!-- CINTA SUPERIOR: Roja con Animación (Marquesina) -->
     <div class="bg-brand-red text-white text-[10px] md:text-xs py-2.5 font-bold tracking-[0.2em] uppercase border-b border-brand-gold/30 relative z-50 marquee-container">
-        <div class="marquee-content flex items-center gap-8 md:gap-12 opacity-90">
-            <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín: Domicilios Rápidos</span>
+        <!-- Contenido duplicado para efecto infinito real - SOLO MEDELLIN Y ENVIOS -->
+        <div class="marquee-content flex items-center gap-12 md:gap-20 opacity-90 w-max">
+            <!-- Bloque 1 -->
+            <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín</span>
             <span class="text-brand-gold/50">|</span>
             <span class="flex items-center gap-2"><i data-lucide="truck" class="w-3 h-3 text-brand-gold"></i> Envíos a todo Colombia</span>
             <span class="text-brand-gold/50">|</span>
-            <span class="flex items-center gap-2"><i data-lucide="shield-check" class="w-3 h-3 text-brand-gold"></i> Compra 100% Segura</span>
+            <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín</span>
             <span class="text-brand-gold/50">|</span>
-            <span class="flex items-center gap-2"><i data-lucide="flame" class="w-3 h-3 text-brand-gold"></i> ¡Listos para asar!</span>
+            <span class="flex items-center gap-2"><i data-lucide="truck" class="w-3 h-3 text-brand-gold"></i> Envíos a todo Colombia</span>
+            <span class="text-brand-gold/50">|</span>
+            
+            <!-- Bloque 2 (Duplicado) -->
+            <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín</span>
+            <span class="text-brand-gold/50">|</span>
+            <span class="flex items-center gap-2"><i data-lucide="truck" class="w-3 h-3 text-brand-gold"></i> Envíos a todo Colombia</span>
+            <span class="text-brand-gold/50">|</span>
+            <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín</span>
+            <span class="text-brand-gold/50">|</span>
+            <span class="flex items-center gap-2"><i data-lucide="truck" class="w-3 h-3 text-brand-gold"></i> Envíos a todo Colombia</span>
+            <span class="text-brand-gold/50">|</span>
         </div>
     </div>
 
@@ -196,7 +205,8 @@
                     <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditonuevo.png?raw=true" alt="Logo" class="h-44 w-auto object-contain -mt-16 -mb-12 -ml-11 md:-ml-9 relative z-10 drop-shadow-2xl" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
                 </div>
                 <div class="flex items-center gap-3">
-                    <button onclick="toggleCart()" class="relative flex items-center justify-center w-14 h-14 md:w-12 md:h-12 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
+                    <!-- BOTÓN CANASTA: Añadido -mr-3 para móvil, reseteado en desktop md:mr-0 -->
+                    <button onclick="toggleCart()" class="-mr-3 md:mr-0 relative flex items-center justify-center w-14 h-14 md:w-12 md:h-12 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
                         <i data-lucide="shopping-bag" class="w-8 h-8 md:w-6 md:h-6 text-brand-red"></i>
                         <span id="cart-count" class="absolute top-1 right-1 flex h-4 w-4 hidden">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
@@ -231,7 +241,8 @@
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main id="main-content" class="min-h-screen relative z-10 w-full pb-12">
+    <!-- AJUSTE REALIZADO: pb-12 ELIMINADO (ahora pb-0) para quitar la línea negra/fondo de abajo -->
+    <main id="main-content" class="min-h-screen relative z-10 w-full pb-0">
         <section id="view-store" class="fade-in">
 
             <!-- HERO SECTION: Diseño "Opción Ganadora + Ajuste Experiencia" para Móvil -->
@@ -285,13 +296,20 @@
                 <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8"></div>
 
                 <!-- TESTIMONIOS -->
-                <section class="mt-16 pt-10 pb-16 glass-panel rounded-[2rem] px-6 text-center">
+                <section class="mt-16 pt-10 pb-16 glass-panel rounded-[2rem] px-6 text-center relative group">
                     <i data-lucide="quote" class="w-10 h-10 text-brand-gold/30 mx-auto mb-4"></i>
                     <h2 class="text-3xl md:text-4xl font-serif font-black text-brand-red mb-10">Clientes <span class="italic text-brand-gold">Felices</span></h2>
-                    <div class="flex overflow-x-auto gap-6 snap-x pb-8 no-scrollbar px-2">
+                    
+                    <!-- FLECHA INDICADORA DE MÁS CONTENIDO (Visible en móvil) -->
+                    <div class="absolute right-2 top-1/2 translate-y-8 z-20 animate-bounce-slow md:hidden pointer-events-none opacity-60">
+                         <div class="bg-white/80 p-2 rounded-full shadow-lg text-brand-red"><i data-lucide="arrow-right" class="w-5 h-5"></i></div>
+                    </div>
+
+                    <div class="flex overflow-x-auto gap-6 snap-x pb-8 no-scrollbar px-2 relative z-10">
                         <div class="min-w-[280px] bg-white p-8 rounded-3xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] snap-center flex flex-col justify-center border border-gray-50">
                             <div class="flex gap-1 justify-center mb-4"><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i></div>
-                            <p class="text-sm text-gray-600 italic mb-6 leading-relaxed font-medium">"El sabor ahumado es increíble. Se nota que son artesanales de verdad."</p>
+                            <!-- Cambio de texto aquí -->
+                            <p class="text-sm text-gray-600 italic mb-6 leading-relaxed font-medium">"El sabor ahumado es increíble. Se nota la calidad de verdad."</p>
                             <p class="font-bold text-brand-red text-xs uppercase tracking-widest opacity-80">Carlos M.</p>
                         </div>
                         <div class="min-w-[280px] bg-white p-8 rounded-3xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] snap-center flex flex-col justify-center border border-gray-50">
@@ -348,18 +366,59 @@
         </section>
 
         <!-- FOOTER -->
-        <footer class="bg-white text-gray-400 py-20 mt-auto border-t border-gray-100 relative z-10 text-center">
-            <h2 class="text-3xl md:text-5xl font-serif font-black text-brand-red mb-10 opacity-90">Chori<span class="text-brand-gold">Chava</span></h2>
-            <div class="mb-12">
-                <p class="text-[10px] font-bold text-brand-red/50 uppercase tracking-[0.2em] mb-6">Reconocimientos</p>
+        <!-- AJUSTES REALIZADOS: py-20 reducido a py-8, márgenes (mb) reducidos para subir contenido -->
+        <footer class="bg-white text-gray-400 pt-2 pb-6 md:py-8 mt-auto border-t border-gray-100 relative z-10 text-center">
+            <!-- REEMPLAZO DEL TEXTO POR EL LOGO - Margen reducido a mb-4 -->
+            <!-- Mobile: logo más grande (h-56), margen negativo superior para subirlo (-mt-8) y margen inferior pequeño (mb-2) -->
+            <!-- Escritorio: regresa a h-44 y margenes originales con md: -->
+            <div class="flex justify-center mb-2 md:mb-4">
+                <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditonuevo.png?raw=true" alt="ChoriChava Logo" class="h-56 md:h-44 w-auto object-contain -mt-8 md:mt-0" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
+            </div>
+            
+            <!-- Margen reducido a mb-4 (móvil) y md:mb-6 (escritorio) -->
+            <div class="mb-4 md:mb-6">
+                <!-- Margen texto reducido a mb-2 (móvil) y md:mb-6 (escritorio) -->
+                <p class="text-[10px] font-bold text-brand-red/50 uppercase tracking-[0.2em] mb-2 md:mb-6">Reconocimientos</p>
                 <div class="flex flex-row justify-center gap-6 md:gap-8">
-                     <div class="flip-card w-16 h-16 md:w-24 md:h-24"><div class="flip-card-inner"><div class="flip-card-front"><img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" class="w-10 h-10 md:w-16 md:h-16 object-contain"></div><div class="flip-card-back"><span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Producto</span><span class="font-black text-[9px] md:text-xs text-brand-dark uppercase">Local</span></div></div></div>
-                     <div class="flip-card w-16 h-16 md:w-24 md:h-24"><div class="flip-card-inner" style="animation-delay: 0.2s;"><div class="flip-card-front"><img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" class="w-12 h-12 md:w-20 md:h-20 object-contain"></div><div class="flip-card-back"><span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Tulio</span><span class="font-black text-[9px] md:text-xs text-brand-dark uppercase">Recomienda</span></div></div></div>
-                     <div class="flip-card w-16 h-16 md:w-24 md:h-24"><div class="flip-card-inner" style="animation-delay: 0.4s;"><div class="flip-card-front"><img src="https://em-content.zobj.net/source/apple/391/farmer_1f9d1-200d-1f33e.png" class="w-10 h-10 md:w-16 md:h-16 object-contain"></div><div class="flip-card-back"><span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Mercados</span><span class="font-black text-[9px] md:text-xs text-brand-dark uppercase">Campesinos</span></div></div></div>
+                     <div class="flip-card w-16 h-16 md:w-24 md:h-24">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://em-content.zobj.net/source/apple/391/flag-colombia_1f1e8-1f1f4.png" class="w-10 h-10 md:w-16 md:h-16 object-contain">
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Producto</span>
+                                <span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Local</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="flip-card w-16 h-16 md:w-24 md:h-24">
+                        <div class="flip-card-inner" style="animation-delay: 0.2s;">
+                            <div class="flip-card-front">
+                                <img src="https://github.com/Clata1014/chorichava7/blob/main/Tuliorecomienda.png?raw=true" class="w-12 h-12 md:w-20 md:h-20 object-contain">
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Tulio</span>
+                                <span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Recomienda</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="flip-card w-16 h-16 md:w-24 md:h-24">
+                        <div class="flip-card-inner" style="animation-delay: 0.4s;">
+                            <div class="flip-card-front">
+                                <img src="https://em-content.zobj.net/source/apple/391/farmer_1f9d1-200d-1f33e.png" class="w-10 h-10 md:w-16 md:h-16 object-contain">
+                            </div>
+                            <div class="flip-card-back">
+                                <span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Mercados</span>
+                                <span class="font-bold text-[8px] md:text-[10px] uppercase text-brand-red">Campesinos</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p class="text-sm md:text-lg mb-10 font-light tracking-wider opacity-80">Medellín • Colombia</p>
-            <div class="flex justify-center gap-10 text-2xl mb-10 text-brand-red opacity-80">
+            <!-- Margen reducido a mb-6 -->
+            <p class="text-sm md:text-lg mb-6 font-light tracking-wider opacity-80">Medellín • Colombia</p>
+            <!-- Margen reducido a mb-6 -->
+            <div class="flex justify-center gap-10 text-2xl mb-6 text-brand-red opacity-80">
                 <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">📷</span>
                 <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">📘</span>
                 <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">💬</span>
@@ -473,9 +532,14 @@
             const container = document.getElementById('category-pills');
             container.innerHTML = CATEGORIES.map(cat => {
                 let label = cat;
-                if (cat === "Línea Gourmet") label = `<span class="md:hidden">Gourmet</span><span class="hidden md:inline">Línea Gourmet</span>`;
-                if (cat === "Otras Delicias") label = `<span class="md:hidden">Otros</span><span class="hidden md:inline">Otras Delicias</span>`;
-                return `<button onclick="setCategory('${cat}')" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 tracking-wide border ${activeCategory === cat ? 'bg-brand-red text-white border-brand-red shadow-lg transform scale-105' : 'bg-white text-gray-400 border-transparent hover:text-brand-red hover:bg-gray-50'}">${label}</button>`;
+                // CAMBIO: Añadido font-extrabold solo a las etiquetas md:hidden (Móvil)
+                if (cat === "Línea Gourmet") label = `<span class="md:hidden font-extrabold">Gourmet</span><span class="hidden md:inline">Línea Gourmet</span>`;
+                if (cat === "Otras Delicias") label = `<span class="md:hidden font-extrabold">Otros</span><span class="hidden md:inline">Otras Delicias</span>`;
+                // CAMBIO: Tratamiento especial para 'Tradicional' (separado para aplicar negrita solo en móvil)
+                if (cat === "Tradicional") label = `<span class="md:hidden font-extrabold">Tradicional</span><span class="hidden md:inline">Tradicional</span>`;
+                
+                // CAMBIO: text-gray-400 -> text-gray-900 para que el texto inactivo sea negro
+                return `<button onclick="setCategory('${cat}')" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 tracking-wide border ${activeCategory === cat ? 'bg-brand-red text-white border-brand-red shadow-lg transform scale-105' : 'bg-white text-gray-900 border-transparent hover:text-brand-red hover:bg-gray-50'}">${label}</button>`;
             }).join('');
         }
 
