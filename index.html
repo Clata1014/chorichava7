@@ -370,13 +370,14 @@
         <footer class="bg-white text-gray-400 pt-2 pb-6 md:py-8 mt-auto border-t border-gray-100 relative z-10 text-center">
             <!-- REEMPLAZO DEL TEXTO POR EL LOGO - Margen reducido a mb-4 -->
             <!-- Mobile: logo más grande (h-56), margen negativo superior para subirlo (-mt-8) y margen inferior pequeño (mb-2) -->
-            <!-- Escritorio: regresa a h-44 y margenes originales con md: -->
-            <div class="flex justify-center mb-2 md:mb-4">
+            <!-- CAMBIO APLICADO: mb-0 en móvil para quitar espacio debajo del logo -->
+            <div class="flex justify-center mb-0 md:mb-4">
                 <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditonuevo.png?raw=true" alt="ChoriChava Logo" class="h-56 md:h-44 w-auto object-contain -mt-8 md:mt-0" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
             </div>
             
             <!-- Margen reducido a mb-4 (móvil) y md:mb-6 (escritorio) -->
-            <div class="mb-4 md:mb-6">
+            <!-- CAMBIO APLICADO: -mt-6 en móvil para subir esta sección y pegarla al logo -->
+            <div class="mb-4 md:mb-6 -mt-6 md:mt-0">
                 <!-- Margen texto reducido a mb-2 (móvil) y md:mb-6 (escritorio) -->
                 <p class="text-[10px] font-bold text-brand-red/50 uppercase tracking-[0.2em] mb-2 md:mb-6">Reconocimientos</p>
                 <div class="flex flex-row justify-center gap-6 md:gap-8">
@@ -417,12 +418,7 @@
             </div>
             <!-- Margen reducido a mb-6 -->
             <p class="text-sm md:text-lg mb-6 font-light tracking-wider opacity-80">Medellín • Colombia</p>
-            <!-- Margen reducido a mb-6 -->
-            <div class="flex justify-center gap-10 text-2xl mb-6 text-brand-red opacity-80">
-                <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">📷</span>
-                <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">📘</span>
-                <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">💬</span>
-            </div>
+            <!-- Iconos eliminados aquí -->
             <p class="text-[10px] uppercase tracking-widest opacity-40">© 2024 ChoriChava.</p>
         </footer>
     </main>
