@@ -197,11 +197,10 @@
                 </div>
                 
                 <!-- BOTONES DERECHA (AJUSTE CELULAR) -->
-                <!-- -mr-6: Posición del bloque que te gustaba (líneas bien ubicadas) -->
+                <!-- -mr-6 en móvil para pegar más a la derecha, gap-0 para juntar los botones -->
                 <div class="flex items-center gap-0 md:gap-3 -mr-6 md:mr-0">
-                    <!-- -mr-2: Solo el carrito se corre un poquito a la derecha para pegarse más -->
-                    <button onclick="toggleCart()" class="relative flex items-center justify-center w-14 h-14 md:w-12 md:h-12 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200 -mr-2 md:mr-0">
-                        <!-- Carrito de Supermercado Clásico -->
+                    <button onclick="toggleCart()" class="relative flex items-center justify-center w-14 h-14 md:w-12 md:h-12 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
+                        <!-- CAMBIO: Carrito de Supermercado Clásico (Limpio y directo) -->
                         <i data-lucide="shopping-cart" class="w-8 h-8 md:w-6 md:h-6 text-brand-red"></i>
                         
                         <span id="cart-count" class="absolute top-1 right-1 flex h-4 w-4 hidden">
