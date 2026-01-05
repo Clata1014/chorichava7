@@ -129,33 +129,27 @@
         
         html { scroll-behavior: smooth; }
 
-        /* ANIMACIÓN MARQUESINA ESCRITORIO (Original) */
+        /* NUEVA ANIMACIÓN MARQUESINA (TEXTO QUE SE ARRASTRA) */
         .marquee-container {
             overflow: hidden;
             white-space: nowrap;
             position: relative;
         }
+        
         .marquee-content {
             display: inline-block;
             animation: scroll-left 15s linear infinite;
-            padding-left: 100%;
+            padding-left: 100%; /* Empieza fuera de la pantalla a la derecha */
         }
+
         @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
-
-        /* ANIMACIÓN MARQUESINA MÓVIL (BUCLE INFINITO SIN ESPACIOS) */
-        @keyframes mobile-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } 
-        }
-        .animate-mobile-scroll {
-            display: flex;
-            width: max-content;
-            animation: mobile-scroll 12s linear infinite; 
-        }
-
     </style>
 </head>
 <body class="selection:bg-brand-gold selection:text-white antialiased text-gray-800">
@@ -164,8 +158,8 @@
 
     <div id="toast-container"></div>
 
-    <!-- CINTA SUPERIOR ESCRITORIO (ORIGINAL - INTACTA - BLOQUEADA) -->
-    <div class="hidden md:block bg-brand-red text-white text-[10px] md:text-xs py-2.5 font-bold tracking-[0.2em] uppercase border-b border-brand-gold/30 relative z-50 marquee-container">
+    <!-- CINTA SUPERIOR: Roja con Animación (Marquesina) -->
+    <div class="bg-brand-red text-white text-[10px] md:text-xs py-2.5 font-bold tracking-[0.2em] uppercase border-b border-brand-gold/30 relative z-50 marquee-container">
         <div class="marquee-content flex items-center gap-8 md:gap-12 opacity-90">
             <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín: Domicilios Rápidos</span>
             <span class="text-brand-gold/50">|</span>
@@ -174,41 +168,6 @@
             <span class="flex items-center gap-2"><i data-lucide="shield-check" class="w-3 h-3 text-brand-gold"></i> Compra 100% Segura</span>
             <span class="text-brand-gold/50">|</span>
             <span class="flex items-center gap-2"><i data-lucide="flame" class="w-3 h-3 text-brand-gold"></i> ¡Listos para asar!</span>
-        </div>
-    </div>
-
-    <!-- CINTA SUPERIOR CELULAR (NUEVA - BUCLE INFINITO) -->
-    <div class="md:hidden bg-brand-red text-white text-[10px] py-2.5 font-bold tracking-[0.2em] uppercase border-b border-brand-gold/30 relative z-50 overflow-hidden">
-        <div class="animate-mobile-scroll">
-            <!-- BLOQUE 1 -->
-            <div class="flex items-center gap-8 px-4 shrink-0">
-                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín</span>
-                <span class="text-brand-gold/50">|</span>
-                <span class="flex items-center gap-2"><i data-lucide="truck" class="w-3 h-3 text-brand-gold"></i> Envíos a todo Colombia</span>
-                <span class="text-brand-gold/50">|</span>
-            </div>
-            <!-- BLOQUE 1 (REPETIDO) -->
-            <div class="flex items-center gap-8 px-4 shrink-0">
-                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín</span>
-                <span class="text-brand-gold/50">|</span>
-                <span class="flex items-center gap-2"><i data-lucide="truck" class="w-3 h-3 text-brand-gold"></i> Envíos a todo Colombia</span>
-                <span class="text-brand-gold/50">|</span>
-            </div>
-            
-            <!-- BLOQUE 2 (DUPLICADO PARA EL BUCLE) -->
-            <div class="flex items-center gap-8 px-4 shrink-0">
-                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín</span>
-                <span class="text-brand-gold/50">|</span>
-                <span class="flex items-center gap-2"><i data-lucide="truck" class="w-3 h-3 text-brand-gold"></i> Envíos a todo Colombia</span>
-                <span class="text-brand-gold/50">|</span>
-            </div>
-             <!-- BLOQUE 2 (REPETIDO) -->
-             <div class="flex items-center gap-8 px-4 shrink-0">
-                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-brand-gold"></i> Medellín</span>
-                <span class="text-brand-gold/50">|</span>
-                <span class="flex items-center gap-2"><i data-lucide="truck" class="w-3 h-3 text-brand-gold"></i> Envíos a todo Colombia</span>
-                <span class="text-brand-gold/50">|</span>
-            </div>
         </div>
     </div>
 
@@ -229,9 +188,7 @@
     <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-white/40 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- LOGO + CUBIERTOS (AJUSTE IZQUIERDA MICROSCOPICO) -->
-                <!-- CAMBIO: -ml-3 en móvil (antes -ml-2) para mover el conjunto un pelito más a la izquierda -->
-                <div class="flex items-center gap-0 group cursor-pointer -ml-3 md:ml-0" onclick="switchView('store')" role="button">
+                <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')" role="button">
                     <div class="shrink-0 w-12 h-12 bg-gradient-to-br from-brand-red to-brand-redLight rounded-2xl flex items-center justify-center shadow-lg shadow-brand-red/30 relative z-20 border border-white/20 transition-all hover:scale-105 hover:rotate-3">
                         <i data-lucide="utensils" class="text-brand-gold w-6 h-6"></i>
                     </div>
@@ -244,7 +201,7 @@
                 <div class="flex items-center gap-0 md:gap-3 -mr-6 md:mr-0">
                     <!-- -mr-2: Solo el carrito se corre un poquito a la derecha para pegarse más -->
                     <button onclick="toggleCart()" class="relative flex items-center justify-center w-14 h-14 md:w-12 md:h-12 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200 -mr-2 md:mr-0">
-                        <!-- Carrito de Supermercado Clásico (SIN ANIMACIÓN) -->
+                        <!-- Carrito de Supermercado Clásico -->
                         <i data-lucide="shopping-cart" class="w-8 h-8 md:w-6 md:h-6 text-brand-red"></i>
                         
                         <span id="cart-count" class="absolute top-1 right-1 flex h-4 w-4 hidden">
@@ -340,8 +297,7 @@
                     <div class="flex overflow-x-auto gap-6 snap-x pb-8 no-scrollbar px-2">
                         <div class="min-w-[280px] bg-white p-8 rounded-3xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] snap-center flex flex-col justify-center border border-gray-50">
                             <div class="flex gap-1 justify-center mb-4"><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i></div>
-                            <!-- CAMBIO: Se eliminó la palabra 'artesanales' -->
-                            <p class="text-sm text-gray-600 italic mb-6 leading-relaxed font-medium">"El sabor ahumado es increíble. Se nota que son de calidad de verdad."</p>
+                            <p class="text-sm text-gray-600 italic mb-6 leading-relaxed font-medium">"El sabor ahumado es increíble. Se nota que son artesanales de verdad."</p>
                             <p class="font-bold text-brand-red text-xs uppercase tracking-widest opacity-80">Carlos M.</p>
                         </div>
                         <div class="min-w-[280px] bg-white p-8 rounded-3xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] snap-center flex flex-col justify-center border border-gray-50">
