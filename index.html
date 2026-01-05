@@ -154,9 +154,9 @@
 
     <div id="toast-container"></div>
 
-    <!-- CINTA SUPERIOR: Estilo Dark Premium en Móvil / Rojo Original en Desktop -->
-    <!-- AJUSTE: text-white en todas las vistas (antes era dorado en móvil) -->
-    <div class="bg-brand-dark md:bg-brand-red text-white md:text-white text-[10px] md:text-xs py-2.5 font-bold tracking-[0.2em] uppercase border-b border-brand-gold/20 md:border-brand-gold/30 relative z-50 marquee-container shadow-sm md:shadow-none">
+    <!-- CINTA SUPERIOR: Estilo Dark Premium en AMBAS VISTAS (Replicado de móvil a escritorio) -->
+    <!-- AJUSTE: bg-brand-dark y text-white para md: también -->
+    <div class="bg-brand-dark text-white text-[10px] md:text-xs py-2.5 font-bold tracking-[0.2em] uppercase border-b border-brand-gold/20 md:border-brand-gold/30 relative z-50 marquee-container shadow-sm md:shadow-none">
         <!-- Contenido duplicado para efecto infinito real - SOLO MEDELLIN Y ENVIOS -->
         <div class="marquee-content flex items-center gap-12 md:gap-20 opacity-90 w-max">
             <!-- Bloque 1 -->
@@ -200,22 +200,23 @@
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')" role="button">
                     <!-- ICONO ELIMINADO: Se quitó el div con los cubiertos -->
-                    <!-- LOGO CON AJUSTE: Margen negativo aumentado a -ml-12 para moverlo más a la izquierda. Tamaño aumentado a h-48. -->
-                    <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditonuevo.png?raw=true" alt="Logo" class="h-48 w-auto object-contain -mt-16 -mb-12 -ml-12 relative z-10 drop-shadow-2xl" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
+                    <!-- LOGO CON AJUSTE ESCRITORIO: md:h-52 para aumentar un poco el tamaño, y ajuste de márgenes negativos en desktop para centrar -->
+                    <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditonuevo.png?raw=true" alt="Logo" class="h-48 md:h-52 w-auto object-contain -mt-16 -mb-12 -ml-12 md:-mt-20 md:-mb-16 md:-ml-12 relative z-10 drop-shadow-2xl" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
                 </div>
                 <div class="flex items-center gap-3">
                     <!-- BOTÓN CANASTA: Añadido -mr-3 para móvil, reseteado en desktop md:mr-0 -->
-                    <!-- CAMBIO: w-14 -> w-12 y h-14 -> h-12 en movil para hacerla 'un poquito' mas chiquita -->
-                    <button onclick="toggleCart()" class="-mr-3 md:mr-0 relative flex items-center justify-center w-12 h-12 md:w-12 md:h-12 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
-                        <!-- CAMBIO: w-8 h-8 -> w-7 h-7 en movil para hacer el icono mas chiquitin -->
-                        <i data-lucide="shopping-bag" class="w-7 h-7 md:w-6 md:h-6 text-brand-red"></i>
+                    <!-- CAMBIO ESCRITORIO: Aumentado de md:w-12 a md:w-14 -->
+                    <button onclick="toggleCart()" class="-mr-3 md:mr-0 relative flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
+                        <!-- CAMBIO ESCRITORIO: Aumentado de md:w-6 a md:w-7 para que se vea un poquito más grande y pulido -->
+                        <i data-lucide="shopping-bag" class="w-7 h-7 md:w-7 md:h-7 text-brand-red"></i>
                         <span id="cart-count" class="absolute top-1 right-1 flex h-4 w-4 hidden">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-4 w-4 bg-brand-gold text-brand-red text-[10px] font-bold items-center justify-center shadow-sm cart-num">0</span>
                         </span>
                     </button>
-                    <button onclick="toggleMenu()" class="flex items-center justify-center w-14 h-14 md:w-12 md:h-12 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
-                        <i data-lucide="menu" class="w-8 h-8 md:w-6 md:h-6 text-brand-red"></i>
+                    <!-- BOTÓN MENÚ: Aumentado igual que la canasta en escritorio -->
+                    <button onclick="toggleMenu()" class="flex items-center justify-center w-14 h-14 md:w-14 md:h-14 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
+                        <i data-lucide="menu" class="w-8 h-8 md:w-7 md:h-7 text-brand-red"></i>
                     </button>
                 </div>
             </div>
@@ -378,10 +379,12 @@
             </div>
             
             <!-- Margen reducido a mb-4 (móvil) y md:mb-6 (escritorio) -->
-            <div class="mb-4 md:mb-6">
+            <!-- CAMBIO ESCRITORIO: Margen reducido a md:mb-3 (antes mb-6) para subir el bloque de tarjetas -->
+            <div class="mb-4 md:mb-3">
                 <!-- Margen texto reducido a mb-2 (móvil) y md:mb-6 (escritorio) -->
                 <!-- CAMBIO MOVIL: mb-1 (antes mb-2) para subir las tarjetas -->
-                <p class="text-[10px] font-bold text-brand-red/50 uppercase tracking-[0.2em] mb-1 md:mb-6">Reconocimientos</p>
+                <!-- CAMBIO ESCRITORIO: Margen del titulo reducido a md:mb-3 (antes mb-6) -->
+                <p class="text-[10px] font-bold text-brand-red/50 uppercase tracking-[0.2em] mb-1 md:mb-3">Reconocimientos</p>
                 <div class="flex flex-row justify-center gap-6 md:gap-8">
                      <div class="flip-card w-16 h-16 md:w-24 md:h-24">
                         <div class="flip-card-inner">
@@ -421,12 +424,8 @@
             <!-- Margen reducido a mb-6 -->
             <p class="text-sm md:text-lg mb-6 font-light tracking-wider opacity-80">Medellín • Colombia</p>
             
-            <!-- CAMBIO: hidden agregado para eliminar visualmente en móvil, pero mantener en desktop (md:flex) -->
-            <div class="hidden md:flex justify-center gap-10 text-2xl mb-6 text-brand-red opacity-80">
-                <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">📷</span>
-                <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">📘</span>
-                <span class="hover:text-brand-gold cursor-pointer transition-all hover:-translate-y-1">💬</span>
-            </div>
+            <!-- CAMBIO ESCRITORIO: ELIMINADO BLOQUE DE ICONOS SOCIALES -->
+            
             <p class="text-[10px] uppercase tracking-widest opacity-40">© 2024 ChoriChava.</p>
         </footer>
     </main>
