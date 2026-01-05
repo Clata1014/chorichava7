@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO OPTIMIZATION -->
-    <title>ChoriChava | Chorizos Precocidos Gourmet en Medellín - Listos para Calentar</title>
-    <meta name="description" content="Chorizos gourmet precocidos en Medellín. La mejor calidad, listos para calentar y servir. No necesitas freír.">
+    <title>ChoriChava | Venta de Chorizos Premium y Asados en Medellín</title>
+    <meta name="description" content="Venta de chorizos en Medellín. ChoriChava ofrece chorizos premium y tradicionales: Santarrosano, Español, Argentino y más. Ideales para asados, eventos y reuniones. Domicilios rápidos.">
+    <meta name="keywords" content="chorizos medellin, venta de chorizos, chorizos para asado, chorizos a domicilio, chorizo santarrosano medellin, carnes frias, asados medellin, chorichava, comida rapida, eventos">
+    
+    <!-- SEO & Open Graph -->
+    <meta property="og:title" content="ChoriChava | Los Mejores Chorizos de Medellín para Asados">
+    <meta property="og:description" content="Disfruta del auténtico sabor tradicional. Chorizos Santarrosanos, Argentinos, Españoles y más. ¡Pide tu domicilio hoy!">
+    <meta property="og:image" content="https://clata1014.github.io/chorichava7/Fondito.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CO">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://github.com/Clata1014/Chorichava4/blob/main/Fonditonuevo.png?raw=true" type="image/png">
     
     <!-- PERFORMANCE & LIBRARIES -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -15,6 +26,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest" defer></script>
+    <!-- Script de Wompi -->
+    <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
+
+    <!-- DATOS ESTRUCTURADOS SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ChoriChava",
+      "image": "https://clata1014.github.io/chorichava7/Fondito.png",
+      "telephone": "+573001234567",
+      "url": "https://chorichava.com/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Medellín",
+        "addressLocality": "Medellín",
+        "addressRegion": "Antioquia",
+        "addressCountry": "CO"
+      },
+      "priceRange": "$$",
+      "servesCuisine": "Chorizos, Parrilla, Asados, Comida Colombiana",
+      "description": "Venta de chorizos premium y tradicionales en Medellín."
+    }
+    </script>
 
     <script>
         tailwind.config = {
@@ -198,13 +233,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-0 group cursor-pointer" onclick="switchView('store')" role="button">
-                    <!-- ICONO ELIMINADO: Se quitó el div con los cubiertos -->
-                    <!-- LOGO CON AJUSTE ESCRITORIO: Ajuste de margen a md:-ml-16 para mayor cercanía a la pared visual -->
-                    <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditonuevo.png?raw=true" alt="Logo" class="h-48 md:h-56 w-auto object-contain -mt-16 -mb-12 -ml-12 md:-mt-24 md:-mb-20 md:-ml-16 relative z-10 drop-shadow-2xl" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
+                    <!-- LOGO: Ajuste de margen a md:-ml-28 para pegarlo MÁS a la pared izquierda en escritorio -->
+                    <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditonuevo.png?raw=true" alt="Logo" class="h-48 md:h-56 w-auto object-contain -mt-16 -mb-12 -ml-12 md:-mt-24 md:-mb-20 md:-ml-28 relative z-10 drop-shadow-2xl" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
                 </div>
                 <!-- BOTONES DERECHA: Ajuste con md:-mr-4 para mover más a la derecha -->
                 <div class="flex items-center gap-3 md:-mr-4">
-                    <!-- BOTÓN CANASTA: Aumentado tamaño en escritorio a w-16 h-16 -->
+                    <!-- BOTÓN CANASTA -->
                     <button onclick="toggleCart()" class="-mr-3 md:mr-0 relative flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
                         <i data-lucide="shopping-bag" class="w-7 h-7 md:w-8 md:h-8 text-brand-red"></i>
                         <span id="cart-count" class="absolute top-1 right-1 flex h-4 w-4 hidden">
@@ -212,7 +246,7 @@
                             <span class="relative inline-flex rounded-full h-4 w-4 bg-brand-gold text-brand-red text-[10px] font-bold items-center justify-center shadow-sm cart-num">0</span>
                         </span>
                     </button>
-                    <!-- BOTÓN MENÚ: Aumentado tamaño en escritorio a w-16 h-16 -->
+                    <!-- BOTÓN MENÚ -->
                     <button onclick="toggleMenu()" class="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
                         <i data-lucide="menu" class="w-8 h-8 md:w-8 md:h-8 text-brand-red"></i>
                     </button>
@@ -236,59 +270,55 @@
         <a href="#" onclick="switchView('store', 'Línea Gourmet')" class="text-4xl font-serif font-bold text-white/90 hover:text-brand-gold transition-colors tracking-tighter">Gourmet</a>
         <a href="#" onclick="switchView('store', 'Tradicional')" class="text-4xl font-serif font-bold text-white/90 hover:text-brand-gold transition-colors tracking-tighter">Tradicional</a>
         <a href="#" onclick="switchView('store', 'Otras Delicias')" class="text-4xl font-serif font-bold text-white/90 hover:text-brand-gold transition-colors tracking-tighter">Delicias</a>
-        <a href="#" onclick="switchView('store', 'history')" class="text-2xl font-sans font-light text-white/70 hover:text-white mt-8 tracking-widest uppercase">Historia</a>
+        <a href="#" onclick="switchView('history')" class="text-2xl font-sans font-light text-white/70 hover:text-white mt-8 tracking-widest uppercase">Historia</a>
         <a href="#" onclick="scrollToContact()" class="text-2xl font-sans font-light text-white/70 hover:text-white tracking-widest uppercase">Contacto</a>
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <!-- AJUSTE REALIZADO: pb-12 ELIMINADO (ahora pb-0) para quitar la línea negra/fondo de abajo -->
     <main id="main-content" class="min-h-screen relative z-10 w-full pb-0">
         <section id="view-store" class="fade-in">
 
-            <!-- HERO SECTION: Diseño "Opción Ganadora + Ajuste Experiencia" para Móvil -->
+            <!-- HERO SECTION -->
             <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 mb-6">
                 <div class="hero-glass rounded-[1.5rem] py-8 px-5 md:px-12 text-center relative overflow-hidden group shadow-xl ring-1 ring-brand-gold/20 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-6">
                     
                     <!-- Decoración sutil -->
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-80"></div>
                     
-                    <!-- Texto: ESTRUCTURA MEJORADA PARA MÓVIL (EXPERIENCIA Estilo Opción 1) -->
+                    <!-- Texto: ESTRUCTURA MEJORADA -->
                     <div class="text-center md:text-left flex-1 relative z-10">
                         <h2 class="pop-in text-white mb-2 drop-shadow-xl tracking-tight leading-none">
                             
-                            <!-- MOVIL: GOURMET (Grande) - SIN EXPERIENCIA -->
+                            <!-- MOVIL: GOURMET -->
                             <span class="md:hidden flex flex-col items-center gap-1">
-                                <!-- Título impactante en dorado -->
                                 <span class="gold-gradient-text font-serif italic text-6xl leading-none">Gourmet</span>
                             </span>
 
-                            <!-- DESKTOP (INTACTO) -->
+                            <!-- DESKTOP -->
                             <span class="hidden md:block font-serif font-black text-4xl gold-gradient-text italic">Gourmet</span>
                         </h2>
 
-                        <!-- Texto Descriptivo (Móvil) - Propuesta de Valor COMPLETA -->
+                        <!-- Texto Descriptivo (Móvil) -->
                         <p class="md:hidden text-gray-100 text-xs leading-relaxed font-medium opacity-95 mt-2 px-1">
                             100% Precocidos. No necesitan freír.<br>
                             <span class="text-brand-gold font-bold text-sm">Solo calentar. ¡Listos en 5 minutos!</span>
                         </p>
 
-                        <!-- Texto Descriptivo (Escritorio - REPLICADO MENSAJE MÓVIL) -->
+                        <!-- Texto Descriptivo (Escritorio - REPLICADO) -->
                         <p class="hidden md:block text-gray-100 text-lg leading-relaxed font-medium opacity-95 mt-2">
                             100% Precocidos. No necesitan freír.<br>
                             <span class="text-brand-gold font-bold">Solo calentar. ¡Listos en 5 minutos!</span>
                         </p>
 
-                        <!-- BOTON VER MENU (Ajustado levemente para dar aire al texto) -->
+                        <!-- BOTON VER MENU -->
                         <button onclick="document.getElementById('products-grid').scrollIntoView({behavior: 'smooth'})" class="md:hidden mt-3 bg-white/10 backdrop-blur-md border border-brand-gold/40 text-brand-goldLight px-8 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg animate-pulse-slow active:scale-95 transition-transform hover:bg-white/20">
                             Ver Menú ↓
                         </button>
                     </div>
-
-                    <!-- ICONOS ELIMINADOS DEL ESCRITORIO PARA LIMPIEZA -->
                 </div>
             </div>
 
-            <!-- CONTENEDOR PRODUCTOS (VISTA MÓVIL ORIGINAL RESPETADA) -->
+            <!-- CONTENEDOR PRODUCTOS -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
                 <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8"></div>
 
@@ -297,7 +327,6 @@
                     <i data-lucide="quote" class="w-10 h-10 text-brand-gold/30 mx-auto mb-4"></i>
                     <h2 class="text-3xl md:text-4xl font-serif font-black text-brand-red mb-10">Clientes <span class="italic text-brand-gold">Felices</span></h2>
                     
-                    <!-- FLECHA INDICADORA DE MÁS CONTENIDO (Visible en móvil) -->
                     <div class="absolute right-2 top-1/2 translate-y-8 z-20 animate-bounce-slow md:hidden pointer-events-none opacity-60">
                          <div class="bg-white/80 p-2 rounded-full shadow-lg text-brand-red"><i data-lucide="arrow-right" class="w-5 h-5"></i></div>
                     </div>
@@ -305,7 +334,6 @@
                     <div class="flex overflow-x-auto gap-6 snap-x pb-8 no-scrollbar px-2 relative z-10">
                         <div class="min-w-[280px] bg-white p-8 rounded-3xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] snap-center flex flex-col justify-center border border-gray-50">
                             <div class="flex gap-1 justify-center mb-4"><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i><i data-lucide="star" class="w-4 h-4 fill-brand-gold text-brand-gold"></i></div>
-                            <!-- Cambio de texto aquí -->
                             <p class="text-sm text-gray-600 italic mb-6 leading-relaxed font-medium">"El sabor ahumado es increíble. Se nota la calidad de verdad."</p>
                             <p class="font-bold text-brand-red text-xs uppercase tracking-widest opacity-80">Carlos M.</p>
                         </div>
@@ -363,22 +391,12 @@
         </section>
 
         <!-- FOOTER -->
-        <!-- AJUSTES REALIZADOS: py-20 reducido a py-8, márgenes (mb) reducidos para subir contenido -->
         <footer class="bg-white text-gray-400 pt-2 pb-6 md:py-8 mt-auto border-t border-gray-100 relative z-10 text-center">
-            <!-- REEMPLAZO DEL TEXTO POR EL LOGO - Margen reducido a mb-4 -->
-            <!-- Mobile: logo más grande (h-56), margen negativo superior para subirlo (-mt-8) y margen inferior pequeño (mb-2) -->
-            <!-- Escritorio: regresa a h-44 y margenes originales con md: -->
-            <!-- CAMBIO MOVIL: mb-0 (antes mb-2) para subir las tarjetas -->
             <div class="flex justify-center mb-0 md:mb-4">
                 <img src="https://github.com/Clata1014/chorichava7/blob/main/Fonditonuevo.png?raw=true" alt="ChoriChava Logo" class="h-56 md:h-44 w-auto object-contain -mt-8 md:mt-0" style="filter: brightness(0) saturate(100%) invert(8%) sepia(43%) saturate(5526%) hue-rotate(347deg) brightness(93%) contrast(97%);">
             </div>
             
-            <!-- Margen reducido a mb-4 (móvil) y md:mb-6 (escritorio) -->
-            <!-- CAMBIO ESCRITORIO: Margen reducido a md:mb-3 (antes mb-6) para subir el bloque de tarjetas -->
             <div class="mb-4 md:mb-3">
-                <!-- Margen texto reducido a mb-2 (móvil) y md:mb-6 (escritorio) -->
-                <!-- CAMBIO MOVIL: mb-1 (antes mb-2) para subir las tarjetas -->
-                <!-- CAMBIO ESCRITORIO: Margen del titulo reducido a md:mb-3 (antes mb-6) -->
                 <p class="text-[10px] font-bold text-brand-red/50 uppercase tracking-[0.2em] mb-1 md:mb-3">Reconocimientos</p>
                 <div class="flex flex-row justify-center gap-6 md:gap-8">
                      <div class="flip-card w-16 h-16 md:w-24 md:h-24">
@@ -416,9 +434,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Margen reducido a mb-6 -->
             <p class="text-sm md:text-lg mb-6 font-light tracking-wider opacity-80">Medellín • Colombia</p>
-            
             <p class="text-[10px] uppercase tracking-widest opacity-40">© 2024 ChoriChava.</p>
         </footer>
     </main>
