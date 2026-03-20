@@ -499,7 +499,7 @@
             { id: "g8", name: "Chorizo Llanero Gourmet", price: 25000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Llanerogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, paprika, comino, cilantro, cebolla, ajo, sal, humo." },
             { id: "g9", name: "Chorizo Alemán Gourmet", price: 25000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Alemangourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, semilla de mostaza, perejil, pimienta, humo, cerveza rubia." },
             { id: "g10", name: "Chorizo Mixto Gourmet", price: 28000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Mixtogourmet.webp", description: "Paquete x6 (500g). Mezcla de cerdo con especias selectas, toque ahumado y hierbas." },
-            { id: "g11", name: "Chicharrón Gourmet", price: 25000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Chorizo6unidades.webp", description: "Paquete x6 (500g). Chicharrón gourmet precocido, carne de cerdo, papada, cebolla, ajo, comino, ají, pimentón." },
+            { id: "g11", name: "Chicharrón Gourmet", price: 25000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Chorizo6unidades.webp", imgScale: "scale-100", description: "Paquete x6 (500g). Chicharrón gourmet precocido, carne de cerdo, papada, cebolla, ajo, comino, ají, pimentón." },
             { id: "t1", name: "Chicharrón Tradicional", price: 25000, category: "Tradicional", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Chicharrontradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, papada, cebolla, ajo, comino, ají, pimentón." },
             { id: "t2", name: "Español Tradicional", price: 25000, category: "Tradicional", rating: 4, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Españoltradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, ajo, comino, orégano, paprika, vino blanco." },
             { id: "t3", name: "Ahumado Tradicional", price: 25000, category: "Tradicional", rating: 5, spiciness: 2, image: "https://clata1014.github.io/chorichava7/Ahumadotradicional.webp", description: "Paquete x5 (600g). Carne de cerdo, tocino, tomillo, humo, cebolla de rama, ajo." },
@@ -587,7 +587,7 @@
 
                     <!-- IMAGEN: 50% en movil con borde punteado (Original) -->
                     <div class="relative w-[50%] md:w-[45%] h-full bg-white md:bg-gradient-to-b md:from-gray-50 md:to-white shrink-0 overflow-hidden flex items-center justify-center border-r-2 border-dashed border-gray-100 md:border-r-0 shadow-inner md:shadow-none">
-                        <img src="${p.image}" alt="${p.name}" loading="lazy" class="relative z-10 w-full h-full object-contain p-2 md:p-3 group-hover:scale-125 md:group-hover:scale-110 transition-transform duration-700 drop-shadow-xl scale-125 md:scale-100 md:filter md:saturate-[0.9] md:group-hover:saturate-100">
+                        <img src="${p.image}" alt="${p.name}" loading="lazy" class="relative z-10 w-full h-full object-contain p-2 md:p-3 group-hover:scale-125 md:group-hover:scale-110 transition-transform duration-700 drop-shadow-xl ${p.imgScale || 'scale-125'} md:scale-100 md:filter md:saturate-[0.9] md:group-hover:saturate-100">
                     </div>
 
                     <!-- DETALLES -->
