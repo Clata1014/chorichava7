@@ -247,9 +247,9 @@
                 <!-- BOTONES DERECHA: Ajuste con md:-mr-4 para mover más a la derecha -->
                 <div class="flex items-center gap-1 md:gap-3 md:-mr-4">
                     <!-- BOTÓN INSTAGRAM -->
-                    <a href="https://www.instagram.com/chorichava/" target="_blank" class="relative flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full hover:scale-125 active:scale-95 transition-all duration-300 animate-ig-glow" aria-label="Síguenos en Instagram">
+                    <button onclick="openInstagram()" class="relative flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full hover:scale-125 active:scale-95 transition-all duration-300 animate-ig-glow" aria-label="Síguenos en Instagram">
                         <svg viewBox="0 0 24 24" fill="none" stroke="url(#ig-nav)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 md:w-8 md:h-8"><defs><linearGradient id="ig-nav" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F77737"/><stop offset="50%" stop-color="#E1306C"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="url(#ig-nav)" stroke="none"/></svg>
-                    </a>
+                    </button>
                     <!-- BOTÓN CANASTA -->
                     <button onclick="toggleCart()" class="-mr-3 md:mr-0 relative flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full hover:bg-gray-50 transition-all active:scale-95 border border-transparent hover:border-gray-200">
                         <i data-lucide="shopping-bag" class="w-7 h-7 md:w-8 md:h-8 text-brand-red"></i>
@@ -546,6 +546,32 @@
     </div>
 
     <script>
+        /* ── Deep Link Instagram: abre la app nativa directo al perfil ── */
+        function openInstagram() {
+            const username = 'chorichava';
+            const webUrl = 'https://www.instagram.com/' + username + '/';
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            if (!isMobile) {
+                window.open(webUrl, '_blank');
+                return;
+            }
+
+            // Intentar abrir la app nativa con el deep link
+            const deepLink = 'instagram://user?username=' + username;
+            const start = Date.now();
+
+            window.location.href = deepLink;
+
+            // Fallback: si después de 800ms el navegador sigue aquí,
+            // la app no se abrió → redirigir a la web
+            setTimeout(function () {
+                if (Date.now() - start < 1600) {
+                    window.location.href = webUrl;
+                }
+            }, 800);
+        }
+
         const PRODUCTS = [
             { id: "g11", name: "Chicharrón Gourmet", price: 25000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Chorizo6unidades.webp", imgScale: "scale-[1.15]", mdPad: "md:p-8", description: "Paquete x6 (500g). Chicharrón gourmet precocido, carne de cerdo, papada, cebolla, ajo, comino, ají, pimentón." },
             { id: "g1", name: "Chorizo Argentino Gourmet", price: 25000, category: "Gourmet", rating: 5, spiciness: 1, image: "https://clata1014.github.io/chorichava7/Argentinogourmet.webp", description: "Paquete x6 (500g). Carne de cerdo, tocino, vino tinto, sal, nuez moscada, hinojo, orégano, perejil." },
