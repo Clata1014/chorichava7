@@ -316,61 +316,59 @@
 
                         <!-- Subtítulo (Móvil) -->
                         <p class="md:hidden text-gray-100 text-xs leading-relaxed font-medium opacity-95 mt-2 px-1">
-                            El auténtico sabor premium.<br>
-                            <span class="text-brand-gold font-bold text-sm">Calidad superior y cero pesadez.</span>
+                            100% Precocidos. No necesitan freír.<br>
+                            <span class="text-brand-gold font-bold text-sm">Solo calentar. ¡Listos en 5 minutos!</span>
                         </p>
 
                         <!-- Acordeón Premium (Móvil) -->
-                        <details class="md:hidden mt-3 group">
+                        <details class="md:hidden mt-4 mb-6 group">
                             <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer text-center">
-                                <span class="inline-flex items-center gap-1.5 text-brand-gold/90 text-[11px] font-semibold tracking-wide hover:text-brand-gold transition-colors duration-300">
-                                    ✨ Descubre por qué somos Premium
-                                    <span class="text-[9px] opacity-70 group-open:hidden">(Toca aquí)</span>
-                                    <svg class="w-3 h-3 transition-transform duration-300 group-open:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                <span class="animate-pulse text-yellow-400 font-bold underline text-xs tracking-wide">
+                                    ✨ Descubre por qué somos Premium (Toca aquí) 👇
                                 </span>
                             </summary>
-                            <ul class="mt-3 space-y-1.5 text-left px-1">
-                                <li class="flex items-start gap-2 text-gray-100 text-[11px] leading-snug">
-                                    <span class="text-base mt-[-2px]">🥩</span>
-                                    <span><strong class="text-white">100% Pura Carne de Cerdo:</strong> Alta categoría y de fácil digestión.</span>
+                            <ul class="mt-4 space-y-2 text-left px-2">
+                                <li class="flex items-start gap-2 text-gray-100 text-sm leading-snug">
+                                    <span class="text-base mt-[-1px]">🥩</span>
+                                    <span><strong class="text-white">100% Pura Carne de Cerdo:</strong> Alta categoría y fácil digestión.</span>
                                 </li>
-                                <li class="flex items-start gap-2 text-gray-100 text-[11px] leading-snug">
-                                    <span class="text-base mt-[-2px]">🔥</span>
-                                    <span><strong class="text-white">Precocidos:</strong> Conservan su tamaño real. No botan agua ni se encogen.</span>
+                                <li class="flex items-start gap-2 text-gray-100 text-sm leading-snug">
+                                    <span class="text-base mt-[-1px]">🔥</span>
+                                    <span><strong class="text-white">Calidad Intacta:</strong> No botan agua ni se encogen.</span>
                                 </li>
-                                <li class="flex items-start gap-2 text-gray-100 text-[11px] leading-snug">
-                                    <span class="text-base mt-[-2px]">🍳</span>
-                                    <span><strong class="text-white">Fáciles y Prácticos:</strong> Ideales para AirFryer o sartén con solo una gota de aceite.</span>
+                                <li class="flex items-start gap-2 text-gray-100 text-sm leading-snug">
+                                    <span class="text-base mt-[-1px]">🍳</span>
+                                    <span><strong class="text-white">Fáciles y Prácticos:</strong> Ideales para AirFryer o sartén.</span>
                                 </li>
                             </ul>
                         </details>
 
+                        <!-- BOTON VER MENU (Móvil) -->
+                        <button onclick="document.getElementById('products-grid').scrollIntoView({behavior: 'smooth'})" class="md:hidden mt-3 bg-white/10 backdrop-blur-md border border-brand-gold/40 text-brand-goldLight px-8 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg animate-pulse-slow active:scale-95 transition-transform hover:bg-white/20">
+                            Ver Menú ↓
+                        </button>
+
                         <!-- Subtítulo (Escritorio) -->
                         <p class="hidden md:block text-gray-100 text-lg leading-relaxed font-medium opacity-95 mt-2">
-                            El auténtico sabor premium.<br>
-                            <span class="text-brand-gold font-bold">Calidad superior y cero pesadez.</span>
+                            100% Precocidos. No necesitan freír.<br>
+                            <span class="text-brand-gold font-bold">Solo calentar. ¡Listos en 5 minutos!</span>
                         </p>
 
                         <!-- Beneficios Premium (Escritorio - siempre visibles) -->
                         <ul class="hidden md:block mt-4 space-y-2 text-left">
                             <li class="flex items-start gap-2 text-gray-100 text-sm leading-relaxed">
                                 <span class="text-lg mt-[-2px]">🥩</span>
-                                <span><strong class="text-white">100% Pura Carne de Cerdo:</strong> Alta categoría y de fácil digestión.</span>
+                                <span><strong class="text-white">100% Pura Carne de Cerdo:</strong> Alta categoría y fácil digestión.</span>
                             </li>
                             <li class="flex items-start gap-2 text-gray-100 text-sm leading-relaxed">
                                 <span class="text-lg mt-[-2px]">🔥</span>
-                                <span><strong class="text-white">Precocidos:</strong> Conservan su tamaño real. No botan agua ni se encogen.</span>
+                                <span><strong class="text-white">Calidad Intacta:</strong> No botan agua ni se encogen.</span>
                             </li>
                             <li class="flex items-start gap-2 text-gray-100 text-sm leading-relaxed">
                                 <span class="text-lg mt-[-2px]">🍳</span>
-                                <span><strong class="text-white">Fáciles y Prácticos:</strong> Ideales para AirFryer o sartén con solo una gota de aceite.</span>
+                                <span><strong class="text-white">Fáciles y Prácticos:</strong> Ideales para AirFryer o sartén.</span>
                             </li>
                         </ul>
-
-                        <!-- BOTON VER MENU (Móvil) -->
-                        <button onclick="document.getElementById('products-grid').scrollIntoView({behavior: 'smooth'})" class="md:hidden mt-3 bg-white/10 backdrop-blur-md border border-brand-gold/40 text-brand-goldLight px-8 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg animate-pulse-slow active:scale-95 transition-transform hover:bg-white/20">
-                            Ver Menú ↓
-                        </button>
                     </div>
                 </div>
             </div>
