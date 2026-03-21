@@ -358,12 +358,28 @@
                             100% Precocidos. No necesitan freír.<br>
                             <span class="text-brand-gold font-bold">Solo calentar. ¡Listos en 5 minutos!</span>
                         </p>
-
-                        <!-- BOTON VER MENU (Escritorio) -->
-                        <button onclick="document.getElementById('products-grid').scrollIntoView({behavior: 'smooth'})" class="hidden md:inline-block mt-4 bg-white/10 backdrop-blur-md border border-brand-gold/40 text-brand-goldLight px-10 py-3 rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-lg animate-pulse-slow active:scale-95 transition-transform hover:bg-white/20">
-                            Ver Menú ↓
-                        </button>
                     </div>
+
+                    <!-- Acordeón Premium (Escritorio - al lado derecho) -->
+                    <details class="hidden md:block flex-shrink-0 w-auto max-w-xs relative z-10">
+                        <summary class="text-base text-gray-100 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-center px-5 py-3 bg-white/10 backdrop-blur-md border border-brand-gold/40 rounded-full hover:bg-white/20 transition-all">
+                            ✨ ¿Por qué somos Premium? <span class="text-yellow-400 font-bold animate-pulse">Click aquí</span>
+                        </summary>
+                        <ul class="absolute right-0 top-full mt-2 bg-black/90 backdrop-blur-xl border border-brand-gold/30 rounded-2xl p-4 space-y-2 shadow-2xl w-80 z-50">
+                            <li class="flex items-start gap-2 text-gray-100 text-sm leading-snug">
+                                <span class="text-base mt-[-1px]">🥩</span>
+                                <span><strong class="text-white">100% Pura Carne de Cerdo:</strong> Alta categoría y fácil digestión.</span>
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-100 text-sm leading-snug">
+                                <span class="text-base mt-[-1px]">🔥</span>
+                                <span><strong class="text-white">Calidad Intacta:</strong> No botan agua ni se encogen.</span>
+                            </li>
+                            <li class="flex items-start gap-2 text-gray-100 text-sm leading-snug">
+                                <span class="text-base mt-[-1px]">🍳</span>
+                                <span><strong class="text-white">Fáciles y Prácticos:</strong> Ideales para AirFryer o sartén.</span>
+                            </li>
+                        </ul>
+                    </details>
                 </div>
             </div>
 
