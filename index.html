@@ -359,21 +359,10 @@
                             <span class="text-brand-gold font-bold">Solo calentar. ¡Listos en 5 minutos!</span>
                         </p>
 
-                        <!-- Beneficios Premium (Escritorio - siempre visibles) -->
-                        <ul class="hidden md:block mt-4 space-y-2 text-left">
-                            <li class="flex items-start gap-2 text-gray-100 text-sm leading-relaxed">
-                                <span class="text-lg mt-[-2px]">🥩</span>
-                                <span><strong class="text-white">100% Pura Carne de Cerdo:</strong> Alta categoría y fácil digestión.</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-gray-100 text-sm leading-relaxed">
-                                <span class="text-lg mt-[-2px]">🔥</span>
-                                <span><strong class="text-white">Calidad Intacta:</strong> No botan agua ni se encogen.</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-gray-100 text-sm leading-relaxed">
-                                <span class="text-lg mt-[-2px]">🍳</span>
-                                <span><strong class="text-white">Fáciles y Prácticos:</strong> Ideales para AirFryer o sartén.</span>
-                            </li>
-                        </ul>
+                        <!-- BOTON VER MENU (Escritorio) -->
+                        <button onclick="document.getElementById('products-grid').scrollIntoView({behavior: 'smooth'})" class="hidden md:inline-block mt-4 bg-white/10 backdrop-blur-md border border-brand-gold/40 text-brand-goldLight px-10 py-3 rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-lg animate-pulse-slow active:scale-95 transition-transform hover:bg-white/20">
+                            Ver Menú ↓
+                        </button>
                     </div>
                 </div>
             </div>
