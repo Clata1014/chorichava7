@@ -191,16 +191,7 @@
         }
 
         /* LETRERO DIGITAL ANIMADO - Fading Carousel */
-        .text-carousel-container {
-            position: relative;
-            width: 100%;
-            height: 90px;
-            display: flex;
-            align-items: center;
-        }
         .text-carousel-item {
-            position: absolute;
-            width: 100%;
             opacity: 0;
             animation: slideFade 12s infinite;
         }
@@ -335,8 +326,8 @@
                     <!-- Decoración sutil -->
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-80"></div>
 
-                    <!-- Texto: ESTRUCTURA MEJORADA -->
-                    <div class="text-center md:text-left flex-1 relative z-10">
+                    <!-- LADO IZQUIERDO: Textos (50% protegido, intocable) -->
+                    <div class="w-full md:w-1/2 flex-shrink-0 text-center md:text-left relative z-10">
                         <h2 class="pop-in text-white mb-1 md:mb-2 drop-shadow-xl tracking-tight leading-none">
 
                             <!-- MOVIL: GOURMET -->
@@ -354,7 +345,7 @@
                             <span class="text-brand-gold font-bold text-sm">Solo calentar. ¡Listos en 5 minutos!</span>
                         </p>
 
-                        <!-- Acordeón Premium (Móvil) -->
+                        <!-- Acordeón Premium (Solo Móvil) -->
                         <details class="md:hidden mt-1 mb-1">
                             <summary class="text-[14.5px] sm:text-base text-gray-100 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-center mt-2 mb-2">✨ ¿Por qué somos Premium? <span class="text-yellow-400 font-bold animate-pulse">(Toca aquí)</span> 👇</summary>
                             <ul class="mt-2 space-y-1.5 text-left px-2">
@@ -373,7 +364,7 @@
                             </ul>
                         </details>
 
-                        <!-- BOTON VER MENU (Móvil) -->
+                        <!-- BOTON VER MENU (Solo Móvil) -->
                         <button onclick="document.getElementById('products-grid').scrollIntoView({behavior: 'smooth'})" class="md:hidden mt-1 bg-white/10 backdrop-blur-md border border-brand-gold/40 text-brand-goldLight px-8 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg animate-pulse-slow active:scale-95 transition-transform hover:bg-white/20">
                             Ver Menú ↓
                         </button>
@@ -385,16 +376,30 @@
                         </p>
                     </div>
 
-                    <!-- Letrero Digital Animado (Solo Escritorio) -->
-                    <div class="hidden md:flex text-carousel-container ml-8">
-                        <div class="text-carousel-item delay-1 text-xl">
-                            🥩 <strong class="text-white">100% Pura Carne de Cerdo:</strong><br><span class="text-gray-300">Alta categoría y fácil digestión.</span>
-                        </div>
-                        <div class="text-carousel-item delay-2 text-xl">
-                            🔥 <strong class="text-white">Calidad Intacta:</strong><br><span class="text-gray-300">No botan agua ni se encogen.</span>
-                        </div>
-                        <div class="text-carousel-item delay-3 text-xl">
-                            🍳 <strong class="text-white">Fáciles y Prácticos:</strong><br><span class="text-gray-300">Ideales para Airfryer o sartén.</span>
+                    <!-- LADO DERECHO: Letrero Digital Animado (Solo Escritorio, 50%) -->
+                    <div class="hidden md:flex w-full md:w-1/2 h-[120px] relative items-center justify-end overflow-hidden pl-4">
+                        <div class="relative w-full h-full">
+                            <div class="text-carousel-item delay-1 absolute inset-0 flex items-center justify-end text-right">
+                                <div class="mr-4">
+                                    <strong class="text-brand-gold text-2xl font-black block drop-shadow-lg">100% Pura Carne de Cerdo</strong>
+                                    <span class="text-white text-lg font-medium drop-shadow-md">Alta categoría y fácil digestión.</span>
+                                </div>
+                                <span class="text-5xl drop-shadow-xl">🥩</span>
+                            </div>
+                            <div class="text-carousel-item delay-2 absolute inset-0 flex items-center justify-end text-right">
+                                <div class="mr-4">
+                                    <strong class="text-brand-gold text-2xl font-black block drop-shadow-lg">Calidad Intacta</strong>
+                                    <span class="text-white text-lg font-medium drop-shadow-md">No botan agua ni se encogen.</span>
+                                </div>
+                                <span class="text-5xl drop-shadow-xl">🔥</span>
+                            </div>
+                            <div class="text-carousel-item delay-3 absolute inset-0 flex items-center justify-end text-right">
+                                <div class="mr-4">
+                                    <strong class="text-brand-gold text-2xl font-black block drop-shadow-lg">Fáciles y Prácticos</strong>
+                                    <span class="text-white text-lg font-medium drop-shadow-md">Ideales para Airfryer o sartén.</span>
+                                </div>
+                                <span class="text-5xl drop-shadow-xl">🍳</span>
+                            </div>
                         </div>
                     </div>
                 </div>
