@@ -329,51 +329,35 @@
                             <span class="text-brand-gold font-bold text-sm">Solo calentar. ¡Listos en 5 minutos!</span>
                         </p>
 
-                        <!-- Acordeón Premium (Móvil) -->
-                        <details class="md:hidden mt-1 mb-1">
-                            <summary class="text-[14.5px] sm:text-base text-gray-100 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-center mt-2 mb-2">✨ ¿Por qué somos Premium? <span class="text-yellow-400 font-bold animate-pulse">(Toca aquí)</span> 👇</summary>
-                            <ul class="mt-2 space-y-1.5 text-left px-2">
-                                <li class="flex items-start gap-2 text-gray-100 text-sm leading-snug">
-                                    <span class="text-base mt-[-1px]">🥩</span>
-                                    <span><strong class="text-white">100% Pura Carne de Cerdo:</strong> Alta categoría y fácil digestión.</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-gray-100 text-sm leading-snug">
-                                    <span class="text-base mt-[-1px]">🔥</span>
-                                    <span><strong class="text-white">Calidad Intacta:</strong> No botan agua ni se encogen.</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-gray-100 text-sm leading-snug">
-                                    <span class="text-base mt-[-1px]">🍳</span>
-                                    <span><strong class="text-white">Fáciles y Prácticos:</strong> Ideales para AirFryer o sartén.</span>
-                                </li>
-                            </ul>
-                        </details>
-
-                        <!-- BOTON VER MENU (Móvil) -->
-                        <button onclick="document.getElementById('products-grid').scrollIntoView({behavior: 'smooth'})" class="md:hidden mt-1 bg-white/10 backdrop-blur-md border border-brand-gold/40 text-brand-goldLight px-8 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg animate-pulse-slow active:scale-95 transition-transform hover:bg-white/20">
-                            Ver Menú ↓
-                        </button>
-
                         <!-- Subtítulo (Escritorio) -->
                         <p class="hidden md:block text-gray-100 text-lg leading-relaxed font-medium opacity-95 mt-2">
                             100% Precocidos. No necesitan freír.<br>
                             <span class="text-brand-gold font-bold">Solo calentar. ¡Listos en 5 minutos!</span>
                         </p>
 
-                        <!-- Beneficios Premium (Escritorio - siempre visibles) -->
-                        <ul class="hidden md:block mt-4 space-y-2 text-left">
-                            <li class="flex items-start gap-2 text-gray-100 text-sm leading-relaxed">
-                                <span class="text-lg mt-[-2px]">🥩</span>
-                                <span><strong class="text-white">100% Pura Carne de Cerdo:</strong> Alta categoría y fácil digestión.</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-gray-100 text-sm leading-relaxed">
-                                <span class="text-lg mt-[-2px]">🔥</span>
-                                <span><strong class="text-white">Calidad Intacta:</strong> No botan agua ni se encogen.</span>
-                            </li>
-                            <li class="flex items-start gap-2 text-gray-100 text-sm leading-relaxed">
-                                <span class="text-lg mt-[-2px]">🍳</span>
-                                <span><strong class="text-white">Fáciles y Prácticos:</strong> Ideales para AirFryer o sartén.</span>
-                            </li>
-                        </ul>
+                        <!-- Acordeón Premium (Móvil y Escritorio) -->
+                        <details class="mt-1 md:mt-3 mb-1 md:mb-2">
+                            <summary class="text-[14.5px] sm:text-base md:text-lg text-gray-100 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-center mt-2 mb-2">✨ ¿Por qué somos Premium? <span class="text-yellow-400 font-bold animate-pulse">(Toca aquí)</span> 👇</summary>
+                            <ul class="mt-2 md:mt-4 space-y-1.5 md:space-y-2 text-left px-2">
+                                <li class="flex items-start gap-2 text-gray-100 text-sm md:text-base leading-snug">
+                                    <span class="text-base md:text-lg mt-[-1px]">🥩</span>
+                                    <span><strong class="text-white">100% Pura Carne de Cerdo:</strong> Alta categoría y fácil digestión.</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-gray-100 text-sm md:text-base leading-snug">
+                                    <span class="text-base md:text-lg mt-[-1px]">🔥</span>
+                                    <span><strong class="text-white">Calidad Intacta:</strong> No botan agua ni se encogen.</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-gray-100 text-sm md:text-base leading-snug">
+                                    <span class="text-base md:text-lg mt-[-1px]">🍳</span>
+                                    <span><strong class="text-white">Fáciles y Prácticos:</strong> Ideales para AirFryer o sartén.</span>
+                                </li>
+                            </ul>
+                        </details>
+
+                        <!-- BOTON VER MENU (Solo Móvil) -->
+                        <button onclick="document.getElementById('products-grid').scrollIntoView({behavior: 'smooth'})" class="md:hidden mt-1 bg-white/10 backdrop-blur-md border border-brand-gold/40 text-brand-goldLight px-8 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg animate-pulse-slow active:scale-95 transition-transform hover:bg-white/20">
+                            Ver Menú ↓
+                        </button>
                     </div>
                 </div>
             </div>
