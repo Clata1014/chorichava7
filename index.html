@@ -231,28 +231,29 @@
             100% { opacity: 0; transform: translateY(-15px); }
         }
 
-        /* Botón "Ver ingredientes" - A prueba de abuelitos */
+        /* Botón "Ver ingredientes" - Elegante y legible */
         @keyframes ingredientesPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(197, 160, 47, 0.6), 0 0 20px rgba(197, 160, 47, 0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(197, 160, 47, 0.9), 0 0 35px rgba(197, 160, 47, 0.5); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
         }
         .btn-ingredientes {
-            animation: ingredientesPulse 2s ease-in-out infinite;
+            animation: ingredientesPulse 2.5s ease-in-out infinite;
         }
         @media (max-width: 767px) {
             .btn-ingredientes {
                 display: inline-block !important;
-                width: 100%;
-                padding: 14px 24px;
-                font-size: 16px;
-                font-weight: 900;
+                width: fit-content;
+                margin: 10px auto;
+                padding: 8px 24px;
+                font-size: 14px;
+                font-weight: 800;
                 text-decoration: none;
-                background: linear-gradient(135deg, #C5A02F, #e6be44);
-                color: #fff;
-                border-radius: 12px;
+                background: #fff;
+                color: #4A0E0E;
+                border-radius: 25px;
                 text-align: center;
-                letter-spacing: 1px;
-                border: 2px solid rgba(255,255,255,0.3);
+                letter-spacing: 0.5px;
+                border: 2px solid #4A0E0E;
             }
         }
     </style>
