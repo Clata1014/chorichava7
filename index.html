@@ -238,6 +238,10 @@
         }
         @media (max-width: 767px) {
             .btn-ingredientes {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
                 background: linear-gradient(180deg, #5a1a1a, #4A0E0E) !important;
                 border: 1.5px solid #7a2e2e !important;
                 border-bottom: 2.5px solid #3a0808 !important;
@@ -250,6 +254,9 @@
                 border-radius: 8px;
                 letter-spacing: 0.3px;
                 width: fit-content;
+                max-width: 90%;
+                box-sizing: border-box;
+                margin: 10px auto;
                 box-shadow: 0 3px 6px rgba(74, 14, 14, 0.35), inset 0 1px 0 rgba(255,255,255,0.1);
                 animation: ingredientesBounce 2s ease-in-out infinite;
             }
@@ -801,10 +808,9 @@
                             </div>
 
                             <!-- Link Detalles (Solo Movil - Original) -->
-                            <div class="md:hidden flex items-center justify-center gap-1 mb-auto" style="margin:10px auto 4px;">
-                                <span style="font-size:1rem;">🔍</span>
+                            <div class="md:hidden mb-auto" style="text-align:center;">
                                 <button onclick="openDetails('${p.id}')" class="btn-ingredientes font-bold transition-colors">
-                                    Ver Ingredientes
+                                    <span style="font-size:0.85rem;">🔍</span> Ver Ingredientes
                                 </button>
                             </div>
                             </button>
