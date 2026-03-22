@@ -239,17 +239,16 @@
         .btn-ingredientes .manita {
             display: inline-block;
             animation: manitaBounce 1.2s ease-in-out infinite;
+            text-decoration: none;
         }
         @media (max-width: 767px) {
             .btn-ingredientes {
                 background: transparent !important;
                 border: none !important;
-                font-size: 1.1rem;
-                font-weight: 900;
-                color: #4A0E0E;
-                text-decoration: underline;
-                text-underline-offset: 4px;
-                text-decoration-thickness: 2px;
+                font-size: 0.85rem;
+                font-weight: 800;
+                color: #000;
+                text-decoration: none;
                 padding: 6px 0;
                 margin: 8px auto;
             }
@@ -801,8 +800,8 @@
                             </div>
 
                             <!-- Link Detalles (Solo Movil - Original) -->
-                            <button onclick="openDetails('${p.id}')" class="btn-ingredientes md:hidden font-bold text-gray-400 hover:text-brand-red transition-colors flex items-center justify-center gap-1 mb-auto">
-                                🔍 Ver Ingredientes <span class="manita">👆</span>
+                            <button onclick="openDetails('${p.id}')" class="btn-ingredientes md:hidden font-bold transition-colors flex items-center justify-center gap-1 mb-auto">
+                                <span style="text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px">🔍 Ver Ingredientes</span> <span class="manita">👆</span>
                             </button>
                             
                             <!-- Info Desktop (Nuevo diseño) -->
