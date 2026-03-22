@@ -230,6 +230,31 @@
             33% { opacity: 0; transform: translateY(-15px); }
             100% { opacity: 0; transform: translateY(-15px); }
         }
+
+        /* Botón "Ver ingredientes" - A prueba de abuelitos */
+        @keyframes ingredientesPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(197, 160, 47, 0.6), 0 0 20px rgba(197, 160, 47, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(197, 160, 47, 0.9), 0 0 35px rgba(197, 160, 47, 0.5); }
+        }
+        .btn-ingredientes {
+            animation: ingredientesPulse 2s ease-in-out infinite;
+        }
+        @media (max-width: 767px) {
+            .btn-ingredientes {
+                display: inline-block !important;
+                width: 100%;
+                padding: 14px 24px;
+                font-size: 16px;
+                font-weight: 900;
+                text-decoration: none;
+                background: linear-gradient(135deg, #C5A02F, #e6be44);
+                color: #fff;
+                border-radius: 12px;
+                text-align: center;
+                letter-spacing: 1px;
+                border: 2px solid rgba(255,255,255,0.3);
+            }
+        }
     </style>
 
 </head>
@@ -777,8 +802,8 @@
                             </div>
 
                             <!-- Link Detalles (Solo Movil - Original) -->
-                            <button onclick="openDetails('${p.id}')" class="md:hidden text-[10px] font-bold text-gray-400 hover:text-brand-red transition-colors flex items-center gap-1 underline decoration-gray-200 underline-offset-2 mb-auto">
-                                Ver ingredientes
+                            <button onclick="openDetails('${p.id}')" class="btn-ingredientes md:hidden text-[10px] font-bold text-gray-400 hover:text-brand-red transition-colors flex items-center justify-center gap-1 mb-auto">
+                                🔍 Ver Ingredientes
                             </button>
                             
                             <!-- Info Desktop (Nuevo diseño) -->
