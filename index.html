@@ -239,7 +239,7 @@
         @media (max-width: 767px) {
             .btn-ingredientes {
                 background: #4A0E0E !important;
-                border: none !important;
+                border: 1px solid #6b2222 !important;
                 font-size: 0.75rem;
                 font-weight: 700;
                 color: #fff;
@@ -249,6 +249,7 @@
                 border-radius: 6px;
                 letter-spacing: 0.3px;
                 width: fit-content;
+                box-shadow: 0 2px 8px rgba(74, 14, 14, 0.3);
                 animation: ingredientesBounce 2s ease-in-out infinite;
             }
         }
@@ -633,8 +634,8 @@
             </div>
         </div>
         <div class="space-y-4 mb-8">
-            <h4 class="font-bold text-gray-900 text-xs uppercase tracking-widest border-b border-gray-100 pb-2">Detalles del Producto</h4>
-            <p id="sheet-desc" class="text-gray-600 text-sm leading-relaxed font-light"></p>
+            <h4 class="font-black text-black text-xs uppercase tracking-widest border-b border-gray-100 pb-2">Detalles del Producto</h4>
+            <p id="sheet-desc" class="text-black text-sm leading-relaxed font-bold"></p>
         </div>
         <button id="sheet-btn" onclick="" class="w-full bg-brand-red text-white py-4 rounded-xl font-bold shadow-lg shadow-brand-red/30 hover:bg-brand-redLight transition-all uppercase tracking-widest text-xs flex justify-center items-center gap-2">Agregar <i data-lucide="shopping-bag" class="w-4 h-4"></i></button>
     </div>
