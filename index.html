@@ -231,26 +231,27 @@
             100% { opacity: 0; transform: translateY(-15px); }
         }
 
-        /* Enlace "Ver ingredientes" - Texto animado para adultos mayores */
-        @keyframes manitaBounce {
+        /* Enlace "Ver ingredientes" */
+        @keyframes ingredientesBounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+            50% { transform: translateY(-3px); }
         }
         .btn-ingredientes .manita {
             display: inline-block;
-            animation: manitaBounce 1.2s ease-in-out infinite;
             text-decoration: none;
         }
         @media (max-width: 767px) {
             .btn-ingredientes {
                 background: transparent !important;
                 border: none !important;
-                font-size: 0.85rem;
+                font-size: 0.72rem;
                 font-weight: 800;
                 color: #000;
                 text-decoration: none;
-                padding: 6px 0;
-                margin: 8px auto;
+                white-space: nowrap;
+                padding: 4px 0;
+                margin: 10px auto 4px;
+                animation: ingredientesBounce 2s ease-in-out infinite;
             }
         }
     </style>
