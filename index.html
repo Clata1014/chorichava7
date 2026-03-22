@@ -246,7 +246,6 @@
                 text-decoration: none;
                 white-space: nowrap;
                 padding: 5px 14px;
-                margin: 10px auto 4px;
                 border-radius: 6px;
                 letter-spacing: 0.3px;
                 width: fit-content;
@@ -800,8 +799,12 @@
                             </div>
 
                             <!-- Link Detalles (Solo Movil - Original) -->
-                            <button onclick="openDetails('${p.id}')" class="btn-ingredientes md:hidden font-bold transition-colors flex items-center justify-center gap-1 mb-auto">
-                                🔍 Ver Ingredientes
+                            <div class="md:hidden flex items-center justify-center gap-1 mb-auto" style="margin:10px auto 4px;">
+                                <span style="font-size:1rem;">🔍</span>
+                                <button onclick="openDetails('${p.id}')" class="btn-ingredientes font-bold transition-colors">
+                                    Ver Ingredientes
+                                </button>
+                            </div>
                             </button>
                             
                             <!-- Info Desktop (Nuevo diseño) -->
